@@ -285,8 +285,9 @@ export default function SignUp(props) {
                                             <SpinnerSM />
                                         </button>
                                         :
-                                        <input type="submit"
-                                            className={` ${styles.signInBtnOutline} px-5`} value={'Cadastre-se'} />
+                                        <input className={` ${styles.signInBtnOutline} px-5`} value={'Cadastre-se'} />
+                                        // <input type="submit"
+                                        //     className={` ${styles.signInBtnOutline} px-5`} value={'Cadastre-se'} />
 
                                     }
                                 </div>
@@ -317,7 +318,8 @@ export default function SignUp(props) {
                                 </div>
                                 <div className="row">
                                     {!googleLoading ?
-                                        <span className="card py-2 px-1 my-2 cardAnimation" type="button" onClick={() => { signIn('google'); setGoogleLoading(true) }}  >
+                                        <span className="card py-2 px-1 my-2 cardAnimation" type="button"  >
+                                        {/* <span className="card py-2 px-1 my-2 cardAnimation" type="button" onClick={() => { signIn('google'); setGoogleLoading(true) }}  > */}
                                             <div className="row ">
                                                 <div className="col-12 d-flex justify-content-center">
                                                     <div className="icon-start">

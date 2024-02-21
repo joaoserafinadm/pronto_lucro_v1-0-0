@@ -6,12 +6,17 @@ $akvo-color-secondary: #6c757d;
 $akvo-color-hover: #4f5459;
 
 .container {
+
+    background-image: url(../../../public/BG_02.png);
+
     width: 100vw;
     height: 100vh;
-    background-image: url(../../../public/BG_02.png);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    position: fixed;
+    top: 0;
+    overflow-y: scroll;
 }
 
 .login_modal {
@@ -194,6 +199,7 @@ $akvo-color-hover: #4f5459;
 .logoImg {
     width: 20vw;
 }
+
 .gif {
     width: 30vw;
 }

@@ -80,7 +80,8 @@ export default function RescuePassword(props) {
                             {loadingSend ?
                                 <button className={`${styles.signInBtn}`} disabled><SpinnerSM /></button>
                                 :
-                                <button className={`${styles.signInBtn}`} onClick={() => handleSendToken(email)}>Enviar</button>
+                                <button className={`${styles.signInBtn}`} >Enviar</button>
+                                // <button className={`${styles.signInBtn}`} onClick={() => handleSendToken(email)}>Enviar</button>
                             }
                         </div>
                         <div className="row mt-3">

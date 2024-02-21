@@ -123,7 +123,7 @@ export default function signInPage(props) {
 
                             <div className={`card `}>
                                 <div className={`card-body ${styles.cardSize} `}>
-                                    
+
                                     <div className="row mb-3">
                                         <h1 className={`${styles.title} title-dark`}>Login</h1>
                                     </div>
@@ -174,8 +174,12 @@ export default function signInPage(props) {
                                             <button
                                                 disabled
                                                 className="btn btn-success"
-                                                onClick={() => handleSignIn()}
                                             >
+                                                {/* <button
+                                                disabled
+                                                className="btn btn-success"
+                                                onClick={() => handleSignIn()}
+                                            > */}
                                                 <SpinnerSM />
                                             </button>
                                         ) : (
@@ -210,7 +214,8 @@ export default function signInPage(props) {
                                     </div>
                                     <div className="row">
                                         {!googleLoading ?
-                                            <span className="card py-2 px-1 my-2 cardAnimation" type="button" onClick={() => { signIn('google'); setGoogleLoading(true) }} >
+                                            // <span className="card py-2 px-1 my-2 cardAnimation" type="button" onClick={() => { signIn('google'); setGoogleLoading(true) }} >
+                                            <span className="card py-2 px-1 my-2 cardAnimation" type="button" >
                                                 <div className="row ">
                                                     <div className="col-12 d-flex justify-content-center">
                                                         <div className="icon-start">
