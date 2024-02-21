@@ -1,11 +1,12 @@
 {
-    "theme_color": "#0a4646",
-    "background_color": "#0a4646",
+    "theme_color": "#012351",
+    "background_color": "#012351",
     "display": "standalone",
     "scope": "/",
     "start_url": "/",
-    "name": "AKVO-ESG",
-    "short_name": "AKVO-ESG",
+    "name": "Pronto Lucro",
+    "short_name": "Pronto Lucro",
+    "description": "Aplicativo de controle financeiro para pequenas e m\u00e9dias empresas",
     "icons": [
         {
             "src": "/icon-192x192.png",
