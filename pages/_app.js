@@ -19,7 +19,7 @@ import "../styles/globals.scss";
 
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import { config } from '@fortawesome/fontawesome-svg-core';
-config.autoAddCss = false; 
+config.autoAddCss = false;
 
 if (typeof window !== "undefined") {
     window.bootstrap = require('bootstrap/dist/js/bootstrap.bundle.js')
@@ -101,7 +101,7 @@ export default function MyApp({ Component, pageProps }) {
 
 
 
-        if ( passwordRecoverRoute) {
+        if (passwordRecoverRoute) {
             return <PasswordRecover />;
         }
 
@@ -151,7 +151,7 @@ export default function MyApp({ Component, pageProps }) {
                 <Provider store={store}>
                     <PersistGate persistor={persistedStore}>
                         <Head>
-                            <title>AKVO-ESG</title>
+                            <title>Pronto Lucro</title>
                             <meta
                                 name="viewport"
                                 content="width=device-width, initial-scale=1, shrink-to-fit=no"
