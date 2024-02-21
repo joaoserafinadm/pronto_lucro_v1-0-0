@@ -201,7 +201,8 @@ export default function SignUp(props) {
                         className={`card-body ${styles.cardSize} d-flex justify-content-center`}
                     >
                         <div className={`col-12 col-lg-6 d-flex justify-content-center align-items-center`}>
-                            <form onSubmit={e => handleAuth(e)} >
+                            <form  >
+                            {/* <form onSubmit={e => handleAuth(e)} > */}
                                 <div className="row mb-1">
                                     <h1 className={`${styles.title} title-dark`}>Cadastre-se</h1>
                                 </div>
@@ -285,7 +286,7 @@ export default function SignUp(props) {
                                             <SpinnerSM />
                                         </button>
                                         :
-                                        <input className={` ${styles.signInBtnOutline} px-5`} value={'Cadastre-se'} />
+                                        <input type="submit" className={` ${styles.signInBtnOutline} px-5`} value={'Cadastre-se'} />
                                         // <input type="submit"
                                         //     className={` ${styles.signInBtnOutline} px-5`} value={'Cadastre-se'} />
 
