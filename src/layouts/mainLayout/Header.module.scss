@@ -1,0 +1,59 @@
+.headerPosition {
+    background-color: var(--bg-dark);
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    height: var(--header-height);
+    z-index: 1001 !important;
+    transition: all .2s;
+}
+
+.sidebarToggle {
+    color: #fff;
+    transition: color 0.1s ease-out;
+}
+
+.sidebarToggle:hover {
+    color: var(--white);
+}
+
+
+
+.logo {
+    padding: 0px 15px;
+    height: calc(var(--header-height) * 0.5);
+}
+
+
+.header {
+    background-color: var(--bg-dark);
+    position: fixed !important;
+    top: 0;
+    right: 0;
+    width: 100vw;
+    height: var(--header-height);
+    z-index: 1;
+    transition: ease-in-out .3s;
+}
+
+
+
+.configIcons {
+    position: fixed;
+    right: 0;
+
+}
+
+
+.notificationIcon {
+    position: absolute;
+    top: 0px;
+    right: 10px;
+    border-radius: 100%;
+    height: 16px;
+    width: 16px;
+    background-color: var(--danger);
+    border: #fff solid 1px;
+    font-weight: 550;
+    font-size: 10px;
+}

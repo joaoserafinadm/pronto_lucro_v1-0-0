@@ -1,0 +1,183 @@
+.main {
+    height: 500px;
+    width: 350px;
+    border: 1px solid #fff;
+    border-radius: 5px;
+}
+
+.header {
+    height: 200px;
+    border-radius: 4px 4px 0 0;
+    background-color: #f5874f;
+    border-bottom: 5px solid #fff;
+    // background-image: url(${props.headerImg}); /* Define a imagem como plano de fundo */
+    background-size: cover;
+    /* Ajusta a imagem para cobrir todo o espaço */
+    background-position: center;
+    /* Centraliza a imagem */
+}
+
+// .headerImg {
+//     min-height: 200px;
+//     max-width: 350px;
+//     height: auto;
+//     width: auto;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     border-radius: 4px 4px 0 0;
+//     overflow: hidden;
+//     // background-color: #f5874f;
+//     // border-bottom: 5px solid #fff;
+// }
+
+
+
+.profilePicture {
+
+    height: 176px;
+    width: 176px;
+    border-radius: 88px;
+    border: 5px solid #fff;
+}
+
+.profilePicRow {
+    position: relative;
+    top: -110px;
+    display: flex;
+    justify-content: center;
+}
+
+.body {
+    position: relative;
+    top: -110px;
+}
+
+
+@media (max-width: 850px) {
+
+    .main {
+        height: 350px;
+        width: 250px;
+        border: 1px solid #fff;
+        border-radius: 5px;
+    }
+
+    .header {
+        height: 125px;
+        border-radius: 5px 5px 0 0;
+        background-color: #f5874f;
+        border-bottom: 5px solid #fff;
+        // background-image: url(${props.headerImg}); /* Define a imagem como plano de fundo */
+        background-size: cover;
+        /* Ajusta a imagem para cobrir todo o espaço */
+        background-position: center;
+        /* Centraliza a imagem */
+    }
+
+
+
+    .profilePicture {
+        height: 125px;
+        width: 125px;
+        border-radius: 100px;
+        border: 3px solid #fff;
+    }
+
+    .profilePicRow {
+        position: relative;
+        top: -85px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .body {
+        position: relative;
+        top: -80px;
+    }
+
+}
+
+
+
+.mainLS {
+    height: 192px;
+    width: 340px;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    display: flex;
+    border-radius: 4px 0 0 4px;
+    // border-bottom: 5px solid #fff;
+    // background-image: url(${props.headerImg}); /* Define a imagem como plano de fundo */
+    background-size: cover;
+    /* Ajusta a imagem para cobrir todo o espaço */
+    background-position: center;
+}
+.mainBackLS {
+    height: 192px;
+    width: 340px;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    display: flex;
+    background-size: cover;
+    /* Ajusta a imagem para cobrir todo o espaço */
+    background-position: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    // opacity: 0.2;
+}
+
+.headerLS {
+    height: 191px;
+    width: 130px;
+
+    /* Centraliza a imagem */
+}
+
+.profilePicRowLS {
+    position: relative;
+    left: 10px;
+    top: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profilePictureLS {
+    height: 125px;
+    width: 125px;
+    border-radius: 75px;
+    border: 3px solid #fff;
+}
+
+
+
+.bodyLS {
+    position: relative;
+    left: 15px !important;
+    width:calc(340px - 10px - 125px);
+}
+
+.logoLS {
+    position: absolute;
+    right: 15px;
+    bottom: 15px;
+    height: 30px;
+}
+.logoBackLS {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logoImgLS {
+    max-width: 200px;
+  max-height: 75px;
+  width: 100%;
+  height: auto;
+}
+
+.fontSize{
+    font-size: 12px;
+}

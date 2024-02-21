@@ -1,0 +1,10 @@
+.position {
+    position: fixed !important;
+    top: var(--header-height);
+    left: var(--aside-width);
+    height: var(--header-height);
+    width: calc(100vw - var(--aside-width) - 50px);
+    z-index: 1001;
+    transition: all .5s;
+    margin: 5px 20px;
+}

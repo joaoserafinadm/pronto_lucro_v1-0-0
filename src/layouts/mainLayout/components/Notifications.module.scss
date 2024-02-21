@@ -1,0 +1,55 @@
+.cardSize {
+    width: 350px;
+}
+
+.cardSizeSM {
+    position: fixed;
+    background-color: #fff;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    padding: 15px;
+    z-index: 1001 !important;
+}
+
+.cardOuter { 
+    // background-color: red;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100VW;
+    height: 100vh;
+    z-index: 10000001;
+}
+
+.cardInner {
+    overflow-y: scroll;
+    height: calc(100vh - var(--header-height) - 60px - 90px);
+}
+
+.notificationsFooter {
+    background-color: #fff;
+    align-items: center;
+    width: 100vw;
+    height: 60px;
+    position: fixed;
+    bottom: 0;
+}
+
+.p {
+    font-size: 14px !important;
+}
+
+.hover {
+    transition: .3s ease;
+}
+
+.hover:hover {
+    background-color: #dedede !important;
+}
+
+.backButtom {
+    position: absolute;
+    right: 0;
+}

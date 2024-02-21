@@ -1,0 +1,99 @@
+.menuArea {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-white);
+    position: fixed !important;
+    // left:var(--aside-width) ;
+    height: 100vh;
+    top: 0;
+    width: var(--aside-fixed-width);
+    z-index: 12;
+    background-color: #fff;
+    transition: ease-in-out .3s;
+}
+
+.menuArea ul {
+    padding: 0;
+}
+
+.menuArea ul span {
+    font-weight: 400;
+    display: block;
+    height: 100%;
+    width: 100%;
+    line-height: 50px;
+    font-size: 14px;
+    color: var(--bg-dark);
+    padding-left: 20px;
+    box-sizing: border-box;
+    text-decoration: none;
+    color: var(--gray);
+    transition: ease-in-out 0.2s;
+}
+
+.menuArea ul li:hover {
+    color: var(--cv-primary);
+    font-weight: 410;
+}
+
+
+.menuArea ul a {
+    font-weight: 400;
+    display: block;
+    height: 100%;
+    width: 100%;
+    line-height: 50px;
+    font-size: 14px;
+    color: var(--bg-dark);
+    padding-left: 30px;
+    box-sizing: border-box;
+    text-decoration: none;
+    color: var(--gray);
+    transition: ease-in-out .3s;
+
+}
+
+.menuArea ul li span:hover {
+    color: var(--dark);
+    font-weight: 410;
+}
+
+.img {
+    height: 75px;
+    border-radius: 50px;
+}
+
+.userName {
+    font-size: 17px;
+    font-weight: 500;
+    // color: var(--header-color) !important;
+}
+
+.userStatus {
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--gray);
+}
+
+.navItemsPosition {
+    height: 63vh;
+}
+
+.companyLogo {
+    max-height: 50px;
+    max-width: 130px;
+    height: auto;
+    width: auto;
+}
+
+
+.navbarBackground {
+    background-color: #000000b7;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    transition: ease .5s;
+    z-index: 2;
+}

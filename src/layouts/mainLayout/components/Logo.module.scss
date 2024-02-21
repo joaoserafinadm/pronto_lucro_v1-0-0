@@ -1,0 +1,13 @@
+.logo {
+    background-color: var(--bg-dark);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: var(--header-height);
+
+}
+
+.logo img {
+    padding: 0px 15px;
+    height: 20px;
+}
