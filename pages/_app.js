@@ -131,7 +131,7 @@ export default function MyApp({ Component, pageProps }) {
 
                             <link rel="manifest" href="/manifest.json" />
                             <link rel="apple-touch-icon" href="/icon.png" />
-                            <meta name="theme-color" content="#fff" />
+                            <meta name="theme-color" content="#012351" />
                         </Head>
 
                         <SessionProvider>
@@ -160,7 +160,7 @@ export default function MyApp({ Component, pageProps }) {
 
                             <link rel="manifest" href="/manifest.json" />
                             <link rel="apple-touch-icon" href="/icon.png" />
-                            <meta name="theme-color" content="#0a4646" />
+                            <meta name="theme-color" content="#012351" />
                         </Head>
 
                         <MainLayout>
