@@ -7,7 +7,7 @@ export default function Logo() {
             <Link href="/">
                 <div className='d-flex justify-content-center align-items-center ' >
                     <span type='button'>
-                        <img src="/LOGO_01.png" alt="logo" className='' />
+                        <img src="/LOGO_02.png" alt="logo" className='' />
                     </span>
                 </div>
             </Link>

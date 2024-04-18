@@ -21,7 +21,7 @@ export default async (req, res) => {
             res.status(400).json({ error: 'Wrong e-mail or password.' })
         } else {
 
-            const companyExist = await db.collection('companies').findOne(ObjectID(userExists.company_id))
+            
 
             bcrypt.compare(password, userExists.password, async function (err, result) {
                 if (!err && result) {
@@ -30,20 +30,8 @@ export default async (req, res) => {
                             sub: userExists._id,
                             firstName: userExists.firstName,
                             lastName: userExists.lastName,
-                            company_id: userExists.company_id,
                             profileImageUrl: userExists.profileImageUrl,
-                            permissions: userExists.permissions,
-                            userStatus: userExists.userStatus,
                             dateLimit: userExists.dateLimit,
-                            userConfig: companyExist.userConfig,
-                            tools: companyExist.tools ? companyExist.tools : {
-                                geeCalculator: false,
-                                geeAgro: false,
-                                esgIndicators: false,
-                                pcaf: false
-                            },
-                            companyLogo: companyExist.profileImageUrl ? companyExist.profileImageUrl : '',
-                            companyName: companyExist.companyName ? companyExist.companyName : '',
                             active: userExists.active
                         }
 

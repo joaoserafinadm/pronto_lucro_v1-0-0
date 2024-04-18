@@ -60,10 +60,10 @@ export default function Home() {
         <div className='fadeItem1s'>
             <Title title={`Olá, ${token.firstName}!`} subtitle={'Qual a sua meta de sustentabilidade para hoje?'} />
 
-            <div className='index_bg'></div>
+            <div className=''></div>
 
 
-            <IndexCardsTools />
+            {/* <IndexCardsTools /> */}
 
             {/* <IndexCards /> */}
             {/* <div className="row">

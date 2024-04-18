@@ -15,7 +15,7 @@ export default async (req, res) => {
 
         const { email, firstName } = req.body
 
-        console.log( email, firstName)
+        console.log(email, firstName)
 
         if (!email || !firstName) {
 
@@ -37,11 +37,13 @@ export default async (req, res) => {
                 const secureCode = await bcrypt.hash(code, saltCode)
 
                 const data = await resend.emails.send({
-                    from: 'Autenticação <autenticacao@akvo-esg.com.br>',
+                    from: 'Autenticação <autenticacao@prontolucro.com.br>',
                     to: [email],
-                    subject: 'AKVO-ESG',
+                    subject: 'Pronto Lucro',
                     react: AuthEmail({ firstName: firstName, code }),
                 });
+
+                console.log(data)
 
                 res.status(200).json({ secureCode })
 
@@ -54,6 +56,6 @@ export default async (req, res) => {
     } else {
         res.status(400).json({ error: 'Wrong request method' })
     }
-  
+
 
 }

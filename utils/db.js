@@ -1,7 +1,7 @@
 import { MongoClient } from 'mongodb';
 
 const uri = process.env.DATABASE_URL; // URI de conexão com o MongoDB
-const dbName = 'CO2Blue'; // Nome do banco de dados
+const dbName = 'app'; // Nome do banco de dados
 
 let cachedClient = null; // Armazenar o cliente MongoDB
 

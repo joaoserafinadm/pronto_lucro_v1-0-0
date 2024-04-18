@@ -13,6 +13,7 @@ import { SpinnerSM } from "../../components/loading/Spinners";
 import SignUpSuccessModal from "./SignUpSuccessModal";
 import isMobile from "../../../utils/isMobile";
 import { signIn, signOut } from 'next-auth/react'
+import { showModal } from "../../../utils/modalControl";
 
 
 export default function SignUp(props) {
@@ -55,8 +56,8 @@ export default function SignUp(props) {
         if (!LastNameValue) lastNameError = "Insira seu sobrenome";
         if (!emailValue || !emailValue.includes("@"))
             emailError = "Insira um e-mail válido";
-        if (passwordValue.length < 6 || !passwordValue)
-            passwordError = "Insira no mínimo 6 caracteres";
+        if (passwordValue.length < 8 || !passwordValue)
+            passwordError = "Insira no mínimo 8 caracteres";
 
         if (firstNameError || lastNameError || emailError || passwordError) {
             if (firstNameError)
@@ -160,7 +161,6 @@ export default function SignUp(props) {
 
         e.preventDefault()
 
-        console.log("isvalid")
         setSignUpLoading(true)
 
         const isValid = validate(firstName, lastName, email, password);
@@ -176,8 +176,7 @@ export default function SignUp(props) {
             await axios.post(`${baseUrl()}/api/login/authMail`, data)
                 .then(res => {
                     setAuthCode(res.data.secureCode)
-                    var myModal = new bootstrap.Modal(document.getElementById('authModal'))
-                    myModal.show()
+                    showModal('authModal')
                 }).catch(e => {
                     setSignUpLoading(false)
                     setEmailError('E-mail já cadastrado.')
@@ -201,8 +200,8 @@ export default function SignUp(props) {
                         className={`card-body ${styles.cardSize} d-flex justify-content-center`}
                     >
                         <div className={`col-12 col-lg-6 d-flex justify-content-center align-items-center`}>
-                            <form  >
-                            {/* <form onSubmit={e => handleAuth(e)} > */}
+
+                            <form onSubmit={e => handleAuth(e)} >
                                 <div className="row mb-1">
                                     <h1 className={`${styles.title} title-dark`}>Cadastre-se</h1>
                                 </div>
@@ -251,7 +250,7 @@ export default function SignUp(props) {
                                         type="password"
                                         className="form-control"
                                         id="passwordInput"
-                                        placeholder="Senha"
+                                        placeholder="Senha de no mínimo 8 caracteres"
                                         value={password}
                                         onChange={(e) => setPassword(e.target.value)}
                                     />
@@ -280,15 +279,13 @@ export default function SignUp(props) {
                                 <div className="col-12 d-flex justify-content-center my-3">
                                     {singUpLoading ?
                                         <button
-                                            className="btn btn-success px-5"
+                                        className={`btn btn-custom-secondary px-5`}
                                             disabled
                                         >
                                             <SpinnerSM />
                                         </button>
                                         :
-                                        <input type="submit" className={` ${styles.signInBtnOutline} px-5`} value={'Cadastre-se'} />
-                                        // <input type="submit"
-                                        //     className={` ${styles.signInBtnOutline} px-5`} value={'Cadastre-se'} />
+                                        <input type="submit" className={`btn  btn-custom-secondary px-5`} value={'Cadastre-se'} />
 
                                     }
                                 </div>
@@ -320,7 +317,7 @@ export default function SignUp(props) {
                                 <div className="row">
                                     {!googleLoading ?
                                         <span className="card py-2 px-1 my-2 cardAnimation" type="button"  >
-                                        {/* <span className="card py-2 px-1 my-2 cardAnimation" type="button" onClick={() => { signIn('google'); setGoogleLoading(true) }}  > */}
+                                            {/* <span className="card py-2 px-1 my-2 cardAnimation" type="button" onClick={() => { signIn('google'); setGoogleLoading(true) }}  > */}
                                             <div className="row ">
                                                 <div className="col-12 d-flex justify-content-center">
                                                     <div className="icon-start">

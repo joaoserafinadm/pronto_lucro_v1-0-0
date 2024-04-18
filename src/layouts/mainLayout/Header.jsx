@@ -141,7 +141,7 @@ export default function Header(props) {
                     <Link href="/">
                         <div className='d-flex justify-content-center align-items-center ' >
                             <span type='button'>
-                                <img src="/LOGO_01.png" alt="logo" className='' height={20} />
+                                <img src="/LOGO_02.png" alt="logo" className='' height={30} />
                             </span>
                         </div>
                     </Link>
