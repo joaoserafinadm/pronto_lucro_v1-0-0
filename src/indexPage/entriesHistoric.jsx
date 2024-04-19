@@ -27,7 +27,7 @@ export default function EntriesHistoric() {
             type: "revenue",
             value: 1200
         },
-        
+
 
     ]
 
@@ -52,8 +52,21 @@ export default function EntriesHistoric() {
 
                                 </td>
                                 <td className=" bold text-secondary text-start">
+                                    <div className="row">
+                                        <div>
 
-                                    {elem.description}
+                                            <span class="badge bg-warning">
+                                                {elem.tag}
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div className="row">
+                                        <span>
+
+
+                                            {elem.description}
+                                        </span>
+                                    </div>
                                 </td>
                                 <td className=" bold text-secondary text-end">
 
