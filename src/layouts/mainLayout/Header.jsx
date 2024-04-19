@@ -181,12 +181,12 @@ export default function Header(props) {
 
 
 
-                <div className={` dropdown `}>
+                {/*<div className={` dropdown `}>
                     <span type="button" className="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <FontAwesomeIcon icon={faGear} className="text-light icon px-3 me-2" />
                     </span>
 
-                    <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1" >
+                     <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1" >
                         <small >
                             <li className='mb-1 '>
                                 <Link href={`/editProfile/${token.sub}`}>
@@ -221,8 +221,8 @@ export default function Header(props) {
                                 </a>
                             </li>
                         </small>
-                    </ul>
-                </div>
+                    </ul> 
+                </div>*/}
             </div>
         </div>
     );

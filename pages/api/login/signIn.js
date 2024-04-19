@@ -18,7 +18,7 @@ export default async (req, res) => {
         let companyLogo
 
         if (!userExists) {
-            res.status(400).send({ error: 'Wrong e-mail or password.' })
+            res.status(400).json({ error: 'Wrong e-mail or password.' })
         } else {
 
             
@@ -51,7 +51,7 @@ export default async (req, res) => {
                                     accessCount: 1
                                 }
                             })
-                        res.status(200).send({ message: 'Ok' })
+                        res.status(200).json({ message: 'Ok' })
                     } else {
 
 
@@ -61,18 +61,18 @@ export default async (req, res) => {
                             {
                                 $set: { "active": false }
                             })
-                        res.status(404).send({ error: 'conta expirou.' })
+                        res.status(404).json({ error: 'conta expirou.' })
                     }
 
                 } else {
-                    res.status(400).send({ error: 'Wrong e-mail or password.' })
+                    res.status(400).json({ error: 'Wrong e-mail or password.' })
                 }
             })
         }
     }
 
     else {
-        res.status(400).send({ error: 'Wrong request method' })
+        res.status(400).json({ error: 'Wrong request method' })
     }
 
 }

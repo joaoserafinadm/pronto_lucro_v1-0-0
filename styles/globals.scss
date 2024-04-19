@@ -5,7 +5,7 @@
 	--bg-light: rgb(224, 224, 224);
 
 	--header-height: 50px;
-	--aside-fixed-width: 270px;
+	--aside-fixed-width: 230px;
 	// --aside-width: var(--aside-fixed-width);
 	--aside-width: 0px;
 
@@ -133,21 +133,7 @@
 
 // -----------------------------------
 
-.apartamento-color {
-	color: var(--apartamento-color) !important;
-}
 
-.casa-color {
-	color: var(--casa-color) !important;
-}
-
-.terreno-color {
-	color: var(--terreno-color) !important;
-}
-
-.comercial-color {
-	color: var(--comercial-color) !important;
-}
 
 body {
 	margin: 0;
@@ -279,6 +265,18 @@ a {
 	}
 
 	.pages .pagesContent-sm {
+		position: relative;
+		background-color: #fff;
+		top: -15px;
+		border-radius: 7px;
+		padding: 20px;
+		margin-left: 10px !important;
+		margin-right: 10px !important;
+		margin-bottom: 50px;
+
+	}
+
+	.pages .pagesContent-lg {
 		position: relative;
 		background-color: #fff;
 		top: -15px;

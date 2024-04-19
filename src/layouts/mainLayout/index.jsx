@@ -26,7 +26,7 @@ export default function MainLayout({ children }) {
     const handleSidebarToggle = () => {
         const fixedWidht = document.documentElement.style.getPropertyValue('--aside-fixed-width')
         if (toggleStatus && window2Mobile()) {
-            document.documentElement.style.setProperty('--aside-width', '270px')
+            document.documentElement.style.setProperty('--aside-width', '230px')
         }
         else {
             document.documentElement.style.setProperty('--aside-width', '0px')
