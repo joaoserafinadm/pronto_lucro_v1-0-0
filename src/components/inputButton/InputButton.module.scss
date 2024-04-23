@@ -10,6 +10,78 @@
     cursor: pointer;
 
     position: fixed;
-    bottom: 20px;
-    right: 20px;
+    bottom: 10px;
+    right: 5px;
+    z-index: 1000000 !important;
+}
+
+.buttonGroupHide {
+    height: 10px;
+    width: 10px;
+    position: fixed;
+    bottom: -160px;
+    right: -160px;
+    transition: .5s ease;
+}
+
+.buttonGroupShow {
+    position: fixed;
+    height: 160px;
+    width: 160px;
+    bottom: 0px;
+    right: 0px;
+    transition: .5s ease;
+}
+
+.buttonClose {
+    transform: rotate(45deg);
+    transition: .5s ease;
+}
+
+.buttonOpen {
+    transform: rotate(0deg);
+    transition: .5s ease;
+}
+
+
+.buttonIcon {
+    height: 45px;
+    width: 45px;
+    border: 1px solid #b7b7b7;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+}
+
+
+.buttonSection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 65px;
+    width: 45px;
+}
+
+.buttonSectionPosition1 {
+    position: absolute;
+    top: 0px;
+    right: 10px;
+    transition: .5s ease;
+}
+
+.buttonSectionPosition2 {
+    position: absolute;
+    top: 25px;
+    left: 35px;
+    transition: .5s ease;
+}
+
+.buttonSectionPosition3 {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    transition: .5s ease;
 }

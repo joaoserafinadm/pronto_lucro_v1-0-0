@@ -13,19 +13,22 @@ export default function EntriesHistoric() {
             tag: 'geral',
             description: 'Produtos de limpeza',
             type: "expense",
-            value: 150
+            value: 150,
+            color: '#2a9d8f'
         },
         {
             tag: 'imprevistos',
             description: 'Manutenção do carro',
             type: "expense",
-            value: 785
+            value: 785,
+            color: '#e9c46a'
         },
         {
             tag: 'Produto 1',
             description: 'Venda - produto 1',
             type: "revenue",
-            value: 1200
+            value: 1200,
+            color: '#f4a261'
         },
 
 
@@ -55,7 +58,7 @@ export default function EntriesHistoric() {
                                     <div className="row">
                                         <div>
 
-                                            <span class="badge bg-warning">
+                                            <span class="badge" style={{ backgroundColor: `${elem.color}` }}>
                                                 {elem.tag}
                                             </span>
                                         </div>
@@ -70,7 +73,7 @@ export default function EntriesHistoric() {
                                 </td>
                                 <td className=" bold text-secondary text-end">
 
-                                    {elem.value}
+                                    R${elem.value},00
                                 </td>
                             </tr>
                         ))}

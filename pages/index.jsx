@@ -13,6 +13,7 @@ import VerticalLine from '../utils/VerticalLine.jsx'
 import isMobile from '../utils/isMobile.js'
 import EntriesHistoric from '../src/indexPage/entriesHistoric.jsx'
 import InputButton from '../src/components/inputButton/InputButton.jsx'
+import EntriesHistoricModal from '../src/indexPage/entriesHistoricModal.jsx'
 
 
 
@@ -33,6 +34,9 @@ export default function Home() {
     return (
 
         <div className='fadeItem1s'>
+
+
+            <EntriesHistoricModal />
             {/* <Title title={`Olá, ${token.firstName}!`} subtitle={'Qual a sua meta de lucro para hoje?'} /> */}
 
             <div className="pagesContent-lg">
@@ -46,7 +50,9 @@ export default function Home() {
 
                             <div className="row">
                                 <div className="col-12 d-flex justify-content-center">
-                                    <span className='badge rounded-pill bg-secondary cardAnimation ' type="button">
+                                    <span className='badge rounded-pill bg-secondary cardAnimation '
+                                        type="button" data-bs-toggle="modal"
+                                        data-bs-target="#entriesHistoricModal">
                                         <FontAwesomeIcon icon={faList} />
                                     </span>
                                 </div>

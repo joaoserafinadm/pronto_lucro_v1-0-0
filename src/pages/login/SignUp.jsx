@@ -140,10 +140,9 @@ export default function SignUp(props) {
             await axios
                 .post(`${baseUrl()}/api/login/signUp`, data)
                 .then((res) => {
-                    var myModal = new bootstrap.Modal(document.getElementById('signUpSuccessModal'))
-                    myModal.show()
-                })
-                .catch((e) => {
+                    showModal('signUpSuccessModal')
+
+                }).catch((e) => {
                     setSignUpError(
                         "Houve um problema no cadastro. Por favor, tente novamente mais tarde!"
                     );
@@ -279,7 +278,7 @@ export default function SignUp(props) {
                                 <div className="col-12 d-flex justify-content-center my-3">
                                     {singUpLoading ?
                                         <button
-                                        className={`btn btn-custom-secondary px-5`}
+                                            className={`btn btn-custom-secondary px-5`}
                                             disabled
                                         >
                                             <SpinnerSM />

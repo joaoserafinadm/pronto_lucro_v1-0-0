@@ -3037,7 +3037,7 @@ h1 {
 
 .slideLeft {
 	animation: slideLeft 0.2s ease-in-out;
-	position: absolute;
+	position: absolute !important;
 	top: 0;
 	right: 0;
 }
