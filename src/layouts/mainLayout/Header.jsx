@@ -11,7 +11,7 @@ import Notifications from "./components/Notifications";
 import axios from "axios";
 import baseUrl from "../../../utils/baseUrl";
 import { useDispatch, useSelector } from "react-redux";
-import window2Mobile from "../../../utils/window2Mobile";
+import isMobile from "../../../utils/isMobile";
 import NotificationsSM from "./components/NotificationsSM";
 import Alerts from "../../alerts";
 import { akvoToolInitialValues } from "../../../store/AkvoTools/AkvoTools.actions";
@@ -152,8 +152,8 @@ export default function Header(props) {
             <div className={`d-flex ${styles.configIcons}`}>
 
                 <div className={` dropdown`} ref={dropdownRef}>
-                    <span type="button" className="" role="button" data-bs-toggle={window2Mobile() ? "dropdown" : ''} aria-expanded="false" onClick={() => setShowNotification(!showNotification)}>
-                        <FontAwesomeIcon icon={faBell} className={`  px-2 mx-3`} style={{ color: showNotification && !window2Mobile() ? "#e8d3b9" : "#fff", fontSize: '23px' }} />
+                    <span type="button" className="" role="button" data-bs-toggle={!isMobile() ? "dropdown" : ''} aria-expanded="false" onClick={() => setShowNotification(!showNotification)}>
+                        <FontAwesomeIcon icon={faBell} className={`text-white  px-2 mx-3`} style={{  fontSize: '23px' }} />
                         {!!handleShowNotifications() && (
                             <div className={`${styles.notificationIcon} fadeItem`}>
                                 <p className='text-light d-flex justify-content-center align-items-center'>{handleShowNotifications()}</p>
@@ -161,7 +161,7 @@ export default function Header(props) {
                         )}
                     </span>
 
-                    {window2Mobile() ?
+                    {!isMobile() ?
                         <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownNotification">
                             <Notifications notifications={notifications} />
                         </ul>

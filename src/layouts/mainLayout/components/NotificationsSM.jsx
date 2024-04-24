@@ -66,7 +66,7 @@ export default function NotificationsSM(props) {
                     <div className="col-12 d-flex justify-content-center align-itens-center">
 
 
-                        <span type='button' className='span p'>Visualizar todas as notificações <Icons icon='a-l' /></span>
+                        <span type='button' className='span p'>Visualizar todas as notificações <Icons icon='a-r' /></span>
                     </div>
                 </div>
 

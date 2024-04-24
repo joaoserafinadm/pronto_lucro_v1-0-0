@@ -50,7 +50,7 @@ export const AuthEmail = ({
               <Img
                 src="https://res.cloudinary.com/joaoserafinadm/image/upload/v1713921508/PRONTO%20LUCRO/PUBLIC/way4jsfjpe1hxsovkniq.png"
 
-                height="100"
+                height="70"
                 alt="Vercel"
                 className="my-0 mx-auto"
               />
@@ -75,27 +75,27 @@ export const AuthEmail = ({
 
             <Hr className="border border-solid border-[#eaeaea] my-[26px] mx-0 w-full" />
 
-            <Section className="mt-[32px]">
-              <Row>
+            {/*<Section className="mt-[32px]">
+               <Row>
                 <Column align="right">
                   <Img
                     src="https://res.cloudinary.com/joaoserafinadm/image/upload/v1713921754/PRONTO%20LUCRO/PUBLIC/gntbsh0enttoa3nsbu3i.png"
 
-                    height="75"
+                    height="40"
                     alt="Vercel"
                     className="my-0 mx-auto"
                   />
                 </Column>
-                <Column align="left" className="ps-[30px]">
+                <Column align="left" className="ps-[30px]"> */}
 
                   <Text className="text-[#666666] text-[12px] leading-[24px]">
                     ©2024 Pronto Lucro <br />
                     Av. Tiradentes, 1655, Erechim, 99701-502, Rio Grande do Sul, Brasil<br />
                   </Text>
-                </Column>
-              </Row>
+                {/* </Column>
+              </Row> 
 
-            </Section>
+            </Section>*/}
           </Container>
         </Body>
       </Tailwind>
