@@ -48,7 +48,7 @@ export const AuthEmail = ({
           <Container className="border border-solid border-[#eaeaea] rounded my-[40px] mx-auto p-[20px] max-w-[465px]">
             <Section className="mt-[32px]">
               <Img
-                src="https://res.cloudinary.com/joaoserafinadm/image/upload/v1713321416/PRONTO%20LUCRO/PUBLIC/srrb5tbexlxqqrvlqpqn.png"
+                src="https://res.cloudinary.com/joaoserafinadm/image/upload/v1713921508/PRONTO%20LUCRO/PUBLIC/way4jsfjpe1hxsovkniq.png"
 
                 height="100"
                 alt="Vercel"
@@ -79,7 +79,7 @@ export const AuthEmail = ({
               <Row>
                 <Column align="right">
                   <Img
-                    src="https://res.cloudinary.com/joaoserafinadm/image/upload/v1713321416/PRONTO%20LUCRO/PUBLIC/mdb14e04stuunkrv6gjt.png"
+                    src="https://res.cloudinary.com/joaoserafinadm/image/upload/v1713921754/PRONTO%20LUCRO/PUBLIC/gntbsh0enttoa3nsbu3i.png"
 
                     height="75"
                     alt="Vercel"

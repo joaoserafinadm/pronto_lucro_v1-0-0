@@ -109,7 +109,7 @@ export default function Nav(props) {
                         </div>
 
                         <Scrollbars
-                            style={{ height: "calc(100vh - 290px" }}
+                            style={{ height: "calc(100vh - 130px" }}
                             autoHide
                             autoHideTimeout={3000}
                             autoHideDuration={200}
