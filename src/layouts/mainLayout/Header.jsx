@@ -153,7 +153,7 @@ export default function Header(props) {
 
                 <div className={` dropdown`} ref={dropdownRef}>
                     <span type="button" className="" role="button" data-bs-toggle={window2Mobile() ? "dropdown" : ''} aria-expanded="false" onClick={() => setShowNotification(!showNotification)}>
-                        <FontAwesomeIcon icon={faBell} className={` icon px-3`} style={{ color: showNotification && !window2Mobile() ? "#e8d3b9" : "#fff" }} />
+                        <FontAwesomeIcon icon={faBell} className={`  px-2 mx-3`} style={{ color: showNotification && !window2Mobile() ? "#e8d3b9" : "#fff", fontSize: '23px' }} />
                         {!!handleShowNotifications() && (
                             <div className={`${styles.notificationIcon} fadeItem`}>
                                 <p className='text-light d-flex justify-content-center align-items-center'>{handleShowNotifications()}</p>
