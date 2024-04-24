@@ -161,7 +161,7 @@ export default function MyApp({ Component, pageProps }) {
 
                             <link rel="manifest" href="/manifest.json" />
                             <link rel="apple-touch-icon" href="/icon.png" />
-                            <meta name="theme-color" content="#012351" />
+                            <meta name="theme-color" content="#333333" />
                         </Head>
 
                         <MainLayout>

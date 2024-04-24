@@ -8,7 +8,7 @@ export default function Document() {
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
                 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet" />
-                <meta name="theme-color" content="#5a5a5a" />
+                <meta name="theme-color" content="#333333" />
             </Head>
 
             <body>
