@@ -1,0 +1,128 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import styles from './Menubar.module.scss'
+import { faHome, faHomeUser, faList, faMoneyBillTransfer, faUser, faUsers } from '@fortawesome/free-solid-svg-icons'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { toggleBarChange } from '../../../store/ToggleBarStatus/ToggleBarStatus.action'
+import InputButton from '../../components/inputButton/InputButton'
+import { faTrello } from '@fortawesome/free-brands-svg-icons'
+
+
+export default function MenuBar(props) {
+
+    const dispatch = useDispatch()
+
+    const router = useRouter()
+
+    const [pathname, setPathname] = useState('')
+
+    useEffect(() => {
+
+        setPathname(router.pathname)
+
+    }, [router.pathname])
+
+    const permitedPages = [
+        '/usersManagement',
+        '/clientsManagement',
+        '/'
+    ]
+
+
+
+
+
+    return (
+        <div className={` ${permitedPages.includes(pathname) ? styles.container : styles.containerHide}`}>
+            <div className="row h-100 px-4">
+                <div className="col d-flex justify-content-center align-items-center px-0">
+
+                    <Link href='/'
+                        className={`text-center  ${pathname === '/' ? `${styles.pageSelected}` : 'text-light'}`}>
+                        <FontAwesomeIcon icon={faHome} /> <br />
+                        <span style={{ fontSize: '10px' }}>Início</span>
+                    </Link>
+
+                </div>
+                <div className="col d-flex justify-content-center align-items-center px-0">
+
+                    <Link href='/incomesManagement'
+                        className={`text-center  ${pathname === '/incomesManagement' ? `${styles.pageSelected}` : 'text-light'}`}>
+                        <FontAwesomeIcon icon={faMoneyBillTransfer} /> <br />
+                        <span style={{ fontSize: '10px' }}>Transações</span>
+                    </Link>
+
+                </div>
+                <div className=" d-flex justify-content-center align-items-center px-0" style={{ width: '80px' }}>
+
+                    <InputButton menubar />
+
+
+                </div>
+                <div className="col d-flex justify-content-center align-items-center px-0">
+
+                    <Link href='/planning'
+                        className={`text-center  ${pathname === '/planning' ? `${styles.pageSelected}` : 'text-light'}`}>
+                        <FontAwesomeIcon icon={faTrello} /> <br />
+                        <span style={{ fontSize: '10px' }}>Planejam...</span>
+                    </Link>
+
+                </div>
+                <div className="col d-flex justify-content-center align-items-center px-0">
+
+                    <span onClick={() => dispatch(toggleBarChange(false))}
+                        className={`text-center  ${pathname === '/accountSetup' ? `${styles.pageSelected}` : 'text-light'}`}>
+                        <FontAwesomeIcon icon={faList} /> <br />
+                        <span style={{ fontSize: '10px' }}>Opções</span>
+                    </span>
+
+                </div>
+            </div>
+        </div>
+    )
+}
+
+
+
+{/* <div className="col-3 d-flex justify-content-center align-items-center ">
+                    <span>
+                        <FontAwesomeIcon icon={faUsers} />
+                    </span>
+                </div>
+                <div className="col-3 d-flex justify-content-center align-items-center ">
+                    <span>
+                        <FontAwesomeIcon icon={faUsers} />
+                    </span>
+                </div>
+                <div className="col-3 d-flex justify-content-center align-items-center ">
+                    <span>
+                        <FontAwesomeIcon icon={faUsers} />
+                    </span>
+                </div>
+                <div className="col-3 d-flex justify-content-center align-items-center ">
+                    <span>
+                        <FontAwesomeIcon icon={faUsers} />
+                    </span>
+                </div> */}
+
+
+
+
+
+// <div>
+
+//         <Link href='/usersManagement' className='text-center text-light '>
+//             <FontAwesomeIcon icon={faUsers} /> <br />
+//             <span className='small'>Usuários</span>
+//         </Link>
+//     </div>
+//     <Link href='/clientsManagement' className='text-center text-light '>
+//         <FontAwesomeIcon icon={faHomeUser} /> <br />
+//         <span className='small'>Clientes</span>
+//     </Link>
+//     <Link href='/clientsManagement' className='text-center text-light '>
+//         <FontAwesomeIcon icon={faList} /> <br />
+//         <span className='small'>Imobiliária</span>
+//     </Link>

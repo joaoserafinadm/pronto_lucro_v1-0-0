@@ -7,6 +7,9 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleBarOff, toggleBarOn } from "../../../store/ToggleBarStatus/ToggleBarStatus.action";
 import window2Mobile from "../../../utils/window2Mobile";
+import MenuBar from "./Menubar";
+import InputButton from "../../components/inputButton/InputButton";
+import isMobile from "../../../utils/isMobile";
 
 export default function MainLayout({ children }) {
 
@@ -37,13 +40,22 @@ export default function MainLayout({ children }) {
 
     return (
         <body className="app">
+            <Header navbarStatus={toggleStatus} />
+            <Navbar />
 
             <div className={`  pages`} >
                 {children}
             </div>
 
-            <Navbar />
-            <Header navbarStatus={toggleStatus} />
+
+            {isMobile() ?
+                <MenuBar />
+                :
+
+                <InputButton />
+            }
+
+
 
 
 

@@ -1,0 +1,25 @@
+.container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 70px;
+    background-color: #5a5a5a;
+    width: 100%;
+    transition: .5s ease;
+}
+
+.containerHide {
+    position: fixed;
+    bottom: -80px;
+    left: 0;
+    height: 70px;
+    background-color: #5a5a5a;
+    width: 100%;
+    transition: .5s ease;
+}
+
+
+.pageSelected>* {
+    color: #319cd1;
+    font-weight: 650;
+}
