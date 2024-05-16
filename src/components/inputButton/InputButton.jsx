@@ -2,9 +2,10 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styles from './InputButton.module.scss'
 import { faArrowTrendDown, faArrowTrendUp, faCreditCard, faCreditCardAlt, faPlus } from '@fortawesome/free-solid-svg-icons'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import isMobile from '../../../utils/isMobile'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 
 
@@ -12,8 +13,25 @@ export default function InputButton(props) {
 
     const [open, setOpen] = useState(false)
 
+
+    const router = useRouter()
+
+    const [pathname, setPathname] = useState('')
+
+    useEffect(() => {
+
+        setPathname(router.pathname)
+
+    }, [router.pathname])
+
+    const permitedPages = [
+        '/usersManagement',
+        '/clientsManagement',
+        '/'
+    ]
+
     return (
-        <div>
+        <div  >
 
             {open === true && (
                 <div className={`fadeItem ${styles.background}`} onClick={() => setOpen(false)}>
@@ -21,7 +39,7 @@ export default function InputButton(props) {
                 </div>
             )}
 
-            <span className={`${props.menubar ? styles.buttonMenubar : styles.button} cardAnimation`}
+            <span className={`${props.menubar ? styles.buttonMenubar : permitedPages.includes(pathname) ? styles.button : styles.buttonHide} cardAnimation`}
                 onClick={() => setOpen(!open)} >
                 <FontAwesomeIcon icon={faPlus} className={`text-light fs-5 ${open ? styles.buttonClose : styles.buttonOpen}`} />
             </span>

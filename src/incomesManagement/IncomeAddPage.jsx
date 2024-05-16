@@ -2,22 +2,20 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Icons from "../components/icons";
 import { faCalendar, faClipboard, faImage } from "@fortawesome/free-regular-svg-icons";
 import { faMicrophone, faMoneyBill, faTag, faWallet } from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
+import { maskInputMoney } from "../../utils/mask";
 
 
 
 export default function IncomeAddPage() {
 
+    const [value, setValue] = useState('')
+
 
 
     return (
         <div>
-            <div className="row my-3">
-                <div className="col-12 d-flex">
-                    <span className="ms-3"><Icons icon='a-l' /></span>
-                    <span className="ms-3 bold">Nova Receita</span>
-
-                </div>
-            </div>
+           
 
 
             <div className="row px-3 my-2">
@@ -25,11 +23,14 @@ export default function IncomeAddPage() {
                     <span className="small">Valor da receita</span>
                 </div>
                 <div className="col-12 d-flex justify-content-between">
-                    <div className="d-flex fs-1 ">
+                    <div className="d-flex fs-1 pe-2 align-items-center">
                         <span className="me-1">R$</span>
-                        <span className="fw-bold">0,00</span>
+                        <input type="text" inputMode="numeric" placeholder="0,00"
+                            className="form-control fs-2"
+                            value={value}
+                            onChange={e => setValue(maskInputMoney(e.target.value))} />
                     </div>
-                    <div className="d-flex fs-3 ">
+                    <div className="d-flex fs-3 align-items-center">
                         <div class="dropdown">
                             <span class=" dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                 BRL

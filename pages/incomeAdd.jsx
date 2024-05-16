@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { FixedTopicsBottom } from "../src/components/fixedTopics";
 import IncomeAddPage from "../src/incomesManagement/IncomeAddPage";
+import Icons from "../src/components/icons";
 
 
 
@@ -10,7 +11,15 @@ export default function IncomeAdd() {
 
     return (
         <div>
+            <div className="row my-3">
+                <div className="col-12 d-flex">
+                    <span className="ms-3"><Icons icon='a-l' /></span>
+                    <span className="ms-3 bold">Nova Receita</span>
 
+                </div>
+            </div>
+
+            
             <IncomeAddPage />
 
 

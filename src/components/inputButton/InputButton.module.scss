@@ -14,6 +14,22 @@
     right: 5px;
     z-index: 1 !important;
 }
+.buttonHide {
+    height: 70px;
+    width: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-secondary);
+    border-radius: 100%;
+    border: 1px solid #fff;
+    cursor: pointer;
+
+    position: fixed;
+    bottom: -80px;
+    right: 5px;
+    z-index: 1 !important;
+}
 
 .buttonMenubar {
     height: 70px;

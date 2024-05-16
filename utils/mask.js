@@ -49,3 +49,18 @@ export function maskCelular(value) {
 export function maskNumero(value) {
 	return value.replace(/\D/g, "");
 }
+
+export function maskInputMoney(number) {
+
+	number = number.replace(/\D/g, ''); // Remove all non-digit characters
+	number = number.replace(/^0+/, '')
+	if (number.length === 1) {
+		number = '0,0' + number;
+	} else if (number.length === 2) {
+		number = '0,' + number;
+	} else if (number.length > 2) {
+		number = number.replace(/(\d)(\d{2})$/, "$1,$2"); // Formata os últimos dois dígitos como centavos
+		number = number.replace(/(?=(\d{3})+(\D))\B/g, "."); // Adiciona pontos como separador de milhares
+	}
+	return number;
+}
