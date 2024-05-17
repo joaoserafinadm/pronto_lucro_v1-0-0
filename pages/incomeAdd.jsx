@@ -10,7 +10,7 @@ export default function IncomeAdd() {
 
 
     return (
-        <div>
+        <div className="fadeItem">
             <div className="row my-3">
                 <div className="col-12 d-flex">
                     <span className="ms-3"><Icons icon='a-l' /></span>

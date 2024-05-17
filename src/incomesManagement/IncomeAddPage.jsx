@@ -112,7 +112,7 @@ export default function IncomeAddPage() {
 
                                         <span htmlFor="" className="input-group-text">Valor antecipado</span>
                                         <span htmlFor="" className="input-group-text">R$</span>
-                                        <input type="text" className="form-control text-end" placeholder="0,00"
+                                        <input type="text" className="form-control text-end" placeholder="0,00" inputMode="numeric"
                                             value={earlyValue} onChange={(e) => setEarlyValue(maskInputMoney(e.target.value))} />
                                     </div>
                                     {earlyValue && (
@@ -122,7 +122,7 @@ export default function IncomeAddPage() {
                                             <span htmlFor="" className="input-group-text">Taxa</span>
                                             <span htmlFor="" className="input-group-text">R$</span>
 
-                                            <input type="text" className="form-control text-end" placeholder="0,00"
+                                            <input type="text" className="form-control text-end" placeholder="0,00" inputMode="numeric"
                                                 value={earlyValueTax} onChange={(e) => setEarlyValueTax(maskInputMoney(e.target.value))} />
                                         </div>
                                     )}
