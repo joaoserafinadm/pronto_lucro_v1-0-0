@@ -1,21 +1,32 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Icons from "../components/icons";
 import { faCalendar, faClipboard, faImage } from "@fortawesome/free-regular-svg-icons";
-import { faMicrophone, faMoneyBill, faTag, faWallet } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
+import { faCommentDollar, faMicrophone, faMoneyBill, faQuoteLeft, faTag, faWallet } from "@fortawesome/free-solid-svg-icons";
+import { useEffect, useState } from "react";
 import { maskInputMoney } from "../../utils/mask";
-
+import { dateObject } from "../../utils/handleDate";
+import Calendar from 'react-calendar';
 
 
 export default function IncomeAddPage() {
 
     const [value, setValue] = useState('')
+    const [date, setDate] = useState(dateObject(new Date()))
+    const [paymentMethod, setPaymentMethod] = useState('cash')
+    const [parcels, setParcels] = useState(1)
+    const [earlyValue, setEarlyValue] = useState('')
+    const [earlyValueTax, setEarlyValueTax] = useState('')
+    const [description, setDescription] = useState('')
 
 
+    useEffect(() => {
+        console.log("date", date)
+        console.log("date2", dateObject(new Date()))
+    }, [date])
 
     return (
         <div>
-           
+
 
 
             <div className="row px-3 my-2">
@@ -60,13 +71,16 @@ export default function IncomeAddPage() {
                                     <FontAwesomeIcon icon={faMoneyBill} />
                                 </div>
                                 <div className="col d-flex">
-                                    <span class=" px-2 py-1 text-white small mx-1 rounded-pill ctm-bg-success">
+                                    <span type="button" onClick={() => setPaymentMethod('cash')}
+                                        class={`cardAnimation px-2 py-1 text-white small mx-1 rounded-pill ${paymentMethod === 'cash' ? 'ctm-bg-success' : 'ctm-bg-primary'}`}>
                                         À Vista
                                     </span>
-                                    <span class=" px-2 py-1 text-white small mx-1 rounded-pill ctm-bg-primary">
+                                    <span type="button" onClick={() => setPaymentMethod('credit')}
+                                        class={`cardAnimation px-2 py-1 text-white small mx-1 rounded-pill ${paymentMethod === 'credit' ? 'ctm-bg-success' : 'ctm-bg-primary'}`}>
                                         À Prazo
                                     </span>
-                                    <span class=" px-2 py-1 text-white small mx-1 rounded-pill ctm-bg-primary">
+                                    <span type="button"
+                                        class={`cardAnimation px-2 py-1 text-white small mx-1 rounded-pill ${paymentMethod !== 'cash' && paymentMethod !== 'credit' ? 'ctm-bg-success' : 'ctm-bg-primary'}`}>
                                         Outros...
                                     </span>
                                 </div>
@@ -74,6 +88,48 @@ export default function IncomeAddPage() {
 
                                 </div>
                             </div>
+                            {paymentMethod === 'credit' && (
+                                <div className="row mt-3 d-flex justify-content-between fadeItem">
+                                    <div className="input-group input-group-sm">
+
+                                        <span htmlFor="" className="input-group-text">nº de parcelas</span>
+                                        <select name="" id="" className="form-select text-center" value={parcels} onChange={(e) => setParcels(e.target.value)}>
+                                            <option value={1}>1</option>
+                                            <option value={2}>2</option>
+                                            <option value={3}>3</option>
+                                            <option value={4}>4</option>
+                                            <option value={5}>5</option>
+                                            <option value={6}>6</option>
+                                            <option value={7}>7</option>
+                                            <option value={8}>8</option>
+                                            <option value={9}>9</option>
+                                            <option value={10}>10</option>
+                                            <option value={11}>11</option>
+                                            <option value={12}>12</option>
+                                        </select>
+                                    </div>
+                                    <div className="input-group input-group-sm mt-3">
+
+                                        <span htmlFor="" className="input-group-text">Valor antecipado</span>
+                                        <span htmlFor="" className="input-group-text">R$</span>
+                                        <input type="text" className="form-control text-end" placeholder="0,00"
+                                            value={earlyValue} onChange={(e) => setEarlyValue(maskInputMoney(e.target.value))} />
+                                    </div>
+                                    {earlyValue && (
+
+                                        <div className="input-group input-group-sm mt-3 fadeItem">
+
+                                            <span htmlFor="" className="input-group-text">Taxa</span>
+                                            <span htmlFor="" className="input-group-text">R$</span>
+
+                                            <input type="text" className="form-control text-end" placeholder="0,00"
+                                                value={earlyValueTax} onChange={(e) => setEarlyValueTax(maskInputMoney(e.target.value))} />
+                                        </div>
+                                    )}
+
+                                </div>
+
+                            )}
 
                             <hr />
                             <div className="row d-flex justify-content-between">
@@ -81,13 +137,15 @@ export default function IncomeAddPage() {
                                     <FontAwesomeIcon icon={faCalendar} />
                                 </div>
                                 <div className="col d-flex">
-                                    <span class=" px-2 py-1 text-white small mx-1 rounded-pill ctm-bg-success">
+                                    <span type="button" onClick={() => setDate(dateObject(new Date()))}
+                                        class={`cardAnimation px-2 py-1 text-white small mx-1 rounded-pill ${JSON.stringify(date) == JSON.stringify(dateObject(new Date())) ? 'ctm-bg-success' : 'ctm-bg-primary'}`}>
                                         Hoje
                                     </span>
-                                    <span class=" px-2 py-1 text-white small mx-1 rounded-pill ctm-bg-primary">
+                                    <span onClick={() => setDate(dateObject(new Date(), -1))}
+                                        class={`cardAnimation px-2 py-1 text-white small mx-1 rounded-pill ${JSON.stringify(date) == JSON.stringify(dateObject(new Date(), -1)) ? 'ctm-bg-success' : 'ctm-bg-primary'}`}>
                                         Ontem
                                     </span>
-                                    <span class=" px-2 py-1 text-white small mx-1 rounded-pill ctm-bg-primary">
+                                    <span className={`cardAnimation px-2 py-1 text-white small mx-1 rounded-pill ${JSON.stringify(date) != JSON.stringify(dateObject(new Date(), -1)) && JSON.stringify(date) != JSON.stringify(dateObject(new Date())) ? 'ctm-bg-success' : 'ctm-bg-primary'}`}>
                                         Outros...
                                     </span>
                                 </div>
@@ -102,12 +160,14 @@ export default function IncomeAddPage() {
 
                             <div className="row d-flex justify-content-between">
                                 <div className="text-center d-flex align-items-center" style={{ width: "40px" }}>
-                                    <FontAwesomeIcon icon={faMicrophone} />
+                                    <FontAwesomeIcon icon={faQuoteLeft} />
                                 </div>
                                 <div className="col d-flex">
-                                    <input type="text" class="form-control" placeholder="Descrição" />
+                                    <input type="text" class="form-control" placeholder="Descrição"
+                                        value={description} onChange={(e) => setDescription(e.target.value)} />
                                 </div>
-                                <div className="text-center" style={{ width: "40px" }}>
+                                <div className="text-center d-flex align-items-center" style={{ width: "40px" }}>
+                                    <FontAwesomeIcon icon={faMicrophone} />
 
                                 </div>
                             </div>
