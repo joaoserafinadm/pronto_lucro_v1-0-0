@@ -1,0 +1,14 @@
+.date-picker-container {
+
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0 5px;
+
+    position: relative;
+    display: inline-block;
+
+    :global {
+        @import "react-datepicker";
+    }
+}

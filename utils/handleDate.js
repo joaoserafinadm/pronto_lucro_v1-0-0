@@ -19,3 +19,18 @@ export function dateObject(date, countDays = 0) {
 
     return dateObject;
 }
+
+export function reverseDateObject(dateObj) {
+    // Garantir que o parâmetro é um objeto e contém as propriedades day, month e year
+    if (typeof dateObj !== 'object' || !dateObj.day || !dateObj.month || !dateObj.year) {
+        throw new Error("O parâmetro deve ser um objeto contendo as propriedades day, month e year");
+    }
+
+    const { day, month, year } = dateObj;
+
+    // Criar uma instância de Date com os valores fornecidos
+    // Note que os meses em JavaScript são baseados em zero, então subtraímos 1 do mês
+    const date = new Date(year, month - 1, day);
+
+    return date;
+}

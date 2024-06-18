@@ -26,7 +26,7 @@ export default function MenuBar(props) {
 
     const permitedPages = [
         '/usersManagement',
-        '/clientsManagement',
+        '/transactions',
         '/'
     ]
 
@@ -48,7 +48,7 @@ export default function MenuBar(props) {
                 </div>
                 <div className="col d-flex justify-content-center align-items-center px-0">
 
-                    <Link href='/incomesManagement'
+                    <Link href='/transactions'
                         className={`text-center  ${pathname === '/incomesManagement' ? `${styles.pageSelected}` : 'text-light'}`}>
                         <FontAwesomeIcon icon={faMoneyBillTransfer} /> <br />
                         <span style={{ fontSize: '10px' }}>Transações</span>

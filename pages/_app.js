@@ -16,6 +16,7 @@ import 'swiper/css/scrollbar'
 
 import "../styles/globals.scss";
 import "../styles/buttons.scss";
+import '../styles/datePicker.scss';
 
 
 import '@fortawesome/fontawesome-svg-core/styles.css';

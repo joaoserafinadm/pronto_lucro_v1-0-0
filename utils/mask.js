@@ -64,3 +64,16 @@ export function maskInputMoney(number) {
 	}
 	return number;
 }
+
+export function maskMoneyNumber(value) {
+
+	console.log("value", value)
+
+	value = value?.replace(/\D/g, ''); // Remove all non-digit characters
+
+	value = Number(value) / 100
+	return value
+
+}
+
+

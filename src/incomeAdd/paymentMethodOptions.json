@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "description": "Dinheiro"
+    },
+    {
+        "id": 2,
+        "description": "Cartão de Crédito"
+    },
+    {
+        "id": 3,
+        "description": "Cartão de Débito"
+    },
+    {
+        "id": 4,
+        "description": "Transferência Bancária"
+    },
+    {
+        "id": 5,
+        "description": "Boleto Bancário"
+    },
+    {
+        "id": 6,
+        "description": "Pix"
+    },
+    {
+        "id": 7,
+        "description": "Cheque"
+    },
+    {
+        "id": 8,
+        "description": "Crédito em Conta"
+    },
+    {
+        "id": 9,
+        "description": "Outro"
+    }
+]
