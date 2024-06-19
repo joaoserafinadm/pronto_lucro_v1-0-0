@@ -40,7 +40,7 @@ export default function Home() {
             {/* <Title title={`Olá, ${token.firstName}!`} subtitle={'Qual a sua meta de lucro para hoje?'} /> */}
 
             <div className="pagesContent-lg">
-                <div className="row d-flex" >
+                {/* <div className="row d-flex" >
                     <div className="col">
                         <SaldoView valueView={valueView} setValueView={(value) => setValueView(value)} />
 
@@ -67,7 +67,7 @@ export default function Home() {
                         </div>
                     )}
 
-                </div>
+                </div> */}
 
 
 

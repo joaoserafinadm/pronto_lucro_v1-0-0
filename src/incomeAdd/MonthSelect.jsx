@@ -2,7 +2,9 @@ import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import 'swiper/swiper-bundle.min.css';
 
-export default function MonthSelect() {
+export default function MonthSelect(props) {
+
+
     const months = [
         "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
         "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
@@ -10,6 +12,13 @@ export default function MonthSelect() {
 
     const [monthSelected, setMonthSelected] = useState(new Date().getMonth());
     const [yearSelected, setYearSelected] = useState(new Date().getFullYear());
+
+    useEffect(() => {
+
+        props.setMonthSelected(monthSelected);
+        props.setYearSelected(yearSelected);
+
+    }, [monthSelected, yearSelected]);
 
     const handleSlideChange = (swiper) => {
         const realIndex = swiper?.realIndex;

@@ -6,7 +6,7 @@ export function dateObject(date, countDays = 0) {
 
     // Extrair o dia, mês e ano
     const day = date.getDate() + countDays;
-    const month = date.getMonth() + 1; // Os meses em JavaScript são baseados em zero
+    const month = date.getMonth(); // Os meses em JavaScript são baseados em zero
     const year = date.getFullYear();
 
     // Criar o objeto date
@@ -30,7 +30,7 @@ export function reverseDateObject(dateObj) {
 
     // Criar uma instância de Date com os valores fornecidos
     // Note que os meses em JavaScript são baseados em zero, então subtraímos 1 do mês
-    const date = new Date(year, month - 1, day);
+    const date = new Date(year, month, day);
 
     return date;
 }
