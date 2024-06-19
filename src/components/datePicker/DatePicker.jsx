@@ -112,7 +112,7 @@ export default function DatePicker(props) {
                         const dayClasses = `${isCurrentMonth ? '' : styles.textMuted} ${isToday ? 'fw-bold' : ''} ${isSelected ? styles.selected : ''}`;
 
                         return (
-                            <li data-bs-dismiss="modal"
+                            <li 
                                 key={index}
                                 className={dayClasses}
                                 onClick={() => handleDateClick(date)}

@@ -35,9 +35,18 @@ export default function DatePickerModal(props) {
                             <div className="col-12 d-flex justify-content-center">
 
                                 <DatePicker date={date} setDate={setDate} />
-                                
+
                             </div>
                         </div>
+                    </div>
+                    <div className="modal-footer">
+                        <button
+                            type="button"
+                            className="btn btn-secondary"
+                            data-bs-dismiss="modal"
+                        >
+                            Fechar
+                        </button>
                     </div>
                 </div>
             </div>
