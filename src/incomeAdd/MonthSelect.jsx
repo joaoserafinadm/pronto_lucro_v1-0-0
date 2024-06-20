@@ -15,8 +15,10 @@ export default function MonthSelect(props) {
 
     useEffect(() => {
 
-        props.setMonthSelected(monthSelected);
-        props.setYearSelected(yearSelected);
+        props.setMonth({
+            month: monthSelected,
+            year: yearSelected
+        })
 
     }, [monthSelected, yearSelected]);
 

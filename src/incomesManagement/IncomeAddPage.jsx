@@ -4,7 +4,7 @@ import { faCalendar, faCalendarDays, faClipboard, faImage } from "@fortawesome/f
 import { faArrowDown, faCalendarWeek, faChevronDown, faChevronRight, faCommentDollar, faMicrophone, faMoneyBill, faQuoteLeft, faTag, faWallet } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useImperativeHandle, useState, forwardRef } from "react";
 import { maskInputMoney } from "../../utils/mask";
-import { dateObject } from "../../utils/handleDate";
+import { dateFormat, dateObject } from "../../utils/handleDate";
 import Calendar from 'react-calendar';
 import jwt from 'jsonwebtoken'
 import Cookie from 'js-cookie'
@@ -26,12 +26,12 @@ const IncomeAddPage = forwardRef((props, ref) => {
     const router = useRouter()
 
     const [value, setValue] = useState('');
-    const [date, setDate] = useState(dateObject(new Date()));
+    const [paymentMethod, setPaymentMethod] = useState(null);
+    const [paymentDate, setPaymentDate] = useState(dateObject(new Date()));
     const [competenceMonth, setCompetenceMonth] = useState({
         month: new Date().getMonth(),
         year: new Date().getFullYear()
     })
-    const [paymentMethod, setPaymentMethod] = useState(null);
     const [parcels, setParcels] = useState(1);
     const [earlyValue, setEarlyValue] = useState('');
     const [earlyValueTax, setEarlyValueTax] = useState('');
@@ -42,9 +42,14 @@ const IncomeAddPage = forwardRef((props, ref) => {
 
     useEffect(() => {
 
-        console.log("competenceMonth", competenceMonth)
+        (paymentDate === dateObject(new Date()) || paymentDate === dateObject(new Date(), -1))
 
-    }, [competenceMonth?.month, competenceMonth?.year]);
+        console.log('paymentDate', paymentDate, dateObject(new Date()), paymentDate === dateObject(new Date()))
+
+    }, [paymentDate.day])
+
+
+
 
     const validate = () => {
 
@@ -72,21 +77,24 @@ const IncomeAddPage = forwardRef((props, ref) => {
                 const data = {
                     user_id: token.sub,
                     value,
-                    date,
+                    paymentDate,
                     paymentMethod,
+                    competenceMonth,
                     parcels,
                     earlyValue,
                     earlyValueTax,
                     description
                 };
-                return
-                // try {
-                //     const res = await axios.post(`${baseUrl()}/api/incomeAdd`, data);
-                //     props.setLoadingSave(false);
-                //     router.push('/transactions')
-                // } catch (e) {
-                //     props.setLoadingSave(false);
-                // }
+
+                console.log("data", data)
+                // return
+                try {
+                    const res = await axios.post(`${baseUrl()}/api/incomeAdd`, data);
+                    props.setLoadingSave(false);
+                    router.push('/transactions')
+                } catch (e) {
+                    props.setLoadingSave(false);
+                }
             } else {
                 scrollTo('pageTop');
                 props.setLoadingSave(false);
@@ -94,16 +102,24 @@ const IncomeAddPage = forwardRef((props, ref) => {
         }
     }));
 
+    const isToday = (date) => {
+
+        const today = dateObject(new Date());
+        const aDaysAgo = dateObject(new Date(), -1);
+
+        if (date.day === today.day && date.month === today.month && date.year === today.year) {
+            return true
+        } else if (date.day === aDaysAgo.day && date.month === aDaysAgo.month && date.year === aDaysAgo.year) {
+            return true
+        } else {
+            return false
+        }
+    }
+
 
 
     return (
         <div className="">
-
-
-
-
-
-
             <div id="pageTop" />
 
             <div className="row px-3 my-2">
@@ -199,14 +215,23 @@ const IncomeAddPage = forwardRef((props, ref) => {
                                 </div>
 
                                 <div className="col-12 mt-2 d-flex">
-                                    <span type="button" onClick={() => setDate(dateObject(new Date()))}
-                                        class={`cardAnimation px-2 py-1 text-white small mx-1 rounded-pill ${JSON.stringify(date) == JSON.stringify(dateObject(new Date())) ? 'ctm-bg-success' : 'ctm-bg-primary'}`}>
-                                        Hoje
-                                    </span>
-                                    <span onClick={() => setDate(dateObject(new Date(), -1))}
-                                        class={`cardAnimation px-2 py-1 text-white small mx-1 rounded-pill ${JSON.stringify(date) == JSON.stringify(dateObject(new Date(), -1)) ? 'ctm-bg-success' : 'ctm-bg-primary'}`}>
-                                        Ontem
-                                    </span>
+                                    {isToday(paymentDate) ?
+                                        <>
+                                            <span type="button" onClick={() => setPaymentDate(dateObject(new Date()))}
+                                                class={`cardAnimation px-2 py-1 text-white small mx-1 rounded-pill ${JSON.stringify(paymentDate) == JSON.stringify(dateObject(new Date())) ? 'ctm-bg-success' : 'ctm-bg-primary'}`}>
+                                                Hoje
+                                            </span>
+                                            <span onClick={() => setPaymentDate(dateObject(new Date(), -1))}
+                                                class={`cardAnimation px-2 py-1 text-white small mx-1 rounded-pill ${JSON.stringify(paymentDate) == JSON.stringify(dateObject(new Date(), -1)) ? 'ctm-bg-success' : 'ctm-bg-primary'}`}>
+                                                Ontem
+                                            </span>
+                                        </>
+                                        :
+                                        <span data-bs-toggle="modal" data-bs-target="#datePickerModal"
+                                            className={`cardAnimation px-2 py-1 text-white small mx-1 rounded-pill ctm-bg-success`}>
+                                            {dateFormat(paymentDate)}
+                                        </span>
+                                    }
                                     <span data-bs-toggle="modal" data-bs-target="#datePickerModal"
                                         className={`cardAnimation px-2 py-1 text-white small mx-1 rounded-pill ctm-bg-primary`}>
                                         Outro
@@ -214,7 +239,7 @@ const IncomeAddPage = forwardRef((props, ref) => {
                                 </div>
 
 
-                                <DatePickerModal title="Data da receita" date={date} setDate={setDate} />
+                                <DatePickerModal title="Data da receita" date={paymentDate} setDate={setPaymentDate} />
 
                             </div>
                             <hr />
@@ -227,8 +252,8 @@ const IncomeAddPage = forwardRef((props, ref) => {
                                 <div className="col-12 d-flex justify-content-center mt-2">
 
                                     <MonthSelect
-                                        setMonthSelected={value => setCompetenceMonth({ ...competenceMonth, month: value })}
-                                        setYearSelected={value => setCompetenceMonth({ ...competenceMonth, year: value })} />
+                                        setMonth={value => { setCompetenceMonth(value) }}
+                                    />
                                 </div>
 
 

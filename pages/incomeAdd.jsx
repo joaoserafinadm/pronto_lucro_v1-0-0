@@ -36,7 +36,7 @@ export default function IncomeAdd() {
             </div>
             
 
-            <div className="row d-flex justify-content-center">
+            <div className="row d-flex justify-content-center" style={{ marginBottom: '100px' }}>
                 <div className="col-12 col-lg-6">
 
 

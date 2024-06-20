@@ -67,13 +67,13 @@ export function maskInputMoney(number) {
 
 export function maskMoneyNumber(value) {
 
-	console.log("value", value)
 
 	value = value?.replace(/\D/g, ''); // Remove all non-digit characters
 
-	value = Number(value) / 100
+	value = (Number(value) / 100).toFixed(2)
 	return value
 
 }
+
 
 

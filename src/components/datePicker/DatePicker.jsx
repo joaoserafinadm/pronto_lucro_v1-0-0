@@ -17,7 +17,8 @@ const getDaysInMonth = (year, month) => {
 // Função para obter o nome do mês
 const getMonthName = (month) => {
     const date = new Date(0, month);
-    return date.toLocaleString('pt-BR', { month: 'long' });
+    const monthName = date.toLocaleString('pt-BR', { month: 'long' });
+    return monthName.charAt(0).toUpperCase() + monthName.slice(1);
 }
 
 // Função para obter os dias a serem exibidos no calendário
@@ -87,11 +88,11 @@ export default function DatePicker(props) {
 
     return (
         <div className={`${styles.wrapper}`}>
-            <header>
-                <p className={`${styles.currentDate}`}>{month} {year}</p>
+            <header className='d-flex justify-content-between align-items-center'>
+                <span className={`${styles.currentDate}`}>{month} {year}</span>
                 <div className={`${styles.icons}`}>
-                    <span onClick={handlePrevMonth}><FontAwesomeIcon icon={faChevronLeft} /></span>
-                    <span onClick={handleNextMonth}><FontAwesomeIcon icon={faChevronRight} /></span>
+                    <span onClick={handlePrevMonth} className='mx-2 fs-5 '><FontAwesomeIcon icon={faChevronLeft} /></span>
+                    <span onClick={handleNextMonth} className='mx-2 fs-5'><FontAwesomeIcon icon={faChevronRight} /></span>
                 </div>
             </header>
             <div className={`${styles.calendar}`}>
