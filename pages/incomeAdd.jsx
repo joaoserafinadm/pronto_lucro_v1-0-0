@@ -4,6 +4,7 @@ import IncomeAddPage from "../src/incomesManagement/IncomeAddPage";
 import Icons from "../src/components/icons";
 import { useRef, useState } from "react";
 import { SpinnerSM } from "../src/components/loading/Spinners";
+import { showModal } from "../src/components/Modal";
 
 
 
@@ -43,6 +44,8 @@ export default function IncomeAdd() {
                     <IncomeAddPage ref={childRef} setLoadingSave={value => setLoadingSave(value)} />
                 </div>
             </div>
+
+            <button onClick={() => showModal('addIncomeModal')}>aaaaa</button>
 
 
             <FixedTopicsBottom >

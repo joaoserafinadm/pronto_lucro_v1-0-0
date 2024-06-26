@@ -71,7 +71,7 @@ export function maskMoneyNumber(value) {
 	value = value?.replace(/\D/g, ''); // Remove all non-digit characters
 
 	value = (Number(value) / 100).toFixed(2)
-	return value
+	return +value
 
 }
 

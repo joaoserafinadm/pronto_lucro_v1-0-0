@@ -55,7 +55,7 @@ export default async function (req, res) {
                         checked: false
                     }
                 ]
-              
+
 
 
                 const newUser = await db.collection('users').insertOne({
@@ -69,24 +69,28 @@ export default async function (req, res) {
                     numero: '',
                     cidade: '',
                     estado: '',
-                    // userStatus: 'admGlobal',
+                    userStatus: 'admGlobal',
                     profileImageUrl: 'https://res.cloudinary.com/joaoserafinadm/image/upload/v1713399957/PRONTO%20LUCRO/PUBLIC/sl5olrvacnox9u1c1z39.png',
                     password: securePassword,
-                    // permissions: false,
+                    permissions: {
+                        dfc: true,
+                        dre: false
+                    },
                     dateAdd: new Date(),
                     dateLimit: date.addDays(8),
-                    // dateUpdated: '',
+                    tags: tags,
                     passwordResetToken: '',
                     passwordResetExpires: '',
                     accessCount: 0,
                     active: true,
                     deleted: false,
                     notifications: notifications,
-                    history: []
-
+                    history: [],
+                    dre: [],
+                    dfc: []
                 })
 
-                if ( newUser.insertedId) {
+                if (newUser.insertedId) {
                     res.status(200).json({ message: "User registered" })
                 } else {
                     res.status(400).json({ error: "Trouble in connect to database" })
@@ -104,5 +108,130 @@ export default async function (req, res) {
     }
 
 }
+
+
+
+const tags = [
+    {
+        _id: new ObjectId(),
+        type: 'Vendas e Receitas',
+        description: 'Vendas na Loja Física',
+        color: '#1E90FF', // DodgerBlue
+        textColor: 'white',
+        icon: '',
+    },
+    {
+        _id: new ObjectId(),
+        type: 'Vendas e Receitas',
+        description: 'Vendas Online',
+        color: '#32CD32', // LimeGreen
+        textColor: 'white',
+        icon: '',
+    },
+    {
+        _id: new ObjectId(),
+        type: 'Vendas e Receitas',
+        description: 'Vendas por Redes Sociais',
+        color: '#FFA500', // Orange
+        textColor: 'black',
+        icon: '',
+    },
+    {
+        _id: new ObjectId(),
+        type: 'Vendas e Receitas',
+        description: 'Receita de Assinaturas',
+        color: '#8A2BE2', // BlueViolet
+        textColor: 'white',
+        icon: '',
+    },
+    {
+        _id: new ObjectId(),
+        type: 'Serviços',
+        description: 'Consultoria',
+        color: '#FF4500', // OrangeRed
+        textColor: 'white',
+        icon: '',
+    },
+    {
+        _id: new ObjectId(),
+        type: 'Serviços',
+        description: 'Suporte Técnico',
+        color: '#00CED1', // DarkTurquoise
+        textColor: 'black',
+        icon: '',
+    },
+    {
+        _id: new ObjectId(),
+        type: 'Serviços',
+        description: 'Design Gráfico',
+        color: '#FFD700', // Gold
+        textColor: 'black',
+        icon: '',
+    },
+    {
+        _id: new ObjectId(),
+        type: 'Investimentos',
+        description: 'Investimentos de Sócios',
+        color: '#6A5ACD', // SlateBlue
+        textColor: 'white',
+        icon: '',
+    },
+    {
+        _id: new ObjectId(),
+        type: 'Investimentos',
+        description: 'Venda de Ações',
+        color: '#DC143C', // Crimson
+        textColor: 'white',
+        icon: '',
+    },
+    {
+        _id: new ObjectId(),
+        type: 'Outros Recebimentos',
+        description: 'Juros de Aplicações Financeiras',
+        color: '#7CFC00', // LawnGreen
+        textColor: 'black',
+        icon: '',
+    },
+    {
+        _id: new ObjectId(),
+        type: 'Outros Recebimentos',
+        description: 'Aluguéis Recebidos',
+        color: '#FF69B4', // HotPink
+        textColor: 'black',
+        icon: '',
+    },
+    {
+        _id: new ObjectId(),
+        type: 'Subvenções e Subsídios',
+        description: 'Subsídios Governamentais',
+        color: '#20B2AA', // LightSeaGreen
+        textColor: 'white',
+        icon: '',
+    },
+    {
+        _id: new ObjectId(),
+        type: 'Empréstimos e Financiamentos',
+        description: 'Empréstimos Bancários',
+        color: '#B22222', // FireBrick
+        textColor: 'white',
+        icon: '',
+    },
+    {
+        _id: new ObjectId(),
+        type: 'Outros Recebimentos',
+        description: 'Reembolsos',
+        color: '#00FF7F', // SpringGreen
+        textColor: 'black',
+        icon: '',
+    },
+    {
+        _id: new ObjectId(),
+        type: 'Outros Recebimentos',
+        description: 'Royalties',
+        color: '#4682B4', // SteelBlue
+        textColor: 'white',
+        icon: '',
+    }
+];
 
 

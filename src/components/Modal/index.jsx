@@ -1,24 +1,49 @@
-
+import { useState } from 'react'
+import styles from './Modal.module.scss'
 
 
 
 export default function Modal({ id, title, children }) {
 
 
-
     return (
-        <div class="modal fade" id={id} tabindex="-1" aria-labelledby="Modal" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title title-dark" id={id}>{title}</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    {children}
-                </div>
+        <div id={id} className={`${styles.modal}`}>
+            <div className={`${styles.background}`} onClick={() => hideModal(id)} />
+            <div className={`${styles.modalArea}`}>
+
+                {children}
             </div>
+
+
+
         </div>
     )
+}
 
 
+export function showModal(id) {
+
+
+    const modal = document.getElementById(id)
+
+    modal.classList.add('fadeItem15s')
+    modal.style.display = 'block'
+    modal.style.opacity = '1'
+
+
+
+}
+
+export function hideModal(id) {
+
+
+    const modal = document.getElementById(id)
+
+
+    modal.style.opacity = '0'
+    // modal.style.transition = 'opacity 0.2s'
+
+    setTimeout(() => {
+        modal.style.display = 'none'
+    }, 200)
 }

@@ -18,6 +18,8 @@ import paymentMethodOptions from '../incomeAdd/paymentMethodOptions.json'
 import PaymentMethodConfig from "../incomeAdd/PaymentMethodConfig";
 import MonthSelect from "../incomeAdd/MonthSelect";
 import DatePickerModal from "../components/datePicker/DatePickerModal";
+import TagSelectModal from "../incomeAdd/TagSelectModal";
+import Modal from "../components/Modal";
 
 const IncomeAddPage = forwardRef((props, ref) => {
 
@@ -35,9 +37,26 @@ const IncomeAddPage = forwardRef((props, ref) => {
     const [parcels, setParcels] = useState(1);
     const [earlyValue, setEarlyValue] = useState('');
     const [earlyValueTax, setEarlyValueTax] = useState('');
-
-
     const [description, setDescription] = useState('');
+    const [tags, setTags] = useState([])
+
+    useEffect(() => {
+        dataFunction(token.sub)
+    }, [])
+
+    const dataFunction = async (user_id) => {
+
+        await axios.get(`${baseUrl()}/api/incomeAdd`, {
+            params: {
+                user_id
+            }
+        }).then(res => {
+            setTags(res.data.tags)
+        }).catch(e => {
+            console.log(e)
+        })
+    }
+
 
 
     useEffect(() => {
@@ -119,7 +138,10 @@ const IncomeAddPage = forwardRef((props, ref) => {
 
 
     return (
-        <div className="">
+        <Modal id='addIncomeModal'>
+
+
+
             <div id="pageTop" />
 
             <div className="row px-3 my-2">
@@ -291,7 +313,7 @@ const IncomeAddPage = forwardRef((props, ref) => {
                                     <FontAwesomeIcon icon={faTag} />
                                     <span className="small fw-bold mb-2 ms-3">Marcador</span>
                                 </div>
-                                <div className="col-12 mt-2 d-flex justify-content-between">
+                                <div className="col-12 mt-2 d-flex justify-content-between" data-bs-toggle="modal" data-bs-target="#tagSelectModal">
                                     <span class=" px-2 py-1 text-white small mx-1 rounded-pill ctm-bg-warning">
                                         Vendas online
                                     </span>
@@ -299,6 +321,8 @@ const IncomeAddPage = forwardRef((props, ref) => {
                                         <FontAwesomeIcon icon={faChevronRight} />
                                     </div>
                                 </div>
+
+                                <TagSelectModal tags={tags} />
                             </div>
 
                             <hr />
@@ -315,7 +339,6 @@ const IncomeAddPage = forwardRef((props, ref) => {
                                     </span>
                                     <div className="text-center text-secondary" style={{ width: "40px" }}>
                                         <FontAwesomeIcon icon={faChevronRight} />
-
                                     </div>
                                 </div>
                             </div>
@@ -354,7 +377,8 @@ const IncomeAddPage = forwardRef((props, ref) => {
                 </div>
 
             </div>
-        </div>
+
+        </Modal >
     )
 }
 )

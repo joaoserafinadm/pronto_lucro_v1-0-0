@@ -5,7 +5,7 @@
 export function SpinnerLG(props) {
 
     return (
-        <div className="col-12 d-flex justify-content-center align-items-center "
+        <div className="col-12 d-flex justify-content-center align-items-center fadeItem "
             style={{ height: "350px" }} >
             <div
                 className="spinner-border text-secondary"

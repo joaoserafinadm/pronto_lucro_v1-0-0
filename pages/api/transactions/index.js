@@ -18,29 +18,48 @@ const authenticated = fn => async (req, res) => {
 export default authenticated(async (req, res) => {
 
     if (req.method === "GET") {
-        const { user_id } = req.query
+        const { user_id, month, year } = req.query
 
         if (!user_id) {
             res.status(400).json({ error: "Missing parameters on request body" })
         } else {
             const { db } = await connect()
 
-            const companyExist = await db.collection('users').findOne({ _id: ObjectId(user_id) })
+            const userExist = await db.collection('users').findOne({ _id: ObjectId(user_id) })
 
-            if (!companyExist) {
-                res.status(400).json({ error: "Company does not exist" })
+            if (!userExist) {
+                res.status(400).json({ error: "User does not exist" })
             } else {
 
-                const result = await db.collection('users').findOne({ _id: ObjectId(user_id) })?.incomes.toArray()
+                const dre = userExist.dre
+
+                const monthData = userExist.dfc.find(elem => elem.year === +year && elem.month === +month)?.data?.filter(elem => elem.active === true) || [];
+
+                const monthResult = userExist.dfc.reduce((acc, elem) => {
+                    // Verifica se a data do elemento é anterior ou igual ao ano/mês atual
+                    if (isBeforeOrEqual(elem, { year, month })) {
+                        // Filtra os elementos ativos e soma os valores desejados
+                        const activeElements = elem.data?.filter(dataElem => dataElem.active === true) || [];
+                        acc += activeElements.reduce((sum, activeElem) => sum + activeElem.value, 0); // Ajuste 'activeElem.value' conforme necessário
+                    }
+                    return acc;
+                }, 0);
+
+
+                res.status(200).json({ dre, monthData, monthResult })
 
 
             }
         }
     }
 
-
-
-
-
-
 })
+
+
+
+
+function isBeforeOrEqual(a, b) {
+    if (+a.year < +b.year) return true;
+    if (+a.year === +b.year && +a.month <= +b.month) return true;
+    return false;
+}

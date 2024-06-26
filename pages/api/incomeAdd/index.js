@@ -15,7 +15,29 @@ const authenticated = fn => async (req, res) => {
 };
 
 export default authenticated(async (req, res) => {
-    if (req.method === "POST") {
+
+    if (req.method === "GET") {
+
+        const { user_id } = req.query;
+
+        if (!user_id) {
+            res.status(400).json({ error: "Missing parameters on request body" });
+        } else {
+            const { db } = await connect();
+            const userExist = await db.collection('users').findOne({ _id: new ObjectId(user_id) });
+            if (!userExist) {
+                res.status(400).json({ error: "User doesn't exist." });
+            } else {
+                const tags = userExist.tags
+
+                res.status(200).json({ tags });
+            }
+        }
+
+
+
+
+    } else if (req.method === "POST") {
         const { user_id, ...data } = req.body;
 
         if (!user_id || !data?.value) {
@@ -111,7 +133,7 @@ export default authenticated(async (req, res) => {
                             },
                             $inc: {
                                 'dfc.$.monthResult': dfcData.value,
-                                'dfc.$.monthTotal': dfcData.value,
+                                // 'dfc.$.monthTotal': dfcData.value,
                             }
                         }
                     );
@@ -120,9 +142,9 @@ export default authenticated(async (req, res) => {
                         const newDfcItem = {
                             year: data.paymentDate.year,
                             month: data.paymentDate.month,
-                            lastMonthResult: 0,
+                            // lastMonthResult: 0,
                             monthResult: dfcData.value,
-                            monthTotal: dfcData.value,
+                            // monthTotal: dfcData.value,
                             data: [dfcData],
                         };
 

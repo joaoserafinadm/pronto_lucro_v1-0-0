@@ -341,6 +341,10 @@ a {
 	animation: fade 0.5s;
 	transition: ease 0.5s;
 }
+.fadeItem15s {
+	animation: fade 0.15s;
+	transition: ease 0.15s;
+}
 
 .fadeItem1s {
 	animation: fade 1s;
@@ -3141,3 +3145,6 @@ h1 {
 .ctm-color-warning {
 	color: var(--color-warning) !important;
 }
+
+
+
