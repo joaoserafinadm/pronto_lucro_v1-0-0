@@ -45,7 +45,7 @@ export default function IncomeAdd() {
                 </div>
             </div>
 
-            <button onClick={() => showModal('addIncomeModal')}>aaaaa</button>
+            <button data-bs-toggle="modal" data-bs-target="#addIncomeModal">aaaaa</button>
 
 
             <FixedTopicsBottom >
