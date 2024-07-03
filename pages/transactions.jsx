@@ -17,6 +17,7 @@ export default function Transactions() {
         month: new Date().getMonth(),
         year: new Date().getFullYear()
     })
+    const [tags, setTags] = useState([])
 
     const [loadingData, setLoadingData] = useState(true)
 
@@ -40,7 +41,7 @@ export default function Transactions() {
                 }
             }).then(res => {
                 setLoadingData(false)
-                console.log(res.data)
+                setTags(res.data.tags)
                 setData(res.data)
             })
 

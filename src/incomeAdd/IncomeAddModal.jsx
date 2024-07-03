@@ -20,6 +20,7 @@ import MonthSelect from "../incomeAdd/MonthSelect";
 import DatePickerModal from "../components/datePicker/DatePickerModal";
 import TagSelectModal from "../incomeAdd/TagSelectModal";
 import { showModal } from "../components/Modal";
+import { showModalBs } from "../../utils/modalControl";
 
 
 
@@ -41,8 +42,9 @@ export default function IncomeAddModal(props) {
     const [earlyValueTax, setEarlyValueTax] = useState('');
     const [description, setDescription] = useState('');
     const [tagSelected, setTagSelected] = useState(null);
-    const [tags, setTags] = useState([])
 
+
+    const [tags, setTags] = useState([])
     const [loadingSave, setLoadingSave] = useState(false)
 
     useEffect(() => {
@@ -67,8 +69,6 @@ export default function IncomeAddModal(props) {
     useEffect(() => {
 
         (paymentDate === dateObject(new Date()) || paymentDate === dateObject(new Date(), -1))
-
-        console.log('paymentDate', paymentDate, dateObject(new Date()), paymentDate === dateObject(new Date()))
 
     }, [paymentDate.day])
 
@@ -117,23 +117,27 @@ export default function IncomeAddModal(props) {
                 paymentDate,
                 paymentMethod,
                 competenceMonth,
-                parcels,
-                earlyValue,
-                earlyValueTax,
-                description
+                description,
+                tagSelected
+
+                // parcels,
+                // earlyValue,
+                // earlyValueTax,
             };
 
-            console.log("data", data)
             // return
             try {
                 const res = await axios.post(`${baseUrl()}/api/incomeAdd`, data);
                 setLoadingSave(false);
+                
                 router.push('/transactions')
             } catch (e) {
+                showModalBs("addIncomeModal")
                 setLoadingSave(false);
             }
         } else {
-            scrollTo('pageTop');
+            
+            scrollTo('addIncomeModal');
             setLoadingSave(false);
         }
     }
@@ -301,7 +305,7 @@ export default function IncomeAddModal(props) {
 
                                                     <input type="text" class="form-control" placeholder="Descrição"
                                                         value={description} onChange={(e) => setDescription(e.target.value)} />
-                                                    <span className="input-group-text"><FontAwesomeIcon icon={faChevronDown} /></span>
+                                                    {/* <span className="input-group-text"><FontAwesomeIcon icon={faChevronDown} /></span> */}
                                                 </div>
                                                 {/* <div className="text-center d-flex align-items-center justify-content-center" style={{ width: "40px" }}>
                                     <FontAwesomeIcon icon={faMicrophone} />
@@ -405,7 +409,7 @@ export default function IncomeAddModal(props) {
                             Cancelar
                         </button>
                         <button className="btn btn-custom-success"
-                            data-bs-dismiss="modal">
+                            data-bs-dismiss="modal" onClick={() => handleSave()}>
                             Salvar
                         </button>
                     </div>

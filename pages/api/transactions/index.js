@@ -57,7 +57,7 @@ export default authenticated(async (req, res) => {
                 }, 0);
 
 
-                res.status(200).json({ dreData, dfcData, dfcPending, dfcResult, dfcPendingResult })
+                res.status(200).json({ dreData, dfcData, dfcPending, dfcResult, dfcPendingResult, tags: userExist.tags })
 
 
             }

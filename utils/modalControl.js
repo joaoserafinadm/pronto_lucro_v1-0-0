@@ -1,4 +1,4 @@
-export function showModal(id) {
+export function showModalBs(id) {
 
     var myModal = new bootstrap.Modal(document.getElementById(id))
     myModal?.show()

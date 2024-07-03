@@ -51,6 +51,8 @@ export default function DfcList(props) {
                     :
                     <>
                         {data?.dfcData?.map((elem, index) => {
+
+                            const tagSelected = data?.tags?.find(elem1 => elem1._id === elem?.tag);
                             return (
                                 <>
                                     <div className="row d-flex" key={index}>
@@ -63,28 +65,38 @@ export default function DfcList(props) {
                                         <div className="col">
                                             <div className="row">
                                                 <div className="col-12">
+                                                    {!tagSelected ?
+                                                        <span class=" px-2 py-1  small rounded-pill border">
+                                                            Selecionar Marcador
+                                                        </span>
+                                                        :
+                                                        <>
+                                                            <div className="row">
+                                                                <div>
+                                                                    <span type="button"
+                                                                        className={`cardAnimation px-2 py-1   small rounded-pill fw-bold `}
+                                                                        style={{ backgroundColor: tagSelected.color, color: tagSelected.textColor }}>
+                                                                        {tagSelected.tag}
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </>
+                                                    }
+
+                                                </div>
+                                            </div>
+                                            <div className="row">
+                                                <div className="col-12">
                                                     <span>
                                                         {elem?.description ? elem?.description : 'Sem descricão'}
                                                     </span>
                                                 </div>
                                             </div>
+
+
                                             <div className="row">
                                                 <div className="col-12">
-                                                    <span>
-                                                        {elem?.tag ? elem?.tag : 'Sem marcação'}
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <div className="row">
-                                                <div className="col-12">
-                                                    <span>
-                                                        {elem?.tag ? elem?.tag : 'Sem marcação'}
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <div className="row">
-                                                <div className="col-12">
-                                                    <span>
+                                                    <span className='small text-secondary'>
                                                         {formatDate(elem?.paymentDate)}
                                                     </span>
                                                 </div>
