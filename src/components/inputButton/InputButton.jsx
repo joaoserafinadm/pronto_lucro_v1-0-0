@@ -6,6 +6,8 @@ import { useEffect, useState } from 'react'
 import isMobile from '../../../utils/isMobile'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import IncomeAddPage from '../../incomesManagement/IncomeAddPage'
+import IncomeAddModal from '../../incomeAdd/IncomeAddModal'
 
 
 
@@ -32,6 +34,9 @@ export default function InputButton(props) {
 
     return (
         <div  >
+            {/* <IncomeAddPage ref={childRef} setLoadingSave={value => setLoadingSave(value)} /> */}
+
+
 
             {open === true && (
                 <div className={`fadeItem ${styles.background}`} onClick={() => setOpen(false)}>
@@ -50,16 +55,18 @@ export default function InputButton(props) {
 
 
                 <div className={`${!props.menubar ? styles.buttonSectionPosition1 : styles.buttonSectionPosition1Menubar}`}>
-                    <Link href="/incomeAdd">
-                        <div className={`${styles.buttonSection} cardAnimation`} type='button' onClick={() => setOpen(!open)}>
-                            <span className={`${styles.buttonIcon} shadow`}>
-                                <FontAwesomeIcon icon={faArrowTrendUp} className='text-success' />
-                            </span>
-                            <span className='text-center small bold text-white' style={{ fontSize: '10px' }}>
-                                Receita
-                            </span>
-                        </div>
-                    </ Link>
+                    {/* <Link href="/incomeAdd"> */}
+                    <div className={`${styles.buttonSection} cardAnimation`}
+                        type='button' data-bs-toggle="modal" data-bs-target="#addIncomeModal"
+                        onClick={() => setOpen(!open)}>
+                        <span className={`${styles.buttonIcon} shadow`}>
+                            <FontAwesomeIcon icon={faArrowTrendUp} className='text-success' />
+                        </span>
+                        <span className='text-center small bold text-white' style={{ fontSize: '10px' }}>
+                            Receita
+                        </span>
+                    </div>
+                    {/* </ Link> */}
                 </div>
                 <div className={`${!props.menubar ? styles.buttonSectionPosition2 : styles.buttonSectionPosition2Menubar}`}>
                     <div className={`${styles.buttonSection} cardAnimation`} type='button' onClick={() => setOpen(!open)}>

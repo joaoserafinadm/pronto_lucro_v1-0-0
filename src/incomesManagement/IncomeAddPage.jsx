@@ -141,7 +141,8 @@ const IncomeAddPage = forwardRef((props, ref) => {
         // <Modal id='addIncomeModal' size="modal-xl">
 
 
-        <div class="modal fade" id="addIncomeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade"  tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        {/* <div class="modal fade" id="addIncomeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> */}
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div id="pageTop" />

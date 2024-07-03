@@ -52,15 +52,15 @@ export function maskNumero(value) {
 
 export function maskInputMoney(number) {
 
-	number = number.replace(/\D/g, ''); // Remove all non-digit characters
-	number = number.replace(/^0+/, '')
-	if (number.length === 1) {
+	number = number?.replace(/\D/g, ''); // Remove all non-digit characters
+	number = number?.replace(/^0+/, '')
+	if (number?.length === 1) {
 		number = '0,0' + number;
-	} else if (number.length === 2) {
+	} else if (number?.length === 2) {
 		number = '0,' + number;
-	} else if (number.length > 2) {
-		number = number.replace(/(\d)(\d{2})$/, "$1,$2"); // Formata os últimos dois dígitos como centavos
-		number = number.replace(/(?=(\d{3})+(\D))\B/g, "."); // Adiciona pontos como separador de milhares
+	} else if (number?.length > 2) {
+		number = number?.replace(/(\d)(\d{2})$/, "$1,$2"); // Formata os últimos dois dígitos como centavos
+		number = number?.replace(/(?=(\d{3})+(\D))\B/g, "."); // Adiciona pontos como separador de milhares
 	}
 	return number;
 }
@@ -75,5 +75,12 @@ export function maskMoneyNumber(value) {
 
 }
 
+
+export function formatDate(dateObj) {
+	const day = String(dateObj.day).padStart(2, '0');
+	const month = String(dateObj.month).padStart(2, '0');
+	const year = dateObj.year;
+	return `${day}/${month}/${year}`;
+}
 
 

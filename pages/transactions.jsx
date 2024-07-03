@@ -5,13 +5,14 @@ import jwt from 'jsonwebtoken'
 import Cookie from 'js-cookie'
 import MonthSelect from "../src/incomeAdd/MonthSelect"
 import { SpinnerLG } from "../src/components/loading/Spinners"
+import TransactionsCard from "../src/transactions/TransactionsCard"
 
 
 export default function Transactions() {
 
     const token = jwt.decode(Cookie.get('auth'));
 
-    const [incomesArray, setIncomesArray] = useState([])
+    const [data, setData] = useState(null)
     const [date, setDate] = useState({
         month: new Date().getMonth(),
         year: new Date().getFullYear()
@@ -39,6 +40,8 @@ export default function Transactions() {
                 }
             }).then(res => {
                 setLoadingData(false)
+                console.log(res.data)
+                setData(res.data)
             })
 
         } catch (error) {
@@ -73,9 +76,9 @@ export default function Transactions() {
                         <SpinnerLG />
                         :
                         <div className="fadeItem">
-                            
+                            <TransactionsCard data={data} />
                         </div>
-                        }
+                    }
                     <table>
 
 

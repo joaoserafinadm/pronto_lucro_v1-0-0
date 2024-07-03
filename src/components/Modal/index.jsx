@@ -3,7 +3,7 @@ import styles from './Modal.module.scss'
 
 export default function Modal({ id, title, size = '', children }) {
 
-    
+
     return (
         <div id={id} className={`${styles.modal} ${styles[size]}`}>
             <div className={`${styles.background}`} onClick={() => hideModal(id)} />

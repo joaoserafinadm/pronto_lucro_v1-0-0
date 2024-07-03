@@ -2,54 +2,51 @@ import { useState, useEffect } from "react";
 import styles from './DatePicker.module.scss';
 import { dateObject, reverseDateObject } from "../../../utils/handleDate";
 import DatePicker from "./DatePicker";
+import Modal, { hideModal } from "../Modal";
 
 
 export default function DatePickerModal(props) {
 
     const { title, date, setDate } = props;
 
+    const [newDate, setNewDate] = useState(dateObject(new Date()));
+
+    useEffect(() => {
+
+        setNewDate(date)
+    }, [date.day, date.month, date.year])
+
 
 
 
     return (
-        <div className="modal fade"
-            id="datePickerModal"
-            tabIndex="-1"
-            aria-labelledby="datePickerModalLabel"
-            aria-hidden="true">
-            <div className="modal-dialog modal-dialog-centered ">
-                <div className="modal-content">
-                    <div className="modal-header">
-                        <h5 className="modal-title title-dark" id="datePickerModalLabel">
-                            {title}
-                        </h5>
-                        <button
-                            type="button"
-                            className="btn-close"
-                            data-bs-dismiss="modal"
-                            aria-label="Close"
-                        ></button>
-                    </div>
-                    <div className="modal-body">
-                        <div className="row">
-                            <div className="col-12 d-flex justify-content-center">
+        <Modal id='datePickerModal' size='modal-md'>
 
-                                <DatePicker date={date} setDate={setDate} />
+            <div className="modal-body">
+                <div className="row">
+                    <div className="col-12 d-flex justify-content-center">
 
-                            </div>
-                        </div>
-                    </div>
-                    <div className="modal-footer">
-                        <button
-                            type="button"
-                            className="btn btn-secondary"
-                            data-bs-dismiss="modal"
-                        >
-                            Fechar
-                        </button>
+                        <DatePicker date={newDate} setDate={setNewDate} />
+
                     </div>
                 </div>
             </div>
-        </div>
+            <div className="modal-footer">
+                <button
+                    type="button"
+                    className="btn btn-outline-custom-tertiary"
+                    onClick={() => { hideModal('datePickerModal') }}
+                >
+                    Cancelar
+                </button>
+                <button
+                    type="button"
+                    className="btn btn-outline-custom-success"
+                    onClick={() => { hideModal('datePickerModal'); setDate(newDate) }}
+                >
+                    Selecionar
+                </button>
+            </div>
+        </Modal>
     );
 }

@@ -114,120 +114,120 @@ export default async function (req, res) {
 const tags = [
     {
         _id: new ObjectId(),
-        type: 'Vendas e Receitas',
-        description: 'Vendas na Loja Física',
+        category: 'Vendas e Receitas',
+        tag: 'Vendas na Loja Física',
         color: '#1E90FF', // DodgerBlue
         textColor: 'white',
         icon: '',
     },
     {
         _id: new ObjectId(),
-        type: 'Vendas e Receitas',
-        description: 'Vendas Online',
+        category: 'Vendas e Receitas',
+        tag: 'Vendas Online',
         color: '#32CD32', // LimeGreen
         textColor: 'white',
         icon: '',
     },
     {
         _id: new ObjectId(),
-        type: 'Vendas e Receitas',
-        description: 'Vendas por Redes Sociais',
+        category: 'Vendas e Receitas',
+        tag: 'Vendas por Redes Sociais',
         color: '#FFA500', // Orange
         textColor: 'black',
         icon: '',
     },
     {
         _id: new ObjectId(),
-        type: 'Vendas e Receitas',
-        description: 'Receita de Assinaturas',
+        category: 'Vendas e Receitas',
+        tag: 'Receita de Assinaturas',
         color: '#8A2BE2', // BlueViolet
         textColor: 'white',
         icon: '',
     },
     {
         _id: new ObjectId(),
-        type: 'Serviços',
-        description: 'Consultoria',
+        category: 'Serviços',
+        tag: 'Consultoria',
         color: '#FF4500', // OrangeRed
         textColor: 'white',
         icon: '',
     },
     {
         _id: new ObjectId(),
-        type: 'Serviços',
-        description: 'Suporte Técnico',
+        category: 'Serviços',
+        tag: 'Suporte Técnico',
         color: '#00CED1', // DarkTurquoise
         textColor: 'black',
         icon: '',
     },
     {
         _id: new ObjectId(),
-        type: 'Serviços',
-        description: 'Design Gráfico',
+        category: 'Serviços',
+        tag: 'Design Gráfico',
         color: '#FFD700', // Gold
         textColor: 'black',
         icon: '',
     },
     {
         _id: new ObjectId(),
-        type: 'Investimentos',
-        description: 'Investimentos de Sócios',
+        category: 'Investimentos',
+        tag: 'Investimentos de Sócios',
         color: '#6A5ACD', // SlateBlue
         textColor: 'white',
         icon: '',
     },
     {
         _id: new ObjectId(),
-        type: 'Investimentos',
-        description: 'Venda de Ações',
+        category: 'Investimentos',
+        tag: 'Venda de Ações',
         color: '#DC143C', // Crimson
         textColor: 'white',
         icon: '',
     },
     {
         _id: new ObjectId(),
-        type: 'Outros Recebimentos',
-        description: 'Juros de Aplicações Financeiras',
+        category: 'Outros Recebimentos',
+        tag: 'Juros de Aplicações Financeiras',
         color: '#7CFC00', // LawnGreen
         textColor: 'black',
         icon: '',
     },
     {
         _id: new ObjectId(),
-        type: 'Outros Recebimentos',
-        description: 'Aluguéis Recebidos',
+        category: 'Outros Recebimentos',
+        tag: 'Aluguéis Recebidos',
         color: '#FF69B4', // HotPink
         textColor: 'black',
         icon: '',
     },
     {
         _id: new ObjectId(),
-        type: 'Subvenções e Subsídios',
-        description: 'Subsídios Governamentais',
+        category: 'Subvenções e Subsídios',
+        tag: 'Subsídios Governamentais',
         color: '#20B2AA', // LightSeaGreen
         textColor: 'white',
         icon: '',
     },
     {
         _id: new ObjectId(),
-        type: 'Empréstimos e Financiamentos',
-        description: 'Empréstimos Bancários',
+        category: 'Empréstimos e Financiamentos',
+        tag: 'Empréstimos Bancários',
         color: '#B22222', // FireBrick
         textColor: 'white',
         icon: '',
     },
     {
         _id: new ObjectId(),
-        type: 'Outros Recebimentos',
-        description: 'Reembolsos',
+        category: 'Outros Recebimentos',
+        tag: 'Reembolsos',
         color: '#00FF7F', // SpringGreen
         textColor: 'black',
         icon: '',
     },
     {
         _id: new ObjectId(),
-        type: 'Outros Recebimentos',
-        description: 'Royalties',
+        category: 'Outros Recebimentos',
+        tag: 'Royalties',
         color: '#4682B4', // SteelBlue
         textColor: 'white',
         icon: '',

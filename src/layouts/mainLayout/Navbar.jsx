@@ -10,7 +10,7 @@ import { Accordion } from "react-bootstrap";
 import { useAccordionButton } from "react-bootstrap/AccordionButton";
 import { AccordionContext } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleRight, faBook, faBookOpen, faBuildingUser, faChartColumn, faChartLine, faChartSimple, faClipboardCheck, faClipboardList, faDiagramProject, faFileContract, faGear, faHome, faHouseUser, faListCheck, faMessage, faObjectGroup, faTable, faTree, faUsers } from "@fortawesome/free-solid-svg-icons";
+import { faAngleRight, faBook, faBookOpen, faBuildingUser, faChartColumn, faChartLine, faChartSimple, faClipboardCheck, faClipboardList, faDiagramProject, faFileContract, faGear, faHome, faHouseUser, faListCheck, faMessage, faMoneyBillTransfer, faObjectGroup, faTable, faTree, faUsers } from "@fortawesome/free-solid-svg-icons";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
@@ -132,11 +132,21 @@ export default function Nav(props) {
                                             </div>
                                         </ContextAwareToggle>
                                     </li>
+                                    <li>
+                                        <ContextAwareToggle eventKey="0" collapse="InicioItem">
+                                            <div className="d-flex justify-content-start " type='button' onClick={() => router.push('/transactions')}>
+                                                <div className="col-1 text-center me-3">
+                                                    <FontAwesomeIcon icon={faMoneyBillTransfer} className="me-2 icon" />
+                                                </div>
+                                                <div className="col-9 bold">Transações</div>
+                                            </div>
+                                        </ContextAwareToggle>
+                                    </li>
 
 
-                                                                       
 
-                                    
+
+
 
 
                                     <li>
@@ -188,7 +198,7 @@ export default function Nav(props) {
                                         </ContextAwareToggle>
                                         <Accordion.Collapse eventKey="91">
                                             <ul>
-                                                
+
                                                 <li>
                                                     <Link href="/tutorials">
                                                         <span>Tutoriais</span>

@@ -30,10 +30,10 @@ const getCalendarDays = (currentDate) => {
     const daysInMonth = getDaysInMonth(year, month);
 
     // Primeiro dia do mês
-    const firstDayOfMonth = daysInMonth[0].getDay();
+    const firstDayOfMonth = daysInMonth[0]?.getDay();
 
     // Último dia do mês
-    const lastDayOfMonth = daysInMonth[daysInMonth.length - 1].getDay();
+    const lastDayOfMonth = daysInMonth[daysInMonth?.length - 1]?.getDay();
 
     // Dias do mês anterior para preencher o calendário
     const prevMonthDays = [];
@@ -57,7 +57,7 @@ const getCalendarDays = (currentDate) => {
 }
 
 export default function DatePicker(props) {
-    const initialDate = new Date(props.date.year, props.date.month, props.date.day);
+    const initialDate = new Date(props.date.year, props.date.month, props.date.day) || new Date();
     const [currentDate, setCurrentDate] = useState(initialDate);
     const [calendarDays, setCalendarDays] = useState([]);
 
@@ -113,7 +113,7 @@ export default function DatePicker(props) {
                         const dayClasses = `${isCurrentMonth ? '' : styles.textMuted} ${isToday ? 'fw-bold' : ''} ${isSelected ? styles.selected : ''}`;
 
                         return (
-                            <li 
+                            <li
                                 key={index}
                                 className={dayClasses}
                                 onClick={() => handleDateClick(date)}

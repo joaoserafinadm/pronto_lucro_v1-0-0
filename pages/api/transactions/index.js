@@ -31,11 +31,12 @@ export default authenticated(async (req, res) => {
                 res.status(400).json({ error: "User does not exist" })
             } else {
 
-                const dre = userExist.dre
+                const dreData = userExist.dre
 
-                const monthData = userExist.dfc.find(elem => elem.year === +year && elem.month === +month)?.data?.filter(elem => elem.active === true) || [];
+                const dfcData = userExist.dfc.find(elem => elem.year === +year && elem.month === +month)?.data?.filter(elem => elem.active === true) || [];
+                const dfcPending = userExist.dfc.find(elem => elem.year === +year && elem.month === +month)?.data?.filter(elem => elem.active === false) || [];
 
-                const monthResult = userExist.dfc.reduce((acc, elem) => {
+                const dfcResult = userExist.dfc.reduce((acc, elem) => {
                     // Verifica se a data do elemento é anterior ou igual ao ano/mês atual
                     if (isBeforeOrEqual(elem, { year, month })) {
                         // Filtra os elementos ativos e soma os valores desejados
@@ -45,8 +46,18 @@ export default authenticated(async (req, res) => {
                     return acc;
                 }, 0);
 
+                const dfcPendingResult = userExist.dfc.reduce((acc, elem) => {
+                    // Verifica se a data do elemento é anterior ou igual ao ano/mês atual
+                    if (isBeforeOrEqual(elem, { year, month })) {
+                        // Filtra os elementos ativos e soma os valores desejados
+                        const activeElements = elem.data?.filter(dataElem => dataElem.active === false) || [];
+                        acc += activeElements.reduce((sum, activeElem) => sum + activeElem.value, 0); // Ajuste 'activeElem.value' conforme necessário
+                    }
+                    return acc;
+                }, 0);
 
-                res.status(200).json({ dre, monthData, monthResult })
+
+                res.status(200).json({ dreData, dfcData, dfcPending, dfcResult, dfcPendingResult })
 
 
             }
