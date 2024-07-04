@@ -10,7 +10,7 @@ export default function TagSelect(props) {
 
     return (
         <>
-            <div className="modal-body">
+            <div className="modal-body" >
                 <div className="row fadeItem">
                     <div className="col-12">
                         {tagsArray.map((elem, index) => {

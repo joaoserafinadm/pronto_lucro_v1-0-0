@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Icons from "../components/icons";
-import { faCalendar, faCalendarDays, faClipboard, faImage } from "@fortawesome/free-regular-svg-icons";
+import { faCalendar, faCalendarDays, faClipboard, faFilePdf, faImage } from "@fortawesome/free-regular-svg-icons";
 import { faArrowDown, faCalendarWeek, faChevronDown, faChevronRight, faCommentDollar, faMicrophone, faMoneyBill, faQuoteLeft, faTag, faWallet } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useImperativeHandle, useState, forwardRef } from "react";
 import { maskInputMoney } from "../../utils/mask";
@@ -21,6 +21,8 @@ import DatePickerModal from "../components/datePicker/DatePickerModal";
 import TagSelectModal from "../incomeAdd/TagSelectModal";
 import { showModal } from "../components/Modal";
 import { showModalBs } from "../../utils/modalControl";
+import StyledDropzone from "../components/styledDropzone/StyledDropzone";
+import { createImageUrl } from "../../utils/createImageUrl";
 
 
 
@@ -42,6 +44,7 @@ export default function IncomeAddModal(props) {
     const [earlyValueTax, setEarlyValueTax] = useState('');
     const [description, setDescription] = useState('');
     const [tagSelected, setTagSelected] = useState(null);
+    const [files, setFiles] = useState([])
 
 
     const [tags, setTags] = useState([])
@@ -106,37 +109,46 @@ export default function IncomeAddModal(props) {
     }
 
     const handleSave = async () => {
+
+
+
         setLoadingSave(true);
 
         const isValid = validate();
 
         if (isValid) {
-            const data = {
-                user_id: token.sub,
-                value,
-                paymentDate,
-                paymentMethod,
-                competenceMonth,
-                description,
-                tagSelected
-
-                // parcels,
-                // earlyValue,
-                // earlyValueTax,
-            };
-
-            // return
             try {
+
+                let attachment = ''
+
+                if (files) attachment = await createImageUrl([files], 'ATTACHMENTS')
+
+                const data = {
+                    user_id: token.sub,
+                    value,
+                    paymentDate,
+                    paymentMethod,
+                    competenceMonth,
+                    description,
+                    tagSelected,
+                    files: attachment
+                    // parcels,
+                    // earlyValue,
+                    // earlyValueTax,
+                };
+
+                // return
+
                 const res = await axios.post(`${baseUrl()}/api/incomeAdd`, data);
                 setLoadingSave(false);
-                
+
                 router.push('/transactions')
             } catch (e) {
                 showModalBs("addIncomeModal")
                 setLoadingSave(false);
             }
         } else {
-            
+
             scrollTo('addIncomeModal');
             setLoadingSave(false);
         }
@@ -165,7 +177,7 @@ export default function IncomeAddModal(props) {
                                         value={value} id='valueInput'
                                         onChange={e => setValue(maskInputMoney(e.target.value))} />
                                 </div>
-                                <div className="d-flex fs-3 align-items-center">
+                                {/* <div className="d-flex fs-3 align-items-center">
                                     <div class="dropdown">
                                         <span class=" dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                             BRL
@@ -179,7 +191,7 @@ export default function IncomeAddModal(props) {
                                             <li><a class="dropdown-item" href="#">Outras...</a></li>
                                         </ul>
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
 
@@ -323,7 +335,8 @@ export default function IncomeAddModal(props) {
                                             </div>
                                             <div className="col-12 mt-2 d-flex justify-content-between" onClick={() => showModal('tagSelectModal')}>
                                                 {!tagSelected ?
-                                                    <span class=" px-2 py-1  small mx-1 rounded-pill border">
+                                                    <span type="button"
+                                                        class=" px-2 py-1  small mx-1 rounded-pill border pulse shadow">
                                                         Selecionar Marcador
                                                     </span>
                                                     :
@@ -346,7 +359,7 @@ export default function IncomeAddModal(props) {
                                                 </div>
                                             </div>
 
-                                            <TagSelectModal tags={tags} setTagSelected={setTagSelected} dataFunction={() => dataFunction(token.sub)}/>
+                                            <TagSelectModal tags={tags} setTagSelected={setTagSelected} dataFunction={() => dataFunction(token.sub)} />
                                         </div>
 
                                         <hr />
@@ -377,14 +390,63 @@ export default function IncomeAddModal(props) {
                                             </div>
 
                                             <div className="col-12 mt-2 d-flex justify-content-between">
-                                                <span class=" px-2 py-1  small mx-1 rounded-pill ">
-                                                    Arquivo
-                                                </span>
-                                                <div className="text-center text-secondary" style={{ width: "40px" }}>
+
+                                                <StyledDropzone setFiles={array => { setFiles(array[0]); console.log(array) }} >
+                                                    <div className="px-2 text-center fadeItem bg-light  py-5 text-secondary rounded " style={{ border: '1px dashed #ccc', width: "100%" }}>
+                                                        <span>
+                                                            Clique aqui ou arraste o arquivo
+                                                        </span> <br />
+                                                        <span className="small">
+                                                            Permitido apenas um arquivo. Formato: .PNG, .JPG, .PDF.
+                                                        </span><br />
+
+                                                    </div>
+                                                </StyledDropzone>
+
+
+                                                {/* <div className="text-center text-secondary" style={{ width: "40px" }}>
                                                     <FontAwesomeIcon icon={faChevronRight} />
 
-                                                </div>
+                                                </div> */}
                                             </div>
+                                            {files && (
+                                                <div className="col-12 mt-2 fadeItem">
+                                                    <div className="card">
+                                                        <div className="card-body">
+                                                            <div className="row">
+                                                                <div className="col-12 d-flex">
+                                                                    <div className="d-flex align-items-center justify-content-center" style={{ width: "40px" }}>
+                                                                        {files?.type?.startsWith('image/') ?
+                                                                            <div>
+                                                                                <img src={URL.createObjectURL(files)} className="border border-rounded " height={40} alt="" />
+                                                                            </div>
+                                                                            :
+
+                                                                            <FontAwesomeIcon icon={faFilePdf} className="fs-3 text-secondary" />
+                                                                        }
+
+                                                                    </div>
+                                                                    <div className="col">
+                                                                        <div className="row">
+                                                                            <span className="small ms-3 bold">{files.name}</span>
+                                                                            <span className="small ms-3 text-secondary">{(files.size / 1000000).toFixed(2)}Mb</span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div className="d-flex align-items-center justify-content-center" style={{ width: "40px" }}>
+                                                                        <button
+                                                                            type="button"
+                                                                            className="btn-close"
+                                                                            onClick={() => setFiles(null)}
+                                                                            aria-label="Close"
+                                                                        ></button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            )}
+
                                         </div>
 
                                         <hr />
@@ -394,13 +456,13 @@ export default function IncomeAddModal(props) {
                             </div>
                         </div>
 
-                        <div className="row mt-3 d-flex justify-content-between">
+                        {/* <div className="row mt-3 d-flex justify-content-between">
 
                             <div className="col-12 d-flex justify-content-center">
                                 <span className="span bold text-secondary">Mais detalhes</span>
                             </div>
 
-                        </div>
+                        </div> */}
                     </div>
 
                     <div className="modal-footer">

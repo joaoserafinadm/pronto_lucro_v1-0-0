@@ -17,7 +17,7 @@ export const createImageUrl = (filesList, directory) => new Promise((resolve, re
                 formData.append("file", reader.result)
                 formData.append("upload_preset", directory)
 
-                axios.post('https://api.cloudinary.com/v1_1/akvoesg/image/upload', formData)
+                axios.post('https://api.cloudinary.com/v1_1/joaoserafinadm/image/upload', formData)
                     .then(res => {
                         let newData = {
                             url: res.data.secure_url,
@@ -29,6 +29,8 @@ export const createImageUrl = (filesList, directory) => new Promise((resolve, re
                         if (iteration === filesList.length) resolve(newList)
                     }).catch(e => {
                         let newData = {
+                            url: '',
+                            id: '',
                             error: e
                         }
                         newList.push({ ...elem, ...newData })

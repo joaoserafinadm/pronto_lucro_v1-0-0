@@ -33,7 +33,7 @@ export default authenticated(async (req, res) => {
 
                 const dreData = userExist.dre
 
-                const dfcData = userExist.dfc.find(elem => elem.year === +year && elem.month === +month)?.data?.filter(elem => elem.active === true) || [];
+                const dfcData = userExist.dfc.find(elem => elem.year === +year && elem.month === +month)?.data || [];
                 const dfcPending = userExist.dfc.find(elem => elem.year === +year && elem.month === +month)?.data?.filter(elem => elem.active === false) || [];
 
                 const dfcResult = userExist.dfc.reduce((acc, elem) => {

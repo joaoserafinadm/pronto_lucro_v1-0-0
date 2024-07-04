@@ -61,7 +61,7 @@ export default authenticated(async (req, res) => {
                     _id: newId,
                     dateAdded,
                     type: 'income',
-                    active: data.competenceMonth.month <= dateAddedObj.month && data.competenceMonth.year <= dateAddedObj.year,
+                    active: isDateBefore(data.competenceMonth, dateAddedObj)
                 };
 
                 const dfcData = {
@@ -71,7 +71,7 @@ export default authenticated(async (req, res) => {
                     _id: newId,
                     dateAdded,
                     type: 'income',
-                    active: data.paymentDate.day <= dateAddedObj.day && data.paymentDate.month <= dateAddedObj.month && data.paymentDate.year <= dateAddedObj.year,
+                    active: isDateBefore( data.paymentDate, dateAddedObj)
                 };
 
                 try {
@@ -187,3 +187,28 @@ export default authenticated(async (req, res) => {
         }
     }
 });
+
+
+
+function isDateBefore(paymentDate, dateAddedObj) {
+    // Comparar anos
+    if (paymentDate.year < dateAddedObj.year) {
+        return true;
+    } else if (paymentDate.year > dateAddedObj.year) {
+        return false;
+    }
+
+    // Anos são iguais, comparar meses
+    if (paymentDate.month < dateAddedObj.month) {
+        return true;
+    } else if (paymentDate.month > dateAddedObj.month) {
+        return false;
+    }
+
+    // Meses são iguais, comparar dias
+    if (paymentDate.day < dateAddedObj.day) {
+        return true;
+    } else {
+        return false;
+    }
+}

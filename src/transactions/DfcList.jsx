@@ -56,7 +56,7 @@ export default function DfcList(props) {
                             return (
                                 <>
                                     <div className="row d-flex" key={index}>
-                                        <div className='d-flex justify-content-center align-items-center' style={{ width: '50px' }}>
+                                        <div className='d-flex justify-content-center align-items-center' style={{ width: '30px' }}>
                                             <span>
 
                                                 <TypeIcon elem={elem} />
@@ -67,7 +67,7 @@ export default function DfcList(props) {
                                                 <div className="col-12">
                                                     {!tagSelected ?
                                                         <span class=" px-2 py-1  small rounded-pill border">
-                                                            Selecionar Marcador
+                                                            Sem marcador
                                                         </span>
                                                         :
                                                         <>
@@ -75,7 +75,7 @@ export default function DfcList(props) {
                                                                 <div>
                                                                     <span type="button"
                                                                         className={`cardAnimation px-2 py-1   small rounded-pill fw-bold `}
-                                                                        style={{ backgroundColor: tagSelected.color, color: tagSelected.textColor }}>
+                                                                        style={{ backgroundColor: tagSelected.color, color: tagSelected.textColor, fontSize: '10px' }}>
                                                                         {tagSelected.tag}
                                                                     </span>
                                                                 </div>
@@ -85,9 +85,9 @@ export default function DfcList(props) {
 
                                                 </div>
                                             </div>
-                                            <div className="row">
+                                            <div className="row mt-1">
                                                 <div className="col-12">
-                                                    <span>
+                                                    <span className='bold'>
                                                         {elem?.description ? elem?.description : 'Sem descricão'}
                                                     </span>
                                                 </div>
@@ -103,13 +103,14 @@ export default function DfcList(props) {
                                             </div>
                                         </div>
                                         <div className=' d-flex justify-content-end align-items-center' style={{ width: '150px' }}>
-                                            <span className='bold text-success'>
+                                            <span className={`bold text-center text-${elem?.active === false ? 'secondary' : elem?.type === 'income' ? 'success' : 'danger'}`} >
 
-                                                {brlMoney.format(elem?.value)}
+                                                {brlMoney.format(elem?.value)} <br />
+                                                {elem?.active === false && 'Pendente' }
                                             </span>
                                         </div>
                                     </div>
-
+                                    <hr />
                                 </>
                             );
                         })}
