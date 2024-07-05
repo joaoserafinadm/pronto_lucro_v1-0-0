@@ -1,5 +1,5 @@
-import { useState } from "react"
-import { maskInputMoney } from "../../utils/mask"
+import { useEffect, useState } from "react"
+import { maskInputMoney, maskNumero } from "../../utils/mask"
 
 
 
@@ -10,9 +10,13 @@ export default function PaymentMethodConfig(props) {
 
     const [creditConfig, setCreditConfig] = useState({
         parcelas: 1,
-        valorAntecipado: 0,
-        taxaValorAntecipado: 0
+        taxa: 0
     })
+
+    useEffect(() => {
+        props.setCreditConfig(creditConfig)
+
+    }, [creditConfig])
 
 
     return (
@@ -37,29 +41,19 @@ export default function PaymentMethodConfig(props) {
                             <option value={12}>12</option>
                         </select>
                     </div>
-                    {/* <div className="input-group input-group-sm mt-3">
+                    <div className="input-group input-group-sm mt-3">
 
-                        <span htmlFor="" className="input-group-text">Valor antecipado</span>
-                        <span htmlFor="" className="input-group-text">R$</span>
-                        <input type="text" className="form-control text-end" placeholder="0,00" inputMode="numeric"
-                            value={creditConfig?.valorAntecipado} onChange={(e) => setCreditConfig({ ...creditConfig, valorAntecipado: maskInputMoney(e.target.value) })} />
+                        <span htmlFor="" className="input-group-text">Taxa</span>
+                        <input type="number" className="form-control text-end" placeholder="0" inputMode="numeric"
+                            value={creditConfig?.taxa} onChange={(e) => setCreditConfig({ ...creditConfig, taxa: e.target.value })} />
+                        <span htmlFor="" className="input-group-text">%</span>
                     </div>
-                    {!!creditConfig?.valorAntecipado && (
 
-                        <div className="input-group input-group-sm mt-3 fadeItem">
-
-                            <span htmlFor="" className="input-group-text">Taxa</span>
-                            <span htmlFor="" className="input-group-text">R$</span>
-
-                            <input type="text" className="form-control text-end" placeholder="0,00" inputMode="numeric"
-                                value={creditConfig?.taxaValorAntecipado} onChange={(e) => setCreditConfig({ ...creditConfig, taxaValorAntecipado: maskInputMoney(e.target.value) })} />
-                        </div>
-                    )} */}
 
 
                 </div>
             )}
-            
+
 
         </>
 

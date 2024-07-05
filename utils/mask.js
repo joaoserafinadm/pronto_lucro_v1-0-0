@@ -47,7 +47,7 @@ export function maskCelular(value) {
 }
 
 export function maskNumero(value) {
-	return value.replace(/\D/g, "");
+	return value.replace(/[^0-9.,]/g, '');
 }
 
 export function maskInputMoney(number) {

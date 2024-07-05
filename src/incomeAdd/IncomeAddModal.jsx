@@ -39,9 +39,7 @@ export default function IncomeAddModal(props) {
         month: new Date().getMonth(),
         year: new Date().getFullYear()
     })
-    const [parcels, setParcels] = useState(1);
-    const [earlyValue, setEarlyValue] = useState('');
-    const [earlyValueTax, setEarlyValueTax] = useState('');
+    const [creditConfig, setCreditConfig] = useState('')
     const [description, setDescription] = useState('');
     const [tagSelected, setTagSelected] = useState(null);
     const [files, setFiles] = useState([])
@@ -111,7 +109,6 @@ export default function IncomeAddModal(props) {
     const handleSave = async () => {
 
 
-
         setLoadingSave(true);
 
         const isValid = validate();
@@ -131,15 +128,15 @@ export default function IncomeAddModal(props) {
                     competenceMonth,
                     description,
                     tagSelected,
-                    files: attachment
-                    // parcels,
-                    // earlyValue,
-                    // earlyValueTax,
+                    files: attachment,
+                    creditConfig
                 };
 
-                // return
-
-                const res = await axios.post(`${baseUrl()}/api/incomeAdd`, data);
+                if (paymentMethod === 2) {
+                    const res = await axios.post(`${baseUrl()}/api/incomeAdd/creditPayment`, data);
+                } else {
+                    const res = await axios.post(`${baseUrl()}/api/incomeAdd`, data);
+                }
                 setLoadingSave(false);
 
                 router.push('/transactions')
@@ -239,14 +236,11 @@ export default function IncomeAddModal(props) {
 
 
                                             </div>
-                                            {/* <div className="text-center" style={{ width: "40px" }}>
-
-                            </div> */}
                                         </div>
 
 
 
-                                        <PaymentMethodConfig paymentMethod={paymentMethod} />
+                                        <PaymentMethodConfig paymentMethod={paymentMethod} setCreditConfig={setCreditConfig} />
 
                                         <hr />
                                         <div className="row d-flex justify-content-between">
@@ -317,12 +311,8 @@ export default function IncomeAddModal(props) {
 
                                                     <input type="text" class="form-control" placeholder="Descrição"
                                                         value={description} onChange={(e) => setDescription(e.target.value)} />
-                                                    {/* <span className="input-group-text"><FontAwesomeIcon icon={faChevronDown} /></span> */}
                                                 </div>
-                                                {/* <div className="text-center d-flex align-items-center justify-content-center" style={{ width: "40px" }}>
-                                    <FontAwesomeIcon icon={faMicrophone} />
 
-                                </div> */}
                                             </div>
                                         </div>
 
@@ -471,7 +461,8 @@ export default function IncomeAddModal(props) {
                             Cancelar
                         </button>
                         <button className="btn btn-custom-success"
-                            data-bs-dismiss="modal" onClick={() => handleSave()}>
+                            data-bs-dismiss="modal" 
+                            onClick={() => handleSave()}>
                             Salvar
                         </button>
                     </div>
