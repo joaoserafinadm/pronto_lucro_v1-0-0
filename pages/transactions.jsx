@@ -7,15 +7,21 @@ import MonthSelect from "../src/incomeAdd/MonthSelect"
 import { SpinnerLG } from "../src/components/loading/Spinners"
 import TransactionsCard from "../src/transactions/TransactionsCard"
 import Title from "../src/components/title/Title2"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import navbarHide from "../utils/navbarHide";
 import DesktopPage from "../src/transactions/DesktopPage"
-
+import {newData} from "../store/NewData/NewData.action"
 
 export default function Transactions() {
 
     const token = jwt.decode(Cookie.get('auth'));
     const dispatch = useDispatch()
+
+    const newDataStore = useSelector(state => state.newData)
+
+    useEffect(() => {
+        if (newDataStore) dataFunction(token.sub)
+    }, [newDataStore])
 
 
     const [data, setData] = useState(null)
@@ -39,6 +45,7 @@ export default function Transactions() {
 
     const dataFunction = async (user_id) => {
         setLoadingData(true)
+        dispatch(newData(false))
 
         try {
             const res = await axios.get(`${baseUrl()}/api/transactions`, {
@@ -51,6 +58,7 @@ export default function Transactions() {
                 setLoadingData(false)
                 setTags(res.data.tags)
                 setData(res.data)
+                dispatch(newData(false))
             })
 
         } catch (error) {
@@ -75,13 +83,13 @@ export default function Transactions() {
 
 
             </div>
-            <div className="row " style={{marginBottom: '100px'}}>
+            <div className="row " style={{ marginBottom: '100px' }}>
                 <div className="col-12">
                     {loadingData ?
                         <SpinnerLG />
                         :
                         <div className="fadeItem">
-                            <DesktopPage data={data} dateSelected={dateSelected}/>
+                            <DesktopPage data={data} dateSelected={dateSelected} />
                             {/* <TransactionsCard data={data} /> */}
                         </div>
                     }

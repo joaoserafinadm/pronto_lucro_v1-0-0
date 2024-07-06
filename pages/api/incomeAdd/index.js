@@ -57,7 +57,7 @@ export default authenticated(async (req, res) => {
 
                 const dreData = {
                     ...data,
-                    tag: data.tagSelected._id,
+                    tag: data.tagSelected ? data.tagSelected._id : '',
                     value: maskMoneyNumber(data.value),
                     _id: newId,
                     dateAdded,
@@ -67,7 +67,7 @@ export default authenticated(async (req, res) => {
 
                 const dfcData = {
                     ...data,
-                    tag: data.tagSelected._id,
+                    tag: data.tagSelected ? data.tagSelected._id : '',
                     value: maskMoneyNumber(data.value),
                     _id: newId,
                     dateAdded,

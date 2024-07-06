@@ -23,12 +23,15 @@ import { showModal } from "../components/Modal";
 import { showModalBs } from "../../utils/modalControl";
 import StyledDropzone from "../components/styledDropzone/StyledDropzone";
 import { createImageUrl } from "../../utils/createImageUrl";
+import { useDispatch } from "react-redux";
+import { newData } from "../../store/NewData/NewData.action";
 
 
 
 export default function ExpenseAddModal(props) {
 
     const token = jwt.decode(Cookie.get('auth'));
+    const dispatch = useDispatch()
 
     const router = useRouter()
 
@@ -142,6 +145,7 @@ export default function ExpenseAddModal(props) {
                 if (paymentMethod === 2) {
                     const res = await axios.post(`${baseUrl()}/api/incomeAdd/creditPayment`, data)
                         .then(res => {
+                            dispatch(newData(true))
                             initialValues()
                             router.push('/transactions')
                         }).catch(e => {
@@ -152,6 +156,8 @@ export default function ExpenseAddModal(props) {
                 } else {
                     const res = await axios.post(`${baseUrl()}/api/incomeAdd`, data)
                         .then(res => {
+                            dispatch(newData(true))
+                            console.log('vai')
                             initialValues()
                             router.push('/transactions')
                         }).catch(e => {
