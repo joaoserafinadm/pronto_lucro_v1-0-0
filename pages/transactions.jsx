@@ -19,7 +19,7 @@ export default function Transactions() {
 
 
     const [data, setData] = useState(null)
-    const [date, setDate] = useState({
+    const [dateSelected, setDateSelected] = useState({
         month: new Date().getMonth(),
         year: new Date().getFullYear()
     })
@@ -28,10 +28,10 @@ export default function Transactions() {
     const [loadingData, setLoadingData] = useState(true)
 
     useEffect(() => {
-        if (date) dataFunction(token.sub)
+        if (dateSelected) dataFunction(token.sub)
         navbarHide(dispatch)
 
-    }, [date])
+    }, [dateSelected])
 
 
 
@@ -44,8 +44,8 @@ export default function Transactions() {
             const res = await axios.get(`${baseUrl()}/api/transactions`, {
                 params: {
                     user_id,
-                    month: date.month,
-                    year: date.year
+                    month: dateSelected.month,
+                    year: dateSelected.year
                 }
             }).then(res => {
                 setLoadingData(false)
@@ -68,20 +68,20 @@ export default function Transactions() {
             <div className="row px-2">
                 <div className="col-12 my-3 d-flex justify-content-center">
                     <MonthSelect
-                        setMonth={value => { setDate(value) }}
+                        setMonth={value => { setDateSelected(value) }}
                     />
                 </div>
 
 
 
             </div>
-            <div className="row">
+            <div className="row " style={{marginBottom: '100px'}}>
                 <div className="col-12">
                     {loadingData ?
                         <SpinnerLG />
                         :
                         <div className="fadeItem">
-                            <DesktopPage data={data} />
+                            <DesktopPage data={data} dateSelected={dateSelected}/>
                             {/* <TransactionsCard data={data} /> */}
                         </div>
                     }
