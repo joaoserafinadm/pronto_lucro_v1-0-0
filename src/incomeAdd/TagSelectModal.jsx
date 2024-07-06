@@ -16,7 +16,7 @@ export default function TagSelectModal(props) {
 
 
     return (
-        <Modal id='tagSelectModal' size='modal-md'>
+        <Modal id={props.id} size='modal-md'>
 
             <div className="modal-header">
                 <h5 className="modal-title title-dark" id="tagSelectModalLabel">
@@ -25,15 +25,28 @@ export default function TagSelectModal(props) {
                 <button
                     type="button"
                     className="btn-close"
-                    onClick={() => hideModal('tagSelectModal')}
+                    onClick={() => hideModal(props.id)}
                     aria-label="Close"
                 ></button>
             </div>
-                {section === 'tagAdd' ?
-                    <NewTagAdd tags={tags} setSection={setSection} setTagSelected={setTagSelected} dataFunction={dataFunction} />
-                    :
-                    <TagSelect tags={tags} setSection={setSection} setTagSelected={setTagSelected} />
-                }
+            {section === 'tagAdd' ?
+                <NewTagAdd
+                    tags={tags}
+                    setSection={setSection}
+                    setTagSelected={setTagSelected}
+                    dataFunction={() => props.dataFunction()}
+                    transactionSection={props.section}
+                    id={props.id}
+
+                />
+                :
+                <TagSelect
+                    tags={tags}
+                    setSection={setSection}
+                    setTagSelected={setTagSelected}
+                    id={props.id}
+                    section={props.section} />
+            }
 
 
 

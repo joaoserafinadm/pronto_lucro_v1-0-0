@@ -15,7 +15,7 @@ export default function NewTagAdd(props) {
     const token = jwt.decode(Cookie.get('auth'));
 
 
-    const { setSection, tags, setTagSelected , dataFunction} = props
+    const { setSection, tags, setTagSelected, dataFunction } = props
 
     const [category, setCategory] = useState('')
     const [tagName, setTagName] = useState('')
@@ -47,6 +47,7 @@ export default function NewTagAdd(props) {
 
             const data = {
                 user_id: token.sub,
+                section: props.transactionSection,
                 newTag: {
                     category: category === 'new' ? newCategory : category,
                     tag: tagName,
@@ -60,7 +61,7 @@ export default function NewTagAdd(props) {
                 .then(res => {
                     console.log(res.data)
                     setSection('')
-                    hideModal('tagSelectModal')
+                    hideModal(props.id)
                     setTagSelected(res.data)
                     setLoadingSave(true)
                     dataFunction()
@@ -95,7 +96,7 @@ export default function NewTagAdd(props) {
             if (tagNameError) document.getElementById('tagInput').classList.add('inputError')
             if (colorError) document.getElementById('colorSelect').classList.add('inputError')
             if (textColorError) document.getElementById('textColorSelect').classList.add('inputError')
-                scrollTo('pageTop')
+            scrollTo('pageTop')
             return false
 
         } else {
@@ -207,8 +208,8 @@ export default function NewTagAdd(props) {
                     className="btn btn-outline-custom-success"
                     onClick={() => handleSave()}
                 >
-                    {loadingSave ? <SpinnerSM className="mx-4"/>: 'Salvar marcador'}
-                    
+                    {loadingSave ? <SpinnerSM className="mx-4" /> : 'Salvar marcador'}
+
                 </button>
             </div>
         </>

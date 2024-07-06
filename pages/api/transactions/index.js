@@ -36,25 +36,33 @@ export default authenticated(async (req, res) => {
                 const dfcData = userExist.dfc.find(elem => elem.year === +year && elem.month === +month)?.data || [];
                 const dfcPending = userExist.dfc.find(elem => elem.year === +year && elem.month === +month)?.data?.filter(elem => elem.active === false) || [];
 
+                console.log("dfcData", dfcData)
+
                 const dfcResult = userExist.dfc.reduce((acc, elem) => {
                     // Verifica se a data do elemento é anterior ou igual ao ano/mês atual
                     if (isBeforeOrEqual(elem, { year, month })) {
                         // Filtra os elementos ativos e soma os valores desejados
                         const activeElements = elem.data?.filter(dataElem => dataElem.active === true) || [];
-                        acc += activeElements.reduce((sum, activeElem) => sum + activeElem.value, 0); // Ajuste 'activeElem.value' conforme necessário
+                        acc += activeElements.reduce((sum, activeElem) => sum + activeElem.type === "income" ? activeElem.value : -activeElem.value, 0); // Ajuste 'activeElem.value' conforme necessário
                     }
                     return acc;
                 }, 0);
+
+                console.log("dfcResult", dfcResult)
+
 
                 const dfcPendingResult = userExist.dfc.reduce((acc, elem) => {
                     // Verifica se a data do elemento é anterior ou igual ao ano/mês atual
                     if (isBeforeOrEqual(elem, { year, month })) {
                         // Filtra os elementos ativos e soma os valores desejados
                         const activeElements = elem.data?.filter(dataElem => dataElem.active === false) || [];
-                        acc += activeElements.reduce((sum, activeElem) => sum + activeElem.value, 0); // Ajuste 'activeElem.value' conforme necessário
+                        acc += activeElements.reduce((sum, activeElem) => sum + sum + activeElem.type === "income" ? activeElem.value : -activeElem.value, 0); // Ajuste 'activeElem.value' conforme necessário
                     }
                     return acc;
                 }, 0);
+
+                console.log("dfcPendingResult", dfcPendingResult)
+
 
 
                 res.status(200).json({ dreData, dfcData, dfcPending, dfcResult, dfcPendingResult, tags: userExist.tags })

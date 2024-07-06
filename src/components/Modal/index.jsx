@@ -16,8 +16,11 @@ export default function Modal({ id, title, size = '', children }) {
 
 export function showModal(id) {
     const modal = document.getElementById(id)
-    modal.style.display = 'block'
-    modal.style.opacity = '1'
+    if (modal) {
+
+        modal.style.display = 'block'
+        modal.style.opacity = '1'
+    }
 }
 
 export function hideModal(id) {

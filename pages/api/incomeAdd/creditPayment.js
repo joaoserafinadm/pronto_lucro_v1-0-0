@@ -30,8 +30,11 @@ export default authenticated(async (req, res) => {
                 res.status(200).json({ tags });
             }
         }
+
+
+
     } else if (req.method === "POST") {
-        const { user_id, ...data } = req.body;
+        const { user_id, section, ...data } = req.body;
 
         if (!user_id || !data?.value) {
             res.status(400).json({ error: "Missing parameters on request body" });
@@ -46,7 +49,7 @@ export default authenticated(async (req, res) => {
                 const dateAdded = new Date();
                 const dateAddedObj = dateObject(dateAdded);
 
-                const dfcDataArray = handleDfcData(newId, dateAdded, dateAddedObj, data);
+                const dfcDataArray = handleDfcData(newId, dateAdded, dateAddedObj, data, section);
 
                 const dreData = {
                     ...data,
@@ -55,7 +58,7 @@ export default authenticated(async (req, res) => {
                     taxedValue: +data.value - +data.value * +data.creditConfig.taxa / 100,
                     _id: newId,
                     dateAdded,
-                    type: 'income',
+                    type: section,
                     active: isDateBefore(data.competenceMonth, dateAddedObj)
                 };
 
@@ -78,7 +81,7 @@ export default authenticated(async (req, res) => {
                                 }
                             },
                             $inc: {
-                                'dre.$.monthResult': dreData.value,
+                                'dre.$.monthResult': section === 'income' ? dreData.value : -dreData.value,
                             }
                         }
                     );
@@ -87,7 +90,7 @@ export default authenticated(async (req, res) => {
                         const newDreItem = {
                             year: data.competenceMonth.year,
                             month: data.competenceMonth.month,
-                            monthResult: dreData.value,
+                            monthResult: section === 'income' ? dreData.value : -dreData.value,
                             data: [dreData],
                         };
 
@@ -120,7 +123,7 @@ export default authenticated(async (req, res) => {
                                     }
                                 },
                                 $inc: {
-                                    'dfc.$.monthResult': dfcData.value,
+                                    'dfc.$.monthResult': section === 'income' ? dfcData.value : -dfcData.value,
                                 }
                             }
                         );
@@ -129,7 +132,7 @@ export default authenticated(async (req, res) => {
                             const newDfcItem = {
                                 year: dfcData.paymentDate.year,
                                 month: dfcData.paymentDate.month,
-                                monthResult: dfcData.value,
+                                monthResult: section === 'income' ? dfcData.value : -dfcData.value,
                                 data: [dfcData],
                             };
 
@@ -185,20 +188,18 @@ function isDateBefore(paymentDate, dateAddedObj) {
         return false;
     }
 
-    if (paymentDate.day < dateAddedObj.day) {
+    if (paymentDate.day <= dateAddedObj.day) {
         return true;
     } else {
         return false;
     }
 }
 
-function handleDfcData(newId, dateAdded, dateAddedObj, data) {
+function handleDfcData(newId, dateAdded, dateAddedObj, data, section) {
 
-    const valueFormat = +maskMoneyNumber(data.value );
-    const newValue = valueFormat- valueFormat * +data.creditConfig.taxa / 100;
+    const valueFormat = +maskMoneyNumber(data.value);
+    const newValue = valueFormat - valueFormat * +data.creditConfig.taxa / 100;
 
-    console.log("data", newId, dateAdded, dateAddedObj, data)
-    console.log("newValue", newValue, newValue / +data.creditConfig.parcelas)
     const newData = [];
 
     let currentPaymentDate = { ...data.paymentDate };
@@ -218,7 +219,7 @@ function handleDfcData(newId, dateAdded, dateAddedObj, data) {
             value: maskMoneyNumber((newValue / +data.creditConfig.parcelas).toFixed(2)),
             _id: newId,
             dateAdded,
-            type: 'income',
+            type: section,
             creditConfig: newCreditConfig,
             active: isDateBefore(currentPaymentDate, dateAddedObj)
         };

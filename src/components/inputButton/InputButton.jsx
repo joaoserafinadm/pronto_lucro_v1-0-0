@@ -69,7 +69,8 @@ export default function InputButton(props) {
                     {/* </ Link> */}
                 </div>
                 <div className={`${!props.menubar ? styles.buttonSectionPosition2 : styles.buttonSectionPosition2Menubar}`}>
-                    <div className={`${styles.buttonSection} cardAnimation`} type='button' onClick={() => setOpen(!open)}>
+                    <div className={`${styles.buttonSection} cardAnimation`} 
+                    type='button' onClick={() => setOpen(!open)} data-bs-toggle="modal" data-bs-target="#expenseAddModal">
                         <span className={`${styles.buttonIcon} shadow`}>
                             <FontAwesomeIcon icon={faArrowTrendDown} className='text-danger' />
                         </span>

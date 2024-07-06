@@ -26,7 +26,7 @@ import { createImageUrl } from "../../utils/createImageUrl";
 
 
 
-export default function IncomeAddModal(props) {
+export default function ExpenseAddModal(props) {
 
     const token = jwt.decode(Cookie.get('auth'));
 
@@ -54,14 +54,12 @@ export default function IncomeAddModal(props) {
 
     const dataFunction = async (user_id) => {
 
-        console.log("user_id", user_id)
-
         await axios.get(`${baseUrl()}/api/incomeAdd`, {
             params: {
                 user_id
             }
         }).then(res => {
-            setTags(res.data.incomeTags)
+            setTags(res.data.expenseTags)
         }).catch(e => {
             console.log(e)
         })
@@ -124,7 +122,7 @@ export default function IncomeAddModal(props) {
 
                 const data = {
                     user_id: token.sub,
-                    section:'income',
+                    section: 'expense',
                     value,
                     paymentDate,
                     paymentMethod,
@@ -144,12 +142,12 @@ export default function IncomeAddModal(props) {
 
                 router.push('/transactions')
             } catch (e) {
-                showModalBs("addIncomeModal")
+                showModalBs("expenseAddModal")
                 setLoadingSave(false);
             }
         } else {
 
-            scrollTo('addIncomeModal');
+            scrollTo('expenseAddModal');
             setLoadingSave(false);
         }
     }
@@ -174,9 +172,8 @@ export default function IncomeAddModal(props) {
 
 
 
-
     return (
-        <div class="modal fade" id="addIncomeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="expenseAddModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
                 <div class="modal-content">
                     <div className="modal-body px-0" style={{ overflowX: 'hidden' }}>
@@ -185,13 +182,13 @@ export default function IncomeAddModal(props) {
 
                         <div className="row px-3 my-2">
                             <div className="col-12 ">
-                                <span className=" text-white bold rounded-pill px-2 py-1 ctm-bg-success">Valor da receita</span>
+                                <span className=" text-white bold rounded-pill px-2 py-1 ctm-bg-danger">Valor da despesa</span>
                             </div>
                             <div className="col-12 mt-2 d-flex justify-content-between">
                                 <div className="d-flex fs-1 pe-2 align-items-center">
                                     <span className="me-1">R$</span>
                                     <input type="text" inputMode="numeric" placeholder="0,00"
-                                        className="form-control fs-2 " style={{ borderColor: '#00cc99' }}
+                                        className="form-control fs-2 " style={{ borderColor: '#f2545b' }}
                                         value={value} id='valueInput'
                                         onChange={e => setValue(maskInputMoney(e.target.value))} />
                                 </div>
@@ -231,22 +228,22 @@ export default function IncomeAddModal(props) {
                                                 {!paymentMethod ?
                                                     <>
                                                         <span type="button" onClick={() => setPaymentMethod(1)}
-                                                            class={`cardAnimation px-2 py-1 m-2 text-white small mx-1 rounded-pill ${paymentMethod === 1 ? 'ctm-bg-success' : 'ctm-bg-primary'}`}>
+                                                            class={`cardAnimation px-2 py-1 m-2 text-white small mx-1 rounded-pill ${paymentMethod === 1 ? 'ctm-bg-danger' : 'ctm-bg-primary'}`}>
                                                             Dinheiro
                                                         </span>
                                                         <span type="button" onClick={() => setPaymentMethod(2)}
-                                                            class={`cardAnimation px-2 py-1 m-2 text-white small mx-1 rounded-pill ${paymentMethod === 2 ? 'ctm-bg-success' : 'ctm-bg-primary'}`}>
+                                                            class={`cardAnimation px-2 py-1 m-2 text-white small mx-1 rounded-pill ${paymentMethod === 2 ? 'ctm-bg-danger' : 'ctm-bg-primary'}`}>
                                                             Cartão de crédito
                                                         </span>
                                                     </>
                                                     :
                                                     <span type="button"
-                                                        class={`cardAnimation px-2 py-1 m-2 text-white small mx-1 rounded-pill ctm-bg-success`}>
+                                                        class={`cardAnimation bold px-2 py-1 m-2 text-white small mx-1 rounded-pill ctm-bg-danger`}>
                                                         {paymentMethodOptions.find(elem => elem.id === paymentMethod)?.description}
                                                     </span>
 
                                                 }
-                                                <span type="button" onClick={() => showModal('paymentMethodSelectModalIncome')}
+                                                <span type="button" onClick={() => showModal('paymentMethodSelectModalExpense')}
                                                     class={`cardAnimation px-2 py-1 m-2 text-white small mx-1 rounded-pill  ctm-bg-primary`}>
                                                     Outros...
                                                 </span>
@@ -254,8 +251,8 @@ export default function IncomeAddModal(props) {
 
                                                 <PaymentMethodSelectModal paymentMethod={paymentMethod}
                                                     setPaymentMethod={setPaymentMethod}
-                                                    id="paymentMethodSelectModalIncome"
-                                                    section="income" />
+                                                    id="paymentMethodSelectModalExpense"
+                                                    section="expense" />
 
 
 
@@ -264,10 +261,9 @@ export default function IncomeAddModal(props) {
 
 
 
-                                        <PaymentMethodConfig
-                                            paymentMethod={paymentMethod}
+                                        <PaymentMethodConfig paymentMethod={paymentMethod}
                                             setCreditConfig={setCreditConfig}
-                                            section="income" />
+                                            section="expense" />
 
                                         <hr />
                                         <div className="row d-flex justify-content-between">
@@ -281,21 +277,21 @@ export default function IncomeAddModal(props) {
                                                 {isToday(paymentDate) ?
                                                     <>
                                                         <span type="button" onClick={() => setPaymentDate(dateObject(new Date()))}
-                                                            class={`cardAnimation px-2 py-1 text-white small mx-1 rounded-pill ${JSON.stringify(paymentDate) == JSON.stringify(dateObject(new Date())) ? 'ctm-bg-success' : 'ctm-bg-primary'}`}>
+                                                            class={`cardAnimation px-2 py-1 text-white small mx-1 rounded-pill ${JSON.stringify(paymentDate) == JSON.stringify(dateObject(new Date())) ? 'ctm-bg-danger' : 'ctm-bg-primary'}`}>
                                                             Hoje
                                                         </span>
                                                         <span onClick={() => setPaymentDate(dateObject(new Date(), -1))}
-                                                            class={`cardAnimation px-2 py-1 text-white small mx-1 rounded-pill ${JSON.stringify(paymentDate) == JSON.stringify(dateObject(new Date(), -1)) ? 'ctm-bg-success' : 'ctm-bg-primary'}`}>
+                                                            class={`cardAnimation px-2 py-1 text-white small mx-1 rounded-pill ${JSON.stringify(paymentDate) == JSON.stringify(dateObject(new Date(), -1)) ? 'ctm-bg-danger' : 'ctm-bg-primary'}`}>
                                                             Ontem
                                                         </span>
                                                     </>
                                                     :
-                                                    <span onClick={() => showModal('datePickerModalIncome')}
-                                                        className={`cardAnimation px-2 py-1 text-white small mx-1 rounded-pill ctm-bg-success`}>
+                                                    <span onClick={() => showModal('datePickerModalExpense')}
+                                                        className={`cardAnimation px-2 py-1 text-white small mx-1 rounded-pill bold ctm-bg-danger`}>
                                                         {dateFormat(paymentDate)}
                                                     </span>
                                                 }
-                                                <span onClick={() => showModal('datePickerModalIncome')}
+                                                <span onClick={() => showModal('datePickerModalExpense')}
                                                     className={`cardAnimation px-2 py-1 text-white small mx-1 rounded-pill ctm-bg-primary`}>
                                                     Outro
                                                 </span>
@@ -306,8 +302,8 @@ export default function IncomeAddModal(props) {
                                                 title="Data da receita"
                                                 date={paymentDate}
                                                 setDate={setPaymentDate}
-                                                id="datePickerModalIncome"
-                                                section="income" />
+                                                id="datePickerModalExpense"
+                                                section="expense" />
 
                                         </div>
                                         <hr />
@@ -355,7 +351,7 @@ export default function IncomeAddModal(props) {
                                                 <FontAwesomeIcon icon={faTag} />
                                                 <span className="small fw-bold mb-2 ms-3">Marcador</span>
                                             </div>
-                                            <div className="col-12 mt-2 d-flex justify-content-between" onClick={() => showModal('tagSelectModalIncome')}>
+                                            <div className="col-12 mt-2 d-flex justify-content-between" onClick={() => showModal('tagSelectModalExpense')}>
                                                 {!tagSelected ?
                                                     <span type="button"
                                                         class=" px-2 py-1  small mx-1 rounded-pill border pulse shadow">
@@ -367,7 +363,7 @@ export default function IncomeAddModal(props) {
                                                             <span className="small ms-3 bold">{tagSelected.category}</span>
                                                             <div>
 
-                                                                <span type="button" onClick={() => showModal('tagSelectModalIncome')}
+                                                                <span type="button" onClick={() => showModal('tagSelectModalExpense')}
                                                                     className={`cardAnimation px-2 py-1   small mx-1 rounded-pill fw-bold `}
                                                                     style={{ backgroundColor: tagSelected.color, color: tagSelected.textColor }}>
                                                                     {tagSelected.tag}
@@ -385,8 +381,8 @@ export default function IncomeAddModal(props) {
                                                 tags={tags}
                                                 setTagSelected={setTagSelected}
                                                 dataFunction={() => dataFunction(token.sub)}
-                                                id="tagSelectModalIncome"
-                                                section="income" />
+                                                id="tagSelectModalExpense"
+                                                section="expense" />
                                         </div>
 
                                         <hr />
@@ -498,7 +494,7 @@ export default function IncomeAddModal(props) {
                             onClick={() => initialValues()}>
                             Cancelar
                         </button>
-                        <button className="btn btn-custom-success"
+                        <button className="btn btn-custom-danger"
                             data-bs-dismiss="modal"
                             onClick={() => handleSave()}>
                             Salvar

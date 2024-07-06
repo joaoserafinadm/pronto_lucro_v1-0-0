@@ -20,7 +20,7 @@ export default function DatePickerModal(props) {
 
 
     return (
-        <Modal id='datePickerModal' size='modal-md'>
+        <Modal id={props.id} size='modal-md'>
 
             <div className="modal-body">
                 <div className="row">
@@ -35,14 +35,14 @@ export default function DatePickerModal(props) {
                 <button
                     type="button"
                     className="btn btn-outline-custom-tertiary"
-                    onClick={() => { hideModal('datePickerModal') }}
+                    onClick={() => { hideModal( props.id ) }}
                 >
                     Cancelar
                 </button>
-                <button
+                <button 
                     type="button"
-                    className="btn btn-outline-custom-success"
-                    onClick={() => { hideModal('datePickerModal'); setDate(newDate) }}
+                    className={`btn ${props.section === 'income' ? 'btn-outline-custom-success' : props.section === 'expense' ? 'btn-outline-custom-danger' : 'btn-outline-custom-tertiary'}`}
+                    onClick={() => { hideModal( props.id ); setDate(newDate) }}
                 >
                     Selecionar
                 </button>

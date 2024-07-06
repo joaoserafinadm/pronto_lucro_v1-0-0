@@ -49,6 +49,7 @@ import { SessionProvider } from 'next-auth/react'
 import ConsultantRedirect from "../src/pages/consultantRedirect/index.jsx";
 import { closeModal } from "../utils/modalControl.js";
 import IncomeAddModal from "../src/incomeAdd/IncomeAddModal.jsx";
+import ExpenseAddModal from "../src/incomeAdd/ExpenseAddModal.jsx";
 
 
 export default function MyApp({ Component, pageProps }) {
@@ -167,7 +168,8 @@ export default function MyApp({ Component, pageProps }) {
                         </Head>
 
                         <MainLayout>
-                        <IncomeAddModal />
+                            <IncomeAddModal />
+                            <ExpenseAddModal />
 
                             <Component  {...pageProps} />
                         </MainLayout>

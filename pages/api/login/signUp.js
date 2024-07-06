@@ -78,7 +78,8 @@ export default async function (req, res) {
                     },
                     dateAdd: new Date(),
                     dateLimit: date.addDays(8),
-                    tags: tags,
+                    incomeTags: incomeTags,
+                    expenseTags: expenseTags,
                     passwordResetToken: '',
                     passwordResetExpires: '',
                     accessCount: 0,
@@ -111,7 +112,7 @@ export default async function (req, res) {
 
 
 
-const tags = [
+const incomeTags = [
     {
         _id: new ObjectId(),
         category: 'Vendas e Receitas',
@@ -229,6 +230,131 @@ const tags = [
         category: 'Outros Recebimentos',
         tag: 'Royalties',
         color: '#4682B4', // SteelBlue
+        textColor: 'white',
+        icon: '',
+    }
+];
+
+
+
+const expenseTags = [
+    {
+        _id: new ObjectId(),
+        category: 'Custos de Operação',
+        tag: 'Salários e Benefícios',
+        color: '#FF6347', // Tomato
+        textColor: 'white',
+        icon: '',
+    },
+    {
+        _id: new ObjectId(),
+        category: 'Custos de Operação',
+        tag: 'Aluguel de Imóveis',
+        color: '#8B0000', // DarkRed
+        textColor: 'white',
+        icon: '',
+    },
+    {
+        _id: new ObjectId(),
+        category: 'Custos de Operação',
+        tag: 'Energia Elétrica',
+        color: '#FF4500', // OrangeRed
+        textColor: 'white',
+        icon: '',
+    },
+    {
+        _id: new ObjectId(),
+        category: 'Custos de Operação',
+        tag: 'Água e Esgoto',
+        color: '#CD5C5C', // IndianRed
+        textColor: 'white',
+        icon: '',
+    },
+    {
+        _id: new ObjectId(),
+        category: 'Marketing e Publicidade',
+        tag: 'Publicidade Online',
+        color: '#FF8C00', // DarkOrange
+        textColor: 'white',
+        icon: '',
+    },
+    {
+        _id: new ObjectId(),
+        category: 'Marketing e Publicidade',
+        tag: 'Publicidade Offline',
+        color: '#DAA520', // GoldenRod
+        textColor: 'black',
+        icon: '',
+    },
+    {
+        _id: new ObjectId(),
+        category: 'Marketing e Publicidade',
+        tag: 'Eventos e Patrocínios',
+        color: '#FFA07A', // LightSalmon
+        textColor: 'black',
+        icon: '',
+    },
+    {
+        _id: new ObjectId(),
+        category: 'Investimentos em Tecnologia',
+        tag: 'Software e Licenças',
+        color: '#8B4513', // SaddleBrown
+        textColor: 'white',
+        icon: '',
+    },
+    {
+        _id: new ObjectId(),
+        category: 'Investimentos em Tecnologia',
+        tag: 'Equipamentos de TI',
+        color: '#A52A2A', // Brown
+        textColor: 'white',
+        icon: '',
+    },
+    {
+        _id: new ObjectId(),
+        category: 'Outras Despesas',
+        tag: 'Consultoria Externa',
+        color: '#556B2F', // DarkOliveGreen
+        textColor: 'white',
+        icon: '',
+    },
+    {
+        _id: new ObjectId(),
+        category: 'Outras Despesas',
+        tag: 'Taxas Bancárias',
+        color: '#6B8E23', // OliveDrab
+        textColor: 'white',
+        icon: '',
+    },
+    {
+        _id: new ObjectId(),
+        category: 'Tributos e Impostos',
+        tag: 'Imposto de Renda',
+        color: '#4682B4', // SteelBlue
+        textColor: 'white',
+        icon: '',
+    },
+    {
+        _id: new ObjectId(),
+        category: 'Tributos e Impostos',
+        tag: 'Contribuições Sociais',
+        color: '#4169E1', // RoyalBlue
+        textColor: 'white',
+        icon: '',
+    },
+    {
+        _id: new ObjectId(),
+        category: 'Outras Despesas',
+        tag: 'Reparos e Manutenção',
+        color: '#696969', // DimGray
+        textColor: 'white',
+        icon: '',
+    },
+    {
+        _id: new ObjectId(),
+        category: 'Outras Despesas',
+        tag: 'Despesas Jurídicas',
+        color: '#708090', // SlateGray
         textColor: 'white',
         icon: '',
     }

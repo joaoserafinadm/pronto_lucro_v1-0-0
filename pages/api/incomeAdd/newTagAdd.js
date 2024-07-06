@@ -30,7 +30,7 @@ const handler = async (req, res) => {
         return res.status(405).json({ message: 'Method not allowed.' });
     }
 
-    const { user_id, newTag } = req.body;
+    const { user_id, section, newTag } = req.body;
 
     if (!user_id || !newTag) {
         return res.status(400).json({ error: "Missing parameters in request body." });
@@ -49,17 +49,33 @@ const handler = async (req, res) => {
             _id: new ObjectId()
         };
 
-        await db.collection('users').updateOne(
-            { _id: new ObjectId(user_id) },
-            {
-                $push: {
-                    tags: {
-                        $each: [newTagData],
-                        $position: 0
+        if (section === 'income') {
+
+            await db.collection('users').updateOne(
+                { _id: new ObjectId(user_id) },
+                {
+                    $push: {
+                        incomeTags: {
+                            $each: [newTagData],
+                            $position: 0
+                        }
                     }
                 }
-            }
-        );
+            );
+        } else if (section === "expense") {
+            await db.collection('users').updateOne(
+                { _id: new ObjectId(user_id) },
+                {
+                    $push: {
+                        expenseTags: {
+                            $each: [newTagData],
+                            $position: 0
+                        }
+                    }
+                }
+            );
+        }
+
 
         res.status(200).json(newTagData);
     } catch (error) {

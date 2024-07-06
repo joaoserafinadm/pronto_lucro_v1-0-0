@@ -21,7 +21,7 @@ export default function TagSelect(props) {
                                         <div className="col-12 d-flex flex-wrap">
                                             {elem?.tags?.map((elem1, index) => {
                                                 return (
-                                                    <span type="button" onClick={() => { setTagSelected(elem1); hideModal('tagSelectModal') }}
+                                                    <span type="button" onClick={() => { setTagSelected(elem1); hideModal(props.id) }}
                                                         className={`cardAnimation px-2 py-1 m-2  small mx-1 rounded-pill fw-bold `}
                                                         style={{ backgroundColor: elem1.color, color: elem1.textColor }}>
                                                         {elem1.tag}
@@ -45,13 +45,13 @@ export default function TagSelect(props) {
                 <button
                     type="button"
                     className="btn btn-outline-custom-tertiary"
-                    onClick={() => { hideModal('tagSelectModal'); setSection('') }}
+                    onClick={() => { hideModal(props.id); setSection('') }}
                 >
                     Cancelar
                 </button>
                 <button
                     type="button"
-                    className="btn btn-outline-custom-success"
+                    className={`btn ${props.section === 'income' ? 'btn-outline-custom-success' :props.section === 'expense' ? 'btn-outline-custom-danger' : 'btn-outline-custom-tertiary'} `}
                     onClick={() => { setSection('tagAdd') }}
                 >
                     Adicionar marcador

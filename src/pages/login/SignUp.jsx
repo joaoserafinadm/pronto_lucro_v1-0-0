@@ -13,7 +13,7 @@ import { SpinnerSM } from "../../components/loading/Spinners";
 import SignUpSuccessModal from "./SignUpSuccessModal";
 import isMobile from "../../../utils/isMobile";
 import { signIn, signOut } from 'next-auth/react'
-import { showModal } from "../../../utils/modalControl";
+import { showModalBs } from "../../../utils/modalControl";
 
 
 export default function SignUp(props) {
@@ -111,6 +111,7 @@ export default function SignUp(props) {
 
                     resolve(true)
                 }).catch(e => {
+                    console.log(e)
                     setAuthError('Código de autenticação errado')
 
                     resolve(false)
@@ -140,7 +141,7 @@ export default function SignUp(props) {
             await axios
                 .post(`${baseUrl()}/api/login/signUp`, data)
                 .then((res) => {
-                    showModal('signUpSuccessModal')
+                    showModalBs('signUpSuccessModal')
 
                 }).catch((e) => {
                     setSignUpError(
@@ -175,7 +176,7 @@ export default function SignUp(props) {
             await axios.post(`${baseUrl()}/api/login/authMail`, data)
                 .then(res => {
                     setAuthCode(res.data.secureCode)
-                    showModal('authModal')
+                    showModalBs('authModal')
                 }).catch(e => {
                     setSignUpLoading(false)
                     setEmailError('E-mail já cadastrado.')

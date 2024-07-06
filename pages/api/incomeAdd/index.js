@@ -28,9 +28,10 @@ export default authenticated(async (req, res) => {
             if (!userExist) {
                 res.status(400).json({ error: "User doesn't exist." });
             } else {
-                const tags = userExist.tags
+                const incomeTags = userExist.incomeTags
+                const expenseTags = userExist.expenseTags
 
-                res.status(200).json({ tags });
+                res.status(200).json({ incomeTags, expenseTags });
             }
         }
 
@@ -38,9 +39,9 @@ export default authenticated(async (req, res) => {
 
 
     } else if (req.method === "POST") {
-        const { user_id, ...data } = req.body;
+        const { user_id, section, ...data } = req.body;
 
-        if (!user_id || !data?.value) {
+        if (!user_id || !data?.value || !section) {
             res.status(400).json({ error: "Missing parameters on request body" });
         } else {
             const { db } = await connect();
@@ -60,7 +61,7 @@ export default authenticated(async (req, res) => {
                     value: maskMoneyNumber(data.value),
                     _id: newId,
                     dateAdded,
-                    type: 'income',
+                    type: section,
                     active: isDateBefore(data.competenceMonth, dateAddedObj)
                 };
 
@@ -70,8 +71,8 @@ export default authenticated(async (req, res) => {
                     value: maskMoneyNumber(data.value),
                     _id: newId,
                     dateAdded,
-                    type: 'income',
-                    active: isDateBefore( data.paymentDate, dateAddedObj)
+                    type: section,
+                    active: isDateBefore(data.paymentDate, dateAddedObj)
                 };
 
                 try {
@@ -93,7 +94,7 @@ export default authenticated(async (req, res) => {
                                 }
                             },
                             $inc: {
-                                'dre.$.monthResult': dreData.value,
+                                'dre.$.monthResult': section === 'income' ? dreData.value : -dreData.value,
                             }
                         }
                     );
@@ -102,7 +103,7 @@ export default authenticated(async (req, res) => {
                         const newDreItem = {
                             year: data.competenceMonth.year,
                             month: data.competenceMonth.month,
-                            monthResult: dreData.value,
+                            monthResult: section === 'income' ? dreData.value : -dreData.value,
                             data: [dreData],
                         };
 
@@ -134,7 +135,7 @@ export default authenticated(async (req, res) => {
                                 }
                             },
                             $inc: {
-                                'dfc.$.monthResult': dfcData.value,
+                                'dfc.$.monthResult': section === 'income' ? dfcData.value : -dfcData.value,
                                 // 'dfc.$.monthTotal': dfcData.value,
                             }
                         }
@@ -145,7 +146,7 @@ export default authenticated(async (req, res) => {
                             year: data.paymentDate.year,
                             month: data.paymentDate.month,
                             // lastMonthResult: 0,
-                            monthResult: dfcData.value,
+                            monthResult: section === 'income' ? dfcData.value : -dfcData.value,
                             // monthTotal: dfcData.value,
                             data: [dfcData],
                         };
@@ -206,7 +207,7 @@ function isDateBefore(paymentDate, dateAddedObj) {
     }
 
     // Meses são iguais, comparar dias
-    if (paymentDate.day < dateAddedObj.day) {
+    if (paymentDate.day <= dateAddedObj.day) {
         return true;
     } else {
         return false;
