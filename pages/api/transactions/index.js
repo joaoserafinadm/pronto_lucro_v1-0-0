@@ -44,7 +44,6 @@ export default authenticated(async (req, res) => {
                     }
                 }, 0);
 
-                console.log("monthResult", monthResult);
 
                 const dfcResult = userExist.dfc.reduce((acc, elem) => {
                     if (isBeforeOrEqual(elem, { year, month })) {

@@ -90,7 +90,7 @@ export default function Transactions() {
                         :
                         <div className="fadeItem">
                             <DesktopPage data={data} dateSelected={dateSelected} />
-                            {/* <TransactionsCard data={data} /> */}
+                            
                         </div>
                     }
                     <table>
