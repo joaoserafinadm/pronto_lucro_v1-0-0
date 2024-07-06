@@ -13,6 +13,10 @@ export default function DfcResultsCard(props) {
         format: (value) => value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
     }
 
+    const brlNumber = {
+        format: (value) => value.toLocaleString('pt-BR', { decimal: '.', style: 'decimal', minimumFractionDigits: 2, maximumFractionDigits: 2 })
+    }
+
 
 
     return (

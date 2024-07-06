@@ -10,7 +10,7 @@ import { Accordion } from "react-bootstrap";
 import { useAccordionButton } from "react-bootstrap/AccordionButton";
 import { AccordionContext } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleRight, faBook, faBookOpen, faBuildingUser, faChartColumn, faChartLine, faChartSimple, faClipboardCheck, faClipboardList, faDiagramProject, faFileContract, faGear, faHome, faHouseUser, faListCheck, faMessage, faMoneyBillTransfer, faObjectGroup, faTable, faTree, faUsers } from "@fortawesome/free-solid-svg-icons";
+import { faAngleRight, faBook, faBookOpen, faBuildingUser, faChartColumn, faChartLine, faChartSimple, faClipboardCheck, faClipboardList, faCreditCard, faCreditCardAlt, faDiagramProject, faFileContract, faGear, faHome, faHouseUser, faListCheck, faMessage, faMoneyBillTransfer, faObjectGroup, faTable, faTags, faTree, faUsers } from "@fortawesome/free-solid-svg-icons";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
@@ -109,7 +109,7 @@ export default function Nav(props) {
                         </div>
 
                         <Scrollbars
-                            style={{ height: "calc(100vh - 130px" }}
+                            style={{ height: "calc(100vh - 200px" }}
                             autoHide
                             autoHideTimeout={3000}
                             autoHideDuration={200}
@@ -133,12 +133,42 @@ export default function Nav(props) {
                                         </ContextAwareToggle>
                                     </li>
                                     <li>
-                                        <ContextAwareToggle eventKey="0" collapse="InicioItem">
+                                        <ContextAwareToggle eventKey="0" collapse="transactionsItem">
                                             <div className="d-flex justify-content-start " type='button' onClick={() => router.push('/transactions')}>
                                                 <div className="col-1 text-center me-3">
                                                     <FontAwesomeIcon icon={faMoneyBillTransfer} className="me-2 icon" />
                                                 </div>
                                                 <div className="col-9 bold">Transações</div>
+                                            </div>
+                                        </ContextAwareToggle>
+                                    </li>
+                                    <li>
+                                        <ContextAwareToggle eventKey="1" collapse="resultsItem">
+                                            <div className="d-flex justify-content-start " type='button' onClick={() => router.push('/transactions')}>
+                                                <div className="col-1 text-center me-3">
+                                                    <FontAwesomeIcon icon={faChartLine} className="me-2 icon" />
+                                                </div>
+                                                <div className="col-9 bold">Resultados</div>
+                                            </div>
+                                        </ContextAwareToggle>
+                                    </li>
+                                    <li>
+                                        <ContextAwareToggle eventKey="2" collapse="cardsItem">
+                                            <div className="d-flex justify-content-start " type='button' onClick={() => router.push('/transactions')}>
+                                                <div className="col-1 text-center me-3">
+                                                    <FontAwesomeIcon icon={faCreditCard} className="me-2 icon" />
+                                                </div>
+                                                <div className="col-9 bold">Cartões</div>
+                                            </div>
+                                        </ContextAwareToggle>
+                                    </li>
+                                    <li>
+                                        <ContextAwareToggle eventKey="3" collapse="tagsItem">
+                                            <div className="d-flex justify-content-start " type='button' onClick={() => router.push('/transactions')}>
+                                                <div className="col-1 text-center me-3">
+                                                    <FontAwesomeIcon icon={faTags} className="me-2 icon" />
+                                                </div>
+                                                <div className="col-9 bold">Marcadores</div>
                                             </div>
                                         </ContextAwareToggle>
                                     </li>

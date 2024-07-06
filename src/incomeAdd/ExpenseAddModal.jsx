@@ -48,6 +48,9 @@ export default function ExpenseAddModal(props) {
     const [tags, setTags] = useState([])
     const [loadingSave, setLoadingSave] = useState(false)
 
+    const [valueError, setValueError] = useState('')
+
+
     useEffect(() => {
         dataFunction(token.sub)
     }, [])
@@ -79,18 +82,21 @@ export default function ExpenseAddModal(props) {
     const validate = () => {
 
         removeInputError();
+        setValueError('')
 
         let valueError = '';
 
         if (value === '') valueError = 'Campo obrigatório';
 
         if (valueError) {
+            setValueError(valueError)
             document.getElementById('valueInput').classList.add('inputError');
             return false;
         } else {
             return true;
         }
     };
+
 
     const isToday = (date) => {
 
@@ -134,19 +140,35 @@ export default function ExpenseAddModal(props) {
                 };
 
                 if (paymentMethod === 2) {
-                    const res = await axios.post(`${baseUrl()}/api/incomeAdd/creditPayment`, data);
+                    const res = await axios.post(`${baseUrl()}/api/incomeAdd/creditPayment`, data)
+                        .then(res => {
+                            initialValues()
+                            router.push('/transactions')
+                        }).catch(e => {
+                            showModalBs("expenseAddModal")
+                            scrollTo('expenseAddModal');
+                            setLoadingSave(false);
+                        });
                 } else {
-                    const res = await axios.post(`${baseUrl()}/api/incomeAdd`, data);
+                    const res = await axios.post(`${baseUrl()}/api/incomeAdd`, data)
+                        .then(res => {
+                            initialValues()
+                            router.push('/transactions')
+                        }).catch(e => {
+                            showModalBs("expenseAddModal")
+                            scrollTo('expenseAddModal');
+                            setLoadingSave(false);
+                        });
                 }
                 setLoadingSave(false);
 
-                router.push('/transactions')
             } catch (e) {
                 showModalBs("expenseAddModal")
                 setLoadingSave(false);
             }
         } else {
 
+            showModalBs("expenseAddModal")
             scrollTo('expenseAddModal');
             setLoadingSave(false);
         }
@@ -166,6 +188,8 @@ export default function ExpenseAddModal(props) {
         setDescription('')
         setTagSelected(null)
         setFiles(null)
+        setValueError('')
+        removeInputError()
 
         return
     }
@@ -208,6 +232,8 @@ export default function ExpenseAddModal(props) {
                                     </div>
                                 </div> */}
                             </div>
+                            <span className="text-danger small">{valueError}</span>
+
                         </div>
 
 

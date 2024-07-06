@@ -131,7 +131,7 @@ export default function Header(props) {
 
 
     return (
-        <div className={`d-flex justify-content-center align-items-center ${styles.header}`}>
+        <div className={`d-flex shadow justify-content-center align-items-center ${styles.header}`}>
 
 
             <Alerts />

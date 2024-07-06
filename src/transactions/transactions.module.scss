@@ -1,0 +1,66 @@
+.background {
+    height: 110vh;
+    width: 100vw;
+    background-color: #636363;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.backgroundImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 110vw;
+    height: 110vh;
+    z-index: -1;
+    opacity: 0.3;
+}
+
+.cardIcon {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.cardIcon>* {
+    width: 75px;
+    height: 75px;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+}
+
+
+@media screen and (max-width: 550px) {
+
+
+    .cardIcon {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+    .cardIcon>* {
+        width: 45px;
+        height: 45px;
+        border-radius: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 10px;
+    }
+
+
+}

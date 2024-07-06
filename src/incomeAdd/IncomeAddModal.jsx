@@ -48,6 +48,8 @@ export default function IncomeAddModal(props) {
     const [tags, setTags] = useState([])
     const [loadingSave, setLoadingSave] = useState(false)
 
+    const [valueError, setValueError] = useState('')
+
     useEffect(() => {
         dataFunction(token.sub)
     }, [])
@@ -81,12 +83,14 @@ export default function IncomeAddModal(props) {
     const validate = () => {
 
         removeInputError();
+        setValueError('')
 
         let valueError = '';
 
         if (value === '') valueError = 'Campo obrigatório';
 
         if (valueError) {
+            setValueError(valueError)
             document.getElementById('valueInput').classList.add('inputError');
             return false;
         } else {
@@ -124,7 +128,7 @@ export default function IncomeAddModal(props) {
 
                 const data = {
                     user_id: token.sub,
-                    section:'income',
+                    section: 'income',
                     value,
                     paymentDate,
                     paymentMethod,
@@ -136,19 +140,35 @@ export default function IncomeAddModal(props) {
                 };
 
                 if (paymentMethod === 2) {
-                    const res = await axios.post(`${baseUrl()}/api/incomeAdd/creditPayment`, data);
+                    const res = await axios.post(`${baseUrl()}/api/incomeAdd/creditPayment`, data)
+                        .then(res => {
+                            initialValues()
+                            router.push('/transactions')
+                        }).catch(e => {
+                            showModalBs("addIncomeModal")
+                            scrollTo('addIncomeModal');
+                            setLoadingSave(false);
+                        });
                 } else {
-                    const res = await axios.post(`${baseUrl()}/api/incomeAdd`, data);
+                    const res = await axios.post(`${baseUrl()}/api/incomeAdd`, data)
+                        .then(res => {
+                            initialValues()
+                            router.push('/transactions')
+                        }).catch(e => {
+                            showModalBs("addIncomeModal")
+                            scrollTo('addIncomeModal');
+                            setLoadingSave(false);
+                        });
                 }
                 setLoadingSave(false);
 
-                router.push('/transactions')
             } catch (e) {
                 showModalBs("addIncomeModal")
                 setLoadingSave(false);
             }
         } else {
 
+            showModalBs("addIncomeModal")
             scrollTo('addIncomeModal');
             setLoadingSave(false);
         }
@@ -168,6 +188,8 @@ export default function IncomeAddModal(props) {
         setDescription('')
         setTagSelected(null)
         setFiles(null)
+        setValueError('')
+        removeInputError()
 
         return
     }
@@ -211,6 +233,8 @@ export default function IncomeAddModal(props) {
                                     </div>
                                 </div> */}
                             </div>
+                            <span className="text-danger small">{valueError}</span>
+
                         </div>
 
 

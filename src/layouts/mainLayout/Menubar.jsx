@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styles from './Menubar.module.scss'
-import { faHome, faHomeUser, faList, faMoneyBillTransfer, faUser, faUsers } from '@fortawesome/free-solid-svg-icons'
+import { faChartLine, faHome, faHomeUser, faList, faMoneyBillTransfer, faUser, faUsers } from '@fortawesome/free-solid-svg-icons'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
@@ -49,7 +49,7 @@ export default function MenuBar(props) {
                 <div className="col d-flex justify-content-center align-items-center px-0">
 
                     <Link href='/transactions'
-                        className={`text-center  ${pathname === '/incomesManagement' ? `${styles.pageSelected}` : 'text-light'}`}>
+                        className={`text-center  ${pathname === '/transactions' ? `${styles.pageSelected}` : 'text-light'}`}>
                         <FontAwesomeIcon icon={faMoneyBillTransfer} /> <br />
                         <span style={{ fontSize: '10px' }}>Transações</span>
                     </Link>
@@ -65,8 +65,8 @@ export default function MenuBar(props) {
 
                     <Link href='/planning'
                         className={`text-center  ${pathname === '/planning' ? `${styles.pageSelected}` : 'text-light'}`}>
-                        <FontAwesomeIcon icon={faTrello} /> <br />
-                        <span style={{ fontSize: '10px' }}>Planejam...</span>
+                        <FontAwesomeIcon icon={faChartLine} /> <br />
+                        <span style={{ fontSize: '10px' }}>Resultados</span>
                     </Link>
 
                 </div>

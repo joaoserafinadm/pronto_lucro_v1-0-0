@@ -6,11 +6,17 @@ import Cookie from 'js-cookie'
 import MonthSelect from "../src/incomeAdd/MonthSelect"
 import { SpinnerLG } from "../src/components/loading/Spinners"
 import TransactionsCard from "../src/transactions/TransactionsCard"
+import Title from "../src/components/title/Title2"
+import { useDispatch } from "react-redux"
+import navbarHide from "../utils/navbarHide";
+import DesktopPage from "../src/transactions/DesktopPage"
 
 
 export default function Transactions() {
 
     const token = jwt.decode(Cookie.get('auth'));
+    const dispatch = useDispatch()
+
 
     const [data, setData] = useState(null)
     const [date, setDate] = useState({
@@ -23,6 +29,8 @@ export default function Transactions() {
 
     useEffect(() => {
         if (date) dataFunction(token.sub)
+        navbarHide(dispatch)
+
     }, [date])
 
 
@@ -54,15 +62,11 @@ export default function Transactions() {
 
     return (
         <div>
+            <Title title={'Transações'} subtitle='Controle seu histório de transações' backButton='/' />
+
 
             <div className="row px-2">
-                <div className="col-12 mt-3 ">
-                    <span className="fw-bold fs-3">Transações</span>
-                </div>
-
-            </div>
-            <div className="row px-2">
-                <div className="col-12 my-5 d-flex justify-content-center">
+                <div className="col-12 my-3 d-flex justify-content-center">
                     <MonthSelect
                         setMonth={value => { setDate(value) }}
                     />
@@ -77,7 +81,8 @@ export default function Transactions() {
                         <SpinnerLG />
                         :
                         <div className="fadeItem">
-                            <TransactionsCard data={data} />
+                            <DesktopPage data={data} />
+                            {/* <TransactionsCard data={data} /> */}
                         </div>
                     }
                     <table>
