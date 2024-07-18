@@ -1,0 +1,44 @@
+.cardIcon {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.cardIcon>* {
+    width: 75px;
+    height: 75px;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+}
+
+
+@media screen and (max-width: 550px) {
+
+
+    .cardIcon {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+    .cardIcon>* {
+        width: 45px;
+        height: 45px;
+        border-radius: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 10px;
+    }
+
+
+}
