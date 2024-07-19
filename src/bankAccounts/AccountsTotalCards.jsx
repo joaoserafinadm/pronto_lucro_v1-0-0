@@ -14,7 +14,7 @@ export default function AccountsTotalCards(props) {
 
     return (
         <div className="row my-5">
-            <div className="col-12 px-lg-3 col-md-6 d-flex justify-content-center my-1 px-4">
+            <div className="col-12 px-lg-3 col-sm-6 d-flex justify-content-center my-1 px-4">
                 <div className="col-12  col-md-12 col-lg-12 col-xl-8">
                     <span className={`card rounded-pill shadow cardAnimation `} >
                         <div className={"card-body text-center text-lg-start "} style={{ marginLeft: isMobile() ? '0px' : '80px' }}>
@@ -40,7 +40,7 @@ export default function AccountsTotalCards(props) {
                     </span>
                 </div>
             </div>
-            <div className="col-12 px-lg-3 col-md-6 d-flex justify-content-center my-1 px-4">
+            <div className="col-12 px-lg-3 col-sm-6 d-flex justify-content-center my-1 px-4">
                 <div className="col-12  col-md-12 col-lg-12 col-xl-8">
                     <span className={`card rounded-pill shadow cardAnimation `} >
                         <div className={"card-body text-center text-lg-start "} style={{ marginLeft: isMobile() ? '0px' : '80px' }}>

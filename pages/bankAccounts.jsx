@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import AccountsTotalCards from "../src/bankAccounts/AccountsTotalCards";
 import MonthSelect from "../src/incomeAdd/MonthSelect";
 import AccountCard from "../src/bankAccounts/AccountCard";
+import NewAccountCard from "../src/bankAccounts/NewAccountCard";
+import NewAccountModal from "../src/bankAccounts/NewAccountModal";
 
 
 
@@ -24,7 +26,9 @@ export default function BankAccounts() {
     }, [])
 
     return (
-        <div className="pb-5">
+        <div className="page">
+
+            <NewAccountModal />
             <Title title={'Contas bancárias'} subtitle='Gerencie suas contas bancárias' backButton='/' />
 
             <div className="row my-3">
@@ -42,20 +46,24 @@ export default function BankAccounts() {
                 <div className="col-12">
                     <div className="card">
                         <div className="card-body">
-                            <div className="row">
+                            {/* <div className="row">
                                 <div className="col-12 d-flex justify-content-end">
                                     <button className="btn btn-custom-success">
                                         + Adicionar conta
                                     </button>
                                 </div>
                             </div>
-                            <hr />
+                            <hr /> */}
 
 
                             <div className="row d-flex">
-                                <div className="col-12 col-xl-4 col-md-6">
-                                    <AccountCard dateSelected={dateSelected}/>
+                                <div className="col-12 col-xl-4 col-sm-6 my-2">
+                                    <NewAccountCard />
                                 </div>
+                                <div className="col-12 col-xl-4 col-sm-6 my-2">
+                                    <AccountCard dateSelected={dateSelected} />
+                                </div>
+                              
 
                             </div>
                         </div>
