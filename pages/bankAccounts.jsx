@@ -7,10 +7,14 @@ import MonthSelect from "../src/incomeAdd/MonthSelect";
 import AccountCard from "../src/bankAccounts/AccountCard";
 import NewAccountCard from "../src/bankAccounts/NewAccountCard";
 import NewAccountModal from "../src/bankAccounts/NewAccountModal";
-
+import axios from "axios";
+import jwt from 'jsonwebtoken'
+import Cookie from 'js-cookie'
 
 
 export default function BankAccounts() {
+
+    const token = jwt.decode(Cookie.get('auth'));
 
     const dispatch = useDispatch()
 
@@ -18,17 +22,30 @@ export default function BankAccounts() {
         month: new Date().getMonth(),
         year: new Date().getFullYear()
     })
+    const [institutions, setInstitutions] = useState([])
+
 
 
     useEffect(() => {
         navbarHide(dispatch)
-
+        dataFunction(token.sub)
     }, [])
+
+    const dataFunction = async (user_id) => {
+
+        await axios.get(`/api/bankAccounts/institutions`)
+            .then(res => {
+                setInstitutions(res.data.institutions)
+            }).catch(err => {
+                console.log(err)
+            })
+
+    }
 
     return (
         <div className="page">
 
-            <NewAccountModal />
+            <NewAccountModal institutions={institutions} />
             <Title title={'Contas bancárias'} subtitle='Gerencie suas contas bancárias' backButton='/' />
 
             <div className="row my-3">
@@ -63,7 +80,7 @@ export default function BankAccounts() {
                                 <div className="col-12 col-xl-4 col-sm-6 my-2">
                                     <AccountCard dateSelected={dateSelected} />
                                 </div>
-                              
+
 
                             </div>
                         </div>

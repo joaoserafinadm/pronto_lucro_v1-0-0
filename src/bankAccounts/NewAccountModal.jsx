@@ -1,16 +1,18 @@
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useCallback, useState } from "react";
-import bankList from '../../utils/bankList.json'
 import { maskInputMoney } from "../../utils/mask";
 import jwt from 'jsonwebtoken'
 import Cookie from 'js-cookie'
 import removeInputError from "../../utils/removeInputError";
 import axios from "axios";
 import { showModalBs } from "../../utils/modalControl";
+import ModalBankSelect from "./modalBankSelect";
 
 
 export default function NewAccountModal(props) {
+
+    const { institutions } = props
 
     const token = jwt.decode(Cookie.get('auth'));
 
@@ -25,7 +27,7 @@ export default function NewAccountModal(props) {
 
     const handleBankChange = (bankCode) => {
 
-        const bankSelected = bankList.find(elem => elem.code.toString() === bankCode.toString())
+        const bankSelected = institutions.find(elem => elem.code.toString() === bankCode.toString())
 
         setBank(bankSelected)
 
@@ -42,13 +44,13 @@ export default function NewAccountModal(props) {
             return;
         }
 
-        const bankExist = bankList.find(elem => elem.bankName.toUpperCase().includes(searchValue));
+        const bankExist = institutions.find(elem => elem.bankName.toUpperCase().includes(searchValue));
 
         // setBankValid(bankExist);
 
         if (bankExist) {
 
-            const bankSelected = bankList.find(elem => elem.code.toString() === bankExist?.code.toString())
+            const bankSelected = institutions.find(elem => elem.code.toString() === bankExist?.code.toString())
 
             setBank(bankSelected)
         }
@@ -126,16 +128,37 @@ export default function NewAccountModal(props) {
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div className="modal-body">
+                        <ModalBankSelect institutions={institutions}/>
+
+                    </div>
+                    <div className="modal-footer">
+                        <button className="btn btn-custom-tertiary" data-bs-dismiss="modal" onClick={() => handleCancel(token.sub)}>
+                            Cancelar
+                        </button>
+                        <button className="btn btn-custom-success" data-bs-dismiss="modal" onClick={() => handleSave(token.sub)}>
+                            Salvar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    )
+}
+
+
+
+
+
+
+
+
+
+{/* 
 
                         <div className="row ">
                             <div className="col-12">
-                                <label >Escolha a instituição financeira da conta</label>
-                                <div className="input-group">
-                                    <input type="text" className="form-control"
-                                        placeholder="Procure pelo nome" id="bankInput"
-                                        onChange={e => handleSearchBank(e.target.value)} />
-                                    <span className="input-group-text" htmlFor="bankInput"><FontAwesomeIcon icon={faMagnifyingGlass} /></span>
-                                </div>
+                                
                             </div>
 
 
@@ -150,7 +173,7 @@ export default function NewAccountModal(props) {
                                     value={bank.code}
                                     onChange={e => handleBankChange(e.target.value)}>
                                     <option value="" selected disabled>Selecione</option>
-                                    {bankList.map((bank) => (
+                                    {institutions.map((bank) => (
                                         <option key={bank.code} value={bank.code}>{bank.bankName}</option>
                                     ))}
 
@@ -189,16 +212,7 @@ export default function NewAccountModal(props) {
 
                         </div>
                     </div>
-                    <div className="modal-footer">
-                        <button className="btn btn-custom-tertiary" data-bs-dismiss="modal" onClick={() => handleCancel(token.sub)}>
-                            Cancelar
-                        </button>
-                        <button className="btn btn-custom-success" data-bs-dismiss="modal" onClick={() => handleSave(token.sub)}>
-                            Salvar
-                        </button>
-                    </div>
+                    
                 </div>
             </div>
-        </div>
-    )
-}
+        </div> */}

@@ -3159,3 +3159,14 @@ h1 {
 .page {
 	padding-bottom: 150px;
 }
+
+.bankImage{
+	height: 40px;
+	width: 40px;
+	border-radius: 50%;
+}
+
+.hoverSelect:hover{
+	background-color: #eeeeee;
+	transition: .2s ease-in-out;
+}

@@ -29,7 +29,7 @@ export default function DesktopTotalCards(props) {
         <>
             {isBeforeOrEqual( dateSelected, actualDate) ?
                 <div className="row d-flex justify-content-center px-2">
-                    <div className="col-12 col-xl-12 col-lg-4 col-sm-12  px-1 my-1">
+                    <div className="col-12 col-lg-4 col-sm-12  px-1 my-1">
 
                         <span className={`card rounded-pill shadow cardAnimation `} >
                             <div className={"card-body text-center text-lg-start "} style={{ marginLeft: isMobile() ? '0px' : '80px' }}>
@@ -53,7 +53,7 @@ export default function DesktopTotalCards(props) {
                             </div>
                         </span>
                     </div>
-                    <div className="col-12 col-xl-12 col-lg-4 col-sm-6  px-1 my-1">
+                    <div className="col-12 col-lg-4 col-sm-6  px-1 my-1">
 
                         <span className={`card rounded-pill shadow cardAnimation `} >
                             <div className={"card-body text-center text-lg-start "} style={{ marginLeft: isMobile() ? '0px' : '80px' }}>
@@ -77,7 +77,7 @@ export default function DesktopTotalCards(props) {
                             </div>
                         </span>
                     </div>
-                    <div className="col-12 col-xl-12 col-lg-4 col-sm-6  px-1 my-1">
+                    <div className="col-12 col-lg-4 col-sm-6  px-1 my-1">
 
                         <span className={`card rounded-pill shadow cardAnimation `} >
                             <div className={"card-body text-center text-lg-start "} style={{ marginLeft: isMobile() ? '0px' : '80px' }}>
