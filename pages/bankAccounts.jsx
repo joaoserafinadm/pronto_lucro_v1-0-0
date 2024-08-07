@@ -46,6 +46,8 @@ export default function BankAccounts() {
         <div className="page">
 
             <NewAccountModal institutions={institutions} />
+
+            
             <Title title={'Contas bancárias'} subtitle='Gerencie suas contas bancárias' backButton='/' />
 
             <div className="row my-3">

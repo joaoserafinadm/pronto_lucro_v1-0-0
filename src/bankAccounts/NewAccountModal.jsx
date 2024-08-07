@@ -1,6 +1,6 @@
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { maskInputMoney } from "../../utils/mask";
 import jwt from 'jsonwebtoken'
 import Cookie from 'js-cookie'
@@ -8,6 +8,7 @@ import removeInputError from "../../utils/removeInputError";
 import axios from "axios";
 import { showModalBs } from "../../utils/modalControl";
 import ModalBankSelect from "./modalBankSelect";
+import BankSetup from "./BankSetup";
 
 
 export default function NewAccountModal(props) {
@@ -17,45 +18,13 @@ export default function NewAccountModal(props) {
     const token = jwt.decode(Cookie.get('auth'));
 
 
-    const [bank, setBank] = useState('')
+    const [bankSelected, setBankSelected] = useState('')
     const [value, setValue] = useState('');
     const [description, setDescription] = useState('')
     const [valueSum, setValueSum] = useState(true)
 
     const [loadingSave, setLoadingSave] = useState('')
 
-
-    const handleBankChange = (bankCode) => {
-
-        const bankSelected = institutions.find(elem => elem.code.toString() === bankCode.toString())
-
-        setBank(bankSelected)
-
-    }
-
-
-    const handleSearchBank = (value) => {
-
-        const searchValue = value.toUpperCase();
-
-        if (!value) {
-            setBank('')
-            // setBankValid(true); // Reset bank valid state if input is empty
-            return;
-        }
-
-        const bankExist = institutions.find(elem => elem.bankName.toUpperCase().includes(searchValue));
-
-        // setBankValid(bankExist);
-
-        if (bankExist) {
-
-            const bankSelected = institutions.find(elem => elem.code.toString() === bankExist?.code.toString())
-
-            setBank(bankSelected)
-        }
-
-    }
 
     const validate = () => {
 
@@ -65,7 +34,7 @@ export default function NewAccountModal(props) {
         let valueError = ''
         let descriptionError = ''
 
-        if (!bank) bankError = "Selecione a instituição financeira"
+        if (!bankSelected) bankError = "Selecione a instituição financeira"
         // if (!value) valueError = "Selecione a instituição financeira"
         if (!description) descriptionError = "Selecione a instituição financeira"
 
@@ -89,7 +58,7 @@ export default function NewAccountModal(props) {
 
             const data = {
                 user_id,
-                bank,
+                bankSelected,
                 value,
                 description,
                 valueSum
@@ -110,7 +79,7 @@ export default function NewAccountModal(props) {
     }
 
     const handleCancel = () => {
-        setBank('')
+        setBankSelected('')
         setValue('')
         setDescription('')
         setValueSum('')
@@ -124,12 +93,26 @@ export default function NewAccountModal(props) {
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable ">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Adicionar conta</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Nova conta</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div className="modal-body">
-                        <ModalBankSelect institutions={institutions}/>
 
+                        <div id="bankSetupCarousel" class="carousel slide" data-bs-touch="false" data-bs-interval='false'>
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <ModalBankSelect institutions={institutions} setBankSelected={value => setBankSelected(value)} />
+                                </div>
+                                <div class="carousel-item">
+
+                                    <BankSetup bankSelected={bankSelected}
+                                        setValue={value => setValue(value)} value={value}
+                                        setDescription={value => setDescription(value)} description={description}
+                                        setValueSum={value => setValueSum(value)} valueSum={valueSum} />
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
                     <div className="modal-footer">
                         <button className="btn btn-custom-tertiary" data-bs-dismiss="modal" onClick={() => handleCancel(token.sub)}>
@@ -151,68 +134,3 @@ export default function NewAccountModal(props) {
 
 
 
-
-
-
-{/* 
-
-                        <div className="row ">
-                            <div className="col-12">
-                                
-                            </div>
-
-
-                            <div className="col-12 mt-3">
-
-                                <label htmlFor="bankSelect">Nome da Instituição Financeira</label>
-
-                                <select
-                                    name="bankSelect"
-                                    id="bankSelect"
-                                    className="form-select"
-                                    value={bank.code}
-                                    onChange={e => handleBankChange(e.target.value)}>
-                                    <option value="" selected disabled>Selecione</option>
-                                    {institutions.map((bank) => (
-                                        <option key={bank.code} value={bank.code}>{bank.bankName}</option>
-                                    ))}
-
-                                </select>
-                            </div>
-
-
-                            <div className="col-12 mt-3">
-
-                                <label htmlFor="valueInput">Valor disponível na conta</label>
-                                <div className="d-flex align-items-center fs-5">
-                                    <span className="me-1">R$</span>
-                                    <input type="text" inputMode="numeric" placeholder="0,00"
-                                        className="form-control  " style={{ borderColor: '#00cc99' }}
-                                        value={value} id='valueInput'
-                                        onChange={e => setValue(maskInputMoney(e.target.value))} />
-                                </div>
-
-                            </div>
-
-                            <div className="col-12 mt-3">
-                                <label htmlFor="descriptionInput">Descrição</label>
-                                <input type="text" id="descriptionInput" className="form-control" value={description}
-                                    onChange={e => setDescription(e.target.value)} />
-                            </div>
-
-
-                            <div className="col-12 mt-4">
-                                <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox"
-                                        role="switch" id="valueSumCheck" checked={valueSum}
-                                        onClick={e => setValueSum(!valueSum)} />
-                                    <label class="form-check-label" for="valueSumCheck">Incluir valor no saldo total</label>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
-        </div> */}

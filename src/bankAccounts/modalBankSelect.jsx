@@ -1,4 +1,4 @@
-import { faAngleRight, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { faAngleRight, faBank, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 
@@ -7,7 +7,7 @@ import { useState } from "react";
 
 export default function ModalBankSelect(props) {
 
-    const { institutions } = props
+    const { institutions, setBankSelected } = props
 
     const [bankList, setBankList] = useState(institutions)
 
@@ -39,13 +39,14 @@ export default function ModalBankSelect(props) {
 
 
     return (
-        <div className="row d-flex">
+        <div className="row d-flex px-1">
             <div className="col-12 mb-4">
-                <label className="bold">Escolha a instituição financeira da conta</label>
-                <div className="input-group">
+                <FontAwesomeIcon icon={faBank} />
+                <span className="small fw-bold  ms-3">Escolha a instituição financeira da conta</span>
+                <div className="input-group mt-2">
                     <input type="text" className="form-control"
                         placeholder="Procure pelo nome" id="bankInput"
-                        onChange={e => {handleSearchBank(e.target.value)}} />
+                        onChange={e => { handleSearchBank(e.target.value) }} />
                     <span className="input-group-text" htmlFor="bankInput"><FontAwesomeIcon icon={faMagnifyingGlass} /></span>
                 </div>
             </div>
@@ -57,7 +58,8 @@ export default function ModalBankSelect(props) {
                         <label >Mais usados</label>
                         {handleMostUsedBanks().map(elem => {
                             return (
-                                <span className="hoverSelect py-3 row my-2 d-flex">
+                                <span className="hoverSelect py-3 row my-2 d-flex" type="button" onClick={() => setBankSelected(elem)}
+                                    data-bs-target="#bankSetupCarousel" data-bs-slide="next">
                                     <div className="d-flex justify-content-center align-items-center" style={{ width: "60px" }}>
                                         <img className="bankImage" src={elem.logoUrl} alt="" />
                                     </div>
@@ -77,7 +79,8 @@ export default function ModalBankSelect(props) {
                         <label >Todos os bancos</label>
                         {institutions?.map(elem => {
                             return (
-                                <span className="hoverSelect py-3 row my-2 d-flex">
+                                <span className="hoverSelect py-3 row my-2 d-flex" type="button" onClick={() => setBankSelected(elem)}
+                                    data-bs-target="#bankSetupCarousel" data-bs-slide="next" >
                                     <div className="d-flex justify-content-center align-items-center" style={{ width: "60px" }}>
                                         <img className="bankImage" src={elem.logoUrl} alt="" />
                                     </div>
@@ -95,26 +98,42 @@ export default function ModalBankSelect(props) {
                 </>
                 :
                 <>
-                    <hr />
-                    <div className="col-12">
-                        {bankList?.map(elem => {
-                            return (
-                                <span className="hoverSelect py-3 row my-2 d-flex">
-                                    <div className="d-flex justify-content-center align-items-center" style={{ width: "60px" }}>
-                                        <img className="bankImage" src={elem.logoUrl} alt="" />
-                                    </div>
-                                    <div className="col d-flex  align-items-center">
-                                        <span className="bold">{elem.name}</span>
-                                    </div>
-                                    <div className="d-flex justify-content-center align-items-center" style={{ width: "40px" }}>
-                                        <FontAwesomeIcon icon={faAngleRight} />
-                                    </div>
-                                </span>
+                    {bankList.length > 0 ?
+                        <>
+                            <hr />
+                            <div className="col-12">
+                                {bankList?.map(elem => {
+                                    return (
+                                        <span className="hoverSelect py-3 row my-2 d-flex">
+                                            <div className="d-flex justify-content-center align-items-center" style={{ width: "60px" }}>
+                                                <img className="bankImage" src={elem.logoUrl} alt="" />
+                                            </div>
+                                            <div className="col d-flex  align-items-center">
+                                                <span className="bold">{elem.name}</span>
+                                            </div>
+                                            <div className="d-flex justify-content-center align-items-center" style={{ width: "40px" }}>
+                                                <FontAwesomeIcon icon={faAngleRight} />
+                                            </div>
+                                        </span>
 
-                            )
-                        })}
-                    </div>
+                                    )
+                                })}
+                            </div>
+                        </>
+                        :
+                        <>
+                            <hr />
+                            <div className="col-12 text-center ">
+                                <span className="text-secondary small" >
+                                    Nenhuma instituição encontrada
+                                </span>
+                            </div>
+
+                        </>
+
+                    }
                 </>
+
             }
 
 
