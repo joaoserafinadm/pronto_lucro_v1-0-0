@@ -1,0 +1,6614 @@
+[
+    {
+        "id": "2a842e05-ef36-4f75-957a-b0f880dbaaa5",
+        "name": "American Express",
+        "legalName": "American Express",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/amex.png",
+        "keyWord": "amex",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:26:14.93",
+        "dataModificacao": "2020-05-20T16:26:14.93",
+        "countries": [
+            "AD",
+            "AE",
+            "AF",
+            "AG",
+            "AI",
+            "AL",
+            "AM",
+            "AO",
+            "AQ",
+            "AR",
+            "AS",
+            "AT",
+            "AU",
+            "AW",
+            "AX",
+            "AZ",
+            "BA",
+            "BB",
+            "BD",
+            "BE",
+            "BF",
+            "BG",
+            "BH",
+            "BI",
+            "BJ",
+            "BL",
+            "BM",
+            "BN",
+            "BO",
+            "BQ",
+            "BR",
+            "BS",
+            "BT",
+            "BV",
+            "BW",
+            "BY",
+            "BZ",
+            "CA",
+            "CC",
+            "CD",
+            "CF",
+            "CG",
+            "CH",
+            "CI",
+            "CK",
+            "CL",
+            "CM",
+            "CN",
+            "CO",
+            "CR",
+            "CU",
+            "CV",
+            "CW",
+            "CX",
+            "CY",
+            "CZ",
+            "DE",
+            "DJ",
+            "DK",
+            "DM",
+            "DO",
+            "DZ",
+            "EC",
+            "EE",
+            "EG",
+            "EH",
+            "ER",
+            "ES",
+            "ET",
+            "FI",
+            "FJ",
+            "FK",
+            "FM",
+            "FO",
+            "FR",
+            "GA",
+            "GB",
+            "GD",
+            "GE",
+            "GF",
+            "GG",
+            "GH",
+            "GI",
+            "GL",
+            "GM",
+            "GN",
+            "GP",
+            "GQ",
+            "GR",
+            "GS",
+            "GT",
+            "GU",
+            "GW",
+            "GY",
+            "HK",
+            "HM",
+            "HN",
+            "HR",
+            "HT",
+            "HU",
+            "ID",
+            "IE",
+            "IL",
+            "IM",
+            "IN",
+            "IO",
+            "IQ",
+            "IR",
+            "IS",
+            "IT",
+            "JE",
+            "JM",
+            "JO",
+            "JP",
+            "KE",
+            "KG",
+            "KH",
+            "KI",
+            "KM",
+            "KN",
+            "KP",
+            "KR",
+            "KW",
+            "KY",
+            "KZ",
+            "LA",
+            "LB",
+            "LC",
+            "LI",
+            "LK",
+            "LR",
+            "LS",
+            "LT",
+            "LU",
+            "LV",
+            "LY",
+            "MA",
+            "MC",
+            "MD",
+            "ME",
+            "MF",
+            "MG",
+            "MH",
+            "MK",
+            "ML",
+            "MM",
+            "MN",
+            "MO",
+            "MP",
+            "MQ",
+            "MR",
+            "MS",
+            "MT",
+            "MU",
+            "MV",
+            "MW",
+            "MX",
+            "MY",
+            "MZ",
+            "NA",
+            "NC",
+            "NE",
+            "NF",
+            "NG",
+            "NI",
+            "NL",
+            "NO",
+            "NP",
+            "NR",
+            "NU",
+            "NZ",
+            "OM",
+            "PA",
+            "PE",
+            "PF",
+            "PG",
+            "PH",
+            "PK",
+            "PL",
+            "PM",
+            "PN",
+            "PR",
+            "PS",
+            "PT",
+            "PW",
+            "PY",
+            "QA",
+            "RE",
+            "RO",
+            "RS",
+            "RU",
+            "RW",
+            "SA",
+            "SB",
+            "SC",
+            "SD",
+            "SE",
+            "SG",
+            "SH",
+            "SI",
+            "SJ",
+            "SK",
+            "SL",
+            "SM",
+            "SN",
+            "SO",
+            "SR",
+            "SS",
+            "ST",
+            "SV",
+            "SX",
+            "SY",
+            "SZ",
+            "TC",
+            "TD",
+            "TF",
+            "TG",
+            "TH",
+            "TJ",
+            "TK",
+            "TL",
+            "TM",
+            "TN",
+            "TO",
+            "TR",
+            "TT",
+            "TV",
+            "TW",
+            "TZ",
+            "UA",
+            "UG",
+            "UM",
+            "US",
+            "UY",
+            "UZ",
+            "VA",
+            "VC",
+            "VE",
+            "VG",
+            "VI",
+            "VN",
+            "VU",
+            "WF",
+            "WS",
+            "YE",
+            "YT",
+            "ZA",
+            "ZM",
+            "ZW"
+        ],
+        "institutionType": [
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "e8be02bc-8cd4-4caa-95b7-1f46d39ef7b6",
+        "name": "Mastercard",
+        "legalName": "Mastercard",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/mastercard.png",
+        "keyWord": "mastercard",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:27:21.06",
+        "dataModificacao": "2020-05-20T16:27:21.06",
+        "countries": [
+            "AD",
+            "AE",
+            "AF",
+            "AG",
+            "AI",
+            "AL",
+            "AM",
+            "AO",
+            "AQ",
+            "AR",
+            "AS",
+            "AT",
+            "AU",
+            "AW",
+            "AX",
+            "AZ",
+            "BA",
+            "BB",
+            "BD",
+            "BE",
+            "BF",
+            "BG",
+            "BH",
+            "BI",
+            "BJ",
+            "BL",
+            "BM",
+            "BN",
+            "BO",
+            "BQ",
+            "BR",
+            "BS",
+            "BT",
+            "BV",
+            "BW",
+            "BY",
+            "BZ",
+            "CA",
+            "CC",
+            "CD",
+            "CF",
+            "CG",
+            "CH",
+            "CI",
+            "CK",
+            "CL",
+            "CM",
+            "CN",
+            "CO",
+            "CR",
+            "CU",
+            "CV",
+            "CW",
+            "CX",
+            "CY",
+            "CZ",
+            "DE",
+            "DJ",
+            "DK",
+            "DM",
+            "DO",
+            "DZ",
+            "EC",
+            "EE",
+            "EG",
+            "EH",
+            "ER",
+            "ES",
+            "ET",
+            "FI",
+            "FJ",
+            "FK",
+            "FM",
+            "FO",
+            "FR",
+            "GA",
+            "GB",
+            "GD",
+            "GE",
+            "GF",
+            "GG",
+            "GH",
+            "GI",
+            "GL",
+            "GM",
+            "GN",
+            "GP",
+            "GQ",
+            "GR",
+            "GS",
+            "GT",
+            "GU",
+            "GW",
+            "GY",
+            "HK",
+            "HM",
+            "HN",
+            "HR",
+            "HT",
+            "HU",
+            "ID",
+            "IE",
+            "IL",
+            "IM",
+            "IN",
+            "IO",
+            "IQ",
+            "IR",
+            "IS",
+            "IT",
+            "JE",
+            "JM",
+            "JO",
+            "JP",
+            "KE",
+            "KG",
+            "KH",
+            "KI",
+            "KM",
+            "KN",
+            "KP",
+            "KR",
+            "KW",
+            "KY",
+            "KZ",
+            "LA",
+            "LB",
+            "LC",
+            "LI",
+            "LK",
+            "LR",
+            "LS",
+            "LT",
+            "LU",
+            "LV",
+            "LY",
+            "MA",
+            "MC",
+            "MD",
+            "ME",
+            "MF",
+            "MG",
+            "MH",
+            "MK",
+            "ML",
+            "MM",
+            "MN",
+            "MO",
+            "MP",
+            "MQ",
+            "MR",
+            "MS",
+            "MT",
+            "MU",
+            "MV",
+            "MW",
+            "MX",
+            "MY",
+            "MZ",
+            "NA",
+            "NC",
+            "NE",
+            "NF",
+            "NG",
+            "NI",
+            "NL",
+            "NO",
+            "NP",
+            "NR",
+            "NU",
+            "NZ",
+            "OM",
+            "PA",
+            "PE",
+            "PF",
+            "PG",
+            "PH",
+            "PK",
+            "PL",
+            "PM",
+            "PN",
+            "PR",
+            "PS",
+            "PT",
+            "PW",
+            "PY",
+            "QA",
+            "RE",
+            "RO",
+            "RS",
+            "RU",
+            "RW",
+            "SA",
+            "SB",
+            "SC",
+            "SD",
+            "SE",
+            "SG",
+            "SH",
+            "SI",
+            "SJ",
+            "SK",
+            "SL",
+            "SM",
+            "SN",
+            "SO",
+            "SR",
+            "SS",
+            "ST",
+            "SV",
+            "SX",
+            "SY",
+            "SZ",
+            "TC",
+            "TD",
+            "TF",
+            "TG",
+            "TH",
+            "TJ",
+            "TK",
+            "TL",
+            "TM",
+            "TN",
+            "TO",
+            "TR",
+            "TT",
+            "TV",
+            "TW",
+            "TZ",
+            "UA",
+            "UG",
+            "UM",
+            "US",
+            "UY",
+            "UZ",
+            "VA",
+            "VC",
+            "VE",
+            "VG",
+            "VI",
+            "VN",
+            "VU",
+            "WF",
+            "WS",
+            "YE",
+            "YT",
+            "ZA",
+            "ZM",
+            "ZW"
+        ],
+        "institutionType": [
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "c3a3f2cb-38f9-48ba-ade3-6de509c8c82d",
+        "name": "Visa",
+        "legalName": "Visa",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/visa.png",
+        "keyWord": "visa",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:27:52.583",
+        "dataModificacao": "2020-05-20T16:27:52.583",
+        "countries": [
+            "AD",
+            "AE",
+            "AF",
+            "AG",
+            "AI",
+            "AL",
+            "AM",
+            "AO",
+            "AQ",
+            "AR",
+            "AS",
+            "AT",
+            "AU",
+            "AW",
+            "AX",
+            "AZ",
+            "BA",
+            "BB",
+            "BD",
+            "BE",
+            "BF",
+            "BG",
+            "BH",
+            "BI",
+            "BJ",
+            "BL",
+            "BM",
+            "BN",
+            "BO",
+            "BQ",
+            "BR",
+            "BS",
+            "BT",
+            "BV",
+            "BW",
+            "BY",
+            "BZ",
+            "CA",
+            "CC",
+            "CD",
+            "CF",
+            "CG",
+            "CH",
+            "CI",
+            "CK",
+            "CL",
+            "CM",
+            "CN",
+            "CO",
+            "CR",
+            "CU",
+            "CV",
+            "CW",
+            "CX",
+            "CY",
+            "CZ",
+            "DE",
+            "DJ",
+            "DK",
+            "DM",
+            "DO",
+            "DZ",
+            "EC",
+            "EE",
+            "EG",
+            "EH",
+            "ER",
+            "ES",
+            "ET",
+            "FI",
+            "FJ",
+            "FK",
+            "FM",
+            "FO",
+            "FR",
+            "GA",
+            "GB",
+            "GD",
+            "GE",
+            "GF",
+            "GG",
+            "GH",
+            "GI",
+            "GL",
+            "GM",
+            "GN",
+            "GP",
+            "GQ",
+            "GR",
+            "GS",
+            "GT",
+            "GU",
+            "GW",
+            "GY",
+            "HK",
+            "HM",
+            "HN",
+            "HR",
+            "HT",
+            "HU",
+            "ID",
+            "IE",
+            "IL",
+            "IM",
+            "IN",
+            "IO",
+            "IQ",
+            "IR",
+            "IS",
+            "IT",
+            "JE",
+            "JM",
+            "JO",
+            "JP",
+            "KE",
+            "KG",
+            "KH",
+            "KI",
+            "KM",
+            "KN",
+            "KP",
+            "KR",
+            "KW",
+            "KY",
+            "KZ",
+            "LA",
+            "LB",
+            "LC",
+            "LI",
+            "LK",
+            "LR",
+            "LS",
+            "LT",
+            "LU",
+            "LV",
+            "LY",
+            "MA",
+            "MC",
+            "MD",
+            "ME",
+            "MF",
+            "MG",
+            "MH",
+            "MK",
+            "ML",
+            "MM",
+            "MN",
+            "MO",
+            "MP",
+            "MQ",
+            "MR",
+            "MS",
+            "MT",
+            "MU",
+            "MV",
+            "MW",
+            "MX",
+            "MY",
+            "MZ",
+            "NA",
+            "NC",
+            "NE",
+            "NF",
+            "NG",
+            "NI",
+            "NL",
+            "NO",
+            "NP",
+            "NR",
+            "NU",
+            "NZ",
+            "OM",
+            "PA",
+            "PE",
+            "PF",
+            "PG",
+            "PH",
+            "PK",
+            "PL",
+            "PM",
+            "PN",
+            "PR",
+            "PS",
+            "PT",
+            "PW",
+            "PY",
+            "QA",
+            "RE",
+            "RO",
+            "RS",
+            "RU",
+            "RW",
+            "SA",
+            "SB",
+            "SC",
+            "SD",
+            "SE",
+            "SG",
+            "SH",
+            "SI",
+            "SJ",
+            "SK",
+            "SL",
+            "SM",
+            "SN",
+            "SO",
+            "SR",
+            "SS",
+            "ST",
+            "SV",
+            "SX",
+            "SY",
+            "SZ",
+            "TC",
+            "TD",
+            "TF",
+            "TG",
+            "TH",
+            "TJ",
+            "TK",
+            "TL",
+            "TM",
+            "TN",
+            "TO",
+            "TR",
+            "TT",
+            "TV",
+            "TW",
+            "TZ",
+            "UA",
+            "UG",
+            "UM",
+            "US",
+            "UY",
+            "UZ",
+            "VA",
+            "VC",
+            "VE",
+            "VG",
+            "VI",
+            "VN",
+            "VU",
+            "WF",
+            "WS",
+            "YE",
+            "YT",
+            "ZA",
+            "ZM",
+            "ZW"
+        ],
+        "institutionType": [
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "32f35e18-e547-4f1c-b588-d6f4de26754a",
+        "name": "Credicard",
+        "legalName": "Itaú Unibanco S.A.",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/credicard-1.png",
+        "keyWord": "credicard",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:28:48.74",
+        "dataModificacao": "2020-05-20T16:28:48.74",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "8a396246-0b75-4a02-a27a-d4355e4914ba",
+        "name": "Diners",
+        "legalName": "Diners",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/diners.png",
+        "keyWord": "diners",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:28:49.957",
+        "dataModificacao": "2020-05-20T16:28:49.957",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "23085bca-9c7b-4372-8c32-bd60ab6e8b6c",
+        "name": "Elo",
+        "legalName": "Elo",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/elo.png",
+        "keyWord": "elo",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:28:51.19",
+        "dataModificacao": "2020-05-20T16:28:51.19",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "d27af8e1-cf9f-4157-a4e8-3e0a35ad6ce9",
+        "name": "Nubank",
+        "legalName": "Nubank",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/nubank.png",
+        "keyWord": "nubank",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:28:52.39",
+        "dataModificacao": "2020-05-20T16:28:52.39",
+        "countries": [
+            "BR",
+            "MX"
+        ],
+        "institutionType": [
+            "credit_card"
+        ],
+        "ranking": 5
+    },
+    {
+        "id": "48b17841-3320-4b44-bfdb-637a61c203b1",
+        "name": "Aura",
+        "legalName": "Aura",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/aura-15.png",
+        "keyWord": "aura",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:28:53.65",
+        "dataModificacao": "2020-05-20T16:28:53.65",
+        "countries": [
+            "AD",
+            "AE",
+            "AF",
+            "AG",
+            "AI",
+            "AL",
+            "AM",
+            "AO",
+            "AQ",
+            "AR",
+            "AS",
+            "AT",
+            "AU",
+            "AW",
+            "AX",
+            "AZ",
+            "BA",
+            "BB",
+            "BD",
+            "BE",
+            "BF",
+            "BG",
+            "BH",
+            "BI",
+            "BJ",
+            "BL",
+            "BM",
+            "BN",
+            "BO",
+            "BQ",
+            "BR",
+            "BS",
+            "BT",
+            "BV",
+            "BW",
+            "BY",
+            "BZ",
+            "CA",
+            "CC",
+            "CD",
+            "CF",
+            "CG",
+            "CH",
+            "CI",
+            "CK",
+            "CL",
+            "CM",
+            "CN",
+            "CO",
+            "CR",
+            "CU",
+            "CV",
+            "CW",
+            "CX",
+            "CY",
+            "CZ",
+            "DE",
+            "DJ",
+            "DK",
+            "DM",
+            "DO",
+            "DZ",
+            "EC",
+            "EE",
+            "EG",
+            "EH",
+            "ER",
+            "ES",
+            "ET",
+            "FI",
+            "FJ",
+            "FK",
+            "FM",
+            "FO",
+            "FR",
+            "GA",
+            "GB",
+            "GD",
+            "GE",
+            "GF",
+            "GG",
+            "GH",
+            "GI",
+            "GL",
+            "GM",
+            "GN",
+            "GP",
+            "GQ",
+            "GR",
+            "GS",
+            "GT",
+            "GU",
+            "GW",
+            "GY",
+            "HK",
+            "HM",
+            "HN",
+            "HR",
+            "HT",
+            "HU",
+            "ID",
+            "IE",
+            "IL",
+            "IM",
+            "IN",
+            "IO",
+            "IQ",
+            "IR",
+            "IS",
+            "IT",
+            "JE",
+            "JM",
+            "JO",
+            "JP",
+            "KE",
+            "KG",
+            "KH",
+            "KI",
+            "KM",
+            "KN",
+            "KP",
+            "KR",
+            "KW",
+            "KY",
+            "KZ",
+            "LA",
+            "LB",
+            "LC",
+            "LI",
+            "LK",
+            "LR",
+            "LS",
+            "LT",
+            "LU",
+            "LV",
+            "LY",
+            "MA",
+            "MC",
+            "MD",
+            "ME",
+            "MF",
+            "MG",
+            "MH",
+            "MK",
+            "ML",
+            "MM",
+            "MN",
+            "MO",
+            "MP",
+            "MQ",
+            "MR",
+            "MS",
+            "MT",
+            "MU",
+            "MV",
+            "MW",
+            "MX",
+            "MY",
+            "MZ",
+            "NA",
+            "NC",
+            "NE",
+            "NF",
+            "NG",
+            "NI",
+            "NL",
+            "NO",
+            "NP",
+            "NR",
+            "NU",
+            "NZ",
+            "OM",
+            "PA",
+            "PE",
+            "PF",
+            "PG",
+            "PH",
+            "PK",
+            "PL",
+            "PM",
+            "PN",
+            "PR",
+            "PS",
+            "PT",
+            "PW",
+            "PY",
+            "QA",
+            "RE",
+            "RO",
+            "RS",
+            "RU",
+            "RW",
+            "SA",
+            "SB",
+            "SC",
+            "SD",
+            "SE",
+            "SG",
+            "SH",
+            "SI",
+            "SJ",
+            "SK",
+            "SL",
+            "SM",
+            "SN",
+            "SO",
+            "SR",
+            "SS",
+            "ST",
+            "SV",
+            "SX",
+            "SY",
+            "SZ",
+            "TC",
+            "TD",
+            "TF",
+            "TG",
+            "TH",
+            "TJ",
+            "TK",
+            "TL",
+            "TM",
+            "TN",
+            "TO",
+            "TR",
+            "TT",
+            "TV",
+            "TW",
+            "TZ",
+            "UA",
+            "UG",
+            "UM",
+            "US",
+            "UY",
+            "UZ",
+            "VA",
+            "VC",
+            "VE",
+            "VG",
+            "VI",
+            "VN",
+            "VU",
+            "WF",
+            "WS",
+            "YE",
+            "YT",
+            "ZA",
+            "ZM",
+            "ZW"
+        ],
+        "institutionType": [
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "f6aac1fa-8aef-4843-9dff-6357dab2268f",
+        "name": "Banco Inter",
+        "legalName": "Banco Inter",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/intermedium.png",
+        "keyWord": "intermedium",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:29:20.473",
+        "dataModificacao": "2020-05-20T16:29:20.473",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 7
+    },
+    {
+        "id": "0a0c72e8-bb6f-416d-b154-58d06bf66241",
+        "name": "Banco do Brasil",
+        "legalName": "Banco do Brasil S.A.",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/bb.png",
+        "keyWord": "bb",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:29:21.633",
+        "dataModificacao": "2020-05-20T16:29:21.633",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 2
+    },
+    {
+        "id": "3ea0b0c4-2708-492c-b051-5b654843807c",
+        "name": "Bradesco",
+        "legalName": "Banco Bradesco S.A.",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/bradesco.png",
+        "keyWord": "bradesco",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:29:22.857",
+        "dataModificacao": "2020-05-20T16:29:22.857",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 1
+    },
+    {
+        "id": "11687177-9a7b-44a1-9fea-9205f41cf117",
+        "name": "Caixa",
+        "legalName": "Caixa Econômica Federal",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/caixa.png",
+        "keyWord": "caixa",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:29:24",
+        "dataModificacao": "2020-05-20T16:29:24",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 6
+    },
+    {
+        "id": "cc987681-5a78-4db7-825e-775a14f4ff5b",
+        "name": "Hipercard",
+        "legalName": "Hipercard Banco Múltiplo S.A.",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/hipercard.png",
+        "keyWord": "hipercard",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:29:25.223",
+        "dataModificacao": "2020-05-20T16:29:25.223",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "8df8a4c9-b0ed-41a4-81f3-c5ec3ab11098",
+        "name": "Itaú",
+        "legalName": "Itaú Unibanco S.A.",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/itau.png",
+        "keyWord": "itau",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:29:26.777",
+        "dataModificacao": "2021-07-14T19:54:25.607",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 4
+    },
+    {
+        "id": "b7014c97-dfd5-48a0-93a3-3c41150e9273",
+        "name": "Neon",
+        "legalName": "Banco Neon",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/neon.png",
+        "keyWord": "neon",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:29:27.933",
+        "dataModificacao": "2020-05-20T16:29:27.933",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "f85f23f8-8329-465e-87ac-cd1f70a5355a",
+        "name": "Next",
+        "legalName": "Next",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/next.png",
+        "keyWord": "next",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:29:29.07",
+        "dataModificacao": "2020-05-20T16:29:29.07",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "5d545130-6a8e-4a0d-8a7f-b7aec7760590",
+        "name": "Nuconta",
+        "legalName": "Nu pagamentos S.A.",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/nuconta.png",
+        "keyWord": "nuconta",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:29:30.283",
+        "dataModificacao": "2020-05-20T16:29:30.283",
+        "countries": [
+            "BR",
+            "MX"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "9d7e81aa-2548-46c8-ad0e-7841230a585f",
+        "name": "Santander",
+        "legalName": "Banco Santander (Brasil) S.A.",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/santander.png",
+        "keyWord": "santander",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:29:31.523",
+        "dataModificacao": "2020-05-20T16:29:31.523",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 3
+    },
+    {
+        "id": "466ed61b-9a84-4cce-9e47-f9def09cabb1",
+        "name": "Agibank",
+        "legalName": "Agibank SA",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/agibank-1.png",
+        "keyWord": "agibank",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:29:32.713",
+        "dataModificacao": "2020-05-20T16:29:32.713",
+        "countries": [
+            "BR",
+            "US"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "402cbe61-7d25-448c-afbc-f4a2e1dda5fa",
+        "name": "Amazonia",
+        "legalName": "Banco da Amazonia",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/amazonia.png",
+        "keyWord": "amazonia",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:29:33.593",
+        "dataModificacao": "2020-05-20T16:29:33.593",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "7b0178e7-de42-4633-9502-0d293cdee713",
+        "name": "Ame Digital",
+        "legalName": "Ame Digital Brasil LTDA.",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/ame-1.png",
+        "keyWord": "ame",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:29:34.77",
+        "dataModificacao": "2020-05-20T16:29:34.77",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "10834028-c2ad-4e6a-b9d4-18fe826a1d7b",
+        "name": "BMG",
+        "legalName": "Banco BMG",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/bmg.png",
+        "keyWord": "bmg",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:29:35.923",
+        "dataModificacao": "2020-05-20T16:29:35.923",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "5c941454-8079-4578-8988-4fdc5cbb9488",
+        "name": "BRB",
+        "legalName": "Banco de Brasília SA",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/brb.png",
+        "keyWord": "brb",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:29:37.807",
+        "dataModificacao": "2020-05-20T16:29:37.807",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "63632d12-e2db-41af-98b4-1b02dd2babdd",
+        "name": "BRDE",
+        "legalName": "Banco de Desenvolvimento da Região Sul",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/brde-4.png",
+        "keyWord": "brde",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:29:38.98",
+        "dataModificacao": "2020-05-20T16:29:38.98",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "871694fb-1209-497d-837e-82feb061376d",
+        "name": "BS2",
+        "legalName": "Banco BS2 S.A.",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/bs2-1.png",
+        "keyWord": "bs2",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:29:40.167",
+        "dataModificacao": "2020-05-20T16:29:40.167",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "d88c545a-e625-4635-88e5-4dde160bd0cd",
+        "name": "BTG Pactual",
+        "legalName": "BTG Pactual S.A.",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/btgpactual-1.png",
+        "keyWord": "btgpactual",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:29:41.453",
+        "dataModificacao": "2020-05-20T16:29:41.453",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "savings_account",
+            "checking_account"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "4ee63f50-be5c-4240-96fb-13088104a401",
+        "name": "Banco Cacique ",
+        "legalName": "Banco Cacique S/A",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/cacique.jpg",
+        "keyWord": "cacique",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:29:42.587",
+        "dataModificacao": "2020-05-20T16:29:42.587",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "a0d76355-ecdd-4432-b7c7-66e5c0f17e23",
+        "name": "Banco PAN",
+        "legalName": "Banco PAN",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/pan.png",
+        "keyWord": "pan",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:29:43.713",
+        "dataModificacao": "2020-05-20T16:29:43.713",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "26af2582-444b-4c7f-bb60-8eb1e35c18f8",
+        "name": "Banco Votorantim",
+        "legalName": "Banco Votorantim",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/votorantim.png",
+        "keyWord": "votorantim",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:29:44.88",
+        "dataModificacao": "2020-05-20T16:29:44.88",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "09962de4-f6fd-4698-82b9-f4b23a0ade9b",
+        "name": "Banco do Nordeste",
+        "legalName": "Banco do Nordeste do Brasil S.A",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/nordeste.png",
+        "keyWord": "nordeste",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:29:46.037",
+        "dataModificacao": "2020-05-20T16:29:46.037",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "99ba2746-2f22-4e0a-8ee9-7701698977b0",
+        "name": "Banese",
+        "legalName": "Banco Banese",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/banese.jpg",
+        "keyWord": "banese",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:29:47.223",
+        "dataModificacao": "2020-05-20T16:29:47.223",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "3278c6a0-008b-4d8d-9045-898c1473499e",
+        "name": "Banestes",
+        "legalName": "BANESTES S.A",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/banestes.png",
+        "keyWord": "banestes",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:29:48.4",
+        "dataModificacao": "2020-05-20T16:29:48.4",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "b2129873-689f-415f-930f-7ea1ca18bcd7",
+        "name": "Banif",
+        "legalName": "Banco Internacional do Funchal, SA",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/banif.png",
+        "keyWord": "banif",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:29:49.54",
+        "dataModificacao": "2020-05-20T16:29:49.54",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "044babee-cdbf-4b04-9c36-d1f4b47789f7",
+        "name": "Banpara",
+        "legalName": "Banco do Estado do Pará - BANPARÁ",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/banpara.png",
+        "keyWord": "banpara",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:29:50.697",
+        "dataModificacao": "2020-05-20T16:29:50.697",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "2d69fd03-2715-4c98-b325-3e047331aa96",
+        "name": "Banrisul",
+        "legalName": "Banco do Estado do Rio Grande do Sul S.A",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/banrisul.png",
+        "keyWord": "banrisul",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:29:51.897",
+        "dataModificacao": "2020-05-20T16:29:51.897",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "beb4a7f5-3047-41b3-bddb-08a061a81d3d",
+        "name": "Bbm",
+        "legalName": "Banco BBM",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/bbm.png",
+        "keyWord": "bbm",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:29:53.067",
+        "dataModificacao": "2020-05-20T16:29:53.067",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "1cf9d038-0b02-42bf-8377-055785e6273f",
+        "name": "Cetelem",
+        "legalName": "Banco Cetelem S.A.",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/cetelem-1.png",
+        "keyWord": "cetelem",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:29:54.217",
+        "dataModificacao": "2020-05-20T16:29:54.217",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "29211909-1d99-4d57-8335-5b2ed0167850",
+        "name": "Citibank",
+        "legalName": "Citibank S.A.",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/citibank.png",
+        "keyWord": "citibank",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:29:55.003",
+        "dataModificacao": "2020-05-20T16:29:55.003",
+        "countries": [
+            "BR",
+            "RU",
+            "US"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "39638fa4-9b41-48b1-b6b4-63ebc2399a4f",
+        "name": "Clear",
+        "legalName": "CLEAR CTVM S/A",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/clear.png",
+        "keyWord": "clear",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:29:56.36",
+        "dataModificacao": "2020-05-20T16:29:56.36",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "savings_account"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "b99e5987-271f-4609-ac16-355f353e0795",
+        "name": "Cruzeirodosul",
+        "legalName": "Banco Cruzeiro do Sul S.A.",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/cruzeirodosul.jpg",
+        "keyWord": "cruzeirodosul",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:29:57.52",
+        "dataModificacao": "2020-05-20T16:29:57.52",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "2801d469-bfeb-4090-8515-2eda95e4e288",
+        "name": "Daycoval",
+        "legalName": "Banco Daycoval S.A.",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/daycoval-1.png",
+        "keyWord": "daycoval",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:29:58.683",
+        "dataModificacao": "2020-05-20T16:29:58.683",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "d01acae3-f24d-4bbb-b0e3-9ece0b7c8790",
+        "name": "Digi+",
+        "legalName": "Banco A J Renner",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/digiplus-1.png",
+        "keyWord": "digiplus",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:29:59.85",
+        "dataModificacao": "2020-05-20T16:29:59.85",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "a31090ef-a2e4-4625-976a-393095abc34c",
+        "name": "Digio",
+        "legalName": "BANCO CBSS S.A.",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/digio.png",
+        "keyWord": "digio",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:30:01.023",
+        "dataModificacao": "2020-05-20T16:30:01.023",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "credit_card",
+            "checking_account"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "785113ff-54f7-4002-b7a5-0a82fcefca48",
+        "name": "Diin",
+        "legalName": "Diin Pagamentos E Financas Pessoais Ltda",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/diin-1.png",
+        "keyWord": "diin",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:30:02.197",
+        "dataModificacao": "2020-05-20T16:30:02.197",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "savings_account"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "66c8bf1c-cfc7-40fb-a8f8-f16bf65a6261",
+        "name": "Nuinvest",
+        "legalName": "Nu Invest Corretora de Valores S.A.",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/nuinvest-1.png",
+        "keyWord": "nuinvest",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:30:03.377",
+        "dataModificacao": "2020-05-20T16:30:03.377",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "30a5a9a7-d024-4281-b154-4c4836647a53",
+        "name": "Elliot",
+        "legalName": "Warren Brasil Gestao e Administracao de Recursos Ltda - EPP",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/elliot-1.png",
+        "keyWord": "elliot",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:30:04.563",
+        "dataModificacao": "2020-05-20T16:30:04.563",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "cfba83fe-b6fd-4699-9962-a1a82de5d4b4",
+        "name": "Fortbrasil",
+        "legalName": "Fortbrasil Administradora de Cartoes de Credito SA",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/fortbrasil-1.png",
+        "keyWord": "fortbrasil",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:30:05.84",
+        "dataModificacao": "2020-05-20T16:30:05.84",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "2c43b344-2b43-4b59-bec6-51ec7770938c",
+        "name": "Genial Investimentos",
+        "legalName": "Genial Investimentos Corretora de Valores Mobiliarios S.A.",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/genial-1.png",
+        "keyWord": "genial",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:30:07.1",
+        "dataModificacao": "2020-05-20T16:30:07.1",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "9bb6e7e3-534e-42da-9c3b-ac54382fd59f",
+        "name": "HSBC",
+        "legalName": "HSBC Bank",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/hsbc.png",
+        "keyWord": "hsbc",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:30:08.31",
+        "dataModificacao": "2020-05-20T16:30:08.31",
+        "countries": [
+            "BR",
+            "GB",
+            "MX",
+            "RU",
+            "US"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "ea70e010-bf1d-4812-b83d-52ea2ed95d57",
+        "name": "IQ Option",
+        "legalName": "IQ Option",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/iqoption-1.png",
+        "keyWord": "iqoption",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:30:09.903",
+        "dataModificacao": "2020-05-20T16:30:09.903",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "80701690-05cb-4dbb-82a1-4849837c7c17",
+        "name": "Iti",
+        "legalName": "Itaú Unibanco S.A.",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/iti-1.png",
+        "keyWord": "iti",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:30:11.11",
+        "dataModificacao": "2020-05-20T16:30:11.11",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "c5b1896e-6be2-49b3-9857-1fbeba801d71",
+        "name": "Magnetis",
+        "legalName": "MAGNETIS GESTORA DE RECURSOS LTDA",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/magnetis-2.png",
+        "keyWord": "magnetis",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:30:12.24",
+        "dataModificacao": "2020-05-20T16:30:12.24",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "savings_account"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "983db00b-e498-406e-aad1-9deada552bc0",
+        "name": "Mais!",
+        "legalName": "Cred-System",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/mais-1.png",
+        "keyWord": "mais",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:30:13.537",
+        "dataModificacao": "2020-05-20T16:30:13.537",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "374279d6-a709-4479-a9bf-bfdb69c3971b",
+        "name": "Mercadopago",
+        "legalName": "Mercadopago.com representações LTDA",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/mercadopago.png",
+        "keyWord": "mercadopago",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:30:14.723",
+        "dataModificacao": "2020-05-20T16:30:14.723",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "dffc59fc-aef6-4f04-b202-ddb0f6746d55",
+        "name": "ModalMais",
+        "legalName": "MODAL DTVM LTDA",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/modalmais-1.png",
+        "keyWord": "modalmais",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:30:15.867",
+        "dataModificacao": "2020-05-20T16:30:15.867",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "0a8fe147-d1d7-4867-97b4-47b103fa73fc",
+        "name": "Moip",
+        "legalName": "Moip Pagamentos S/A",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/moip.png",
+        "keyWord": "moip",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:30:17.04",
+        "dataModificacao": "2020-05-20T16:30:17.04",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "savings_account"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "9371253c-6c45-4b86-9d55-74f7c74c4a92",
+        "name": "Monetus",
+        "legalName": "Monetus Investimentos Ltda",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/monetus-1.png",
+        "keyWord": "monetus",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:30:18.33",
+        "dataModificacao": "2020-05-20T16:30:18.33",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "savings_account"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "1fda506f-b4ae-493e-8c4c-4b52220eadaf",
+        "name": "N26",
+        "legalName": "N26 GmbH",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/n26-1.png",
+        "keyWord": "n26",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:30:19.533",
+        "dataModificacao": "2020-05-20T16:30:19.533",
+        "countries": [
+            "AT",
+            "BE",
+            "BR",
+            "DE",
+            "EE",
+            "ES",
+            "FI",
+            "FR",
+            "GR",
+            "HR",
+            "HU",
+            "IE",
+            "IT",
+            "LT",
+            "LU",
+            "LV",
+            "MT",
+            "PL",
+            "PT",
+            "SE",
+            "SK"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "1c2c088b-af9b-4eee-a7a4-b8778f9e5cfa",
+        "name": "Nova Futura",
+        "legalName": "NOVA FUTURA CORRETORA DE TITULOS E VALORES MOBILIARIOS LTDA.",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/novafatura-1.png",
+        "keyWord": "novafatura",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:30:22.69",
+        "dataModificacao": "2020-05-20T16:30:22.69",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "savings_account"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "e0224607-7ee7-4da7-8387-a74db1692b16",
+        "name": "Original",
+        "legalName": "Banco Original",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/original.png",
+        "keyWord": "original",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:30:23.863",
+        "dataModificacao": "2020-05-20T16:30:23.863",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "5d1a416f-a6fe-40d6-b87a-b3bbd757b98b",
+        "name": "Pag!",
+        "legalName": "PAG S.A. MEIOS DE PAGAMENTO,",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/pag.png",
+        "keyWord": "pag",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:30:25.08",
+        "dataModificacao": "2020-05-20T16:30:25.08",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "credit_card",
+            "savings_account"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "3cd3dc45-d75c-4244-b8b9-a5b1634d5178",
+        "name": "PagBank",
+        "legalName": "UOL Inc.",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/pagbank-1.png",
+        "keyWord": "pagbank",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:30:26.28",
+        "dataModificacao": "2020-05-20T16:30:26.28",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "savings_account",
+            "credit_card",
+            "checking_account"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "d89438b0-96c9-4219-b2cf-5b2382e4e1a0",
+        "name": "Pagseguro",
+        "legalName": "Pagseguro Internet LTDA",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/pagseguro.png",
+        "keyWord": "pagseguro",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:30:27.34",
+        "dataModificacao": "2020-05-20T16:30:27.34",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "6b61d016-309f-436b-8d67-8e6b55482863",
+        "name": "PayU Brasil",
+        "legalName": "PAYU BRASIL INTERMEDIAÇÃO DE NEGÓCIOS LTDA",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/payu.png",
+        "keyWord": "payu",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:30:27.97",
+        "dataModificacao": "2020-05-20T16:30:27.97",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "savings_account"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "cbedb0a8-d2d6-451e-9e3b-c75752d5d3af",
+        "name": "Paypal",
+        "legalName": "Paypal do Brasil Serviços de Pagamento LTDA",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/paypal.png",
+        "keyWord": "paypal",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:30:29.113",
+        "dataModificacao": "2020-05-20T16:30:29.113",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "e66aa7c7-5f0c-420a-a546-73717b3aa474",
+        "name": "PicPay",
+        "legalName": "PICPAY SERVICOS LTDA-ME",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/picpay-1.png",
+        "keyWord": "picpay",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:30:29.743",
+        "dataModificacao": "2020-05-20T16:30:29.743",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "e42e9d9e-70d9-42a7-bf4e-a6cda89be557",
+        "name": "Recargapay",
+        "legalName": "Recargapay Pagamentos LTDA",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/recargapay-1.png",
+        "keyWord": "recargapay",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:30:30.527",
+        "dataModificacao": "2020-05-20T16:30:30.527",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "b6786482-aa43-443e-a714-5acb78bd8627",
+        "name": "Rico",
+        "legalName": "Rico Corretora de Titulos e Valores Mobiliarios S.A",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/rico.png",
+        "keyWord": "rico",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:30:31.173",
+        "dataModificacao": "2020-05-20T16:30:31.173",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "966a68e7-740e-4339-8695-acb6d435e18d",
+        "name": "Safra",
+        "legalName": "Banco Safra S.A.",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/safra.png",
+        "keyWord": "safra",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:30:31.807",
+        "dataModificacao": "2020-05-20T16:30:31.807",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "e0bf4651-de51-4bcc-8f52-2d448677461d",
+        "name": "Sicoob",
+        "legalName": "Sistema de Cooperativas de Crédito do Brasil",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/sicoob.png",
+        "keyWord": "sicoob",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:30:32.443",
+        "dataModificacao": "2020-05-20T16:30:32.443",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "83a14c3e-f00b-4da9-8035-ed36cabebea3",
+        "name": "Sicredi",
+        "legalName": "Sistema de Crédito Cooperativo",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/sicredi.png",
+        "keyWord": "sicredi",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:30:33.597",
+        "dataModificacao": "2020-05-20T16:30:33.597",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "a181aa07-41fd-4d34-b1a3-55dc8745bbbe",
+        "name": "Sodexo",
+        "legalName": "Sodexo Pass do Brasil S/A",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/sodexo-1.png",
+        "keyWord": "sodexo",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:30:34.263",
+        "dataModificacao": "2020-05-20T16:30:34.263",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "savings_account",
+            "credit_card",
+            "checking_account"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "43692971-7ac9-454e-b639-b937c01fd11e",
+        "name": "Sofisa direto",
+        "legalName": "Banco Sofisa S.A.",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/sofisadireto-1.png",
+        "keyWord": "sofisadireto",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:30:34.9",
+        "dataModificacao": "2020-05-20T16:30:34.9",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "410eb37f-1a33-4682-becf-6d992f4a9fcf",
+        "name": "Submarino",
+        "legalName": "B2W – Companhia Digital",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/submarino-1.png",
+        "keyWord": "submarino",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:30:35.53",
+        "dataModificacao": "2020-05-20T16:30:35.53",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "62d94a99-c682-4fe7-9d2b-ce4305e65683",
+        "name": "Toro Investimentos",
+        "legalName": "Toro Investimentos Ltda.",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/Toro-logo-app-1.png",
+        "keyWord": "toroinvestimentos",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:30:36.167",
+        "dataModificacao": "2020-05-20T16:30:36.167",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "savings_account"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "4b9e5258-8627-488f-84ca-a633ea37c314",
+        "name": "Unicred",
+        "legalName": "Unicred",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/unicred.png",
+        "keyWord": "unicred",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:30:36.84",
+        "dataModificacao": "2020-05-20T16:30:36.84",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "8ff129f8-a68b-41ef-903c-8f1a0e44d0a7",
+        "name": "Uniprime",
+        "legalName": "Uniprime Norte do Paraná",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/uniprime-1.png",
+        "keyWord": "uniprime",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:30:37.477",
+        "dataModificacao": "2020-05-20T16:30:37.477",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "bc5cc1be-cd2e-495f-b6b5-8cad3f64c2ee",
+        "name": "Urbe.Me",
+        "legalName": "Urbe.Me Servicos Desenvolvimento Urbano Ltda - ME",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/urbeme.png",
+        "keyWord": "urbeme",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:30:38.107",
+        "dataModificacao": "2020-05-20T16:30:38.107",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "savings_account"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "043d1c2e-7e80-4045-90a1-6fb50bbc65ee",
+        "name": "Viacredi",
+        "legalName": "Cooperativa Central de Credito Urbano",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/viacredi-1.png",
+        "keyWord": "viacredi",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:30:38.733",
+        "dataModificacao": "2020-05-20T16:30:38.733",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "89c6192f-8060-4d28-ab09-4c7ae0e506a4",
+        "name": "ABN AMRO",
+        "legalName": "ABN AMRO Bank N.V.",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/abnamro-1.png",
+        "keyWord": "abnamro",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:30:39.373",
+        "dataModificacao": "2020-05-20T16:30:39.373",
+        "countries": [
+            "NL"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "3484d9fd-e7e2-4ff9-9ec2-2cb2f07107ab",
+        "name": "AGBank",
+        "legalName": "AGRICULTURAL BANK OF CHINA LIMITED",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/agbank-1.png",
+        "keyWord": "agbank",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:30:40.003",
+        "dataModificacao": "2020-05-20T16:30:40.003",
+        "countries": [
+            "CN"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "5ed1fac0-d7ad-49b7-88bc-baf46dbbdc04",
+        "name": "AKBank",
+        "legalName": "Akbank T.A.S",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/abank-1.png",
+        "keyWord": "abank",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:30:40.637",
+        "dataModificacao": "2020-05-20T16:30:40.637",
+        "countries": [
+            "TR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "7f6bc233-cb70-4257-8ea9-fa25daf3860b",
+        "name": "AMP Personal Banking",
+        "legalName": "AMP Limited",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/amppersonalbanking-1.png",
+        "keyWord": "amppersonalbanking",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:30:41.273",
+        "dataModificacao": "2020-05-20T16:30:41.273",
+        "countries": [
+            "AU"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "79f1a30e-9520-4868-bee7-a5fc92965101",
+        "name": "ANZ",
+        "legalName": "Australia and New Zealand Banking Group Limited (ANZ)",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/anz-1.png",
+        "keyWord": "anz",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:30:41.91",
+        "dataModificacao": "2020-05-20T16:30:41.91",
+        "countries": [
+            "AU"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "a96d855b-710c-444f-ad4d-276e6bcd068b",
+        "name": "ASN",
+        "legalName": "ASN Bank N.V.",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/asn-1.png",
+        "keyWord": "asn",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:30:43.05",
+        "dataModificacao": "2020-05-20T16:30:43.05",
+        "countries": [
+            "NL"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "8a180795-8f2c-49da-953f-855e0854ebb8",
+        "name": "Absolut Bank",
+        "legalName": "Absolut Bank",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/absolutbank.png",
+        "keyWord": "absolutbank",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:30:43.7",
+        "dataModificacao": "2020-05-20T16:30:43.7",
+        "countries": [
+            "RU"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "1776c1e0-19a0-46a7-9cc5-2e378c210c98",
+        "name": "Agribank",
+        "legalName": "Vietnam Bank for Agriculture and Rural Development",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/agribank-1.png",
+        "keyWord": "agribank",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:30:44.337",
+        "dataModificacao": "2020-05-20T16:30:44.337",
+        "countries": [
+            "VN"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "124a00df-195d-4a8a-9c32-b29710b7376d",
+        "name": "Aktia",
+        "legalName": "Aktia Bank Abp",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/aktia-1.png",
+        "keyWord": "aktia",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:30:44.973",
+        "dataModificacao": "2020-05-20T16:30:44.973",
+        "countries": [
+            "FI"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "17489520-891a-42bc-bc30-0a38c224f455",
+        "name": "Alfa",
+        "legalName": "Alfa Bank",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/alfabank.png",
+        "keyWord": "alfabank",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:30:45.617",
+        "dataModificacao": "2020-05-20T16:30:45.617",
+        "countries": [
+            "RU"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "eec703a9-7b63-45d5-a5b3-26f55ccb85bb",
+        "name": "Alpha",
+        "legalName": "Alpha Bank S.A.",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/alphabank-1.png",
+        "keyWord": "alphabank",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:30:46.25",
+        "dataModificacao": "2020-05-20T16:30:46.25",
+        "countries": [
+            "GR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "99343d5a-e884-42f8-84a3-557cfdc4928d",
+        "name": "Americanas",
+        "legalName": "B2W - Companhia Global do Varejo",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/lojasamericanas-1.png",
+        "keyWord": "lojasamericanas",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:30:46.877",
+        "dataModificacao": "2020-05-20T16:30:46.877",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "8da4ad1a-5563-40fc-aa2f-7f5f825e882c",
+        "name": "Ameriprise Financial",
+        "legalName": "Ameriprise Financial, Inc.",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/ameriprisefinancial-1.png",
+        "keyWord": "ameriprisefinancial",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:30:47.533",
+        "dataModificacao": "2020-05-20T16:30:47.533",
+        "countries": [
+            "US"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "a1f812f4-7714-4f32-afbe-36a70bda2957",
+        "name": "Attica",
+        "legalName": "Attica Bank S.A.",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/atticabank-1.png",
+        "keyWord": "atticabank",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:30:48.167",
+        "dataModificacao": "2020-05-20T16:30:48.167",
+        "countries": [
+            "GR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "f8c5fd77-003a-485d-b84d-3fee2a59073b",
+        "name": "BBVA",
+        "legalName": "Banco Bilbao Vizcaya Argentaria SA",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/bbva-1.png",
+        "keyWord": "bbva",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:30:49.343",
+        "dataModificacao": "2020-05-20T16:30:49.343",
+        "countries": [
+            "CO",
+            "ES",
+            "MX"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "f98bc203-9d4a-4ac6-a7c6-c0ea4266c44a",
+        "name": "BCA",
+        "legalName": "PT Bank Central Asia Tbk.",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/bca-1.png",
+        "keyWord": "bca",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:30:50.25",
+        "dataModificacao": "2020-05-20T16:30:50.25",
+        "countries": [
+            "ID"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "df409c0d-b219-43bd-8708-b3910c3f479a",
+        "name": "BIDV",
+        "legalName": "BANK FOR INVESTMENT AND DEVELOPMENT OF VIETNAM",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/bidv-1.png",
+        "keyWord": "bidv",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:30:50.917",
+        "dataModificacao": "2020-05-20T16:30:50.917",
+        "countries": [
+            "VN"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "69d2c338-0027-4f67-97b4-6c97351993c1",
+        "name": "BMO",
+        "legalName": "Bank of Montreal",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/bmo-1.png",
+        "keyWord": "bmo",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:30:51.577",
+        "dataModificacao": "2020-05-20T16:30:51.577",
+        "countries": [
+            "CA"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "52885f90-0c2e-4596-b4fa-ad72dbe98a6c",
+        "name": "BNI",
+        "legalName": "PT. BANK NEGARA INDONESIA (PERSERO) TBK.",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/bni-1.png",
+        "keyWord": "bni",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:30:52.207",
+        "dataModificacao": "2020-05-20T16:30:52.207",
+        "countries": [
+            "ID"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "b1b72c87-fe64-407a-994a-6c9c5d58766b",
+        "name": "BNL",
+        "legalName": "BNL",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/bnl.png",
+        "keyWord": "bnl",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:30:52.847",
+        "dataModificacao": "2020-05-20T16:30:52.847",
+        "countries": [
+            "IT"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "554398f0-0a91-4022-af53-dccac32df3ec",
+        "name": "BNP Paribas",
+        "legalName": "BNP Paribas SA",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/bnpparibas-1.png",
+        "keyWord": "bnpparibas",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:30:53.513",
+        "dataModificacao": "2020-05-20T16:30:53.513",
+        "countries": [
+            "FI"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "37d734b3-9b6c-47f0-9cc5-f9e7b723c932",
+        "name": "BOQ",
+        "legalName": "Bank of Queensland Limited",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/boq-1.png",
+        "keyWord": "boq",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:30:54.17",
+        "dataModificacao": "2020-05-20T16:30:54.17",
+        "countries": [
+            "AU"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "7568fb44-58cb-45c7-8354-fad2d3c36816",
+        "name": "BPER Banca",
+        "legalName": "BPER Banca",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/bperbanca.png",
+        "keyWord": "bperbanca",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:30:54.803",
+        "dataModificacao": "2020-05-20T16:30:54.803",
+        "countries": [
+            "IT"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "227549cd-2261-45d0-b871-886f94e1a8ab",
+        "name": "BPI",
+        "legalName": "Banco BPI, S.A.",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/bpi-1.png",
+        "keyWord": "bpi",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:30:55.437",
+        "dataModificacao": "2020-05-20T16:30:55.437",
+        "countries": [
+            "PT"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "f5f898c8-eebf-4933-89cb-23d88123d983",
+        "name": "BRI",
+        "legalName": "PT. Bank Rakyat Indonesia (Persero) (BRI)",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/bankmandiri-1.png",
+        "keyWord": "bankmandiri",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:30:56.073",
+        "dataModificacao": "2020-05-20T16:30:56.073",
+        "countries": [
+            "ID"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "13a11dd2-7b93-4d63-b91c-8fc6dcda9a83",
+        "name": "Banamex",
+        "legalName": "Banco Nacional de Mexico, S.A., integrante de Grupo Financiero Banamex",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/banamex-1.png",
+        "keyWord": "banamex",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:30:56.72",
+        "dataModificacao": "2020-05-20T16:30:56.72",
+        "countries": [
+            "MX"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "f02629ec-f3ae-4470-996c-79fb5efd4efd",
+        "name": "Banca Carige",
+        "legalName": "Banca Carige",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/bancacarige.png",
+        "keyWord": "bancacarige",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:30:57.37",
+        "dataModificacao": "2020-05-20T16:30:57.37",
+        "countries": [
+            "IT"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "d2713be8-f8ca-434e-973a-66b9059c83e4",
+        "name": "Banca DItalia",
+        "legalName": "Banca DItalia",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/bancaditalia.png",
+        "keyWord": "bancaditalia",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:30:58.043",
+        "dataModificacao": "2020-05-20T16:30:58.043",
+        "countries": [
+            "IT"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "a6f9c6bd-479a-4e08-af58-b6f77eafb1bc",
+        "name": "Banca MPS",
+        "legalName": "Banca Monte dei Paschi di Siena S.p.A.",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/bancamps-1.png",
+        "keyWord": "bancamps",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:30:58.723",
+        "dataModificacao": "2020-05-20T16:30:58.723",
+        "countries": [
+            "IT"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "ce0d6de1-0c3f-4d9e-b98b-5ac0d1c8e12c",
+        "name": "Banca Mediolanum",
+        "legalName": "Banca Mediolanum",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/bancamediolanum.png",
+        "keyWord": "bancamediolanum",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:30:59.42",
+        "dataModificacao": "2020-05-20T16:30:59.42",
+        "countries": [
+            "IT"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "e80fbaab-8b6d-43aa-96cb-b557a7875d5a",
+        "name": "Banca Populare di Sondrio",
+        "legalName": "Banca Populare di Sondrio",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/bancaopopularedisondrio.png",
+        "keyWord": "bancaopopularedisondrio",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:31:00.61",
+        "dataModificacao": "2020-05-20T16:31:00.61",
+        "countries": [
+            "IT"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "1c2f1eb0-d585-43b1-9049-702c66486584",
+        "name": "Banco BPM",
+        "legalName": "Banco BPM",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/bancobpm.png",
+        "keyWord": "bancobpm",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:31:01.247",
+        "dataModificacao": "2020-05-20T16:31:01.247",
+        "countries": [
+            "IT"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "f138f1f1-978a-4984-8413-ef0a85b48722",
+        "name": "Banco de Bogotá",
+        "legalName": "BANCO DE BOGOTA",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/bancodebogota-1.png",
+        "keyWord": "bancodebogota",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:31:02.39",
+        "dataModificacao": "2020-05-20T16:31:02.39",
+        "countries": [
+            "CO"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "78d83781-7aed-4cfd-9b10-185516f9a9bd",
+        "name": "Banco de Occident",
+        "legalName": "BANCO DE OCCIDENTE",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/bancodeoccident-1.png",
+        "keyWord": "bancodeoccident",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:31:03.027",
+        "dataModificacao": "2020-05-20T16:31:03.027",
+        "countries": [
+            "CO"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "ae7af134-f344-40e6-a5b4-efdd149b018e",
+        "name": "Banco del Bajio",
+        "legalName": "Financiera Bajío, S.A. de C.V.",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/bancodelbajio-1.png",
+        "keyWord": "bancodelbajio",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:31:03.657",
+        "dataModificacao": "2020-05-20T16:31:03.657",
+        "countries": [
+            "MX"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "f78785e0-52ca-4d40-9fdf-8cfe683dec8d",
+        "name": "BancoPosta",
+        "legalName": "BancoPosta",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/bancoposta.png",
+        "keyWord": "bancoposta",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:31:04.297",
+        "dataModificacao": "2020-05-20T16:31:04.297",
+        "countries": [
+            "IT"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "e0ddca3d-db62-43ed-b869-6911f2855300",
+        "name": "Bancolombia",
+        "legalName": "Bancolombia S.A.",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/bancolombia-1.png",
+        "keyWord": "bancolombia",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:31:05.527",
+        "dataModificacao": "2020-05-20T16:31:05.527",
+        "countries": [
+            "CO"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "d8bec1fd-4219-44d7-90cc-d87fc2608ee8",
+        "name": "Bangkok Bank",
+        "legalName": "Bangkok Bank Public Company Limited",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/bangkokbank-1.png",
+        "keyWord": "bangkokbank",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:31:06.157",
+        "dataModificacao": "2020-05-20T16:31:06.157",
+        "countries": [
+            "TH"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "a51d5a51-b9f1-4e51-8cc8-93205b8bbbf0",
+        "name": "Bank Norwegian",
+        "legalName": "Bank Norwegian AS",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/banknorwegian-1.png",
+        "keyWord": "banknorwegian",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:31:06.833",
+        "dataModificacao": "2020-05-20T16:31:06.833",
+        "countries": [
+            "NO"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "287cc3f5-bf21-4f76-833e-7a3c313b28a9",
+        "name": "Bank Rakyat",
+        "legalName": "Bank Kerjasama Rakyat Malaysia Berhad",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/bankrakyat-1.png",
+        "keyWord": "bankrakyat",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:31:07.467",
+        "dataModificacao": "2020-05-20T16:31:07.467",
+        "countries": [
+            "MY"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "0c67ea07-55f6-43a2-9bf2-28f68c21f964",
+        "name": "Bank of Aland",
+        "legalName": "Alandsbanken Abp",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/bankofaland-1.png",
+        "keyWord": "bankofaland",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:31:08.137",
+        "dataModificacao": "2020-05-20T16:31:08.137",
+        "countries": [
+            "FI"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "4a76f4db-0842-470b-a9fd-1c68cc844aa1",
+        "name": "Bank of America",
+        "legalName": "Bank of America",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/bankofamerica.png",
+        "keyWord": "bankofamerica",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:31:08.767",
+        "dataModificacao": "2020-05-20T16:31:08.767",
+        "countries": [
+            "US"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "d98c8c22-6208-4caa-b14f-0fe455fdff91",
+        "name": "Bank of China",
+        "legalName": "Bank of China Limited",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/bankofchina-1.png",
+        "keyWord": "bankofchina",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:31:09.97",
+        "dataModificacao": "2020-05-20T16:31:09.97",
+        "countries": [
+            "CN"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "6dd3a2dd-44e7-4129-b752-de7fe3d61cac",
+        "name": "Bankia",
+        "legalName": "Bankia S.A.",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/bankia-1.png",
+        "keyWord": "bankia",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:31:10.633",
+        "dataModificacao": "2020-05-20T16:31:10.633",
+        "countries": [
+            "ES"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "66998a1a-40fe-4a39-be5f-e0cdababd198",
+        "name": "Bankwest",
+        "legalName": "Bank of Western Australia Ltd",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/bankwest-1.png",
+        "keyWord": "bankwest",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:31:11.297",
+        "dataModificacao": "2020-05-20T16:31:11.297",
+        "countries": [
+            "AU"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "a0337c79-22fc-4410-b94a-b72725cb9a0e",
+        "name": "Banorte",
+        "legalName": "Grupo Financiero Banorte, S.A.B. de C.V.",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/banorte-1.png",
+        "keyWord": "banorte",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:31:11.94",
+        "dataModificacao": "2020-05-20T16:31:11.94",
+        "countries": [
+            "MX"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "7c240a1c-bdb0-40cb-b26b-f3d93d3f60ad",
+        "name": "Barclays",
+        "legalName": "Barclays PLC",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/barclays-1.png",
+        "keyWord": "barclays",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:31:12.583",
+        "dataModificacao": "2020-05-20T16:31:12.583",
+        "countries": [
+            "GB"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "6b8e69e9-d92f-4c07-a648-64940287ef5e",
+        "name": "Ben Visa Vale",
+        "legalName": "Banco Santander (Brasil) S.A.",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/benvisavale-1.png",
+        "keyWord": "benvisavale",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:31:13.267",
+        "dataModificacao": "2020-05-20T16:31:13.267",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "384fe814-849d-4332-8f70-f4f6918e3763",
+        "name": "Bendigo",
+        "legalName": "Bendigo and Adelaide Bank Ltd",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/bendigobank-1.png",
+        "keyWord": "bendigobank",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:31:13.95",
+        "dataModificacao": "2020-05-20T16:31:13.95",
+        "countries": [
+            "AU"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "53ecea51-0153-42e1-b9e1-ef2078542646",
+        "name": "C6 Bank",
+        "legalName": "BANCO C6 S.A.",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/c6bank-2.png",
+        "keyWord": "c6bank",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:31:14.63",
+        "dataModificacao": "2020-05-20T16:31:14.63",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "75811c66-9bf3-46a4-a1f7-d84a3487542f",
+        "name": "CDB",
+        "legalName": "China Development Bank",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/cdb-1.png",
+        "keyWord": "cdb",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:31:15.313",
+        "dataModificacao": "2020-05-20T16:31:15.313",
+        "countries": [
+            "CN"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "b55f9b47-38d0-4044-8efd-7de3554b4db2",
+        "name": "CDP",
+        "legalName": "Cassa Depositi e Prestiti S.p.A.",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/cdp-1.png",
+        "keyWord": "cdp",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:31:16.673",
+        "dataModificacao": "2020-05-20T16:31:16.673",
+        "countries": [
+            "IT"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "9c0c1a1d-2d7a-4d15-a4f2-6c59a39877cd",
+        "name": "CIBC",
+        "legalName": "Canadian Imperial Bank of Commerce",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/cibc-1.png",
+        "keyWord": "cibc",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:31:17.327",
+        "dataModificacao": "2020-05-20T16:31:17.327",
+        "countries": [
+            "CA"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "1a03e13a-19e6-4be7-b5c0-32349f2ad423",
+        "name": "CIMB Bank",
+        "legalName": "CIMB Bank Berhad",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/cimbbank-1.png",
+        "keyWord": "cimbbank",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:31:17.98",
+        "dataModificacao": "2020-05-20T16:31:17.98",
+        "countries": [
+            "MY"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "32de565d-2d0f-44de-aeec-75b51165a34c",
+        "name": "CIMB Niaga",
+        "legalName": "PT Bank CIMB Niaga Tbk",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/cimbniaga-1.png",
+        "keyWord": "cimbniaga",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:31:18.653",
+        "dataModificacao": "2020-05-20T16:31:18.653",
+        "countries": [
+            "ID"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "7eb7b01a-e87c-4463-aa0a-1ec33123c2ac",
+        "name": "CTT",
+        "legalName": "Banco CTT, S.A.",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/ctt-1.png",
+        "keyWord": "ctt",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:31:19.297",
+        "dataModificacao": "2020-05-20T16:31:19.297",
+        "countries": [
+            "PT"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "fb4cf039-7059-4bdb-9f64-9584a48c1057",
+        "name": "Caisse dEpargne",
+        "legalName": "BPCE SA",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/caisse-1.png",
+        "keyWord": "caisse",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:31:19.967",
+        "dataModificacao": "2020-05-20T16:31:19.967",
+        "countries": [
+            "FR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "849c1394-ef78-4f6c-847e-73f64df53ec2",
+        "name": "Caixa Geral",
+        "legalName": "Caixa Geral de Depositos, SA",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/caixageral-1.png",
+        "keyWord": "caixageral",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:31:21.157",
+        "dataModificacao": "2020-05-20T16:31:21.157",
+        "countries": [
+            "PT"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "faf4ec1c-1b9d-4225-8c4c-2ad5199828d7",
+        "name": "CaixaBank",
+        "legalName": "Caixabank, S.A.",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/caixabank-1.png",
+        "keyWord": "caixabank",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:31:21.79",
+        "dataModificacao": "2020-05-20T16:31:21.79",
+        "countries": [
+            "ES"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "122ae930-99cb-4208-aa83-f047db0c4a50",
+        "name": "Capital One",
+        "legalName": "Capital One Financial Corp.",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/capitalone.png",
+        "keyWord": "capitalone",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:31:22.427",
+        "dataModificacao": "2020-05-20T16:31:22.427",
+        "countries": [
+            "US"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "d6bff265-2cd3-4a74-9ce8-0fbe79427d7c",
+        "name": "Carteira",
+        "legalName": "Carteira",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/carteira.jpg",
+        "keyWord": "carteira",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:31:23.057",
+        "dataModificacao": "2020-05-20T16:31:23.057",
+        "countries": [
+            "AD",
+            "AE",
+            "AF",
+            "AG",
+            "AI",
+            "AL",
+            "AM",
+            "AO",
+            "AQ",
+            "AR",
+            "AS",
+            "AT",
+            "AU",
+            "AW",
+            "AX",
+            "AZ",
+            "BA",
+            "BB",
+            "BD",
+            "BE",
+            "BF",
+            "BG",
+            "BH",
+            "BI",
+            "BJ",
+            "BL",
+            "BM",
+            "BN",
+            "BO",
+            "BQ",
+            "BR",
+            "BS",
+            "BT",
+            "BV",
+            "BW",
+            "BY",
+            "BZ",
+            "CA",
+            "CC",
+            "CD",
+            "CF",
+            "CG",
+            "CH",
+            "CI",
+            "CK",
+            "CL",
+            "CM",
+            "CN",
+            "CO",
+            "CR",
+            "CU",
+            "CV",
+            "CW",
+            "CX",
+            "CY",
+            "CZ",
+            "DE",
+            "DJ",
+            "DK",
+            "DM",
+            "DO",
+            "DZ",
+            "EC",
+            "EE",
+            "EG",
+            "EH",
+            "ER",
+            "ES",
+            "ET",
+            "FI",
+            "FJ",
+            "FK",
+            "FM",
+            "FO",
+            "FR",
+            "GA",
+            "GB",
+            "GD",
+            "GE",
+            "GF",
+            "GG",
+            "GH",
+            "GI",
+            "GL",
+            "GM",
+            "GN",
+            "GP",
+            "GQ",
+            "GR",
+            "GS",
+            "GT",
+            "GU",
+            "GW",
+            "GY",
+            "HK",
+            "HM",
+            "HN",
+            "HR",
+            "HT",
+            "HU",
+            "ID",
+            "IE",
+            "IL",
+            "IM",
+            "IN",
+            "IO",
+            "IQ",
+            "IR",
+            "IS",
+            "IT",
+            "JE",
+            "JM",
+            "JO",
+            "JP",
+            "KE",
+            "KG",
+            "KH",
+            "KI",
+            "KM",
+            "KN",
+            "KP",
+            "KR",
+            "KW",
+            "KY",
+            "KZ",
+            "LA",
+            "LB",
+            "LC",
+            "LI",
+            "LK",
+            "LR",
+            "LS",
+            "LT",
+            "LU",
+            "LV",
+            "LY",
+            "MA",
+            "MC",
+            "MD",
+            "ME",
+            "MF",
+            "MG",
+            "MH",
+            "MK",
+            "ML",
+            "MM",
+            "MN",
+            "MO",
+            "MP",
+            "MQ",
+            "MR",
+            "MS",
+            "MT",
+            "MU",
+            "MV",
+            "MW",
+            "MX",
+            "MY",
+            "MZ",
+            "NA",
+            "NC",
+            "NE",
+            "NF",
+            "NG",
+            "NI",
+            "NL",
+            "NO",
+            "NP",
+            "NR",
+            "NU",
+            "NZ",
+            "OM",
+            "PA",
+            "PE",
+            "PF",
+            "PG",
+            "PH",
+            "PK",
+            "PL",
+            "PM",
+            "PN",
+            "PR",
+            "PS",
+            "PT",
+            "PW",
+            "PY",
+            "QA",
+            "RE",
+            "RO",
+            "RS",
+            "RU",
+            "RW",
+            "SA",
+            "SB",
+            "SC",
+            "SD",
+            "SE",
+            "SG",
+            "SH",
+            "SI",
+            "SJ",
+            "SK",
+            "SL",
+            "SM",
+            "SN",
+            "SO",
+            "SR",
+            "SS",
+            "ST",
+            "SV",
+            "SX",
+            "SY",
+            "SZ",
+            "TC",
+            "TD",
+            "TF",
+            "TG",
+            "TH",
+            "TJ",
+            "TK",
+            "TL",
+            "TM",
+            "TN",
+            "TO",
+            "TR",
+            "TT",
+            "TV",
+            "TW",
+            "TZ",
+            "UA",
+            "UG",
+            "UM",
+            "US",
+            "UY",
+            "UZ",
+            "VA",
+            "VC",
+            "VE",
+            "VG",
+            "VI",
+            "VN",
+            "VU",
+            "WF",
+            "WS",
+            "YE",
+            "YT",
+            "ZA",
+            "ZM",
+            "ZW"
+        ],
+        "institutionType": [
+            "checking_account"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "748f740a-cd7b-43d3-968a-b112bc29a2ed",
+        "name": "Cassa Depositi e Prestiti",
+        "legalName": "Cassa Depositi e Prestiti",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/cassadepositieprestiti.png",
+        "keyWord": "cassadepositieprestiti",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:31:50.093",
+        "dataModificacao": "2020-05-20T16:31:50.093",
+        "countries": [
+            "IT"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "a4ea4b2e-49dc-432b-83a0-ba2fc8040567",
+        "name": "Charles Schwab",
+        "legalName": "Charles Schwab",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/charlesschwab.png",
+        "keyWord": "charlesschwab",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:31:51.277",
+        "dataModificacao": "2020-05-20T16:31:51.277",
+        "countries": [
+            "US"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "2748d6f6-2775-4c6d-be04-63caff7b572b",
+        "name": "China Construction",
+        "legalName": "China Construction Bank Inc.",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/chinaconstructionbank-1.png",
+        "keyWord": "chinaconstructionbank",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:31:52.44",
+        "dataModificacao": "2020-05-20T16:31:52.44",
+        "countries": [
+            "CN"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "659b7508-caea-4799-9258-a8b294c709c0",
+        "name": "CommBank",
+        "legalName": "Commonwealth Bank of Australia",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/commbank-1.png",
+        "keyWord": "commbank",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:31:53.613",
+        "dataModificacao": "2020-05-20T16:31:53.613",
+        "countries": [
+            "AU"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "5401a286-9239-473c-9285-be3050f69a25",
+        "name": "Commerzbank",
+        "legalName": "Commerzbank AG",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/commerzbank-1.png",
+        "keyWord": "commerzbank",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:31:54.78",
+        "dataModificacao": "2020-05-20T16:31:54.78",
+        "countries": [
+            "DE"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "38694dfa-a003-47f3-b15f-1a5353083c70",
+        "name": "Credit Bank of Moscow",
+        "legalName": "Credit Bank of Moscow",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/creditbankofmoscow.png",
+        "keyWord": "creditbankofmoscow",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:31:58.297",
+        "dataModificacao": "2020-05-20T16:31:58.297",
+        "countries": [
+            "RU"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "129b22f9-28e2-466d-a27f-6bf32ff9ced6",
+        "name": "Credit agricole",
+        "legalName": "Credit agricole",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/creditagricoleitalia.png",
+        "keyWord": "creditagricoleitaly",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:31:59.497",
+        "dataModificacao": "2020-05-20T16:31:59.497",
+        "countries": [
+            "IT"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "a38a3955-182f-4ecc-9c4f-906b6c076b44",
+        "name": "Credito Emiliano",
+        "legalName": "Credito Emiliano",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/creditoemiliano.png",
+        "keyWord": "creditoemiliano",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:32:00.66",
+        "dataModificacao": "2020-05-20T16:32:00.66",
+        "countries": [
+            "IT"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "a50e260d-98be-4d08-a3a6-6e1a9d28b5bd",
+        "name": "Crédit Agricole",
+        "legalName": "Crédit Agricole SA",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/creditagricole-1.png",
+        "keyWord": "creditagricole",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:32:01.82",
+        "dataModificacao": "2020-05-20T16:32:01.82",
+        "countries": [
+            "FR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "113d372c-b7a5-47ae-818f-5bde3e59b31c",
+        "name": "Crédit du Nord",
+        "legalName": "Credit du Nord",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/creditdunord-1.png",
+        "keyWord": "creditdunord",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:32:03.07",
+        "dataModificacao": "2020-05-20T16:32:03.07",
+        "countries": [
+            "FR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "211b08a0-4970-4da9-8795-04ec1be71ba9",
+        "name": "DNB",
+        "legalName": "DNB ASA",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/dnbbank-1.png",
+        "keyWord": "dnbbank",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:32:04.263",
+        "dataModificacao": "2020-05-20T16:32:04.263",
+        "countries": [
+            "NO"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "f91ba74a-3a3d-488a-841f-87717e9764c9",
+        "name": "DZ Bank",
+        "legalName": "DZ BANK AG",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/dzbank-1.png",
+        "keyWord": "dzbank",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:32:05.427",
+        "dataModificacao": "2020-05-20T16:32:05.427",
+        "countries": [
+            "DE"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "ff7daa31-60c5-4164-be3f-7c354f39f852",
+        "name": "Danske",
+        "legalName": "Danske Bank Group",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/danskebank-1.png",
+        "keyWord": "danskebank",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:32:06.593",
+        "dataModificacao": "2020-05-20T16:32:06.593",
+        "countries": [
+            "DK"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "8d19b255-7a40-4ed8-9d50-703036d0f7bc",
+        "name": "Davivienda",
+        "legalName": "BANCO DAVIVIENDA SA",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/bancodavivienda-1.png",
+        "keyWord": "bancodavivienda",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:32:07.393",
+        "dataModificacao": "2020-05-20T16:32:07.393",
+        "countries": [
+            "CO"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "7fca1aa9-b00f-4f2c-9a39-656417475594",
+        "name": "Default",
+        "legalName": "Default",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/default.png",
+        "keyWord": "default",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:32:08.547",
+        "dataModificacao": "2020-05-20T16:32:08.547",
+        "countries": [
+            "AD",
+            "AE",
+            "AF",
+            "AG",
+            "AI",
+            "AL",
+            "AM",
+            "AO",
+            "AQ",
+            "AR",
+            "AS",
+            "AT",
+            "AU",
+            "AW",
+            "AX",
+            "AZ",
+            "BA",
+            "BB",
+            "BD",
+            "BE",
+            "BF",
+            "BG",
+            "BH",
+            "BI",
+            "BJ",
+            "BL",
+            "BM",
+            "BN",
+            "BO",
+            "BQ",
+            "BR",
+            "BS",
+            "BT",
+            "BV",
+            "BW",
+            "BY",
+            "BZ",
+            "CA",
+            "CC",
+            "CD",
+            "CF",
+            "CG",
+            "CH",
+            "CI",
+            "CK",
+            "CL",
+            "CM",
+            "CN",
+            "CO",
+            "CR",
+            "CU",
+            "CV",
+            "CW",
+            "CX",
+            "CY",
+            "CZ",
+            "DE",
+            "DJ",
+            "DK",
+            "DM",
+            "DO",
+            "DZ",
+            "EC",
+            "EE",
+            "EG",
+            "EH",
+            "ER",
+            "ES",
+            "ET",
+            "FI",
+            "FJ",
+            "FK",
+            "FM",
+            "FO",
+            "FR",
+            "GA",
+            "GB",
+            "GD",
+            "GE",
+            "GF",
+            "GG",
+            "GH",
+            "GI",
+            "GL",
+            "GM",
+            "GN",
+            "GP",
+            "GQ",
+            "GR",
+            "GS",
+            "GT",
+            "GU",
+            "GW",
+            "GY",
+            "HK",
+            "HM",
+            "HN",
+            "HR",
+            "HT",
+            "HU",
+            "ID",
+            "IE",
+            "IL",
+            "IM",
+            "IN",
+            "IO",
+            "IQ",
+            "IR",
+            "IS",
+            "IT",
+            "JE",
+            "JM",
+            "JO",
+            "JP",
+            "KE",
+            "KG",
+            "KH",
+            "KI",
+            "KM",
+            "KN",
+            "KP",
+            "KR",
+            "KW",
+            "KY",
+            "KZ",
+            "LA",
+            "LB",
+            "LC",
+            "LI",
+            "LK",
+            "LR",
+            "LS",
+            "LT",
+            "LU",
+            "LV",
+            "LY",
+            "MA",
+            "MC",
+            "MD",
+            "ME",
+            "MF",
+            "MG",
+            "MH",
+            "MK",
+            "ML",
+            "MM",
+            "MN",
+            "MO",
+            "MP",
+            "MQ",
+            "MR",
+            "MS",
+            "MT",
+            "MU",
+            "MV",
+            "MW",
+            "MX",
+            "MY",
+            "MZ",
+            "NA",
+            "NC",
+            "NE",
+            "NF",
+            "NG",
+            "NI",
+            "NL",
+            "NO",
+            "NP",
+            "NR",
+            "NU",
+            "NZ",
+            "OM",
+            "PA",
+            "PE",
+            "PF",
+            "PG",
+            "PH",
+            "PK",
+            "PL",
+            "PM",
+            "PN",
+            "PR",
+            "PS",
+            "PT",
+            "PW",
+            "PY",
+            "QA",
+            "RE",
+            "RO",
+            "RS",
+            "RU",
+            "RW",
+            "SA",
+            "SB",
+            "SC",
+            "SD",
+            "SE",
+            "SG",
+            "SH",
+            "SI",
+            "SJ",
+            "SK",
+            "SL",
+            "SM",
+            "SN",
+            "SO",
+            "SR",
+            "SS",
+            "ST",
+            "SV",
+            "SX",
+            "SY",
+            "SZ",
+            "TC",
+            "TD",
+            "TF",
+            "TG",
+            "TH",
+            "TJ",
+            "TK",
+            "TL",
+            "TM",
+            "TN",
+            "TO",
+            "TR",
+            "TT",
+            "TV",
+            "TW",
+            "TZ",
+            "UA",
+            "UG",
+            "UM",
+            "US",
+            "UY",
+            "UZ",
+            "VA",
+            "VC",
+            "VE",
+            "VG",
+            "VI",
+            "VN",
+            "VU",
+            "WF",
+            "WS",
+            "YE",
+            "YT",
+            "ZA",
+            "ZM",
+            "ZW"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "f6c54080-12f3-444d-8e5a-d7a74cafaf3f",
+        "name": "Deutsche Bank",
+        "legalName": "Deutsche Bank AG",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/deutschebank-1.png",
+        "keyWord": "deutschebank",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:32:35.603",
+        "dataModificacao": "2020-05-20T16:32:35.603",
+        "countries": [
+            "BE",
+            "DE",
+            "ES",
+            "IN",
+            "IT",
+            "PL",
+            "PT"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "d5fb3312-faaf-4e9a-b4ce-b1522ade0a17",
+        "name": "Eurobank",
+        "legalName": "Eurobank Ergasias SA",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/eurobank-1.png",
+        "keyWord": "eurobank",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:32:37.453",
+        "dataModificacao": "2020-05-20T16:32:37.453",
+        "countries": [
+            "GR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "00872c91-e3e8-419c-aee3-a40e8ab5487b",
+        "name": "Evli",
+        "legalName": "Evli Bank Plc",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/evlibank-1.png",
+        "keyWord": "evlibank",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:32:38.71",
+        "dataModificacao": "2020-05-20T16:32:38.71",
+        "countries": [
+            "FI"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "b9bae305-93f1-4fce-a2ee-59d1540083f7",
+        "name": "Forex",
+        "legalName": "FOREX Bank",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/forexbank-1.png",
+        "keyWord": "forexbank",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:32:39.887",
+        "dataModificacao": "2020-05-20T16:32:39.887",
+        "countries": [
+            "SE"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "abcb2406-240a-4b7b-a035-24dc7dde7b36",
+        "name": "Galicia",
+        "legalName": "BANCO DE GALICIA Y BUENOS AIRES S.A.",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/banco galicia-1.png",
+        "keyWord": "banco galicia",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:32:41.033",
+        "dataModificacao": "2020-05-20T16:32:41.033",
+        "countries": [
+            "AR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "ba82cd53-e5fd-4f64-99c0-03b70ee6f7c7",
+        "name": "Garanti",
+        "legalName": "T. Garanti Bankasi A.S.",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/garantibank-1.png",
+        "keyWord": "garantibank",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:32:42.187",
+        "dataModificacao": "2020-05-20T16:32:42.187",
+        "countries": [
+            "TR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "2a6f7f32-c158-4512-848a-35f0b1d6aaf3",
+        "name": "Gazprombank",
+        "legalName": "Gazprombank",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/gazprombank.png",
+        "keyWord": "gazprombank",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:32:43.313",
+        "dataModificacao": "2020-05-20T16:32:43.313",
+        "countries": [
+            "RU"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "7fd1efe8-7752-4b35-8f2b-2b201058823b",
+        "name": "Goldman Sachs",
+        "legalName": "Goldman Sachs Group",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/goldmansachs.png",
+        "keyWord": "goldmansachs",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:32:44.51",
+        "dataModificacao": "2020-05-20T16:32:44.51",
+        "countries": [
+            "US"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "81dc8a5d-4d9f-4007-9627-ce5c8549f327",
+        "name": "Handelsbanken",
+        "legalName": "Svenska Handelsbanken AB",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/handelsbanken-1.png",
+        "keyWord": "handelsbanken",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:32:45.68",
+        "dataModificacao": "2020-05-20T16:32:45.68",
+        "countries": [
+            "NO",
+            "SE"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "4e2fdfeb-18e4-44bd-a6f1-a39d57531a6b",
+        "name": "Hipotecario",
+        "legalName": "Banco Hipotecario S.A.",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/bancohipotecario-1.png",
+        "keyWord": "bancohipotecario",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:32:46.94",
+        "dataModificacao": "2020-05-20T16:32:46.94",
+        "countries": [
+            "AR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "38b39d1d-fa30-4d34-aba2-4c0d8c75f5d2",
+        "name": "Hong Leong",
+        "legalName": "Hong Leong Bank Berhad",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/hongleong-1.png",
+        "keyWord": "hongleong",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:32:48.153",
+        "dataModificacao": "2020-05-20T16:32:48.153",
+        "countries": [
+            "MY"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "66b28f25-e1d3-4e22-bdc8-b5dcbac941ff",
+        "name": "HypoVereinsbank",
+        "legalName": "UniCredit Bank AG",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/hypovereinsbank-1.png",
+        "keyWord": "hypovereinsbank",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:32:49.203",
+        "dataModificacao": "2020-05-20T16:32:49.203",
+        "countries": [
+            "DE"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "f679ac00-f33b-4856-88ad-e1f5563de7b5",
+        "name": "ICBC",
+        "legalName": "Industrial and Commercial Bank of China",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/icbc-1.png",
+        "keyWord": "icbc",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:32:49.84",
+        "dataModificacao": "2020-05-20T16:32:49.84",
+        "countries": [
+            "CN"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "36ca6b24-672f-4519-a85d-0b60b911956c",
+        "name": "ICCREA Banca",
+        "legalName": "ICCREA Banca",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/iccreabanca.png",
+        "keyWord": "iccreabanca",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:32:50.55",
+        "dataModificacao": "2020-05-20T16:32:50.55",
+        "countries": [
+            "IT"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "30399362-88aa-4ea6-864c-205f5b13f8f6",
+        "name": "ING",
+        "legalName": "ING Groep NV",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/ing-1.png",
+        "keyWord": "ing",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:32:51.183",
+        "dataModificacao": "2020-05-20T16:32:51.183",
+        "countries": [
+            "NL"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "e502084d-c4ce-4622-86e0-d650b360d7ed",
+        "name": "Inbursa",
+        "legalName": "Grupo Financiero Inbursa, SA. de CV",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/inbursa-1.png",
+        "keyWord": "inbursa",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:32:51.827",
+        "dataModificacao": "2020-05-20T16:32:51.827",
+        "countries": [
+            "MX"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "3812c3ff-1e68-4f16-bf33-8b41597220e4",
+        "name": "Intesa Sanpaolo",
+        "legalName": "Intesa Sanpaolo",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/intesasanpaolo.png",
+        "keyWord": "intesasanpaolo",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:32:52.483",
+        "dataModificacao": "2020-05-20T16:32:52.483",
+        "countries": [
+            "IT"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "c4dc3d5b-5efe-4a35-a246-25ddf16e9cb2",
+        "name": "Isbank",
+        "legalName": "Turkiye Is Bankasi A.S.",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/isbank-1.png",
+        "keyWord": "isbank",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:32:53.17",
+        "dataModificacao": "2020-05-20T16:32:53.17",
+        "countries": [
+            "TR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "e018f792-c0ac-47a6-9a76-8da657b792ab",
+        "name": "JP",
+        "legalName": "Japan Post Bank Co.,Ltd",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/jpbank-1.png",
+        "keyWord": "jpbank",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:32:53.837",
+        "dataModificacao": "2020-05-20T16:32:53.837",
+        "countries": [
+            "JP"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "3aeb937d-7eb5-4a31-8e4c-7a60f9a1b423",
+        "name": "JP Morgan Chase",
+        "legalName": "JPMorgan Chase & Co.",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/jpmorgan.png",
+        "keyWord": "jpmorgan",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:32:54.473",
+        "dataModificacao": "2020-05-20T16:32:54.473",
+        "countries": [
+            "US"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "a02ce1b1-b4b4-4133-8974-9fdc44497002",
+        "name": "Jyske",
+        "legalName": "Jyske Bank A/S",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/jyskebank-1.png",
+        "keyWord": "jyskebank",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:32:55.113",
+        "dataModificacao": "2020-05-20T16:32:55.113",
+        "countries": [
+            "DK"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "40df4101-c2f5-4b67-8540-98831d84cd47",
+        "name": "KB Kookmin",
+        "legalName": "KB Financial Group Inc.",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/kbkookminbank-1.png",
+        "keyWord": "kbkookminbank",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:32:55.75",
+        "dataModificacao": "2020-05-20T16:32:55.75",
+        "countries": [
+            "KR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "9441d36b-4024-48f1-96eb-42ad5e0ca635",
+        "name": "KBank",
+        "legalName": "KASIKORNBANK PUBLIC COMPANY LIMITED",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/kbank-1.png",
+        "keyWord": "kbank",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:32:56.397",
+        "dataModificacao": "2020-05-20T16:32:56.397",
+        "countries": [
+            "TH"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "11997dcf-a97d-42d4-8327-993c772d1d60",
+        "name": "KDB",
+        "legalName": "The Korea Development Bank",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/kdbbank-1.png",
+        "keyWord": "kdbbank",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:32:57.093",
+        "dataModificacao": "2020-05-20T16:32:57.093",
+        "countries": [
+            "KR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "69b741bd-4f8a-4ba0-b48a-50102aa2b3c3",
+        "name": "KEB Hana",
+        "legalName": "HANA BANK",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/kebhanabank-1.png",
+        "keyWord": "kebhanabank",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:32:57.73",
+        "dataModificacao": "2020-05-20T16:32:57.73",
+        "countries": [
+            "KR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "26e230fc-c5a8-4c1f-af24-194beffdb90e",
+        "name": "KFW",
+        "legalName": "Kreditanstalt für Wiederaufbau KfW Bankengruppe",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/kfw-1.png",
+        "keyWord": "kfw",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:32:58.37",
+        "dataModificacao": "2020-05-20T16:32:58.37",
+        "countries": [
+            "DE"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "547e04c8-99f8-4d76-b2cb-03031631710a",
+        "name": "Krung Thai Bank",
+        "legalName": " Krungthai Bank PCL",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/krungthaibank-1.png",
+        "keyWord": "krungthaibank",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:32:59.017",
+        "dataModificacao": "2020-05-20T16:32:59.017",
+        "countries": [
+            "TH"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "3fc439b0-f46a-4a23-b0bd-a6b3fd0ace92",
+        "name": "Lloyds Banking Group",
+        "legalName": "Lloyds Bank plc",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/lloydsbanking-1.png",
+        "keyWord": "lloydsbanking",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:32:59.66",
+        "dataModificacao": "2020-05-20T16:32:59.66",
+        "countries": [
+            "GB"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "cbc0ec73-cabc-4813-a076-45346915b36e",
+        "name": "MUFG",
+        "legalName": "MUFG Bank, Ltd.",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/mufgbank-1.png",
+        "keyWord": "mufgbank",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:00.343",
+        "dataModificacao": "2020-05-20T16:33:00.343",
+        "countries": [
+            "JP"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "06b97b67-cc36-4a1b-b84e-0a82cd377b4e",
+        "name": "Macquarie",
+        "legalName": "Macquarie Bank Limited",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/macquariebank-1.png",
+        "keyWord": "macquariebank",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:00.993",
+        "dataModificacao": "2020-05-20T16:33:00.993",
+        "countries": [
+            "AU"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "7d07fb84-21b7-485d-8f13-89f97722b0bb",
+        "name": "Macro",
+        "legalName": "Banco Macro S.A.",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/bancomacro-1.png",
+        "keyWord": "bancomacro",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:01.64",
+        "dataModificacao": "2020-05-20T16:33:01.64",
+        "countries": [
+            "AR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "e42abe2e-0139-4d61-923b-58aa2e97a747",
+        "name": "Mandiri",
+        "legalName": "PT Bank Mandiri (Persero) Tbk.",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/mandiri-1.png",
+        "keyWord": "mandiri",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:02.283",
+        "dataModificacao": "2020-05-20T16:33:02.283",
+        "countries": [
+            "ID"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "147b3538-a09f-4137-b850-8719485fd98c",
+        "name": "Maybank",
+        "legalName": "Malayan Banking Berhad",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/maybank-1.png",
+        "keyWord": "maybank",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:02.937",
+        "dataModificacao": "2020-05-20T16:33:02.937",
+        "countries": [
+            "MY"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "98342658-de86-4070-bca7-9de77469af70",
+        "name": "MedioBanca",
+        "legalName": "MedioBanca",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/mediobanca.png",
+        "keyWord": "mediobanca",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:03.583",
+        "dataModificacao": "2020-05-20T16:33:03.583",
+        "countries": [
+            "IT"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "9428334f-13d6-4792-a34f-c1aecc77e151",
+        "name": "Millenium BCP",
+        "legalName": "Banco Comercial Portugues, SA",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/milleniumbcp-1.png",
+        "keyWord": "milleniumbcp",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:04.223",
+        "dataModificacao": "2020-05-20T16:33:04.223",
+        "countries": [
+            "PT"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "3046d172-2677-4852-aeda-caa2b2fdf19d",
+        "name": "Mizuho",
+        "legalName": "Mizuho Bank, Ltd.",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/mizuhobank-1.png",
+        "keyWord": "mizuhobank",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:04.863",
+        "dataModificacao": "2020-05-20T16:33:04.863",
+        "countries": [
+            "JP"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "8c61591c-87b2-4be2-89d0-2226361fbeee",
+        "name": "Morgan Stanley",
+        "legalName": "Morgan Stanley",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/morganstanley.png",
+        "keyWord": "morganstanley",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:05.5",
+        "dataModificacao": "2020-05-20T16:33:05.5",
+        "countries": [
+            "US"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "5f4f6a35-c1c8-4229-9df5-1d9b63b9880e",
+        "name": "NAB",
+        "legalName": "National Australia Bank Limited",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/nab-1.png",
+        "keyWord": "nab",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:06.147",
+        "dataModificacao": "2020-05-20T16:33:06.147",
+        "countries": [
+            "AU"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "5a28725d-fbf7-4f61-a9a8-65fe6900927f",
+        "name": "NH",
+        "legalName": "NongHyup Financial Group Inc.",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/nhbank-1.png",
+        "keyWord": "nhbank",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:06.827",
+        "dataModificacao": "2020-05-20T16:33:06.827",
+        "countries": [
+            "KR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "95569617-33b6-430e-a4ee-613418dad569",
+        "name": "Nación",
+        "legalName": "Banco de La Nación Argentina",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/banconacion-1.png",
+        "keyWord": "banconacion",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:07.467",
+        "dataModificacao": "2020-05-20T16:33:07.467",
+        "countries": [
+            "AR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "bd3b3fbd-315e-414c-a563-6c170f56297a",
+        "name": "National Bank of Greece",
+        "legalName": "National Bank of Greece S.A.",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/nationalbank-1.png",
+        "keyWord": "nationalbank",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:08.133",
+        "dataModificacao": "2020-05-20T16:33:08.133",
+        "countries": [
+            "GR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "233dd7d1-6709-4bc4-a7d7-ed150c4f9d5e",
+        "name": "Nochu",
+        "legalName": "The Norinchukin Bank",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/nochubank-1.png",
+        "keyWord": "nochubank",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:08.803",
+        "dataModificacao": "2020-05-20T16:33:08.803",
+        "countries": [
+            "JP"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "93b49080-d5ee-4246-b0ae-273d9e7a3c93",
+        "name": "Nordea",
+        "legalName": "Nordea Bank AB",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/nordea-1.png",
+        "keyWord": "nordea",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:09.457",
+        "dataModificacao": "2020-05-20T16:33:09.457",
+        "countries": [
+            "DK",
+            "SE"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "9c6ebee6-262b-463e-915b-52a76843d581",
+        "name": "Nordnet",
+        "legalName": "Nordnet Bank AB",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/nordnet-1.png",
+        "keyWord": "nordnet",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:10.19",
+        "dataModificacao": "2020-05-20T16:33:10.19",
+        "countries": [
+            "SE"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "3e77e104-3abe-4e00-87f0-2e6adfa1c49c",
+        "name": "Novo Banco",
+        "legalName": "Novo Banco, S.A",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/novobancopt-1.png",
+        "keyWord": "novobancopt",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:10.827",
+        "dataModificacao": "2020-05-20T16:33:10.827",
+        "countries": [
+            "PT"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "2123619f-df21-4332-bd7b-5b0b2e27aac4",
+        "name": "Nykredit",
+        "legalName": "Nykredit Bank A/S",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/nykredit-1.png",
+        "keyWord": "nykredit",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:11.473",
+        "dataModificacao": "2020-05-20T16:33:11.473",
+        "countries": [
+            "DK"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "56b01f86-1b6b-48df-8e33-0846b89da014",
+        "name": "OP",
+        "legalName": "OP Financial Group",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/opbank-1.png",
+        "keyWord": "opbank",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:12.34",
+        "dataModificacao": "2020-05-20T16:33:12.34",
+        "countries": [
+            "FI"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "aa91dfe5-802c-4e10-b64f-3b138ed6cfe2",
+        "name": "Otkritie",
+        "legalName": "Otkritie",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/otkritie.png",
+        "keyWord": "otkritie",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:13.627",
+        "dataModificacao": "2020-05-20T16:33:13.627",
+        "countries": [
+            "RU"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "4ebfc7cd-7d1b-4638-a4cf-79769b04be44",
+        "name": "Outros",
+        "legalName": "Outros",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/default.jpg",
+        "keyWord": "other",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:14.273",
+        "dataModificacao": "2020-05-20T16:33:14.273",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "aadd5c90-c5d1-42dc-ac5f-c297fbbbcb8d",
+        "name": "PNC Financial Services",
+        "legalName": "PNC Financial Services",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/pncfinancialservices-4.png",
+        "keyWord": "pncfinancialservices",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:14.913",
+        "dataModificacao": "2020-05-20T16:33:14.913",
+        "countries": [
+            "US"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "dba1172b-932e-42ec-b4ae-49d91d3e1e30",
+        "name": "Patagonia",
+        "legalName": "Banco Patagonia S.A",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/bancopatagonia-1.png",
+        "keyWord": "bancopatagonia",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:15.567",
+        "dataModificacao": "2020-05-20T16:33:15.567",
+        "countries": [
+            "AR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "927bb40c-d643-4f9a-b300-a5b0c0060bd0",
+        "name": "Piraeus",
+        "legalName": "Piraeus Bank S.A.",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/piraeusbank-1.png",
+        "keyWord": "piraeusbank",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:16.2",
+        "dataModificacao": "2020-05-20T16:33:16.2",
+        "countries": [
+            "GR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "3746abd9-4814-446c-a938-03f56de9f359",
+        "name": "Porto Seguro",
+        "legalName": "Porto Seguro S.A.",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/portoseguro-1.png",
+        "keyWord": "portoseguro",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:16.833",
+        "dataModificacao": "2020-05-20T16:33:16.833",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "savings_account",
+            "credit_card",
+            "checking_account"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "1209084a-0ed7-43ca-83c3-75ffc6e197a3",
+        "name": "Promsvyazbank",
+        "legalName": "Promsvyazbank",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/promsvyazbank.png",
+        "keyWord": "promsvyazbank",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:17.48",
+        "dataModificacao": "2020-05-20T16:33:17.48",
+        "countries": [
+            "RU"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "2213b120-5a0a-4232-beb8-ce0b4e4da279",
+        "name": "Public Bank",
+        "legalName": "Public Bank Berhad",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/publicbank-1.png",
+        "keyWord": "publicbank",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:18.117",
+        "dataModificacao": "2020-05-20T16:33:18.117",
+        "countries": [
+            "MY"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "57c3cfe9-66b8-420b-882d-4a1cad787e58",
+        "name": "RBC Royal",
+        "legalName": "Royal Bank of Canada",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/rbcroyalbank-1.png",
+        "keyWord": "rbcroyalbank",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:18.757",
+        "dataModificacao": "2020-05-20T16:33:18.757",
+        "countries": [
+            "CA"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "3536c086-7fab-49c7-9006-8ea24da67832",
+        "name": "RBS",
+        "legalName": "The Royal Bank of Scotland Group, plc",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/rbs-1.png",
+        "keyWord": "rbs",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:19.403",
+        "dataModificacao": "2020-05-20T16:33:19.403",
+        "countries": [
+            "GB"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "b8336560-bbb7-4009-bfd3-a38a7c023baf",
+        "name": "RHB ",
+        "legalName": "RHB Bank Berhad",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/rhbbank -1.png",
+        "keyWord": "rhbbank ",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:20.177",
+        "dataModificacao": "2020-05-20T16:33:20.177",
+        "countries": [
+            "MY"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "7b310e21-688a-41af-94ec-9f6c393a1d24",
+        "name": "Rabobank",
+        "legalName": "Rabobank, N.A.",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/rabobank-1.png",
+        "keyWord": "rabobank",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:20.817",
+        "dataModificacao": "2020-05-20T16:33:20.817",
+        "countries": [
+            "NL"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "0bd5d522-0f25-4625-961c-3c621998611f",
+        "name": "Raiffeisen Bank",
+        "legalName": "Raiffeisen Bank",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/raiffeisenbank.png",
+        "keyWord": "raiffeisenbank",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:21.46",
+        "dataModificacao": "2020-05-20T16:33:21.46",
+        "countries": [
+            "RU"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "cfbcb715-6b45-4bf6-a917-cc34882f9dd3",
+        "name": "Revolut",
+        "legalName": "Revolut Ltd",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/revolut-1.png",
+        "keyWord": "revolut",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:22.147",
+        "dataModificacao": "2020-05-20T16:33:22.147",
+        "countries": [
+            "AT",
+            "BE",
+            "BG",
+            "DE",
+            "EE",
+            "FI",
+            "FR",
+            "GB",
+            "GR",
+            "HR",
+            "IE",
+            "IS",
+            "IT",
+            "LU",
+            "LV",
+            "MT",
+            "NL",
+            "NO",
+            "PL",
+            "PT",
+            "RO",
+            "SI",
+            "SK"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "962b216a-35ab-4df8-a494-4a4a3d70b24d",
+        "name": "SCB",
+        "legalName": "The Siam Commercial Bank PCL",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/scb-1.png",
+        "keyWord": "scb",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:25.107",
+        "dataModificacao": "2020-05-20T16:33:25.107",
+        "countries": [
+            "TH"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "a93422c8-4938-4fad-813d-c52100ac45ed",
+        "name": "SEB",
+        "legalName": "Skandinaviska Enskilda Banken AB",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/sebbank-1.png",
+        "keyWord": "sebbank",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:25.78",
+        "dataModificacao": "2020-05-20T16:33:25.78",
+        "countries": [
+            "SE"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "6b4d4917-7edd-4cf3-97a8-b0125f644267",
+        "name": "SMBC",
+        "legalName": "Sumitomo Mitsui Banking Corporation",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/smbc-1.png",
+        "keyWord": "smbc",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:26.5",
+        "dataModificacao": "2020-05-20T16:33:26.5",
+        "countries": [
+            "JP"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "b71ede8d-965c-40ab-8669-cf27af644f52",
+        "name": "SMP Bank",
+        "legalName": "SMP Bank",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/smpbank.png",
+        "keyWord": "smpbank",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:27.2",
+        "dataModificacao": "2020-05-20T16:33:27.2",
+        "countries": [
+            "RU"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "cd324a18-db87-4dc4-ae98-f05fd51158dc",
+        "name": "SNS",
+        "legalName": "SNS REAAL",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/snsbank-1.png",
+        "keyWord": "snsbank",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:27.86",
+        "dataModificacao": "2020-05-20T16:33:27.86",
+        "countries": [
+            "NL"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "e25e0a4d-12db-47fd-ad13-ddb4d416fa51",
+        "name": "Sabadell",
+        "legalName": "Banco de Sabadell, S.A.",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/sabadell-1.png",
+        "keyWord": "sabadell",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:28.56",
+        "dataModificacao": "2020-05-20T16:33:28.56",
+        "countries": [
+            "ES"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "e4d44d05-f326-4ad1-a8a7-4104cb2b12ac",
+        "name": "Santander Espanha",
+        "legalName": "Banco Santander, S.A.",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/santanderesp-1.png",
+        "keyWord": "santanderesp",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:29.227",
+        "dataModificacao": "2020-05-20T16:33:29.227",
+        "countries": [
+            "ES"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 3
+    },
+    {
+        "id": "2c360cbc-1e1f-4629-892e-ddeb5b0b8e67",
+        "name": "Santander México",
+        "legalName": "BANCO SANTANDER (MEXICO) S.A., INSTITUCION DE BANCA MULTIPLE, GRUPO FINANCIERO SANTANDER",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/santandermex-1.png",
+        "keyWord": "santandermex",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:29.91",
+        "dataModificacao": "2020-05-20T16:33:29.91",
+        "countries": [
+            "MX"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 3
+    },
+    {
+        "id": "e904d4df-7825-44ee-98a3-f25535742353",
+        "name": "Sberbank",
+        "legalName": "Sberbank",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/sberbank.png",
+        "keyWord": "sberbank",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:30.603",
+        "dataModificacao": "2020-05-20T16:33:30.603",
+        "countries": [
+            "RU"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "c10c881d-d1e7-4b9c-b671-652a7c177d2d",
+        "name": "Scotiabank",
+        "legalName": "The Bank of Nova Scotia",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/scotiabank-1.png",
+        "keyWord": "scotiabank",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:31.32",
+        "dataModificacao": "2020-05-20T16:33:31.32",
+        "countries": [
+            "CA",
+            "MX"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "a29fb909-0778-48f1-84da-c5dad6ad2360",
+        "name": "Senff",
+        "legalName": "Senffnet LTDA",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/senff-1.png",
+        "keyWord": "senff",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:32.163",
+        "dataModificacao": "2020-05-20T16:33:32.163",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "5547bf47-056e-4844-b60a-d922b3260ac4",
+        "name": "Shinhan",
+        "legalName": "SHINHAN BANK CO. LTD",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/shinhanbank-1.png",
+        "keyWord": "shinhanbank",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:32.823",
+        "dataModificacao": "2020-05-20T16:33:32.823",
+        "countries": [
+            "KR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "4462b336-5932-4ed2-afd3-cbf561e87e35",
+        "name": "Société Générale",
+        "legalName": "Société Générale S.A.",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/societegenerale-1.png",
+        "keyWord": "societegenerale",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:33.513",
+        "dataModificacao": "2020-05-20T16:33:33.513",
+        "countries": [
+            "FR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "f2b6385a-729e-4fa0-88db-a641e457d660",
+        "name": "Sparebank 1 SMN",
+        "legalName": "SpareBank 1",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/sparebank1-1.png",
+        "keyWord": "sparebank1",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:34.193",
+        "dataModificacao": "2020-05-20T16:33:34.193",
+        "countries": [
+            "NO"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "cec88992-bc36-40c3-833a-95d33175b68f",
+        "name": "Standard Chartered",
+        "legalName": "Standard Chartered PLC",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/standardchartered-1.png",
+        "keyWord": "standardchartered",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:34.893",
+        "dataModificacao": "2020-05-20T16:33:34.893",
+        "countries": [
+            "GB"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "90071ce2-200c-45b2-a383-044fed3f61b3",
+        "name": "Storebrand ",
+        "legalName": "Storebrand Bank ASA",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/storebrandbank -1.png",
+        "keyWord": "storebrandbank ",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:35.557",
+        "dataModificacao": "2020-05-20T16:33:35.557",
+        "countries": [
+            "NO"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "a950a7e1-5ee9-467a-9c3d-57f43d310932",
+        "name": "Suncorp",
+        "legalName": "Suncorp-Metway Ltd",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/suncorpbank-1.png",
+        "keyWord": "suncorpbank",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:36.273",
+        "dataModificacao": "2020-05-20T16:33:36.273",
+        "countries": [
+            "AU"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "6153c213-752a-4ee0-8857-51da499b2c7d",
+        "name": "Superdigital",
+        "legalName": "Super Pagamentos E Administracao De Meios Eletronicos Ltda",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/superdigital-1.png",
+        "keyWord": "superdigital",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:36.94",
+        "dataModificacao": "2020-05-20T16:33:36.94",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "dfe494f6-d167-408d-80b6-946ce8cb99ba",
+        "name": "Swedbank",
+        "legalName": "Swedbank AB",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/swedbank-3.png",
+        "keyWord": "swedbank",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:37.587",
+        "dataModificacao": "2020-05-20T16:33:37.587",
+        "countries": [
+            "EE",
+            "LT",
+            "LV",
+            "SE"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "57636bcc-01c6-4ff4-866e-f80dd0f0c1c2",
+        "name": "SydBank",
+        "legalName": "Sydbank A/S",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/sydbank-1.png",
+        "keyWord": "sydbank",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:38.517",
+        "dataModificacao": "2020-05-20T16:33:38.517",
+        "countries": [
+            "DK"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "a6b98356-e686-4056-a9c6-43c1634fb26e",
+        "name": "TD Bank",
+        "legalName": "TD Bank, N.A.",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/tdbank.png",
+        "keyWord": "tdbank",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:39.167",
+        "dataModificacao": "2020-05-20T16:33:39.167",
+        "countries": [
+            "CA",
+            "US"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "bea8f27b-d3b8-45f3-8740-9e5e3b185640",
+        "name": "TMB Bank",
+        "legalName": "Tamilnad Mercantile Bank Ltd",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/tmbbank-1.png",
+        "keyWord": "tmbbank",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:39.93",
+        "dataModificacao": "2020-05-20T16:33:39.93",
+        "countries": [
+            "TH"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "96ef8b4e-296c-4d4c-86c8-9876d5e30bea",
+        "name": "Techcombank",
+        "legalName": "VIETNAM TECHNOLOGICAL AND COMMERCIAL JOINT STOCK BANK",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/techcombank-1.png",
+        "keyWord": "techcombank",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:40.577",
+        "dataModificacao": "2020-05-20T16:33:40.577",
+        "countries": [
+            "VN"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "23f7b3d6-6a31-47f4-83e8-015fe5f1bd3a",
+        "name": "Tesouro Direto",
+        "legalName": "Tesouro Nacional",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/tesourodireto-1.png",
+        "keyWord": "tesourodireto",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:41.21",
+        "dataModificacao": "2020-05-20T16:33:41.21",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "savings_account"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "d52c1093-2792-4bd1-8ec6-db566d33b2e5",
+        "name": "Tesouro Nacional",
+        "legalName": "Tesouro Nacional",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/tesouronacional-1.png",
+        "keyWord": "tesouronacional",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:41.86",
+        "dataModificacao": "2020-05-20T16:33:41.86",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "savings_account"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "eba6b110-6cd2-4cbe-8fd5-865d222be0b4",
+        "name": "Ticket",
+        "legalName": "Ticket",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/ticket.png",
+        "keyWord": "ticket",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:42.543",
+        "dataModificacao": "2020-05-20T16:33:42.543",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "savings_account"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "0fb55c5c-ea6c-47f2-b352-a0525f62bf06",
+        "name": "Tinkoff",
+        "legalName": "Tinkoff Bank",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/tinkoff-1.png",
+        "keyWord": "tinkoff",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:43.237",
+        "dataModificacao": "2020-05-20T16:33:43.237",
+        "countries": [
+            "RU"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "28f3cd2b-6e8c-4fcb-924a-bb46f73341d5",
+        "name": "TransferWise",
+        "legalName": "TransferWise LTD",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/transferwise-1.png",
+        "keyWord": "transferwise",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:43.927",
+        "dataModificacao": "2020-05-20T16:33:43.927",
+        "countries": [
+            "AD",
+            "AL",
+            "AT",
+            "BA",
+            "BE",
+            "BG",
+            "CH",
+            "CZ",
+            "DE",
+            "EE",
+            "ES",
+            "FI",
+            "GB",
+            "GR",
+            "HR",
+            "HU",
+            "IT",
+            "LI",
+            "LT",
+            "LU",
+            "MC",
+            "ME",
+            "MK",
+            "MT",
+            "NO",
+            "PL",
+            "RO",
+            "RS",
+            "SE",
+            "SI",
+            "SK",
+            "SM",
+            "SZ",
+            "VA"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "7121bf41-3c1c-4d75-a3dd-452f269d017b",
+        "name": "Trigg",
+        "legalName": "Trigg Tecnologia Ltda",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/trigg.png",
+        "keyWord": "trigg",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:48.35",
+        "dataModificacao": "2020-05-20T16:33:48.35",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "ebd1f29b-0d5c-4148-9774-a1138245d389",
+        "name": "UBI Banca",
+        "legalName": "UBI Banca",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/ubibanca.png",
+        "keyWord": "ubibanca",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:49.4",
+        "dataModificacao": "2020-05-20T16:33:49.4",
+        "countries": [
+            "IT"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "7b62f017-20cf-41c0-9021-2df4695f82b9",
+        "name": "US Bank",
+        "legalName": "US Bank",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/usbank.png",
+        "keyWord": "usbank",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:50.033",
+        "dataModificacao": "2020-05-20T16:33:50.033",
+        "countries": [
+            "US"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "67890ce1-2e99-467f-b028-8ee04a6b8fb4",
+        "name": "Unicredit Bank",
+        "legalName": "Unicredit Bank",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/unicreditbank.png",
+        "keyWord": "unicreditbank",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:50.68",
+        "dataModificacao": "2020-05-20T16:33:50.68",
+        "countries": [
+            "IT",
+            "RU"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "422b9610-003a-4e23-b6c8-5a2bf086e007",
+        "name": "Unipol Banca",
+        "legalName": "Unipol Banca",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/unipolbanca.png",
+        "keyWord": "unipolbanca",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:51.423",
+        "dataModificacao": "2020-05-20T16:33:51.423",
+        "countries": [
+            "IT"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "51309b20-e9ac-42ff-9110-4ea4ab4c3641",
+        "name": "UrPay",
+        "legalName": "Urpay",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/urpay-1.png",
+        "keyWord": "urpay",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:52.103",
+        "dataModificacao": "2020-05-20T16:33:52.103",
+        "countries": [
+            "BR",
+            "US"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "c638efce-7174-429e-9cf2-db98a99241ad",
+        "name": "VTB",
+        "legalName": "VTB Bank",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/vtbbank.png",
+        "keyWord": "vtbbank",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:52.837",
+        "dataModificacao": "2020-05-20T16:33:52.837",
+        "countries": [
+            "RU"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "da26bd29-d94d-4a68-9f71-5963b9c13abc",
+        "name": "Vietcombank",
+        "legalName": "Joint Stock Commercial Bank for Foreign Trade of Vietnam",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/vietcombank-1.png",
+        "keyWord": "vietcombank",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:53.483",
+        "dataModificacao": "2020-05-20T16:33:53.483",
+        "countries": [
+            "VN"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "c289585f-87a0-4fc6-9d74-76e2cacc1b76",
+        "name": "VietinBank",
+        "legalName": "Vietnam Joint Stock Commercial Bank for Industry and Trade",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/vietinbank-1.png",
+        "keyWord": "vietinbank",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:54.153",
+        "dataModificacao": "2020-05-20T16:33:54.153",
+        "countries": [
+            "VN"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "427540bb-735a-4f38-ad22-4cc59fdba1cf",
+        "name": "Warren",
+        "legalName": "Warren Servicos Financeiros",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/warren.png",
+        "keyWord": "warren",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:54.87",
+        "dataModificacao": "2020-05-20T16:33:54.87",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "savings_account"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "d2395997-7f22-43c9-8612-6bf351891cb2",
+        "name": "Wells Fargo",
+        "legalName": "Wells Fargo",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/wellsfargo.png",
+        "keyWord": "wellsfargo",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:55.563",
+        "dataModificacao": "2020-05-20T16:33:55.563",
+        "countries": [
+            "CA",
+            "US"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "8ffd5ce5-b36d-454c-8d8a-f2c7432ae57f",
+        "name": "Westpac",
+        "legalName": "Westpac Banking Corporation",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/westpac-1.png",
+        "keyWord": "westpac",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:56.39",
+        "dataModificacao": "2020-05-20T16:33:56.39",
+        "countries": [
+            "AU"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "0ed1e768-e841-44bd-997e-76bd7c7438ce",
+        "name": "Woop",
+        "legalName": "Sicredi",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/woop-1.png",
+        "keyWord": "woop",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:57.077",
+        "dataModificacao": "2020-05-20T16:33:57.077",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "c1d2216f-6676-4635-a04f-02cf86142d7e",
+        "name": "Xdex",
+        "legalName": "XDEX INTERMEDIACAO LTDA.",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/xdex-1.png",
+        "keyWord": "xdex",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:57.747",
+        "dataModificacao": "2020-05-20T16:33:57.747",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "da0a7f37-027a-4fa7-94bf-695fde56a127",
+        "name": "Xp Investimentos",
+        "legalName": "XP Investimentos CCTVM S/A",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/xp.png",
+        "keyWord": "xp",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:58.38",
+        "dataModificacao": "2020-05-20T16:33:58.38",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "savings_account"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "983478d6-3464-45be-8b5f-4bd7a21a155b",
+        "name": "Yapi Kredi Bank",
+        "legalName": "Yapi ve Kredi Bankasi A.S.",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/yapikredi-1.png",
+        "keyWord": "yapikredi",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:59.02",
+        "dataModificacao": "2020-05-20T16:33:59.02",
+        "countries": [
+            "TR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "740145b5-1ad8-4803-8e1c-9134e5f03e99",
+        "name": "Ziraat",
+        "legalName": "TURKIYE CUMHURIYETI ZIRAAT BANKASI A S",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/ziraatbank-1.png",
+        "keyWord": "ziraatbank",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:33:59.663",
+        "dataModificacao": "2020-05-20T16:33:59.663",
+        "countries": [
+            "TR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "1499c024-eb98-4980-bd11-a85af61410bb",
+        "name": "alelo",
+        "legalName": "Alelo",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/alelo-5.png",
+        "keyWord": "alelo",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:34:00.3",
+        "dataModificacao": "2020-05-20T16:34:00.3",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "savings_account"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "90dee154-cfd0-4718-97f9-c07ebc04186e",
+        "name": "bunq",
+        "legalName": "bunq B.V.",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/bunq-1.png",
+        "keyWord": "bunq",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:34:00.94",
+        "dataModificacao": "2020-05-20T16:34:00.94",
+        "countries": [
+            "NL"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "315af670-a416-4e45-9a86-e4aa534b11b8",
+        "name": "Órama",
+        "legalName": "Órama DTVM S/A",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/orama-1.png",
+        "keyWord": "orama",
+        "active": true,
+        "dataCriacao": "2020-05-20T16:34:01.647",
+        "dataModificacao": "2020-05-20T16:34:01.647",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "c1e7d56e-4894-4ebe-893f-4897e82b7999",
+        "name": "Flash",
+        "legalName": "Flash",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/flash.png",
+        "keyWord": "flash",
+        "active": true,
+        "dataCriacao": "2020-09-29T21:22:07.123",
+        "dataModificacao": "2020-09-29T21:22:07.123",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "credit_card"
+        ],
+        "ranking": 8
+    },
+    {
+        "id": "1487ec92-205c-4b1b-af56-c2d9997a190c",
+        "name": "Cora",
+        "legalName": "Cora Sociedade de Crédito Direto S.A",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/corabank-1.png",
+        "keyWord": "corabank",
+        "active": true,
+        "dataCriacao": "2022-11-29T11:48:29.28",
+        "dataModificacao": "2022-11-29T11:48:29.28",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "4de47c1f-41fc-4006-8459-6f9a8cb3eac3",
+        "name": "Will",
+        "legalName": "Will S.A.",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/willbank-1.png",
+        "keyWord": "willbank",
+        "active": true,
+        "dataCriacao": "2022-11-29T12:28:01.37",
+        "dataModificacao": "2022-11-29T12:28:01.37",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account",
+            "credit_card"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "b9c71ea4-7da3-4ac9-a6a8-da187f4a8498",
+        "name": "UTIL",
+        "legalName": "UTIL Alimentação",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/util-1.png",
+        "keyWord": "util",
+        "active": true,
+        "dataCriacao": "2022-11-29T12:32:36.163",
+        "dataModificacao": "2022-11-29T12:32:36.163",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account"
+        ],
+        "ranking": 99
+    },
+    {
+        "id": "d1c75d4f-48a5-4274-ba48-55e4067543e6",
+        "name": "Caju",
+        "legalName": "Empresa Brasileira de Benefícios e Pagamentos LTDA",
+        "logoUrl": "https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/caju-1.png",
+        "keyWord": "caju",
+        "active": true,
+        "dataCriacao": "2022-11-29T12:36:24.087",
+        "dataModificacao": "2022-11-29T12:36:24.087",
+        "countries": [
+            "BR"
+        ],
+        "institutionType": [
+            "checking_account",
+            "savings_account"
+        ],
+        "ranking": 99
+    }
+]
