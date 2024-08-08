@@ -13,7 +13,7 @@ import BankSetup from "./BankSetup";
 
 export default function NewAccountModal(props) {
 
-    const { institutions } = props
+    const { dataFunction, institutions } = props
 
     const token = jwt.decode(Cookie.get('auth'));
 
@@ -35,12 +35,12 @@ export default function NewAccountModal(props) {
         let valueError = ''
         let descriptionError = ''
 
-        if (!bankSelected) bankError = "Selecione a instituição financeira"
+        // if (!bankSelected) bankError = "Selecione a instituição financeira"
         // if (!value) valueError = "Selecione a instituição financeira"
         if (!description) descriptionError = "Selecione a instituição financeira"
 
         if (bankError || valueError || descriptionError) {
-            if (bankError) document.getElementById('bankSelect').classList.add('inputError');
+            // if (bankError) document.getElementById('bankSelect').classList.add('inputError');
             // if (valueError) document.getElementById('valueInput').classList.add('inputError');
             if (descriptionError) document.getElementById('descriptionInput').classList.add('inputError');
             return false
@@ -60,6 +60,7 @@ export default function NewAccountModal(props) {
             const data = {
                 user_id,
                 bankSelected,
+                color,
                 value,
                 description,
                 valueSum
@@ -67,6 +68,7 @@ export default function NewAccountModal(props) {
 
             await axios.post('/api/bankAccounts', data)
                 .then(res => {
+                    dataFunction()
                     handleCancel()
                 }).catch(e => {
                     showModalBs("newAccountModal")

@@ -10,6 +10,8 @@ import NewAccountModal from "../src/bankAccounts/NewAccountModal";
 import axios from "axios";
 import jwt from 'jsonwebtoken'
 import Cookie from 'js-cookie'
+import CardTemplate from "../src/bankAccounts/CardTemplate";
+import { maskNumberMoney } from "../utils/mask";
 
 
 export default function BankAccounts() {
@@ -23,6 +25,7 @@ export default function BankAccounts() {
         year: new Date().getFullYear()
     })
     const [institutions, setInstitutions] = useState([])
+    const [bankAccounts, setBankAccounts] = useState([])
 
 
 
@@ -40,14 +43,22 @@ export default function BankAccounts() {
                 console.log(err)
             })
 
+        await axios.get(`/api/bankAccounts`, { params: { user_id } })
+            .then(res => {
+                console.log(res.data.bankAccounts)
+                setBankAccounts(res.data.bankAccounts)
+            }).catch(err => {
+                console.log(err)
+            })
+
     }
 
     return (
         <div className="page">
 
-            <NewAccountModal institutions={institutions} />
+            <NewAccountModal institutions={institutions} dataFunction={() => dataFunction(token.sub)} />
 
-            
+
             <Title title={'Contas bancárias'} subtitle='Gerencie suas contas bancárias' backButton='/' />
 
             {/* <div className="row my-3">
@@ -79,9 +90,17 @@ export default function BankAccounts() {
                                 <div className="col-12 col-xl-4 col-sm-6 my-2">
                                     <NewAccountCard />
                                 </div>
-                                <div className="col-12 col-xl-4 col-sm-6 my-2">
-                                    <AccountCard dateSelected={dateSelected} />
-                                </div>
+                                {bankAccounts.map((elem, index) => {
+                                    return (
+                                        <div className="col-12 col-xl-4 col-sm-6 my-2 d-flex justify-content-center">
+                                            <CardTemplate
+                                                bankSelected={elem.bankSelected}
+                                                color={elem.color}
+                                                value={maskNumberMoney(elem.value)}
+                                                description={elem.description} />
+                                        </div>
+                                    )
+                                })}
 
 
                             </div>

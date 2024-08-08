@@ -16,11 +16,42 @@ const authenticated = fn => async (req, res) => {
 
 export default authenticated(async (req, res) => {
 
-    if (req.method === "POST") {
+    if (req.method === "GET") {
 
-        const { user_id, bank, value, description, valueSum } = req.body
+        const { user_id } = req.query
 
-        if (!user_id || !bank || !description) {
+        if (!user_id) {
+            res.status(400).json({ error: "Missing parameters on request query" })
+        } else {
+
+            const { db } = await connect();
+
+            const userExist = await db.collection('users').findOne({ _id: new ObjectId(user_id) });
+
+            if (!userExist) {
+                res.status(400).json({ error: "User doesn't exist." });
+            } else {
+
+                const result = await db.collection('users').findOne({ _id: ObjectId(user_id) });
+
+                if (result) {
+                    res.status(200).json({ bankAccounts: result.bankAccounts });
+                } else {
+                    res.status(400).json({ error: "User doesn't exist." });
+                }
+            }
+        }
+
+    } else if (req.method === "POST") {
+
+        const { user_id,
+            bankSelected,
+            color,
+            value,
+            description,
+            valueSum } = req.body
+
+        if (!user_id || !bankSelected || !description) {
 
             res.status(400).json({ error: "Missing parameters on request body" })
         } else {
@@ -33,8 +64,33 @@ export default authenticated(async (req, res) => {
                 res.status(400).json({ error: "User doesn't exist." });
             } else {
 
+
+                const bankData = {
+                    bankSelected,
+                    color,
+                    value: maskMoneyNumber(value),
+                    description,
+                    valueSum,
+                    date: dateObject(new Date())
+                }
+
                 const result = await db.collection('users').updateOne(
-                    { _id: ObjectId(user_id) })
+                    { _id: ObjectId(user_id) },
+                    {
+                        $push: {
+                            bankAccounts: {
+                                $each: [bankData],
+                                $position: 0
+                            }
+                        }
+                    }
+                );
+
+                if (result.modifiedCount > 0) {
+                    res.status(200).json({ success: 'Account created' })
+                } else {
+                    res.status(400).json({ error: 'An error occurred' })
+                }
 
 
             }

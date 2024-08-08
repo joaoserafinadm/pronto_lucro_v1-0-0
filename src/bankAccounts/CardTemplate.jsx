@@ -33,7 +33,7 @@ export default function CardTemplate(props) {
                     </div>
                     <div >
                         <div className={`${styles.amountCard} ms-2`}>
-                            R$ {value}
+                            R$ {value ? value : '0,00'}
                         </div>
                     </div>
 
