@@ -1,13 +1,13 @@
 import { verify } from 'jsonwebtoken';
 import Client from 'belvo';
-import institutions from 'belvo/lib/institutions';
-import banksList from './bankList.json'
+import fs from 'fs';
+import path from 'path';
 
 const client = new Client(
     process.env.BELVO_SECRET_ID,
     process.env.BELVO_SECRET_PASSWORD,
     process.env.BELVO_ENV,
-  );
+);
 
 const authenticated = fn => async (req, res) => {
     verify(req.cookies.auth, process.env.JWT_SECRET, async function (err, decoded) {
@@ -18,35 +18,16 @@ const authenticated = fn => async (req, res) => {
     });
 };
 
-
 export default authenticated(async (req, res) => {
-
     if (req.method === 'GET') {
-        try{
-            res.status(200).json({institutions: banksList})
+        try {
+            const banksListPath = path.resolve(process.cwd(), 'pages/api/bankAccounts/bankList.json');
+            const banksList = JSON.parse(fs.readFileSync(banksListPath, 'utf8'));
 
+            res.status(200).json({ institutions: banksList });
         } catch (error) {
             console.error('Error fetching institutions:', error);
             res.status(500).json({ error: 'Failed to fetch institutions' });
         }
     }
-
- 
-})
-
-
-
-
-   // if (req.method === 'GET') {
-    //     try {
-    //         await client.connect();
-    //         const institutions = await client.institutions.list();
-    //         res.status(200).json(institutions);
-    //     } catch (error) {
-    //         console.error('Error fetching institutions:', error);
-    //         res.status(500).json({ error: 'Failed to fetch institutions' });
-    //     }
-    // } else {
-    //     res.setHeader('Allow', ['GET']);
-    //     res.status(405).end(`Method ${req.method} Not Allowed`);
-    // }
+});
