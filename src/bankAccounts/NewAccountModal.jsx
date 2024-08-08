@@ -22,6 +22,7 @@ export default function NewAccountModal(props) {
     const [value, setValue] = useState('');
     const [description, setDescription] = useState('')
     const [valueSum, setValueSum] = useState(true)
+    const [color, setColor] = useState("#4d88bb")
 
     const [loadingSave, setLoadingSave] = useState('')
 
@@ -82,7 +83,7 @@ export default function NewAccountModal(props) {
         setBankSelected('')
         setValue('')
         setDescription('')
-        setValueSum('')
+        setValueSum(true)
     }
 
 
@@ -106,6 +107,7 @@ export default function NewAccountModal(props) {
                                 <div class="carousel-item">
 
                                     <BankSetup bankSelected={bankSelected}
+                                        color={color} setColor={value => setColor(value)}
                                         setValue={value => setValue(value)} value={value}
                                         setDescription={value => setDescription(value)} description={description}
                                         setValueSum={value => setValueSum(value)} valueSum={valueSum} />

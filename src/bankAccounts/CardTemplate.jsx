@@ -4,7 +4,8 @@ import styles from './BankAccounts.module.scss'
 
 export default function CardTemplate(props) {
 
-    const { bankSelected, colorSelected } = props
+    const { bankSelected, color, value, description } = props
+
 
 
 
@@ -16,7 +17,7 @@ export default function CardTemplate(props) {
                     src='CARD_TEMPLATE.png'
                     alt=""
                     className={`${styles.cardTemplate}`}
-                    style={{ backgroundColor: colorSelected ? colorSelected : '#4D88BB' }}
+                    style={{ backgroundColor: color ? color : "#4d88bb" }}
                 />
                 <div className={`${styles.cardContent} d-flex flex-column justify-content-between`}>
                     <div>
@@ -28,11 +29,11 @@ export default function CardTemplate(props) {
                                 <span className={`${styles.cardTitle}`}>{bankSelected.name}</span>
                             </div>
                         </div>
-                        <span className={`${styles.cardTitle} ms-2 small`}>Conta Salário</span>
+                        <span className={`${styles.cardTitle} ms-2 small`}>{description}</span>
                     </div>
-                    <div style={{ width: '150px' }}>
-                        <div style={{ border: '1px solid white', borderRadius: '5px'}}>
-dsadsa
+                    <div >
+                        <div className={`${styles.amountCard} ms-2`}>
+                            R$ {value}
                         </div>
                     </div>
 

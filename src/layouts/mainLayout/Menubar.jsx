@@ -27,7 +27,8 @@ export default function MenuBar(props) {
     const permitedPages = [
         '/usersManagement',
         '/transactions',
-        '/bankAccounts'
+        '/bankAccounts',
+        '/'
     ]
 
 

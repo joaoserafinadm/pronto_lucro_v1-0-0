@@ -50,13 +50,13 @@ export default function BankAccounts() {
             
             <Title title={'Contas bancárias'} subtitle='Gerencie suas contas bancárias' backButton='/' />
 
-            <div className="row my-3">
+            {/* <div className="row my-3">
                 <div className="col-12 d-flex justify-content-center">
 
 
                     <MonthSelect setMonth={value => { setDateSelected(value) }} />
                 </div>
-            </div>
+            </div> */}
 
             <AccountsTotalCards dateSelected={dateSelected} />
 

@@ -60,7 +60,7 @@
     width: 100%;
     height: auto;
     padding: 0;
-    border-radius: 25px;
+    border-radius: 15px;
     box-shadow: 1px 1px 7px 1px rgba(96, 96, 96, 0.6);
     -webkit-box-shadow: 1px 1px 7px 1px rgba(96, 96, 96, 0.6);
     -moz-box-shadow: 1px 1px 7px 1px rgba(96, 96, 96, 0.6);
@@ -93,4 +93,11 @@
     font-size: 12px;
     font-weight: 400;
     color: #fff;
+}
+
+.amountCard {
+    border: 2px solid #e6e6e67d;
+    border-radius: 5px;
+    width: 160px;
+    padding: 7px 5px;
 }

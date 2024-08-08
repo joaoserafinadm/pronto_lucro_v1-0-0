@@ -1,13 +1,15 @@
 import { faAngleLeft, faComment, faCommentAlt, faMoneyBill } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import CardTemplate from "./CardTemplate"
+import BankColorSelect from "./BankColorSelect"
+import { maskInputMoney } from "../../utils/mask"
 
 
 
 
 export default function BankSetup(props) {
 
-    const { bankSelected, setValue, value, description, setDescription, valueSum, setValueSum } = props
+    const { bankSelected, setValue, value, description, setDescription, valueSum, setValueSum, color, setColor } = props
 
 
     return (
@@ -32,14 +34,18 @@ export default function BankSetup(props) {
                     </div>
                 </div>
             </div> */}
-            <div className="col-12 mb-3 px-5">
+            <div className="col-12 mb-3  mt-2">
                 <div className="row d-flex justify-content-center">
 
-                    <CardTemplate bankSelected={bankSelected} />
+                    <CardTemplate
+                        bankSelected={bankSelected}
+                        color={color}
+                        value={value}
+                        description={description} />
                 </div>
             </div>
-            <div className="col-12">
-
+            <div className="col-12 px-3">
+                <BankColorSelect color={color} setColor={value => setColor(value)} />
             </div>
             <hr />
 
@@ -63,7 +69,8 @@ export default function BankSetup(props) {
                 <FontAwesomeIcon icon={faCommentAlt} />
                 <span className="small fw-bold  ms-3">Descrição</span>
                 <input type="text" id="descriptionInput" className="form-control mt-2" value={description}
-                    onChange={e => setDescription(e.target.value)} />
+                    onChange={e => e.target.value.length <= 25 && setDescription(e.target.value)} />
+                <span className="small text-muted">Caracteres restantes: {25 - description.length}</span>
             </div>
             <hr />
 

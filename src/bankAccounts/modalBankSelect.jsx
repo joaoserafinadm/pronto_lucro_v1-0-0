@@ -104,7 +104,8 @@ export default function ModalBankSelect(props) {
                             <div className="col-12">
                                 {bankList?.map(elem => {
                                     return (
-                                        <span className="hoverSelect py-3 row my-2 d-flex">
+                                        <span className="hoverSelect py-3 row my-2 d-flex" type="button"  onClick={() => setBankSelected(elem)}
+                                        data-bs-target="#bankSetupCarousel" data-bs-slide="next" >
                                             <div className="d-flex justify-content-center align-items-center" style={{ width: "60px" }}>
                                                 <img className="bankImage" src={elem.logoUrl} alt="" />
                                             </div>
