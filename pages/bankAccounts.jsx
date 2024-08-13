@@ -25,6 +25,7 @@ export default function BankAccounts() {
         year: new Date().getFullYear()
     })
     const [institutions, setInstitutions] = useState([])
+    const [creditCatdList, setCreditCatdList] = useState([])
     const [bankAccounts, setBankAccounts] = useState([])
 
 
@@ -39,13 +40,13 @@ export default function BankAccounts() {
         await axios.get(`/api/bankAccounts/institutions`)
             .then(res => {
                 setInstitutions(res.data.institutions)
+                setCreditCatdList(res.data.creditCardList)
             }).catch(err => {
                 console.log(err)
             })
 
         await axios.get(`/api/bankAccounts`, { params: { user_id } })
             .then(res => {
-                console.log(res.data.bankAccounts)
                 setBankAccounts(res.data.bankAccounts)
             }).catch(err => {
                 console.log(err)
@@ -54,20 +55,17 @@ export default function BankAccounts() {
     }
 
     return (
-        <div className="page">
+        <div className="">
 
-            <NewAccountModal institutions={institutions} dataFunction={() => dataFunction(token.sub)} />
+            <NewAccountModal
+                institutions={institutions}
+                creditCatdList={creditCatdList}
+                dataFunction={() => dataFunction(token.sub)} />
 
 
             <Title title={'Contas bancárias'} subtitle='Gerencie suas contas bancárias' backButton='/' />
 
-            {/* <div className="row my-3">
-                <div className="col-12 d-flex justify-content-center">
 
-
-                    <MonthSelect setMonth={value => { setDateSelected(value) }} />
-                </div>
-            </div> */}
 
             <AccountsTotalCards dateSelected={dateSelected} />
 
@@ -87,13 +85,13 @@ export default function BankAccounts() {
 
 
                             <div className="row d-flex">
-                                <div className="col-12 col-xl-4 col-sm-6 my-2">
+                                <div className="col-12 col-xl-4 col-sm-6 my-2 d-flex justify-content-center">
                                     <NewAccountCard />
                                 </div>
-                                {bankAccounts.map((elem, index) => {
+                                {bankAccounts?.map((elem, index) => {
                                     return (
                                         <div className="col-12 col-xl-4 col-sm-6 my-2 d-flex justify-content-center">
-                                            <CardTemplate
+                                            <CardTemplate editButtons
                                                 bankSelected={elem.bankSelected}
                                                 color={elem.color}
                                                 value={maskNumberMoney(elem.value)}

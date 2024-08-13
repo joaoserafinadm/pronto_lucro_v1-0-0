@@ -1,4 +1,6 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styles from './BankAccounts.module.scss'
+import { faArrowTrendDown, faArrowTrendUp, faEye, faGear } from '@fortawesome/free-solid-svg-icons'
 
 
 
@@ -14,7 +16,7 @@ export default function CardTemplate(props) {
         <div className="" style={{ width: "278px" }}>
             <div className={`${styles.cardTemplate}`}>
                 <img
-                    src='CARD_TEMPLATE.png'
+                    src={bankSelected?.id === "1" ? 'WALLET_TEMPLATE.png' : 'CARD_TEMPLATE.png'}
                     alt=""
                     className={`${styles.cardTemplate}`}
                     style={{ backgroundColor: color ? color : "#4d88bb" }}
@@ -42,6 +44,28 @@ export default function CardTemplate(props) {
                     </div>
                 </div>
             </div>
+            {props.editButtons && (
+                <div className="row mt-2">
+                    <div className="col-12 d-flex justify-content-center ">
+                        <div className="btn-group ">
+                            <button className="btn btn-outline-secondary btn-sm  pt-2">
+                                <FontAwesomeIcon icon={faEye} />
+                            </button>
+                            <button className="btn btn-outline-secondary btn-sm pt-2">
+                                <FontAwesomeIcon icon={faArrowTrendUp} className='text-success'/>
+                            </button>
+                            <button className="btn btn-outline-secondary btn-sm pt-2">
+                                <FontAwesomeIcon icon={faArrowTrendDown} className='text-danger'/>
+                            </button>
+                            <button className="btn btn-outline-secondary btn-sm pt-2">
+                                <FontAwesomeIcon icon={faGear} />
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+
+            )}
         </div>
 
 

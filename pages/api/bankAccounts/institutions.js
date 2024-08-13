@@ -22,9 +22,11 @@ export default authenticated(async (req, res) => {
     if (req.method === 'GET') {
         try {
             const banksListPath = path.resolve(process.cwd(), 'src/bankAccounts/bankList.json');
+            const creditCardListPath = path.resolve(process.cwd(), 'src/bankAccounts/bankList.json');
             const banksList = JSON.parse(fs.readFileSync(banksListPath, 'utf8'));
+            const creditCardList = JSON.parse(fs.readFileSync(creditCardListPath, 'utf8'));
 
-            res.status(200).json({ institutions: banksList });
+            res.status(200).json({ institutions: banksList, creditCardList: creditCardList });
         } catch (error) {
             console.error('Error fetching institutions:', error);
             res.status(500).json({ error: 'Failed to fetch institutions' });

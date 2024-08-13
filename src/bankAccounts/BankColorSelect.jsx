@@ -21,7 +21,8 @@ export default function BankColorSelect(props) {
         "#008C44", // Sicoob
         "#8A05BE",  // Nubank
         "#333333", // Cinza escuro
-        "#1A1A1A" // Preto fosco
+        "#1A1A1A", // Preto fosco
+        "#3b271e"
     ];
 
     return (
@@ -36,7 +37,7 @@ export default function BankColorSelect(props) {
                 }}
                 // initialSlide={monthSelected}
                 slidesPerView={5}
-                pagination
+                // pagination
                 navigation
             // onSlideChange={handleSlideChange}
             >

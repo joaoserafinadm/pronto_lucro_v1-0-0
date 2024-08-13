@@ -1,0 +1,42 @@
+[
+    {
+        "id": 0,
+        "descricao": "Visa"
+    },
+    {
+        "id": 1,
+        "descricao": "MasterCard"
+    },
+    {
+        "id": 2,
+        "descricao": "HiperCard"
+    },
+    {
+        "id": 3,
+        "descricao": "American Express"
+    },
+    {
+        "id": 4,
+        "descricao": "SoroCard"
+    },
+    {
+        "id": 5,
+        "descricao": "BNDES"
+    },
+    {
+        "id": 6,
+        "descricao": "Dinners"
+    },
+    {
+        "id": 7,
+        "descricao": "Outra Bandeira"
+    },
+    {
+        "id": 8,
+        "descricao": "Elo"
+    },
+    {
+        "id": 999,
+        "descricao": "Outra Bandeira"
+    }
+]

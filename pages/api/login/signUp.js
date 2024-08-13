@@ -56,6 +56,10 @@ export default async function (req, res) {
                     }
                 ]
 
+                const bankAccounts = [
+                    {}
+                ]
+
 
 
                 const newUser = await db.collection('users').insertOne({
@@ -88,7 +92,8 @@ export default async function (req, res) {
                     notifications: notifications,
                     history: [],
                     dre: [],
-                    dfc: []
+                    dfc: [],
+                    bankAccounts: bankAccounts
                 })
 
                 if (newUser.insertedId) {
