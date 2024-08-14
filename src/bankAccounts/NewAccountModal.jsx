@@ -13,7 +13,7 @@ import BankSetup from "./BankSetup";
 
 export default function NewAccountModal(props) {
 
-    const { dataFunction, institutions, creditCatdList } = props
+    const { dataFunction, institutions, creditCardList } = props
 
     const token = jwt.decode(Cookie.get('auth'));
 
@@ -24,6 +24,8 @@ export default function NewAccountModal(props) {
     const [valueSum, setValueSum] = useState(true)
     const [color, setColor] = useState("#4d88bb")
     const [creditCard, setCreditCard] = useState(false)
+    const [creditLimit, setCreditLimit] = useState(0)
+    const [creditNetwork, setCreditNetwork] = useState(null)
     const [diaFechamento, setDiaFechamento] = useState(1)
     const [diaLancamento, setDiaLancamento] = useState(5)
 
@@ -66,7 +68,12 @@ export default function NewAccountModal(props) {
                 color,
                 value,
                 description,
-                valueSum
+                valueSum,
+                creditCard,
+                creditLimit,
+                creditNetwork,
+                diaFechamento,
+                diaLancamento
             }
 
             await axios.post('/api/bankAccounts', data)
@@ -111,12 +118,14 @@ export default function NewAccountModal(props) {
                                 </div>
                                 <div class="carousel-item">
 
-                                    <BankSetup bankSelected={bankSelected} creditCatdList={creditCatdList}
+                                    <BankSetup bankSelected={bankSelected} creditCardList={creditCardList}
                                         color={color} setColor={value => setColor(value)}
                                         setValue={value => setValue(value)} value={value}
                                         setDescription={value => setDescription(value)} description={description}
                                         setValueSum={value => setValueSum(value)} valueSum={valueSum}
                                         setCreditCard={value => setCreditCard(value)} creditCard={creditCard}
+                                        setCreditLimit={value => setCreditLimit(value)} creditLimit={creditLimit}
+                                        setCreditNetwork={value => setCreditNetwork(value)} creditNetwork={creditNetwork}
                                         setDiaFechamento={value => setDiaFechamento(value)} diaFechamento={diaFechamento}
                                         setDiaLancamento={value => setDiaLancamento(value)} diaLancamento={diaLancamento}
                                     />

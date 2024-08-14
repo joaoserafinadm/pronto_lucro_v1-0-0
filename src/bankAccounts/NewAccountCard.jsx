@@ -8,11 +8,9 @@ export default function NewAccountCard(props) {
 
     return (
 
-        <span className={`card cardAnimation`} type='button' style={{ width: "278px", height: '170px' }} data-bs-toggle="modal" data-bs-target="#newAccountModal">
+        <span className={`card  cardAnimation ${styles.cardTemplate}`} type='button' style={{ width: "278px", height: '170px' }} data-bs-toggle="modal" data-bs-target="#newAccountModal">
             <div className={`card-body d-flex `}>
                 <div className="col-12 d-flex justify-content-center align-items-center">
-
-
                     <span className={`${styles.newAccountCardIcon}`}>
                         +
                     </span>

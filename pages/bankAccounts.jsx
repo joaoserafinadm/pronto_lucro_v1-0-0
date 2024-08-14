@@ -25,7 +25,7 @@ export default function BankAccounts() {
         year: new Date().getFullYear()
     })
     const [institutions, setInstitutions] = useState([])
-    const [creditCatdList, setCreditCatdList] = useState([])
+    const [creditCardList, setCreditCardList] = useState([])
     const [bankAccounts, setBankAccounts] = useState([])
 
 
@@ -40,7 +40,7 @@ export default function BankAccounts() {
         await axios.get(`/api/bankAccounts/institutions`)
             .then(res => {
                 setInstitutions(res.data.institutions)
-                setCreditCatdList(res.data.creditCardList)
+                setCreditCardList(res.data.creditCardList)
             }).catch(err => {
                 console.log(err)
             })
@@ -59,7 +59,7 @@ export default function BankAccounts() {
 
             <NewAccountModal
                 institutions={institutions}
-                creditCatdList={creditCatdList}
+                creditCardList={creditCardList}
                 dataFunction={() => dataFunction(token.sub)} />
 
 
@@ -95,7 +95,8 @@ export default function BankAccounts() {
                                                 bankSelected={elem.bankSelected}
                                                 color={elem.color}
                                                 value={maskNumberMoney(elem.value)}
-                                                description={elem.description} />
+                                                description={elem.description}
+                                                creditNetwork={elem.creditNetwork} />
                                         </div>
                                     )
                                 })}

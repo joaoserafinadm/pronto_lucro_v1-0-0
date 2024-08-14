@@ -22,7 +22,7 @@ export default authenticated(async (req, res) => {
     if (req.method === 'GET') {
         try {
             const banksListPath = path.resolve(process.cwd(), 'src/bankAccounts/bankList.json');
-            const creditCardListPath = path.resolve(process.cwd(), 'src/bankAccounts/bankList.json');
+            const creditCardListPath = path.resolve(process.cwd(), 'src/bankAccounts/creditCardList.json');
             const banksList = JSON.parse(fs.readFileSync(banksListPath, 'utf8'));
             const creditCardList = JSON.parse(fs.readFileSync(creditCardListPath, 'utf8'));
 

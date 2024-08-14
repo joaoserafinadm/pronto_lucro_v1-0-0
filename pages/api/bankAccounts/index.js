@@ -49,7 +49,12 @@ export default authenticated(async (req, res) => {
             color,
             value,
             description,
-            valueSum } = req.body
+            valueSum,
+            creditCard,
+            creditLimit,
+            creditNetwork,
+            diaFechamento,
+            diaLancamento } = req.body
 
         if (!user_id || !bankSelected || !description) {
 
@@ -64,13 +69,20 @@ export default authenticated(async (req, res) => {
                 res.status(400).json({ error: "User doesn't exist." });
             } else {
 
-
+                const newId = new ObjectId();
+                
                 const bankData = {
+                    _id: newId,
                     bankSelected,
                     color,
                     value: maskMoneyNumber(value),
                     description,
                     valueSum,
+                    creditCard,
+                    creditLimit,
+                    creditNetwork,
+                    diaFechamento,
+                    diaLancamento,
                     date: dateObject(new Date())
                 }
 

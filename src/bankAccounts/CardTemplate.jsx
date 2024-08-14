@@ -6,10 +6,7 @@ import { faArrowTrendDown, faArrowTrendUp, faEye, faGear } from '@fortawesome/fr
 
 export default function CardTemplate(props) {
 
-    const { bankSelected, color, value, description } = props
-
-
-
+    const { bankSelected, color, value, description, creditNetwork } = props
 
 
     return (
@@ -39,9 +36,11 @@ export default function CardTemplate(props) {
                         </div>
                     </div>
 
-                    <div className='mb-2'>
+                    <div className='mb-2 '>
                         <span className='ms-3 small'>João Serafin</span>
+
                     </div>
+                        <img src={creditNetwork?.logoUrl} alt="" className={`${styles.creditNetworkIcon} me-2 my-0 py-0`} />
                 </div>
             </div>
             {props.editButtons && (
@@ -52,10 +51,10 @@ export default function CardTemplate(props) {
                                 <FontAwesomeIcon icon={faEye} />
                             </button>
                             <button className="btn btn-outline-secondary btn-sm pt-2">
-                                <FontAwesomeIcon icon={faArrowTrendUp} className='text-success'/>
+                                <FontAwesomeIcon icon={faArrowTrendUp} className='text-success' />
                             </button>
                             <button className="btn btn-outline-secondary btn-sm pt-2">
-                                <FontAwesomeIcon icon={faArrowTrendDown} className='text-danger'/>
+                                <FontAwesomeIcon icon={faArrowTrendDown} className='text-danger' />
                             </button>
                             <button className="btn btn-outline-secondary btn-sm pt-2">
                                 <FontAwesomeIcon icon={faGear} />

@@ -30,8 +30,17 @@ export default authenticated(async (req, res) => {
             } else {
                 const incomeTags = userExist.incomeTags
                 const expenseTags = userExist.expenseTags
+                const bankAccounts = userExist.bankAccounts.map(elem => {
+                    return {
+                        _id: elem._id,
+                        bankSelected: elem.bankSelected,
+                        color: elem.color,
+                        description: elem.description
 
-                res.status(200).json({ incomeTags, expenseTags });
+                    }
+                })
+
+                res.status(200).json({ incomeTags, expenseTags, bankAccounts });
             }
         }
 

@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import CardTemplate from "./CardTemplate"
 import BankColorSelect from "./BankColorSelect"
 import { maskInputMoney } from "../../utils/mask"
+import scrollTo from "../../utils/scrollTo"
 
 
 
@@ -10,6 +11,7 @@ import { maskInputMoney } from "../../utils/mask"
 export default function BankSetup(props) {
 
     const {
+        creditCardList,
         bankSelected,
         setValue,
         value,
@@ -21,12 +23,33 @@ export default function BankSetup(props) {
         setColor,
         creditCard,
         setCreditCard,
+        setCreditLimit,
+        creditLimit,
+        setCreditNetwork,
+        creditNetwork,
         diaLancamento,
         setDiaLancamento,
         diaFechamento,
         setDiaFechamento,
     } = props
 
+
+    const handleCreditNetwork = (id) => {
+        console.log(id, creditCardList)
+        const network = creditCardList.find(elem => elem.id.toString() === id.toString())
+        console.log("network", network)
+
+        setCreditNetwork(network)
+    }
+
+    const handleCreditCardCheck = () => {
+        setCreditCard(!creditCard)
+        setCreditLimit('')
+        setCreditNetwork('')
+        setDiaLancamento(1)
+        setDiaFechamento(5)
+        if (!creditCard) scrollTo('creditLimitInput');
+    }
 
     return (
         <div className="row">
@@ -44,7 +67,8 @@ export default function BankSetup(props) {
                         bankSelected={bankSelected}
                         color={color}
                         value={value}
-                        description={description} />
+                        description={description}
+                        creditNetwork={creditNetwork} />
                 </div>
             </div>
             <div className="col-12 px-3">
@@ -92,7 +116,7 @@ export default function BankSetup(props) {
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" disabled={!bankSelected?.institutionType?.includes('credit_card')}
                         role="switch" id="creditCardCheck" checked={creditCard}
-                        onClick={e => setCreditCard(!creditCard)} />
+                        onClick={e => { handleCreditCardCheck() }} />
                     <label class="form-check-label" for="creditCardCheck">Incluir cartão de crédito</label>
                 </div>
             </div>
@@ -108,8 +132,8 @@ export default function BankSetup(props) {
                             <span className="me-1">R$</span>
                             <input type="text" inputMode="numeric" placeholder="0,00"
                                 className="form-control  "
-                                value={value} id='valueInput'
-                                onChange={e => setValue(maskInputMoney(e.target.value))} />
+                                value={creditLimit} id='creditLimitInput'
+                                onChange={e => setCreditLimit(maskInputMoney(e.target.value))} />
                         </div>
 
                     </div>
@@ -120,13 +144,13 @@ export default function BankSetup(props) {
                         <FontAwesomeIcon icon={faSwatchbook} />
                         <span className="small fw-bold  ms-3">Bandeira</span>
 
-                        <div className="d-flex align-items-center fs-5 mt-2">
-                            <span className="me-1">R$</span>
-                            <input type="text" inputMode="numeric" placeholder="0,00"
-                                className="form-control  "
-                                value={value} id='valueInput'
-                                onChange={e => setValue(maskInputMoney(e.target.value))} />
-                        </div>
+                        <select class="form-select mt-2" aria-label="Default select example" value={creditNetwork?.id} onChange={e => handleCreditNetwork(e.target.value)}>
+                            <option value={''} disabled selected>Escolha...</option>
+                            {creditCardList.map(elem => (
+                                <option value={elem.id}>{elem.descricao}</option>
+                            ))}
+
+                        </select>
 
                     </div>
                     <hr />

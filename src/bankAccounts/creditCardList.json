@@ -1,0 +1,47 @@
+[
+    {
+        "id": 0,
+        "descricao": "Visa",
+        "logoUrl": "https://res.cloudinary.com/joaoserafinadm/image/upload/v1723595223/PRONTO%20LUCRO/CREDIT_CARD/ng6pce1rtzbggujbut5t.png"
+    },
+    {
+        "id": 1,
+        "descricao": "MasterCard",
+        "logoUrl": "https://res.cloudinary.com/joaoserafinadm/image/upload/v1723595223/PRONTO%20LUCRO/CREDIT_CARD/cmy797srdosxccvtk25a.png"
+    },
+    {
+        "id": 2,
+        "descricao": "HiperCard",
+        "logoUrl": "https://res.cloudinary.com/joaoserafinadm/image/upload/v1723595223/PRONTO%20LUCRO/CREDIT_CARD/ov90lfxt9i7t3ijj3wu2.png"
+    },
+    {
+        "id": 3,
+        "descricao": "American Express",
+        "logoUrl": "https://res.cloudinary.com/joaoserafinadm/image/upload/v1723595223/PRONTO%20LUCRO/CREDIT_CARD/caugfragzsrcajrydyf0.png"
+    },
+    {
+        "id": 4,
+        "descricao": "SoroCard",
+        "logoUrl": "https://res.cloudinary.com/joaoserafinadm/image/upload/v1723595223/PRONTO%20LUCRO/CREDIT_CARD/msdu6tizreij4kms1gng.png"
+    },
+    {
+        "id": 5,
+        "descricao": "BNDES",
+        "logoUrl": "https://res.cloudinary.com/joaoserafinadm/image/upload/v1723595223/PRONTO%20LUCRO/CREDIT_CARD/evv4niq0f7rx8lxavkom.png"
+    },
+    {
+        "id": 6,
+        "descricao": "Dinners",
+        "logoUrl": "https://res.cloudinary.com/joaoserafinadm/image/upload/v1723595223/PRONTO%20LUCRO/CREDIT_CARD/sknzadgznrh1skpsmbqn.png"
+    },
+    {
+        "id": 8,
+        "descricao": "Elo",
+        "logoUrl": "https://res.cloudinary.com/joaoserafinadm/image/upload/v1723595224/PRONTO%20LUCRO/CREDIT_CARD/q1fuf4tdqysevo7k4mpc.png"
+    },
+    {
+        "id": 999,
+        "descricao": "Outra Bandeira",
+        "logoUrl": "https://res.cloudinary.com/joaoserafinadm/image/upload/v1723595223/PRONTO%20LUCRO/CREDIT_CARD/ok4qvnqqt2kghwufe69a.png"
+    }
+]
