@@ -13,8 +13,8 @@ export default function BankSetup(props) {
     const {
         creditCardList,
         bankSelected,
-        setValue,
-        value,
+        setInitalValue,
+        initialValue,
         description,
         setDescription,
         valueSum,
@@ -66,7 +66,7 @@ export default function BankSetup(props) {
                     <CardTemplate
                         bankSelected={bankSelected}
                         color={color}
-                        value={value}
+                        value={initialValue}
                         description={description}
                         creditNetwork={creditNetwork} />
                 </div>
@@ -85,8 +85,8 @@ export default function BankSetup(props) {
                     <span className="me-1">R$</span>
                     <input type="text" inputMode="numeric" placeholder="0,00"
                         className="form-control  " style={{ borderColor: '#00cc99' }}
-                        value={value} id='valueInput'
-                        onChange={e => setValue(maskInputMoney(e.target.value))} />
+                        initialValue={initialValue} id='valueInput'
+                        onChange={e => setInitalValue(maskInputMoney(e.target.value))} />
                 </div>
 
             </div>

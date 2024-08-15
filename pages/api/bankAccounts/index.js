@@ -18,7 +18,7 @@ export default authenticated(async (req, res) => {
 
     if (req.method === "GET") {
 
-        const { user_id } = req.query
+        const { user_id, month, year } = req.query
 
         if (!user_id) {
             res.status(400).json({ error: "Missing parameters on request query" })
@@ -32,13 +32,60 @@ export default authenticated(async (req, res) => {
                 res.status(400).json({ error: "User doesn't exist." });
             } else {
 
-                const result = await db.collection('users').findOne({ _id: ObjectId(user_id) });
+                const dreData = userExist.dre;
+                const dfcData = userExist.dfc.find(elem => elem.year === +year && elem.month === +month)?.data || [];
+                const dfcPending = userExist.dfc.find(elem => elem.year === +year && elem.month === +month)?.data?.filter(elem => elem.active === false) || [];
 
-                if (result) {
-                    res.status(200).json({ bankAccounts: result.bankAccounts });
-                } else {
-                    res.status(400).json({ error: "User doesn't exist." });
-                }
+                console.log("dfcData", dfcData);
+
+                const monthResult = dfcData.reduce((sum, elem) => {
+                    return sum + (elem.type === "income" ? elem.value : -elem.value);
+                }, 0);
+
+
+                const monthPendigResult = dfcData.reduce((sum, elem) => {
+                    if (elem.active === false) {
+
+                        return sum + (elem.type === "income" ? elem.value : -elem.value);
+                    }
+                }, 0);
+
+
+                const dfcResult = userExist.dfc.reduce((acc, elem) => {
+                    if (isBeforeOrEqual(elem, { year, month })) {
+                        const activeElements = elem.data?.filter(dataElem => dataElem.active === true) || [];
+                        acc += activeElements.reduce((sum, activeElem) => sum + (activeElem.type === "income" ? activeElem.value : -activeElem.value), 0);
+                    }
+                    return acc;
+                }, 0);
+
+                const bankAccountsArray = userExist.bankAccounts.map(elem => {
+                    const value = userExist.dfc.reduce((acc, elem1) => {
+                        if (isBeforeOrEqual(elem1, { year, month })) {
+                            const activeElements = elem1.data?.filter(dataElem => dataElem.active === true && dataElem.account_id.toString() === elem._id.toString()) || [];
+                            acc += activeElements.reduce((sum, activeElem) => sum + (activeElem.type === "income" ? activeElem.value : -activeElem.value), 0);
+                        }
+                        return acc;
+                    }, 0);
+                    return {
+                        ...elem,
+                        value: value
+                    }
+
+                })
+
+
+                const dfcPendingResult = userExist.dfc.reduce((acc, elem) => {
+                    if (isBeforeOrEqual(elem, { year, month })) {
+                        const activeElements = elem.data?.filter(dataElem => dataElem.active === false) || [];
+                        acc += activeElements.reduce((sum, activeElem) => sum + (activeElem.type === "income" ? activeElem.value : -activeElem.value), 0);
+                    }
+                    return acc;
+                }, 0);
+
+
+                res.status(200).json({ bankAccounts: bankAccountsArray, dfcResult, monthPendigResult, dfcPendingResult });
+
             }
         }
 
@@ -47,7 +94,7 @@ export default authenticated(async (req, res) => {
         const { user_id,
             bankSelected,
             color,
-            value,
+            initialValue,
             description,
             valueSum,
             creditCard,
@@ -70,12 +117,12 @@ export default authenticated(async (req, res) => {
             } else {
 
                 const newId = new ObjectId();
-                
+
                 const bankData = {
                     _id: newId,
                     bankSelected,
                     color,
-                    value: maskMoneyNumber(value),
+                    initialValue: maskMoneyNumber(initialValue),
                     description,
                     valueSum,
                     creditCard,
@@ -109,12 +156,11 @@ export default authenticated(async (req, res) => {
         }
     }
 
-
-
-
-
-
-
-
-
 })
+
+
+function isBeforeOrEqual(a, b) {
+    if (+a.year < +b.year) return true;
+    if (+a.year === +b.year && +a.month <= +b.month) return true;
+    return false;
+}

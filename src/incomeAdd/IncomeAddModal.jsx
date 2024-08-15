@@ -141,7 +141,8 @@ export default function IncomeAddModal(props) {
                     paymentMethod,
                     competenceMonth,
                     description,
-                    tagSelected,
+                    tag_id: tagSelected ? tagSelected._id : '',
+                    account_id: accountSelected ? accountSelected._id : '',
                     files: attachment,
                     creditConfig
                 };
@@ -438,8 +439,7 @@ export default function IncomeAddModal(props) {
                                                     </span>
                                                     :
                                                     <>
-                                                        <div className="row">
-                                                            <span className="small ms-3 bold">{accountSelected.category}</span>
+                                                        <div className="row fadeItem">
                                                             <div>
                                                                 <span type="button" onClick={() => showModal('bankAccountsModal')}
                                                                     className={`cardAnimation px-2 py-1  text-white small mx-1 rounded-pill fw-bold `}

@@ -22,10 +22,10 @@ export default function CardTemplate(props) {
                     <div>
                         <div className="d-flex mt-2">
                             <div className='d-flex justify-content-center align-items-center ' style={{ width: "40px" }}>
-                                <img src={bankSelected.logoUrl} alt="" className={`${styles.bankIcon}`} />
+                                <img src={bankSelected?.logoUrl} alt="" className={`${styles.bankIcon}`} />
                             </div>
                             <div className="col ps-0 d-flex  align-items-center">
-                                <span className={`${styles.cardTitle}`}>{bankSelected.name}</span>
+                                <span className={`${styles.cardTitle}`}>{bankSelected?.name}</span>
                             </div>
                         </div>
                         <span className={`${styles.cardTitle} ms-2 small`}>{description}</span>
@@ -40,7 +40,7 @@ export default function CardTemplate(props) {
                         <span className='ms-3 small'>João Serafin</span>
 
                     </div>
-                        <img src={creditNetwork?.logoUrl} alt="" className={`${styles.creditNetworkIcon} me-2 my-0 py-0`} />
+                    <img src={creditNetwork?.logoUrl} alt="" className={`${styles.creditNetworkIcon} me-1 my-0 py-0`} />
                 </div>
             </div>
             {props.editButtons && (
@@ -77,10 +77,10 @@ export default function CardTemplate(props) {
 
 {/* <div className="row py-2 ps-4">
                         <div className='d-flex justify-content-center align-items-center py-2' style={{ width: "40px" }}>
-                            <img src={bankSelected.logoUrl} alt="" className={`${styles.bankIcon}`} />
+                            <img src={bankSelected?.logoUrl} alt="" className={`${styles.bankIcon}`} />
                         </div>
                         <div className="col ps-0 d-flex  align-items-center">
-                            <span className={`${styles.cardTitle}`}>{bankSelected.name}</span>
+                            <span className={`${styles.cardTitle}`}>{bankSelected?.name}</span>
                         </div>
                     </div>
                     <div className="row">

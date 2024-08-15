@@ -10,7 +10,7 @@ import { Accordion } from "react-bootstrap";
 import { useAccordionButton } from "react-bootstrap/AccordionButton";
 import { AccordionContext } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleRight, faBank, faBook, faBookOpen, faBuildingUser, faChartColumn, faChartLine, faChartSimple, faClipboardCheck, faClipboardList, faCreditCard, faCreditCardAlt, faDiagramProject, faFileContract, faGear, faHome, faHouseUser, faListCheck, faMessage, faMoneyBillTransfer, faObjectGroup, faTable, faTags, faTree, faUsers } from "@fortawesome/free-solid-svg-icons";
+import { faAngleRight, faBank, faBook, faBookOpen, faBuildingUser, faChartColumn, faChartLine, faChartSimple, faClipboardCheck, faClipboardList, faCreditCard, faCreditCardAlt, faDiagramProject, faFileContract, faGear, faHome, faHouseUser, faListCheck, faMessage, faMoneyBillTransfer, faObjectGroup, faTable, faTags, faTree, faUsers, faWallet } from "@fortawesome/free-solid-svg-icons";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
@@ -156,9 +156,9 @@ export default function Nav(props) {
                                         <ContextAwareToggle eventKey="2" collapse="cardsItem">
                                             <div className="d-flex justify-content-start " type='button' onClick={() => router.push('/bankAccounts')}>
                                                 <div className="col-1 text-center me-3">
-                                                    <FontAwesomeIcon icon={faBank} className="me-2 icon" />
+                                                    <FontAwesomeIcon icon={faWallet} className="me-2 icon" />
                                                 </div>
-                                                <div className="col-9 bold">Contas bancárias</div>
+                                                <div className="col-9 bold">Contas</div>
                                             </div>
                                         </ContextAwareToggle>
                                     </li>
@@ -168,7 +168,7 @@ export default function Nav(props) {
                                                 <div className="col-1 text-center me-3">
                                                     <FontAwesomeIcon icon={faCreditCard} className="me-2 icon" />
                                                 </div>
-                                                <div className="col-9 bold">Cartões de crédito</div>
+                                                <div className="col-9 bold">Cartão de crédito</div>
                                             </div>
                                         </ContextAwareToggle>
                                     </li>

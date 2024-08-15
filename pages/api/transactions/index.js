@@ -65,7 +65,7 @@ export default authenticated(async (req, res) => {
 
                 console.log("dfcPendingResult", dfcPendingResult);
 
-                res.status(200).json({ dreData, dfcData, dfcPending, monthResult, dfcResult, monthPendigResult, dfcPendingResult, tags: userExist.incomeTags.concat(userExist.expenseTags) });
+                res.status(200).json({ dreData, dfcData, dfcPending, monthResult, dfcResult, monthPendigResult, dfcPendingResult, tags: userExist.incomeTags.concat(userExist.expenseTags), accounts: userExist.bankAccounts });
             }
         }
     }

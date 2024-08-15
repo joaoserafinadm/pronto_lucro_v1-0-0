@@ -12,7 +12,7 @@ export default function DesktopPage(props) {
 
     return (
         <div className="row d-flex mt-3">
-            <div className="col-12    my-3">
+            <div className="col-12    ">
 
                 <DesktopTotalCards data={data} dateSelected={dateSelected} />
 

@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Title from "../src/components/title/Title2";
 import navbarHide from "../utils/navbarHide";
 import { useEffect, useState } from "react";
@@ -17,16 +17,32 @@ import { maskNumberMoney } from "../utils/mask";
 export default function BankAccounts() {
 
     const token = jwt.decode(Cookie.get('auth'));
-
     const dispatch = useDispatch()
+
+    const newDataStore = useSelector(state => state.newData)
+
+    useEffect(() => {
+        if (newDataStore) dataFunction(token.sub)
+    }, [newDataStore])
 
     const [dateSelected, setDateSelected] = useState({
         month: new Date().getMonth(),
         year: new Date().getFullYear()
     })
+
+    useEffect(() => {
+        if (dateSelected) dataFunction(token.sub)
+        navbarHide(dispatch)
+
+    }, [dateSelected])
+
+
     const [institutions, setInstitutions] = useState([])
     const [creditCardList, setCreditCardList] = useState([])
     const [bankAccounts, setBankAccounts] = useState([])
+
+    const [data, setData] = useState(null)
+
 
 
 
@@ -45,9 +61,16 @@ export default function BankAccounts() {
                 console.log(err)
             })
 
-        await axios.get(`/api/bankAccounts`, { params: { user_id } })
+        await axios.get(`/api/bankAccounts`, {
+            params: {
+                user_id,
+                month: dateSelected.month,
+                year: dateSelected.year
+            }
+        })
             .then(res => {
                 setBankAccounts(res.data.bankAccounts)
+                setData(res.data)
             }).catch(err => {
                 console.log(err)
             })
@@ -65,12 +88,19 @@ export default function BankAccounts() {
 
             <Title title={'Contas bancárias'} subtitle='Gerencie suas contas bancárias' backButton='/' />
 
+            <div className="col-12 my-2 d-flex justify-content-center">
+                <MonthSelect
+                    setMonth={value => { setDateSelected(value) }}
+                />
+            </div>
 
 
-            <AccountsTotalCards dateSelected={dateSelected} />
+            <AccountsTotalCards dateSelected={dateSelected} data={data}/>
 
 
             <div className="row">
+
+
                 <div className="col-12">
                     <div className="card">
                         <div className="card-body">
@@ -94,7 +124,7 @@ export default function BankAccounts() {
                                             <CardTemplate editButtons
                                                 bankSelected={elem.bankSelected}
                                                 color={elem.color}
-                                                value={maskNumberMoney(elem.value)}
+                                                value={maskNumberMoney(elem.value + elem.initialValue)}
                                                 description={elem.description}
                                                 creditNetwork={elem.creditNetwork} />
                                         </div>

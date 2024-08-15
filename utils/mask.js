@@ -86,16 +86,20 @@ export function formatDate(dateObj) {
 
 export function maskNumberMoney(value) {
 
-	const brlNumber = {
-        format: (value) => value.toLocaleString('pt-BR', { decimal: '.', style: 'decimal', minimumFractionDigits: 2, maximumFractionDigits: 2 })
-    }
+	if (value) {
 
-	const number = brlNumber.format(value)
+		const brlNumber = {
+			format: (value) => value.toLocaleString('pt-BR', { decimal: '.', style: 'decimal', minimumFractionDigits: 2, maximumFractionDigits: 2 })
+		}
 
-	
+		const number = brlNumber.format(value)
 
 
-	return maskInputMoney(number.toString());
+		return maskInputMoney(number.toString());
+	} else {
+		return '0,00';
+	}
+
 }
 
 

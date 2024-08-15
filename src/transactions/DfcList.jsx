@@ -41,6 +41,12 @@ export default function DfcList(props) {
                 <div className="card">
                     <div className="card-body">
                         <div className="row">
+                            <span className='text-secondary fw-bold'>
+                                Todas transações
+                            </span>
+                        </div>
+                        <hr />
+                        <div className="row">
                             <div
                                 className="col-12"
                                 ref={containerRef}
@@ -54,51 +60,24 @@ export default function DfcList(props) {
                                     </div>
                                     :
                                     <>
+
                                         {data?.dfcData?.map((elem, index) => {
 
-                                            const tagSelected = data?.tags?.find(elem1 => elem1._id === elem?.tag);
+                                            const tagSelected = data?.tags?.find(elem1 => elem1._id === elem?.tag_id);
+
+                                            const accountSelected = data?.accounts?.find(elem1 => elem1._id === elem?.account_id);
 
 
                                             return (
                                                 <>
                                                     <div className="row d-flex" key={index}>
-                                                        <div className='d-flex justify-content-center align-items-center' style={{ width: '30px' }}>
+                                                        {/* <div className='d-flex justify-content-center align-items-center' style={{ width: '30px' }}>
                                                             <span>
 
                                                                 <TypeIcon elem={elem} />
                                                             </span>
-                                                        </div>
+                                                        </div> */}
                                                         <div className="col">
-                                                            <div className="row">
-                                                                <div className="col-12">
-                                                                    {!tagSelected ?
-                                                                        <span class=" px-2 py-1  small rounded-pill border">
-                                                                            Sem marcador
-                                                                        </span>
-                                                                        :
-                                                                        <>
-                                                                            <div className="row">
-                                                                                <div>
-                                                                                    <span type="button"
-                                                                                        className={`cardAnimation px-2 py-1   small rounded-pill fw-bold `}
-                                                                                        style={{ backgroundColor: tagSelected.color, color: tagSelected.textColor, fontSize: '10px' }}>
-                                                                                        {tagSelected.tag}
-                                                                                    </span>
-                                                                                </div>
-                                                                            </div>
-                                                                        </>
-                                                                    }
-
-                                                                </div>
-                                                            </div>
-                                                            <div className="row mt-1">
-                                                                <div className="col-12">
-                                                                    <span className='bold'>
-                                                                        {elem?.description ? elem?.description : 'Sem descricão'}
-                                                                    </span>
-                                                                </div>
-                                                            </div>
-
 
                                                             <div className="row">
                                                                 <div className="col-12">
@@ -107,13 +86,51 @@ export default function DfcList(props) {
                                                                     </span>
                                                                 </div>
                                                             </div>
+                                                            <div className="row mt-1">
+                                                                <div className="col-12">
+                                                                    <span className='fw-bold'>
+                                                                        {elem?.description ? elem?.description : 'Sem descricão'}
+                                                                    </span>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                         <div className=' d-flex justify-content-end align-items-center' style={{ width: '150px' }}>
                                                             <span className={`bold text-center text-${elem?.active === false ? 'secondary' : elem?.type === 'income' ? 'success' : 'danger'}`} >
 
-                                                            {elem?.type === 'expense' && '(-)'}{brlMoney.format(elem?.value)} <br />
+                                                                {elem?.type === 'expense' && '-'}{elem?.type === 'income' && '+'}{brlMoney.format(elem?.value)} <br />
                                                                 {elem?.active === false && 'Pendente'}
                                                             </span>
+                                                        </div>
+                                                        <div className="row">
+                                                            <div className="col-12">
+                                                                {!tagSelected ?
+                                                                    <span class=" px-2 py-1  small rounded-pill border">
+                                                                        Sem marcador
+                                                                    </span>
+                                                                    :
+                                                                    <>
+
+                                                                        <span
+                                                                            className={` px-2 py-1 small rounded-pill `}
+                                                                            style={{ backgroundColor: tagSelected.color, color: tagSelected.textColor }}>
+                                                                            {tagSelected.tag}
+                                                                        </span>
+                                                                    </>
+                                                                }
+
+                                                            </div>
+                                                        </div>
+                                                        <div className="row mt-1">
+                                                            <div>
+
+                                                                <span
+                                                                    className={` px-2 py-1 small rounded-pill text-white `}
+
+                                                                    style={{ backgroundColor: accountSelected.color }}>
+                                                                    <img src={accountSelected?.bankSelected?.logoUrl} className="rounded-circle me-2" alt="" width={20} height={20} />
+                                                                    {accountSelected.description}
+                                                                </span>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     <hr />

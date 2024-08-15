@@ -25,6 +25,7 @@ import StyledDropzone from "../components/styledDropzone/StyledDropzone";
 import { createImageUrl } from "../../utils/createImageUrl";
 import { useDispatch } from "react-redux";
 import { newData } from "../../store/NewData/NewData.action";
+import BankAccountsModal from "./BankAccountsModal";
 
 
 
@@ -46,6 +47,8 @@ export default function ExpenseAddModal(props) {
     const [description, setDescription] = useState('');
     const [tagSelected, setTagSelected] = useState(null);
     const [files, setFiles] = useState(null)
+    const [bankAccounts, setBankAccounts] = useState([])
+    const [accountSelected, setAccountSelected] = useState(null)
 
 
     const [tags, setTags] = useState([])
@@ -66,6 +69,8 @@ export default function ExpenseAddModal(props) {
             }
         }).then(res => {
             setTags(res.data.expenseTags)
+            setBankAccounts(res.data.bankAccounts)
+
         }).catch(e => {
             console.log(e)
         })
@@ -137,7 +142,8 @@ export default function ExpenseAddModal(props) {
                     paymentMethod,
                     competenceMonth,
                     description,
-                    tagSelected,
+                    tag_id: tagSelected ? tagSelected._id : '',
+                    account_id: accountSelected ? accountSelected._id : '',
                     files: attachment,
                     creditConfig
                 };
@@ -419,24 +425,44 @@ export default function ExpenseAddModal(props) {
 
                                         <hr />
 
-                                        {/* <div className="row d-flex justify-content-between">
+                                        <div className="row d-flex justify-content-between">
                                             <div className="col-12">
 
                                                 <FontAwesomeIcon icon={faWallet} />
-                                                <span className="small fw-bold mb-2 ms-3">Carteira</span>
+                                                <span className="small fw-bold mb-2 ms-3">Conta</span>
                                             </div>
-                                            <div className="col-12 mt-2 d-flex justify-content-between">
-                                                <span class=" px-3 py-1 border border-rounded   small mx-1 rounded-pill ">
-                                                    <img src="/logo-sicredi.png" className="rounded-circle me-1" height={15} alt="" /> Sicredi
-                                                </span>
+                                            <div className="col-12 mt-2 d-flex justify-content-between" onClick={() => showModal('bankAccountsExpenseModal')}>
+                                                {!accountSelected ?
+                                                    <span type="button"
+                                                        class=" px-2 py-1  small mx-1 rounded-pill border pulse shadow">
+                                                        Selecionar Conta
+                                                    </span>
+                                                    :
+                                                    <>
+                                                        <div className="row">
+                                                            <div>
+                                                                <span type="button" onClick={() => showModal('bankAccountsExpenseModal')}
+                                                                    className={`cardAnimation px-2 py-1  text-white small mx-1 rounded-pill fw-bold `}
+                                                                    style={{ backgroundColor: accountSelected.color }}>
+                                                                    <img src={accountSelected?.bankSelected?.logoUrl} className="rounded-circle me-2" alt="" width={20} height={20} />
+                                                                    {accountSelected.description}
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </>
+                                                }
                                                 <div className="text-center text-secondary" style={{ width: "40px" }}>
                                                     <FontAwesomeIcon icon={faChevronRight} />
                                                 </div>
                                             </div>
-                                        </div> 
 
-                                        <hr />*/}
+                                            <BankAccountsModal
+                                                bankAccounts={bankAccounts}
+                                                setAccountSelected={setAccountSelected}
+                                                id="bankAccountsExpenseModal" />
+                                        </div>
 
+                                        <hr />
                                         <div className="row d-flex justify-content-between">
                                             <div className="col-12">
 

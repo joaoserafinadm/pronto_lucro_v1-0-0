@@ -3,17 +3,18 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from './BankAccounts.module.scss'
 import isMobile from "../../utils/isMobile";
 import monthName from "../../utils/monthName";
+import { maskNumberMoney } from "../../utils/mask";
 
 
 
 export default function AccountsTotalCards(props) {
 
-    const {dateSelected} = props
+    const { dateSelected, data } = props
 
 
 
     return (
-        <div className="row my-5">
+        <div className="row my-3">
             <div className="col-12 px-lg-3 col-sm-6 d-flex justify-content-center my-1 px-4">
                 <div className="col-12  col-md-12 col-lg-12 col-xl-8">
                     <span className={`card rounded-pill shadow cardAnimation `} >
@@ -33,8 +34,8 @@ export default function AccountsTotalCards(props) {
                             </span> <br />
                             <span className="text-success me-1 fs-5">R$</span>
                             <span className="text-secondary pulse fs-3 bold">
-                                110.028,50
-                                {/* {brlNumber.format(data?.dfcResult ? data?.dfcResult : 0)} */}
+
+                                {maskNumberMoney(data?.dfcResult) || "0,00"}
                             </span>
                         </div>
                     </span>
@@ -59,8 +60,7 @@ export default function AccountsTotalCards(props) {
                             </span> <br />
                             <span className="text-success me-1 fs-5">R$</span>
                             <span className="text-secondary pulse fs-3 bold">
-                                110.028,50
-                                {/* {brlNumber.format(data?.dfcResult ? data?.dfcResult : 0)} */}
+                                {maskNumberMoney(data?.dfcResult || data?.dfcPendigResult ? +data?.dfcResult + +data?.dfcPendingResult: 0)}
                             </span>
                         </div>
                     </span>

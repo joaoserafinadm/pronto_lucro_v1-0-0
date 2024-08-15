@@ -41,7 +41,7 @@ export default function PaymentMethodConfig(props) {
                             <option value={12}>12</option>
                         </select>
                     </div>
-                    {props.section === 'income' && (
+                    {/* {props.section === 'income' && (
 
                         <div className="input-group input-group-sm mt-3">
 
@@ -50,7 +50,7 @@ export default function PaymentMethodConfig(props) {
                                 value={creditConfig?.taxa} onChange={(e) => setCreditConfig({ ...creditConfig, taxa: e.target.value })} />
                             <span htmlFor="" className="input-group-text">%</span>
                         </div>
-                    )}
+                    )} */}
 
 
 

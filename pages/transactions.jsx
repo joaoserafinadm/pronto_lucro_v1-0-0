@@ -10,7 +10,7 @@ import Title from "../src/components/title/Title2"
 import { useDispatch, useSelector } from "react-redux"
 import navbarHide from "../utils/navbarHide";
 import DesktopPage from "../src/transactions/DesktopPage"
-import {newData} from "../store/NewData/NewData.action"
+import { newData } from "../store/NewData/NewData.action"
 
 export default function Transactions() {
 
@@ -74,7 +74,7 @@ export default function Transactions() {
 
 
             <div className="row px-2">
-                <div className="col-12 my-3 d-flex justify-content-center">
+                <div className="col-12 my-2 d-flex justify-content-center">
                     <MonthSelect
                         setMonth={value => { setDateSelected(value) }}
                     />
@@ -90,13 +90,10 @@ export default function Transactions() {
                         :
                         <div className="fadeItem">
                             <DesktopPage data={data} dateSelected={dateSelected} />
-                            
+
                         </div>
                     }
-                    <table>
 
-
-                    </table>
 
                 </div>
             </div>

@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { formatDate } from "../../utils/mask"
 import TypeIcon from "./TypeIcon"
-import { faClipboard, faDotCircle, faEdit, faFile, faPaperclip, faTrash, faTrashAlt } from "@fortawesome/free-solid-svg-icons"
+import { faClipboard, faDotCircle, faEdit, faEllipsis, faFile, faPaperclip, faTrash, faTrashAlt } from "@fortawesome/free-solid-svg-icons"
 
 
 
@@ -25,9 +25,9 @@ export default function DesktopTransactionsList(props) {
                 :
 
 
-                <table className="table table-sm mx-1">
-                    <thead>
-                        <tr>
+                <table className="table  mx-1 " style={{ borderRadius: '20px !important' }}>
+                    <thead className="table-secondary text-secondary">
+                        <tr className="">
                             <th >
 
                             </th>
@@ -43,8 +43,11 @@ export default function DesktopTransactionsList(props) {
                             <th className="text-start">
                                 Conta
                             </th>
-                            <th className="text-end">
+                            <th className="text-start">
                                 Valor
+                            </th>
+                            <th>
+
                             </th>
                             <th>
 
@@ -55,12 +58,14 @@ export default function DesktopTransactionsList(props) {
 
                         {data?.dfcData?.map((elem, index) => {
 
-                            const tagSelected = data?.tags?.find(elem1 => elem1._id === elem?.tag);
+                            const tagSelected = data?.tags?.find(elem1 => elem1._id === elem?.tag_id);
+
+                            const accountSelected = data?.accounts?.find(elem1 => elem1._id === elem?.account_id);
 
 
                             return (
 
-                                <tr key={index}>
+                                <tr key={index} className="">
 
                                     <td className="text-center ">
                                         <TypeIcon elem={elem} />
@@ -68,7 +73,7 @@ export default function DesktopTransactionsList(props) {
                                     <td className="text-start " style={{ fontSize: '12px' }}>
                                         {formatDate(elem?.paymentDate)}
                                     </td>
-                                    <td className="text-start small">
+                                    <td className="text-start small fw-bold">
                                         {elem?.description ? elem?.description : 'Sem descricão'}
                                     </td>
                                     <td className="text-start">
@@ -78,45 +83,53 @@ export default function DesktopTransactionsList(props) {
                                             </span>
                                             :
                                             <>
-                                                <div className="row">
-                                                    <div>
-                                                        <span type="button"
-                                                            className={`cardAnimation px-2 py-1   small rounded-pill fw-bold `}
-                                                            style={{ backgroundColor: tagSelected.color, color: tagSelected.textColor, fontSize: '10px' }}>
-                                                            {tagSelected.tag}
-                                                        </span>
-                                                    </div>
-                                                </div>
+                                                <span type="button"
+                                                    className={`cardAnimation px-2 py-1 small rounded-pill `}
+                                                    style={{ backgroundColor: tagSelected.color, color: tagSelected.textColor }}>
+                                                    {tagSelected.tag}
+                                                </span>
                                             </>
                                         }
                                     </td>
                                     <td className="text-start">
-                                        <span class=" px-3 py-1 border border-rounded   small mx-1 rounded-pill ">
-                                            <img src="/logo-sicredi.png" className="rounded-circle me-1" height={15} alt="" /> Sicredi
-                                        </span>
+                                        {!tagSelected ?
+                                            <span class=" px-2 py-1  small rounded-pill border">
+                                                Sem conta
+                                            </span>
+                                            :
+                                            <>
+                                                <span type="button"
+                                                    className={`cardAnimation px-2 py-1 small rounded-pill text-white `}
+
+                                                    style={{ backgroundColor: accountSelected.color }}>
+                                                    <img src={accountSelected?.bankSelected?.logoUrl} className="rounded-circle me-2" alt="" width={20} height={20} />
+                                                    {accountSelected.description}
+                                                </span>
+                                            </>
+                                        }
                                     </td>
-                                    <td className={`text-end text-${elem?.active === false ? 'secondary' : elem?.type === 'income' ? 'success' : 'danger'}`}>
-                                        {elem?.type === 'expense' && '(-)'}{brlMoney.format(elem?.value)} <br />
+                                    <td className={`text-start bold text-${elem?.active === false ? 'secondary' : elem?.type === 'income' ? 'success' : 'danger'}`}>
+                                        {elem?.type === 'expense' && '-'}{elem?.type === 'income' && '+'}{brlMoney.format(elem?.value)} <br />
                                         <span style={{ fontSize: '12px' }}>{elem?.active === false && 'Pendente'}</span>
                                     </td>
-                                    <td className="text-end">
-                                        <button className="btn btn-sm btn-outline-secondary me-2">
+                                    <td>
+
+                                        <span className=" me-2 cardAnimation" type="button">
 
                                             {elem.files && (
                                                 <span className="bg-success me-1" style={{ display: 'inline-block', height: '10px', width: '10px', borderRadius: '50%' }} />
 
                                             )}
-                                            <FontAwesomeIcon icon={faPaperclip} />
+                                            <FontAwesomeIcon icon={faPaperclip} className="text-secondary" />
 
 
-                                        </button>
+                                        </span>
+                                    </td>
+                                    <td className="text-end">
                                         <div className="btn-group">
-                                            <button className="btn btn-sm btn-outline-secondary">
-                                                <FontAwesomeIcon icon={faEdit} />
-                                            </button>
-                                            <button className="btn btn-sm btn-outline-secondary">
-                                                <FontAwesomeIcon icon={faTrashAlt} />
-                                            </button>
+                                            <span className="cardAnimation me-2" type="button">
+                                                <FontAwesomeIcon icon={faEllipsis} className="text-secondary fs-4" />
+                                            </span>
                                         </div>
                                     </td>
                                 </tr>

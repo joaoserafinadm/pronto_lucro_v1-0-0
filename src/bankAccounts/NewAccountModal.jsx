@@ -19,7 +19,7 @@ export default function NewAccountModal(props) {
 
 
     const [bankSelected, setBankSelected] = useState('')
-    const [value, setValue] = useState('');
+    const [initialValue, setInitialValue] = useState('');
     const [description, setDescription] = useState('')
     const [valueSum, setValueSum] = useState(true)
     const [color, setColor] = useState("#4d88bb")
@@ -41,7 +41,7 @@ export default function NewAccountModal(props) {
         let descriptionError = ''
 
         // if (!bankSelected) bankError = "Selecione a instituição financeira"
-        // if (!value) valueError = "Selecione a instituição financeira"
+        // if (!initialValue) valueError = "Selecione a instituição financeira"
         if (!description) descriptionError = "Selecione a instituição financeira"
 
         if (bankError || valueError || descriptionError) {
@@ -66,7 +66,7 @@ export default function NewAccountModal(props) {
                 user_id,
                 bankSelected,
                 color,
-                value,
+                initialValue,
                 description,
                 valueSum,
                 creditCard,
@@ -93,7 +93,7 @@ export default function NewAccountModal(props) {
 
     const handleCancel = () => {
         setBankSelected('')
-        setValue('')
+        setInitialValue('')
         setDescription('')
         setValueSum(true)
     }
@@ -120,7 +120,7 @@ export default function NewAccountModal(props) {
 
                                     <BankSetup bankSelected={bankSelected} creditCardList={creditCardList}
                                         color={color} setColor={value => setColor(value)}
-                                        setValue={value => setValue(value)} value={value}
+                                        setInitialValue={value => setInitialValue(value)} initialValue={initialValue}
                                         setDescription={value => setDescription(value)} description={description}
                                         setValueSum={value => setValueSum(value)} valueSum={valueSum}
                                         setCreditCard={value => setCreditCard(value)} creditCard={creditCard}
