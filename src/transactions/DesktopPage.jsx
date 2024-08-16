@@ -6,7 +6,7 @@ import DfcList from "./DfcList"
 
 export default function DesktopPage(props) {
 
-    const { data, dateSelected } = props
+    const { data, dateSelected, setIncomeSelected } = props
 
 
 
@@ -20,11 +20,11 @@ export default function DesktopPage(props) {
             <div className="col-12 my-3 px-sm-5">
                 <div className="d-none d-lg-flex justify-content-center">
 
-                    <DesktopTransactionsList data={data} />
+                    <DesktopTransactionsList data={data} setIncomeSelected={setIncomeSelected}/>
                 </div>
                 <div className="d-lg-none">
 
-                    <DfcList data={data} />
+                    <DfcList data={data} setIncomeSelected={setIncomeSelected} />
 
                 </div>
             </div>

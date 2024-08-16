@@ -11,6 +11,8 @@ import { useDispatch, useSelector } from "react-redux"
 import navbarHide from "../utils/navbarHide";
 import DesktopPage from "../src/transactions/DesktopPage"
 import { newData } from "../store/NewData/NewData.action"
+import AttachmentModal from "../src/transactions/AttachmentModal"
+import DeleteIncomeModal from "../src/transactions/DeleteIncomeModal"
 
 export default function Transactions() {
 
@@ -31,7 +33,10 @@ export default function Transactions() {
     })
     const [tags, setTags] = useState([])
 
+    const [incomeSelected, setIncomeSelected] = useState(null)
+
     const [loadingData, setLoadingData] = useState(true)
+
 
     useEffect(() => {
         if (dateSelected) dataFunction(token.sub)
@@ -70,7 +75,12 @@ export default function Transactions() {
 
     return (
         <div>
+
             <Title title={'Transações'} subtitle='Controle seu histório de transações' backButton='/' />
+
+            <AttachmentModal incomeSelected={incomeSelected} />
+            <DeleteIncomeModal incomeSelected={incomeSelected} />
+
 
 
             <div className="row px-2">
@@ -89,7 +99,7 @@ export default function Transactions() {
                         <SpinnerLG />
                         :
                         <div className="fadeItem">
-                            <DesktopPage data={data} dateSelected={dateSelected} />
+                            <DesktopPage data={data} dateSelected={dateSelected} setIncomeSelected={setIncomeSelected} />
 
                         </div>
                     }

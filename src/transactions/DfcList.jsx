@@ -6,7 +6,7 @@ import TypeIcon from './TypeIcon';
 // import './DfcList.css'; // Importe o arquivo CSS, se necessário
 
 export default function DfcList(props) {
-    const { data } = props;
+    const { data, setIncomeSelected } = props;
     const containerRef = useRef(null);
     const [height, setHeight] = useState(0);
 
@@ -70,7 +70,7 @@ export default function DfcList(props) {
 
                                             return (
                                                 <>
-                                                    <div className="row d-flex" key={index}>
+                                                    <div className="row d-flex" key={index} onClick={() => setIncomeSelected(elem)}>
                                                         {/* <div className='d-flex justify-content-center align-items-center' style={{ width: '30px' }}>
                                                             <span>
 

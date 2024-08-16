@@ -8,7 +8,7 @@ import { faClipboard, faDotCircle, faEdit, faEllipsis, faFile, faPaperclip, faTr
 
 export default function DesktopTransactionsList(props) {
 
-    const { data } = props
+    const { data, setIncomeSelected } = props
 
     const brlMoney = {
         format: (value) => value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
@@ -73,7 +73,7 @@ export default function DesktopTransactionsList(props) {
                                     <td className="text-start " style={{ fontSize: '12px' }}>
                                         {formatDate(elem?.paymentDate)}
                                     </td>
-                                    <td className="text-start small fw-bold">
+                                    <td className={`text-start small  ${elem?.description ? 'fw-bold' : 'text-muted'}`}>
                                         {elem?.description ? elem?.description : 'Sem descricão'}
                                     </td>
                                     <td className="text-start">
@@ -83,7 +83,7 @@ export default function DesktopTransactionsList(props) {
                                             </span>
                                             :
                                             <>
-                                                <span type="button"
+                                                <span
                                                     className={`cardAnimation px-2 py-1 small rounded-pill `}
                                                     style={{ backgroundColor: tagSelected.color, color: tagSelected.textColor }}>
                                                     {tagSelected.tag}
@@ -92,13 +92,13 @@ export default function DesktopTransactionsList(props) {
                                         }
                                     </td>
                                     <td className="text-start">
-                                        {!tagSelected ?
+                                        {!accountSelected ?
                                             <span class=" px-2 py-1  small rounded-pill border">
                                                 Sem conta
                                             </span>
                                             :
                                             <>
-                                                <span type="button"
+                                                <span
                                                     className={`cardAnimation px-2 py-1 small rounded-pill text-white `}
 
                                                     style={{ backgroundColor: accountSelected.color }}>
@@ -114,7 +114,7 @@ export default function DesktopTransactionsList(props) {
                                     </td>
                                     <td>
 
-                                        <span className=" me-2 cardAnimation" type="button">
+                                        <span className=" me-2 cardAnimation" type="button" data-bs-toggle="modal" data-bs-target="#attachmentModal" onClick={() => { setIncomeSelected(elem) }}>
 
                                             {elem.files && (
                                                 <span className="bg-success me-1" style={{ display: 'inline-block', height: '10px', width: '10px', borderRadius: '50%' }} />
@@ -127,9 +127,18 @@ export default function DesktopTransactionsList(props) {
                                     </td>
                                     <td className="text-end">
                                         <div className="btn-group">
-                                            <span className="cardAnimation me-2" type="button">
+
+                                            <span className="cardAnimation me-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                                 <FontAwesomeIcon icon={faEllipsis} className="text-secondary fs-4" />
                                             </span>
+                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                                <li class="dropdown-item text-secondary" type='button'>
+                                                    <FontAwesomeIcon icon={faEdit} className="small me-1" /> Editar
+                                                </li>
+                                                <li class="dropdown-item text-danger" type='button' data-bs-toggle="modal" data-bs-target="#deleteIncomeModal" onClick={() => { setIncomeSelected(elem) }}>
+                                                    <FontAwesomeIcon icon={faTrashAlt} className="small me-1" /> Excluir
+                                                </li>
+                                            </ul>
                                         </div>
                                     </td>
                                 </tr>
