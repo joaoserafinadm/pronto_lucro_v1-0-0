@@ -85,7 +85,7 @@ export default function BankSetup(props) {
                     <span className="me-1">R$</span>
                     <input type="text" inputMode="numeric" placeholder="0,00"
                         className="form-control  " style={{ borderColor: '#00cc99' }}
-                        initialValue={initialValue} id='valueInput'
+                        value={initialValue} id='valueInput'
                         onChange={e => setInitalValue(maskInputMoney(e.target.value))} />
                 </div>
 
