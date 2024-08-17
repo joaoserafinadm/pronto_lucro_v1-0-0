@@ -12,6 +12,7 @@ import jwt from 'jsonwebtoken'
 import Cookie from 'js-cookie'
 import CardTemplate from "../src/bankAccounts/CardTemplate";
 import { maskNumberMoney } from "../utils/mask";
+import AccountsResultsCards from "../src/bankAccounts/AccountsResultsCards";
 
 
 export default function BankAccounts() {
@@ -94,8 +95,14 @@ export default function BankAccounts() {
                 />
             </div>
 
+            <div className="row d-flex justify-content-center my-3">
+                <div className="col-8">
+                    <AccountsResultsCards dateSelected={dateSelected} data={data}  />
+                </div>
+            </div>
 
-            <AccountsTotalCards dateSelected={dateSelected} data={data}/>
+
+            {/* <AccountsTotalCards dateSelected={dateSelected} data={data} /> */}
 
 
             <div className="row">

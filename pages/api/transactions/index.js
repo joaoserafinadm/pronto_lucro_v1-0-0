@@ -29,13 +29,26 @@ export default authenticated(async (req, res) => {
                 const dfcData = userExist.dfc.find(elem => elem.year === +year && elem.month === +month)?.data || [];
                 const dfcPending = userExist.dfc.find(elem => elem.year === +year && elem.month === +month)?.data?.filter(elem => elem.active === false) || [];
 
-                console.log("dfcData", dfcData);
+                
+
+                // Classificar os dados por 'value' em ordem crescente
+                const incomeData = dfcData.filter(item => item.type === 'income');
+                const expenseData = dfcData.filter(item => item.type === 'expense');
+                
+                // Ordenar os dados por 'value' de forma decrescente para o tipo 'income'
+                const top3Incomes = incomeData.sort((a, b) => b.value - a.value).slice(0, 3);
+                
+                // Ordenar os dados por 'value' de forma crescente para o tipo 'expense'
+                const top3Expenses = expenseData.sort((a, b) => a.value - b.value).slice(0, 3);
+
+                console.log()
+
+
 
                 const monthResult = dfcData.reduce((sum, elem) => {
                     return sum + (elem.type === "income" ? elem.value : -elem.value);
                 }, 0);
 
-                console.log("monthResult", monthResult);
 
                 const monthPendigResult = dfcData.reduce((sum, elem) => {
                     if (elem.active === false) {
@@ -53,7 +66,6 @@ export default authenticated(async (req, res) => {
                     return acc;
                 }, 0);
 
-                console.log("dfcResult", dfcResult);
 
                 const dfcPendingResult = userExist.dfc.reduce((acc, elem) => {
                     if (isBeforeOrEqual(elem, { year, month })) {
@@ -63,9 +75,8 @@ export default authenticated(async (req, res) => {
                     return acc;
                 }, 0);
 
-                console.log("dfcPendingResult", dfcPendingResult);
 
-                res.status(200).json({ dreData, dfcData, dfcPending, monthResult, dfcResult, monthPendigResult, dfcPendingResult, tags: userExist.incomeTags.concat(userExist.expenseTags), accounts: userExist.bankAccounts });
+                res.status(200).json({ dreData, dfcData, dfcPending, monthResult, dfcResult, monthPendigResult, dfcPendingResult, tags: userExist.incomeTags.concat(userExist.expenseTags), accounts: userExist.bankAccounts, top3Incomes, top3Expenses });
             }
         }
     }
