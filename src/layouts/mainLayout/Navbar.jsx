@@ -174,19 +174,14 @@ export default function Nav(props) {
                                     </li>
                                     <li>
                                         <ContextAwareToggle eventKey="3" collapse="tagsItem">
-                                            <div className="d-flex justify-content-start " type='button' onClick={() => router.push('/transactions')}>
+                                            <div className="d-flex justify-content-start " type='button' onClick={() => router.push('/tags')}>
                                                 <div className="col-1 text-center me-3">
                                                     <FontAwesomeIcon icon={faTags} className="me-2 icon" />
                                                 </div>
-                                                <div className="col-9 bold">Marcadores</div>
+                                                <div className="col-9 bold">Categorias</div>
                                             </div>
                                         </ContextAwareToggle>
                                     </li>
-
-
-
-
-
 
 
                                     <li>

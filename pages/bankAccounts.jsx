@@ -89,29 +89,32 @@ export default function BankAccounts() {
 
             <Title title={'Contas bancárias'} subtitle='Gerencie suas contas bancárias' backButton='/' />
 
-            <div className="col-12 my-2 d-flex justify-content-center">
-                <MonthSelect
-                    setMonth={value => { setDateSelected(value) }}
-                />
-            </div>
+            <div className="pagesContent shadow">
 
-            <div className="row d-flex justify-content-center my-3">
-                <div className="col-8">
-                    <AccountsResultsCards dateSelected={dateSelected} data={data}  />
+
+                <div className="col-12 my-2 d-flex justify-content-center">
+                    <MonthSelect
+                        setMonth={value => { setDateSelected(value) }}
+                    />
                 </div>
-            </div>
+
+                <div className="row d-flex justify-content-center my-3">
+                    <div className="col-8">
+                        <AccountsResultsCards dateSelected={dateSelected} data={data} />
+                    </div>
+                </div>
 
 
-            {/* <AccountsTotalCards dateSelected={dateSelected} data={data} /> */}
+                {/* <AccountsTotalCards dateSelected={dateSelected} data={data} /> */}
 
 
-            <div className="row">
+                <div className="row">
 
 
-                <div className="col-12">
-                    <div className="card">
-                        <div className="card-body">
-                            {/* <div className="row">
+                    <div className="col-12">
+                        <div className="card">
+                            <div className="card-body">
+                                {/* <div className="row">
                                 <div className="col-12 d-flex justify-content-end">
                                     <button className="btn btn-custom-success">
                                         + Adicionar conta
@@ -121,30 +124,31 @@ export default function BankAccounts() {
                             <hr /> */}
 
 
-                            <div className="row d-flex">
-                                <div className="col-12 col-xl-4 col-sm-6 my-2 d-flex justify-content-center">
-                                    <NewAccountCard />
+                                <div className="row d-flex">
+                                    <div className="col-12 col-xl-4 col-sm-6 my-2 d-flex justify-content-center">
+                                        <NewAccountCard />
+                                    </div>
+                                    {bankAccounts?.map((elem, index) => {
+                                        return (
+                                            <div className="col-12 col-xl-4 col-sm-6 my-2 d-flex justify-content-center">
+                                                <CardTemplate editButtons
+                                                    bankSelected={elem.bankSelected}
+                                                    color={elem.color}
+                                                    value={maskNumberMoney(elem.value + elem.initialValue)}
+                                                    description={elem.description}
+                                                    creditNetwork={elem.creditNetwork} />
+                                            </div>
+                                        )
+                                    })}
+
+
                                 </div>
-                                {bankAccounts?.map((elem, index) => {
-                                    return (
-                                        <div className="col-12 col-xl-4 col-sm-6 my-2 d-flex justify-content-center">
-                                            <CardTemplate editButtons
-                                                bankSelected={elem.bankSelected}
-                                                color={elem.color}
-                                                value={maskNumberMoney(elem.value + elem.initialValue)}
-                                                description={elem.description}
-                                                creditNetwork={elem.creditNetwork} />
-                                        </div>
-                                    )
-                                })}
-
-
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
+            </div>
 
 
         </div>

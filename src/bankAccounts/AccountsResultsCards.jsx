@@ -27,7 +27,7 @@ export default function AccountsResultsCards(props) {
                                 </span> <br />
                                 <span className="text-success me-1 fs-5">R$</span>
                                 <span className="text-secondary pulse fs-3 bold">
-                                {maskNumberMoney(data?.dfcResult) || "0,00"}
+                                    {maskNumberMoney(data?.dfcResult) || "0,00"}
 
 
                                 </span>
@@ -44,7 +44,7 @@ export default function AccountsResultsCards(props) {
                                     Saldo previsto <span className="small">({monthName(dateSelected.month)})</span>
                                 </span> <br />
                                 <span className="text-success me-1 fs-5">R$</span>
-                                <span className="text-secondary fs-3 bold">{maskNumberMoney(data?.dfcResult || data?.dfcPendigResult ? +data?.dfcResult + +data?.dfcPendingResult: 0)}</span><br /> 
+                                <span className="text-secondary fs-3 bold">{maskNumberMoney(data?.dfcResult || data?.dfcPendigResult ? +data?.dfcResult + +data?.dfcPendingResult : 0)}</span><br />
 
                             </div>
                         </div>

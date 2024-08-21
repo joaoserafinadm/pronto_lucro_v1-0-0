@@ -69,6 +69,7 @@
     "popper.js": "^1.16.1",
     "react": "^18.2.0",
     "react-apexcharts": "^1.4.0",
+    "react-beautiful-dnd": "^13.1.1",
     "react-bootstrap": "^2.4.0",
     "react-bootstrap-typeahead": "^6.0.0",
     "react-calendar": "^5.0.0",

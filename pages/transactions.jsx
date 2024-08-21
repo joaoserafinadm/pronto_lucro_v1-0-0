@@ -82,33 +82,35 @@ export default function Transactions() {
             <DeleteIncomeModal incomeSelected={incomeSelected} />
 
 
+            <div className="pagesContent-lg shadow">
 
-            <div className="row px-2">
-                <div className="col-12 my-2 d-flex justify-content-center">
-                    <MonthSelect
-                        setMonth={value => { setDateSelected(value) }}
-                    />
-                </div>
+                <div className="row px-2">
+                    <div className="col-12 my-2 d-flex justify-content-center">
+                        <MonthSelect
+                            setMonth={value => { setDateSelected(value) }}
+                        />
+                    </div>
 
-
-
-            </div>
-            <div className="row " style={{ marginBottom: '100px' }}>
-                <div className="col-12">
-                    {loadingData ?
-                        <SpinnerLG />
-                        :
-                        <div className="fadeItem">
-                            <DesktopPage data={data} dateSelected={dateSelected} setIncomeSelected={setIncomeSelected} />
-
-                        </div>
-                    }
 
 
                 </div>
+                <div className="row " style={{ marginBottom: '100px' }}>
+                    <div className="col-12">
+                        {loadingData ?
+                            <SpinnerLG />
+                            :
+                            <div className="fadeItem">
+                                <DesktopPage data={data} dateSelected={dateSelected} setIncomeSelected={setIncomeSelected} />
+
+                            </div>
+                        }
+
+
+                    </div>
+                </div>
             </div>
+
         </div>
-
 
     )
 }
