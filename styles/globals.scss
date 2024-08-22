@@ -194,6 +194,7 @@ a {
 	overflow: hidden;
 	transition: ease-in-out 0.3s;
 	z-index: 0 !important;
+	padding-bottom: 100px;
 }
 
 @media (max-width: 850px) {
@@ -3169,5 +3170,22 @@ h1 {
 
 .hoverSelect:hover{
 	background-color: #eeeeee;
+	transition: .2s ease-in-out;
+}
+
+
+.optionsButton {
+	height: 30px;
+	width: 30px;
+	border-radius: 100%;
+	background-color: #dadada;
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.optionsButton:hover {
+	background-color: #bbbbbb;
 	transition: .2s ease-in-out;
 }

@@ -6,14 +6,22 @@ export default function TagSelect(props) {
 
     const { tags, setTagSelected, setSection } = props
 
-    const tagsArray = reorganizeTags(tags)
+    // const tagsArray = reorganizeTags(tags)
 
     return (
         <>
+
+            <div className="modal-body">
+                <div className="row fadeItem">
+                    <div className="col-12">
+
+                    </div>
+                </div>
+            </div>
             <div className="modal-body" >
                 <div className="row fadeItem">
                     <div className="col-12">
-                        {tagsArray.map((elem, index) => {
+                        {tags.map((elem, index) => {
                             return (
                                 <>
                                     <div className="row">
@@ -21,7 +29,7 @@ export default function TagSelect(props) {
                                         <div className="col-12 d-flex flex-wrap">
                                             {elem?.tags?.map((elem1, index) => {
                                                 return (
-                                                    <span type="button" onClick={() => { setTagSelected(elem1); hideModal(props.id) }}
+                                                    <span type="button" onClick={() => { setTagSelected({ ...elem1, category: elem.category, category_id: elem._id }); hideModal(props.id) }}
                                                         className={`cardAnimation px-2 py-1 m-2  small mx-1 rounded-pill fw-bold `}
                                                         style={{ backgroundColor: elem1.color, color: elem1.textColor }}>
                                                         {elem1.tag}
@@ -51,7 +59,7 @@ export default function TagSelect(props) {
                 </button>
                 <button
                     type="button"
-                    className={`btn ${props.section === 'income' ? 'btn-outline-custom-success' :props.section === 'expense' ? 'btn-outline-custom-danger' : 'btn-outline-custom-tertiary'} `}
+                    className={`btn ${props.section === 'income' ? 'btn-outline-custom-success' : props.section === 'expense' ? 'btn-outline-custom-danger' : 'btn-outline-custom-tertiary'} `}
                     onClick={() => { setSection('tagAdd') }}
                 >
                     Adicionar marcador

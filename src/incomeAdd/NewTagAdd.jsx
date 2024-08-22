@@ -17,7 +17,8 @@ export default function NewTagAdd(props) {
 
     const { setSection, tags, setTagSelected, dataFunction } = props
 
-    const [category, setCategory] = useState('')
+    const [category_id, setCategory_id] = useState('')
+    const [newCategoryName, setNewCategoryName] = useState('')
     const [tagName, setTagName] = useState('')
     const [color, setColor] = useState('')
     const [textColor, setTextColor] = useState('white')
@@ -35,7 +36,7 @@ export default function NewTagAdd(props) {
         setTypesArray(handleTagArray(tags))
     }, [tags.length])
 
-    useEffect(() => setNewCategory(''), [category])
+    useEffect(() => setNewCategoryName(''), [category_id])
 
     const handleSave = async () => {
 
@@ -48,8 +49,9 @@ export default function NewTagAdd(props) {
             const data = {
                 user_id: token.sub,
                 section: props.transactionSection,
+                category_id: category_id,
+                categoryName: category_id === 'new' ? newCategoryName : handleCategoryName(category_id),
                 newTag: {
-                    category: category === 'new' ? newCategory : category,
                     tag: tagName,
                     color,
                     textColor: 'white',
@@ -63,12 +65,12 @@ export default function NewTagAdd(props) {
                     setSection('')
                     hideModal(props.id)
                     setTagSelected(res.data)
-                    setLoadingSave(true)
+                    setLoadingSave(false)
                     dataFunction()
                 })
                 .catch(e => {
                     console.log(e)
-                    setLoadingSave(true)
+                    setLoadingSave(false)
 
                 })
         }
@@ -85,8 +87,8 @@ export default function NewTagAdd(props) {
         let colorError = ''
         let textColorError = ''
 
-        if (category === '') categoryError = 'Selecione uma categoria'
-        if (category === 'new' && newCategory === '') newCategoryError = 'Insira o nome da categoria'
+        if (category_id === '') categoryError = 'Selecione uma categoria'
+        if (category_id === 'new' && newCategoryName === '') newCategoryError = 'Insira o nome da categoria'
         if (tagName === '') tagNameError = 'Insira o nome do marcador'
         if (color === '') colorError = 'Selecione uma cor'
 
@@ -106,6 +108,9 @@ export default function NewTagAdd(props) {
     }
 
 
+    const handleCategoryName = (id) => {
+        return tags?.find(elem => elem._id === id)?.category
+    }
 
 
 
@@ -116,17 +121,17 @@ export default function NewTagAdd(props) {
                     <div className="col-12">
                         <label htmlFor="typeSelect" className="form-label">Categoria </label>
                         <select name="typeSelect" className="form-select" id="typeSelect"
-                            value={category} onChange={(e) => setCategory(e.target.value)}>
+                            value={category_id} onChange={(e) => setCategory_id(e.target.value)}>
                             <option value="" disabled>Selecione...</option>
-                            {typesArray.map((elem, index) => {
-                                return <option value={elem} >{elem}</option>
+                            {tags.map((elem, index) => {
+                                return <option value={elem._id} >{elem.category}</option>
                             })}
                             <option value="new">Nova categoria</option>
                         </select>
-                        {category === 'new' && (
+                        {category_id === 'new' && (
                             <input type="text" id="tagDescription" placeholder="Categoria do marcador"
                                 className="form-control mt-2 fadeItem" aria-describedby="tagDescription"
-                                value={newCategory} onChange={(e) => setNewCategory(e.target.value)} />
+                                value={newCategoryName} onChange={(e) => setNewCategoryName(e.target.value)} />
                         )}
 
                     </div>
@@ -178,8 +183,8 @@ export default function NewTagAdd(props) {
                         <label htmlFor="textColorSelect" className="form-label">Visualizar Marcador</label>
                         <div className="card">
                             <div className="card-body">
-                                <div className="row">
-                                    <span className="bold">{category !== 'new' ? category : newCategory}</span>
+                                <div className="row text-center">
+                                    <span className="bold">{category_id !== 'new' ? handleCategoryName(category_id) : newCategoryName}</span>
                                     <div className="col-12 d-flex justify-content-center my-3">
 
                                         <span className={`cardAnimation px-2 py-1 fw-bold  m-2  small rounded-pill  `}

@@ -153,124 +153,131 @@ const incomeTags = [
     {
         _id: new ObjectId(),
         category: 'Vendas e Receitas',
-        tag: 'Vendas na Loja Física',
-        color: '#1E90FF', // DodgerBlue
-        textColor: 'white',
-        icon: '',
-    },
-    {
-        _id: new ObjectId(),
-        category: 'Vendas e Receitas',
-        tag: 'Vendas Online',
-        color: '#32CD32', // LimeGreen
-        textColor: 'white',
-        icon: '',
-    },
-    {
-        _id: new ObjectId(),
-        category: 'Vendas e Receitas',
-        tag: 'Vendas por Redes Sociais',
-        color: '#FFA500', // Orange
-        textColor: 'black',
-        icon: '',
-    },
-    {
-        _id: new ObjectId(),
-        category: 'Vendas e Receitas',
-        tag: 'Receita de Assinaturas',
-        color: '#8A2BE2', // BlueViolet
-        textColor: 'white',
-        icon: '',
-    },
-    {
-        _id: new ObjectId(),
-        category: 'Serviços',
-        tag: 'Consultoria',
-        color: '#FF4500', // OrangeRed
-        textColor: 'white',
-        icon: '',
+        tags: [
+            {
+                _id: new ObjectId(),
+                tag: 'Vendas na Loja Física',
+                color: '#1E90FF', // DodgerBlue
+                textColor: 'white',
+            },
+            {
+                _id: new ObjectId(),
+                tag: 'Vendas Online',
+                color: '#32CD32', // LimeGreen
+                textColor: 'white',
+            },
+            {
+                _id: new ObjectId(),
+                tag: 'Vendas por Redes Sociais',
+                color: '#FFA500', // Orange
+                textColor: 'black',
+            },
+            {
+                _id: new ObjectId(),
+                tag: 'Receita de Assinaturas',
+                color: '#8A2BE2', // BlueViolet
+                textColor: 'white',
+            }
+        ]
     },
     {
         _id: new ObjectId(),
         category: 'Serviços',
-        tag: 'Suporte Técnico',
-        color: '#00CED1', // DarkTurquoise
-        textColor: 'black',
-        icon: '',
-    },
-    {
-        _id: new ObjectId(),
-        category: 'Serviços',
-        tag: 'Design Gráfico',
-        color: '#FFD700', // Gold
-        textColor: 'black',
-        icon: '',
+        tags: [
+            {
+                _id: new ObjectId(),
+                tag: 'Consultoria',
+                color: '#FF4500', // OrangeRed
+                textColor: 'white',
+            },
+            {
+                _id: new ObjectId(),
+                tag: 'Suporte Técnico',
+                color: '#00CED1', // DarkTurquoise
+                textColor: 'black',
+            },
+            {
+                _id: new ObjectId(),
+                tag: 'Design Gráfico',
+                color: '#FFD700', // Gold
+                textColor: 'black',
+            }
+        ]
     },
     {
         _id: new ObjectId(),
         category: 'Investimentos',
-        tag: 'Investimentos de Sócios',
-        color: '#6A5ACD', // SlateBlue
-        textColor: 'white',
-        icon: '',
-    },
-    {
-        _id: new ObjectId(),
-        category: 'Investimentos',
-        tag: 'Venda de Ações',
-        color: '#DC143C', // Crimson
-        textColor: 'white',
-        icon: '',
-    },
-    {
-        _id: new ObjectId(),
-        category: 'Outros Recebimentos',
-        tag: 'Juros de Aplicações Financeiras',
-        color: '#7CFC00', // LawnGreen
-        textColor: 'black',
-        icon: '',
+        tags: [
+            {
+                _id: new ObjectId(),
+                tag: 'Investimentos de Sócios',
+                color: '#6A5ACD', // SlateBlue
+                textColor: 'white',
+            },
+            {
+                _id: new ObjectId(),
+                tag: 'Venda de Ações',
+                color: '#DC143C', // Crimson
+                textColor: 'white',
+            }
+        ]
     },
     {
         _id: new ObjectId(),
         category: 'Outros Recebimentos',
-        tag: 'Aluguéis Recebidos',
-        color: '#FF69B4', // HotPink
-        textColor: 'black',
-        icon: '',
+        tags: [
+            {
+                _id: new ObjectId(),
+                tag: 'Juros de Aplicações Financeiras',
+                color: '#7CFC00', // LawnGreen
+                textColor: 'black',
+            },
+            {
+                _id: new ObjectId(),
+                tag: 'Aluguéis Recebidos',
+                color: '#FF69B4', // HotPink
+                textColor: 'black',
+            },
+            {
+                _id: new ObjectId(),
+                tag: 'Reembolsos',
+                color: '#00FF7F', // SpringGreen
+                textColor: 'black',
+            },
+            {
+                _id: new ObjectId(),
+                tag: 'Royalties',
+                color: '#4682B4', // SteelBlue
+                textColor: 'white',
+            }
+        ]
     },
     {
         _id: new ObjectId(),
         category: 'Subvenções e Subsídios',
-        tag: 'Subsídios Governamentais',
-        color: '#20B2AA', // LightSeaGreen
-        textColor: 'white',
-        icon: '',
+        tags: [
+            {
+                _id: new ObjectId(),
+                tag: 'Subsídios Governamentais',
+                color: '#20B2AA', // LightSeaGreen
+                textColor: 'white',
+            }
+        ]
     },
     {
         _id: new ObjectId(),
         category: 'Empréstimos e Financiamentos',
-        tag: 'Empréstimos Bancários',
-        color: '#B22222', // FireBrick
-        textColor: 'white',
-        icon: '',
-    },
-    {
-        _id: new ObjectId(),
-        category: 'Outros Recebimentos',
-        tag: 'Reembolsos',
-        color: '#00FF7F', // SpringGreen
-        textColor: 'black',
-        icon: '',
-    },
-    {
-        _id: new ObjectId(),
-        category: 'Outros Recebimentos',
-        tag: 'Royalties',
-        color: '#4682B4', // SteelBlue
-        textColor: 'white',
-        icon: '',
+        tags: [
+            {
+                _id: new ObjectId(),
+                tag: 'Empréstimos Bancários',
+                color: '#B22222', // FireBrick
+                textColor: 'white',
+            }
+        ]
     }
 ];
+
 
 
 
@@ -278,123 +285,124 @@ const expenseTags = [
     {
         _id: new ObjectId(),
         category: 'Custos de Operação',
-        tag: 'Salários e Benefícios',
-        color: '#FF6347', // Tomato
-        textColor: 'white',
-        icon: '',
-    },
-    {
-        _id: new ObjectId(),
-        category: 'Custos de Operação',
-        tag: 'Aluguel de Imóveis',
-        color: '#8B0000', // DarkRed
-        textColor: 'white',
-        icon: '',
-    },
-    {
-        _id: new ObjectId(),
-        category: 'Custos de Operação',
-        tag: 'Energia Elétrica',
-        color: '#FF4500', // OrangeRed
-        textColor: 'white',
-        icon: '',
-    },
-    {
-        _id: new ObjectId(),
-        category: 'Custos de Operação',
-        tag: 'Água e Esgoto',
-        color: '#CD5C5C', // IndianRed
-        textColor: 'white',
-        icon: '',
-    },
-    {
-        _id: new ObjectId(),
-        category: 'Marketing e Publicidade',
-        tag: 'Publicidade Online',
-        color: '#FF8C00', // DarkOrange
-        textColor: 'white',
-        icon: '',
+        tags: [
+            {
+                _id: new ObjectId(),
+                tag: 'Salários e Benefícios',
+                color: '#FF6347', // Tomato
+                textColor: 'white',
+            },
+            {
+                _id: new ObjectId(),
+                tag: 'Aluguel de Imóveis',
+                color: '#8B0000', // DarkRed
+                textColor: 'white',
+            },
+            {
+                _id: new ObjectId(),
+                tag: 'Energia Elétrica',
+                color: '#FF4500', // OrangeRed
+                textColor: 'white',
+            },
+            {
+                _id: new ObjectId(),
+                tag: 'Água e Esgoto',
+                color: '#CD5C5C', // IndianRed
+                textColor: 'white',
+            }
+        ]
     },
     {
         _id: new ObjectId(),
         category: 'Marketing e Publicidade',
-        tag: 'Publicidade Offline',
-        color: '#DAA520', // GoldenRod
-        textColor: 'black',
-        icon: '',
-    },
-    {
-        _id: new ObjectId(),
-        category: 'Marketing e Publicidade',
-        tag: 'Eventos e Patrocínios',
-        color: '#FFA07A', // LightSalmon
-        textColor: 'black',
-        icon: '',
+        tags: [
+            {
+                _id: new ObjectId(),
+                tag: 'Publicidade Online',
+                color: '#FF8C00', // DarkOrange
+                textColor: 'white',
+            },
+            {
+                _id: new ObjectId(),
+                tag: 'Publicidade Offline',
+                color: '#DAA520', // GoldenRod
+                textColor: 'black',
+            },
+            {
+                _id: new ObjectId(),
+                tag: 'Eventos e Patrocínios',
+                color: '#FFA07A', // LightSalmon
+                textColor: 'black',
+            }
+        ]
     },
     {
         _id: new ObjectId(),
         category: 'Investimentos em Tecnologia',
-        tag: 'Software e Licenças',
-        color: '#8B4513', // SaddleBrown
-        textColor: 'white',
-        icon: '',
-    },
-    {
-        _id: new ObjectId(),
-        category: 'Investimentos em Tecnologia',
-        tag: 'Equipamentos de TI',
-        color: '#A52A2A', // Brown
-        textColor: 'white',
-        icon: '',
-    },
-    {
-        _id: new ObjectId(),
-        category: 'Outras Despesas',
-        tag: 'Consultoria Externa',
-        color: '#556B2F', // DarkOliveGreen
-        textColor: 'white',
-        icon: '',
+        tags: [
+            {
+                _id: new ObjectId(),
+                tag: 'Software e Licenças',
+                color: '#8B4513', // SaddleBrown
+                textColor: 'white',
+            },
+            {
+                _id: new ObjectId(),
+                tag: 'Equipamentos de TI',
+                color: '#A52A2A', // Brown
+                textColor: 'white',
+            }
+        ]
     },
     {
         _id: new ObjectId(),
         category: 'Outras Despesas',
-        tag: 'Taxas Bancárias',
-        color: '#6B8E23', // OliveDrab
-        textColor: 'white',
-        icon: '',
+        tags: [
+            {
+                _id: new ObjectId(),
+                tag: 'Consultoria Externa',
+                color: '#556B2F', // DarkOliveGreen
+                textColor: 'white',
+            },
+            {
+                _id: new ObjectId(),
+                tag: 'Taxas Bancárias',
+                color: '#6B8E23', // OliveDrab
+                textColor: 'white',
+            },
+            {
+                _id: new ObjectId(),
+                tag: 'Reparos e Manutenção',
+                color: '#696969', // DimGray
+                textColor: 'white',
+            },
+            {
+                _id: new ObjectId(),
+                tag: 'Despesas Jurídicas',
+                color: '#708090', // SlateGray
+                textColor: 'white',
+            }
+        ]
     },
     {
         _id: new ObjectId(),
         category: 'Tributos e Impostos',
-        tag: 'Imposto de Renda',
-        color: '#4682B4', // SteelBlue
-        textColor: 'white',
-        icon: '',
-    },
-    {
-        _id: new ObjectId(),
-        category: 'Tributos e Impostos',
-        tag: 'Contribuições Sociais',
-        color: '#4169E1', // RoyalBlue
-        textColor: 'white',
-        icon: '',
-    },
-    {
-        _id: new ObjectId(),
-        category: 'Outras Despesas',
-        tag: 'Reparos e Manutenção',
-        color: '#696969', // DimGray
-        textColor: 'white',
-        icon: '',
-    },
-    {
-        _id: new ObjectId(),
-        category: 'Outras Despesas',
-        tag: 'Despesas Jurídicas',
-        color: '#708090', // SlateGray
-        textColor: 'white',
-        icon: '',
+        tags: [
+            {
+                _id: new ObjectId(),
+                tag: 'Imposto de Renda',
+                color: '#4682B4', // SteelBlue
+                textColor: 'white',
+            },
+            {
+                _id: new ObjectId(),
+                tag: 'Contribuições Sociais',
+                color: '#4169E1', // RoyalBlue
+                textColor: 'white',
+            }
+        ]
     }
 ];
+
 
 

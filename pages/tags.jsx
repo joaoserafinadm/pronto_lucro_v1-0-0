@@ -6,7 +6,7 @@ import Cookie from 'js-cookie'
 import { useDispatch } from "react-redux";
 import navbarHide from "../utils/navbarHide";
 import axios from "axios";
-import IncomeTagsPage from "../src/tags/incomeTagsPage";
+import TagsPage from "../src/tags/TagsPage";
 import { SpinnerLG } from "../src/components/loading/Spinners";
 
 
@@ -30,6 +30,8 @@ export default function Tags() {
     }, [])
 
     const dataFunction = async (user_id) => {
+
+        console.log('funcionou')
 
         await axios.get('/api/tags', {
             params: { user_id }
@@ -67,10 +69,11 @@ export default function Tags() {
 
                                 <div className="carousel-inner ">
                                     <div className="carousel-item active">
-                                        <IncomeTagsPage incomeTags={incomeTags} />
+                                        <TagsPage tags={incomeTags} section={'incomeTags'} dataFunction={() => dataFunction(token.sub)} />
                                     </div>
                                     <div className="carousel-item">
-                                        2
+                                        <TagsPage tags={expenseTags} section={'expenseTags'} dataFunction={() => dataFunction(token.sub)} />
+
                                     </div>
 
                                 </div>

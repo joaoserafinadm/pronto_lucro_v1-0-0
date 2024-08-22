@@ -420,7 +420,7 @@ export default function ExpenseAddModal(props) {
                                                 setTagSelected={setTagSelected}
                                                 dataFunction={() => dataFunction(token.sub)}
                                                 id="tagSelectModalExpense"
-                                                section="expense" />
+                                                section="expenseTags" />
                                         </div>
 
                                         <hr />

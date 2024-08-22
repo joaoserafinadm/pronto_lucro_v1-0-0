@@ -30,7 +30,7 @@ const handler = async (req, res) => {
         return res.status(405).json({ message: 'Method not allowed.' });
     }
 
-    const { user_id, section, newTag } = req.body;
+    const { user_id, section, category_id, categoryName, newTag } = req.body;
 
     if (!user_id || !newTag) {
         return res.status(400).json({ error: "Missing parameters in request body." });
@@ -44,37 +44,92 @@ const handler = async (req, res) => {
             return res.status(404).json({ error: "User doesn't exist." });
         }
 
-        const newTagData = {
-            ...newTag,
-            _id: new ObjectId()
-        };
 
-        if (section === 'income') {
+        const field = section === 'income' ? 'incomeTags' : 'expenseTags';
 
-            await db.collection('users').updateOne(
-                { _id: new ObjectId(user_id) },
+        if (category_id === 'new') {
+
+            const newCategoryId = new ObjectId();
+            const newTagId = new ObjectId();
+
+            const newTagData = {
+                _id: newCategoryId,
+                category: categoryName,
+                tags: [{
+                    _id: newTagId,
+                    ...newTag,
+                }]
+            };
+
+
+            const responseNewTag = await db.collection('users').updateOne({
+                _id: new ObjectId(user_id)
+            }, {
+                $push: {
+                    [field]: {
+                        $each: [newTagData],
+                        $position: 0
+                    }
+                }
+            })
+
+            console.log("responseNewTag", responseNewTag)
+
+            const tagSelected = {
+                category_id: newCategoryId,
+                category: categoryName,
+                _id: newTagId,
+                ...newTag
+            }
+
+            res.status(200).json(tagSelected);
+
+
+        } else {
+
+            const newTagId = new ObjectId();
+
+
+            const newTagData = {
+                _id: newTagId,
+                ...newTag
+            }
+
+            console.log("newTagData", newTagData, category_id)
+
+            const seachField = `${field}._id`
+
+            const response = await db.collection('users').updateOne(
+                {
+                    _id: new ObjectId(user_id),
+                    [seachField]: new ObjectId(category_id)
+                },
                 {
                     $push: {
-                        incomeTags: {
+                        [`${field}.$.tags`]: {
                             $each: [newTagData],
                             $position: 0
                         }
                     }
                 }
             );
-        } else if (section === "expense") {
-            await db.collection('users').updateOne(
-                { _id: new ObjectId(user_id) },
-                {
-                    $push: {
-                        expenseTags: {
-                            $each: [newTagData],
-                            $position: 0
-                        }
-                    }
-                }
-            );
+
+            console.log("response", response)
+
+            const tagSelected = {
+                category_id: category_id,
+                category: categoryName,
+                ...newTagData
+            }
+
+            res.status(200).json(tagSelected);
+
+
         }
+
+
+
+
 
 
         res.status(200).json(newTagData);
