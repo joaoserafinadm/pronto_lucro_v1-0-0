@@ -14,6 +14,9 @@ import isMobile from '../utils/isMobile.js'
 import EntriesHistoric from '../src/indexPage/entriesHistoric.jsx'
 import InputButton from '../src/components/inputButton/InputButton.jsx'
 import EntriesHistoricModal from '../src/indexPage/entriesHistoricModal.jsx'
+import axios from 'axios'
+import { showModalBs } from '../utils/modalControl.js'
+import TutorialModal from '../src/indexPage/TutorialModal.jsx'
 
 
 
@@ -27,14 +30,27 @@ export default function Home() {
 
 
     useEffect(() => {
+        dataFunction(token.sub)
         navbarHide(dispatch)
-
     }, [])
+
+    const dataFunction = async (user_id) => {
+
+        await axios.get(`/api/indexPage`, {
+            params: { user_id }
+        })
+            .then(res => {
+                if (res.data.initialTutorial) showModalBs('tutorialModal')
+            }).catch(e => {
+                console.log(e)
+            })
+    }
 
     return (
 
         <div className='fadeItem1s'>
 
+            <TutorialModal />
 
             <EntriesHistoricModal />
             {/* <Title title={`Olá, ${token.firstName}!`} subtitle={'Qual a sua meta de lucro para hoje?'} /> */}

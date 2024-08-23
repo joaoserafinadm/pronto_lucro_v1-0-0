@@ -343,6 +343,7 @@ a {
 	animation: fade 0.5s;
 	transition: ease 0.5s;
 }
+
 .fadeItem15s {
 	animation: fade 0.15s;
 	transition: ease 0.15s;
@@ -3162,13 +3163,13 @@ h1 {
 	padding-bottom: 150px;
 }
 
-.bankImage{
+.bankImage {
 	height: 40px;
 	width: 40px;
 	border-radius: 50%;
 }
 
-.hoverSelect:hover{
+.hoverSelect:hover {
 	background-color: #eeeeee;
 	transition: .2s ease-in-out;
 }
@@ -3188,4 +3189,8 @@ h1 {
 .optionsButton:hover {
 	background-color: #bbbbbb;
 	transition: .2s ease-in-out;
+}
+
+span {
+	color: #343a40 ;
 }
