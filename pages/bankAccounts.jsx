@@ -114,14 +114,6 @@ export default function BankAccounts() {
                     <div className="col-12">
                         <div className="card">
                             <div className="card-body">
-                                {/* <div className="row">
-                                <div className="col-12 d-flex justify-content-end">
-                                    <button className="btn btn-custom-success">
-                                        + Adicionar conta
-                                    </button>
-                                </div>
-                            </div>
-                            <hr /> */}
 
 
                                 <div className="row d-flex">

@@ -27,6 +27,7 @@ export default function Home() {
     const dispatch = useDispatch()
 
     const [valueView, setValueView] = useState(true)
+    const [bankAccounts, setBankAccounts] = useState([])
 
 
     useEffect(() => {
@@ -38,19 +39,20 @@ export default function Home() {
 
         await axios.get(`/api/indexPage`, {
             params: { user_id }
+        }).then(res => {
+            if (res.data.initialTutorial) showModalBs('tutorialModal')
+            setBankAccounts(res.data.bankAccounts)
+
+        }).catch(e => {
+            console.log(e)
         })
-            .then(res => {
-                if (res.data.initialTutorial) showModalBs('tutorialModal')
-            }).catch(e => {
-                console.log(e)
-            })
     }
 
     return (
 
         <div className='fadeItem1s'>
 
-            <TutorialModal />
+            <TutorialModal bankAccounts={bankAccounts} dataFunction={() => dataFunction(token.sub)} />
 
             <EntriesHistoricModal />
             {/* <Title title={`Olá, ${token.firstName}!`} subtitle={'Qual a sua meta de lucro para hoje?'} /> */}

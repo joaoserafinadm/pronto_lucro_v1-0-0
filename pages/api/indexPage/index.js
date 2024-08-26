@@ -36,7 +36,7 @@ export default authenticated(async (req, res) => {
 
                 const initialTutorial = true
 
-                res.status(200).json({ initialTutorial })
+                res.status(200).json({ initialTutorial, bankAccounts: userExist.bankAccounts })
             }
         }
     }

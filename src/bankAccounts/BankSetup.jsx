@@ -4,6 +4,8 @@ import CardTemplate from "./CardTemplate"
 import BankColorSelect from "./BankColorSelect"
 import { maskInputMoney } from "../../utils/mask"
 import scrollTo from "../../utils/scrollTo"
+import { useState } from "react"
+import { SpinnerSM } from "../components/loading/Spinners"
 
 
 
@@ -34,6 +36,7 @@ export default function BankSetup(props) {
     } = props
 
 
+
     const handleCreditNetwork = (id) => {
         console.log(id, creditCardList)
         const network = creditCardList.find(elem => elem.id.toString() === id.toString())
@@ -51,14 +54,26 @@ export default function BankSetup(props) {
         if (!creditCard) scrollTo('creditLimitInput');
     }
 
+
+    
+
     return (
         <div className="row">
-            <div className="col-12">
-                <span className="text-secondary" type="button"
-                    data-bs-target="#bankSetupCarousel" data-bs-slide="prev" >
-                    <FontAwesomeIcon icon={faAngleLeft} className="me-2" /> Voltar
-                </span>
-            </div>
+            {props.tutorial ?
+                <div className="col-12">
+                    <span className="text-secondary" type="button"
+                        data-bs-target="#tutorialPages" data-bs-slide-to={4} >
+                        <FontAwesomeIcon icon={faAngleLeft} className="me-2" /> Voltar
+                    </span>
+                </div>
+                :
+                <div className="col-12">
+                    <span className="text-secondary" type="button"
+                        data-bs-target="#bankSetupCarousel" data-bs-slide="prev" >
+                        <FontAwesomeIcon icon={faAngleLeft} className="me-2" /> Voltar
+                    </span>
+                </div>
+            }
 
             <div className="col-12 mb-3  mt-2">
                 <div className="row d-flex justify-content-center">
@@ -243,6 +258,7 @@ export default function BankSetup(props) {
             )
             }
 
+         
         </div >
     )
 

@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styles from './BankAccounts.module.scss'
-import { faArrowTrendDown, faArrowTrendUp, faEye, faGear } from '@fortawesome/free-solid-svg-icons'
+import { faArrowTrendDown, faArrowTrendUp, faEdit, faEye, faGear } from '@fortawesome/free-solid-svg-icons'
 
 
 
@@ -60,10 +60,8 @@ export default function CardTemplate(props) {
                                 <FontAwesomeIcon icon={faGear} />
                             </button>
                         </div>
-
                     </div>
                 </div>
-
             )}
         </div>
 

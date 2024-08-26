@@ -14,7 +14,7 @@ export default function NewAccountCard(props) {
                     <span className={`${styles.newAccountCardIcon}`}>
                         +
                     </span>
-                    <span className='ms-2 text-secondary bold'>
+                    <span className='ms-2 text-secondary bold '>
                         Nova conta
                     </span>
                 </div>

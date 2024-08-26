@@ -1,4 +1,4 @@
-import { faBank, faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import { faBank, faChevronLeft, faChevronRight, faWallet } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
@@ -16,8 +16,8 @@ export default function AccountsConfigTutorial(props) {
             <hr />
             <div className="col-12 my-3 fadeItem1s d-flex flex-column">
                 <span className=" fs-5 my-1">Sua primeira conta é a sua <b>"Carteira"</b>. </span>
-                <span className=" fs-5 my-1"> Agora, você pode adicionar outras contas vinculadas a instituições financeiras para um controle ainda mais completo.</span>
-                <span className=" fs-5 my-1">Caso não queira adicionar agora, não tem problema! A página de <b className="fw-bold"><FontAwesomeIcon icon={faBank} className="small"/> Contas</b> pode ser acessada no menu lateral.</span>
+                <span className=" fs-5 my-1"> Você pode adicionar outras contas vinculadas a instituições financeiras para um controle ainda mais completo.</span>
+                <span className=" fs-5 my-1">Caso não queira adicionar agora, não tem problema! A página de <b className="fw-bold"><FontAwesomeIcon icon={faWallet} className="small" /> Contas</b> pode ser acessada no menu lateral.</span>
             </div>
             <hr />
             <div className="col-12 my-3 d-flex justify-content-between fadeItem2s">
