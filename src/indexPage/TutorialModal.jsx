@@ -12,6 +12,7 @@ import jwt from 'jsonwebtoken'
 import removeInputError from "../../utils/removeInputError";
 import TagConfig1Page from "./TagConfig1Page";
 import TagConfig2Page from "./TagConfig2Page";
+import TagConfig3Page from "./TagConfig3Page";
 
 
 export default function TutorialModal(props) {
@@ -31,6 +32,8 @@ export default function TutorialModal(props) {
     const [creditNetwork, setCreditNetwork] = useState(null)
     const [diaFechamento, setDiaFechamento] = useState(1)
     const [diaLancamento, setDiaLancamento] = useState(5)
+    const [setorSelected, setSetorSelected] = useState(null);
+
 
     const [institutions, setInstitutions] = useState([])
     const [creditCardList, setCreditCardList] = useState([])
@@ -129,6 +132,7 @@ export default function TutorialModal(props) {
         setValueSum(true)
     }
 
+
     return (
         <div class="modal fade" id='tutorialModal' tabindex="-1" aria-labelledby="tutorialModalLabel" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable ">
@@ -181,7 +185,10 @@ export default function TutorialModal(props) {
                                     <TagConfig1Page />
                                 </div>
                                 <div className="carousel-item"> {/*  7 slide */}
-                                    <TagConfig2Page />
+                                    <TagConfig2Page setorSelected={setorSelected} setSetorSelected={setSetorSelected} />
+                                </div>
+                                <div className="carousel-item"> {/*  8 slide */}
+                                    <TagConfig3Page setorSelected={setorSelected} />
                                 </div>
 
                             </div>

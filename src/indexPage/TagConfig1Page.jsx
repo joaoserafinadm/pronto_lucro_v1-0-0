@@ -8,6 +8,7 @@ export default function TagConfig1Page(props) {
 
 
 
+
     return (
         <div className="row">
             <div className="col-12 d-flex justify-content-center text-center my-3 fadeItem">
