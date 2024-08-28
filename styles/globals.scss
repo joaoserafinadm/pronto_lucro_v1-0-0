@@ -3004,7 +3004,7 @@ h1 {
 
 .border-selected {
 	border-width: 2px !important;
-	border-color: var(--ai-primary) !important;
+	border-color: var(--color-secondary) !important;
 }
 
 .cardSize {
@@ -3205,4 +3205,8 @@ span {
     justify-content: center;
     font-size: 30px;
     color: #8f8f8f;
+}
+
+.text-c-primary {
+	color: #4D88BB;
 }

@@ -28,6 +28,7 @@ export default function Home() {
 
     const [valueView, setValueView] = useState(true)
     const [bankAccounts, setBankAccounts] = useState([])
+    const [modalOpen, setModalOpen] = useState(false)
 
 
     useEffect(() => {
@@ -40,7 +41,10 @@ export default function Home() {
         await axios.get(`/api/indexPage`, {
             params: { user_id }
         }).then(res => {
-            if (res.data.initialTutorial) showModalBs('tutorialModal')
+            if (res.data.initialTutorial && !modalOpen) {
+                setModalOpen(true)
+                showModalBs('tutorialModal')
+            }
             setBankAccounts(res.data.bankAccounts)
 
         }).catch(e => {

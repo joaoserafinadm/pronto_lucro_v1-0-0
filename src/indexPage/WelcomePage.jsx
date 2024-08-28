@@ -20,7 +20,7 @@ export default function WelcomePage(props) {
             <hr />
             <div className="col-12 my-3 fadeItem1s d-flex flex-column">
                 <span className=" fs-5 my-1">Estamos empolgados por ter você conosco. </span>
-                <span className=" fs-5 my-1"> A <b>Pronto Lucro</b> é a ferramenta ideal para ajudar a sua empresa a <b>crescer</b> de forma <b>organizada</b> e <b>eficiente</b>.</span>
+                <span className=" fs-5 my-1"> A <b>Pronto Lucro</b> é a ferramenta ideal para ajudar a sua empresa a <b>lucrar</b> de forma <b>organizada</b> e <b>eficiente</b>.</span>
                 <span className=" fs-5 my-1">Vamos começar configurando sua conta para que você possa tirar o máximo proveito da nossa plataforma. Clique em "Próximo" para continuar.</span>
             </div>
             <hr />

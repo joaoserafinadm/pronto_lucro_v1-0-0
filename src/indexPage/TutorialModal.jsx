@@ -13,6 +13,8 @@ import removeInputError from "../../utils/removeInputError";
 import TagConfig1Page from "./TagConfig1Page";
 import TagConfig2Page from "./TagConfig2Page";
 import TagConfig3Page from "./TagConfig3Page";
+import { getTagsBySector } from "../tags/tags";
+import TagConfig4Page from "./TagConfig4Page";
 
 
 export default function TutorialModal(props) {
@@ -33,6 +35,8 @@ export default function TutorialModal(props) {
     const [diaFechamento, setDiaFechamento] = useState(1)
     const [diaLancamento, setDiaLancamento] = useState(5)
     const [setorSelected, setSetorSelected] = useState(null);
+    const [incomeTags, setIncomeTags] = useState([])
+    const [expenseTags, setExpenseTags] = useState([])
 
 
     const [institutions, setInstitutions] = useState([])
@@ -40,12 +44,17 @@ export default function TutorialModal(props) {
 
     const [loadingAccountSave, setLoadingAccountSave] = useState('')
 
-
-
-
     useEffect(() => {
         childDataFunction()
     }, [])
+
+    useEffect(() => {
+        if (setorSelected) {
+            console.log(setorSelected,getTagsBySector(setorSelected).incomeTags)
+            setIncomeTags(getTagsBySector(setorSelected).incomeTags)
+            setExpenseTags(getTagsBySector(setorSelected).expenseTags)
+        }
+    }, [setorSelected])
 
 
     const childDataFunction = async () => {
@@ -188,9 +197,11 @@ export default function TutorialModal(props) {
                                     <TagConfig2Page setorSelected={setorSelected} setSetorSelected={setSetorSelected} />
                                 </div>
                                 <div className="carousel-item"> {/*  8 slide */}
-                                    <TagConfig3Page setorSelected={setorSelected} />
+                                    <TagConfig3Page setorSelected={setorSelected} incomeTags={incomeTags} expenseTags={expenseTags} setIncomeTags={setIncomeTags} setExpenseTags={setExpenseTags} />
                                 </div>
-
+                                <div className="carousel-item"> {/*  9 slide */}
+                                    <TagConfig4Page />
+                                </div>
                             </div>
                         </div>
                     </div>

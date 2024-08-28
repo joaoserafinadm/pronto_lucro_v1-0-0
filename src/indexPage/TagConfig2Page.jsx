@@ -19,36 +19,75 @@ export default function TagConfig2Page(props) {
                 <span className=" fs-4">Escolha seu Setor</span>
             </div>
             <hr />
-            <div className="col-12 my-3 d-flex justify-content-between fadeItem2s">
-                <span className="cardAnimation  " type="button" data-bs-target="#tutorialPages" data-bs-slide-to={6}>
-                    <FontAwesomeIcon icon={faChevronLeft} className="me-1" /> Voltar
-                </span>
-            </div>
+
             <div className="col-12 my-3 fadeItem1s d-flex flex-column">
                 <span className=" fs-5 my-1">Escolha o setor que melhor se encaixa na sua empresa:</span>
             </div>
             <hr />
-            {segmentos.map(elem => (
-                <div className="col-12 my-1 px-3">
-                    <span type='button' className={`card cardAnimation ${setorSelected?.setor === elem.setor ? 'border-success border border-2 shadow' : ''}`} onClick={() => setSetorSelected(elem)} data-bs-target="#tutorialPages" data-bs-slide-to={8}>
-                        <div className="card-body">
-                            <div className="row">
-                                <div className="col-12">
-                                    <span className="bold">{elem.setor}</span>
+            <div className="col-12 col-sm-6 my-1 px-3">
+                <div type="button" className={`card cardAnimation  ${setorSelected === "Indústria" ? "shadow border-selected" : ""}`} onClick={() => setSetorSelected("Indústria")}>
+                    <div className="card-body">
+                        <div className="row">
+                            <div className="col-12 d-flex justify-content-center align-items-center">
+                                <div className="d-flex justify-content-center align-items-center" style={{ width: "40px" }}>
+                                    <img src="INDUSTRIA_ICON.png" alt="Indústria" className="w-100" />
                                 </div>
-                                <div className="col-12">
-                                    {elem.exemplos.map(exemplo => (
-                                        <>
-                                            <span className="small">&#x2022; {exemplo}</span><br />
-                                        </>
-                                    ))}
-                                </div>
+                                <span className="bold ms-3 fs-5 text-c-secondary">Indústria</span>
                             </div>
                         </div>
-                    </span>
+                    </div>
                 </div>
-            ))}
-            <div className="mt-5"></div>
+            </div>
+            <div className="col-12 col-sm-6 my-1 px-3">
+                <div type="button" className={`card cardAnimation  ${setorSelected === "Comércio" ? "shadow border-selected" : ""}`} onClick={() => setSetorSelected("Comércio")}>
+                    <div className="card-body">
+                        <div className="row">
+                            <div className="col-12 d-flex justify-content-center align-items-center">
+                                <div className="d-flex justify-content-center align-items-center" style={{ width: "40px" }}>
+                                    <img src="COMERCIO_ICON.png" alt="Comércio" className="w-100" />
+                                </div>
+                                <span className="bold ms-3 fs-5 text-c-secondary">Comércio</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className="col-12 col-sm-6 my-1 px-3">
+                <div type="button" className={`card cardAnimation  ${setorSelected === "Serviços" ? "shadow border-selected" : ""}`} onClick={() => setSetorSelected("Serviços")}>
+                    <div className="card-body">
+                        <div className="row">
+                            <div className="col-12 d-flex justify-content-center align-items-center">
+                                <div className="d-flex justify-content-center align-items-center" style={{ width: "40px" }}>
+                                    <img src="SERVICOS_ICON.png" alt="Serviços" className="w-100" />
+                                </div>
+                                <span className="bold ms-3 fs-5 text-c-secondary">Serviços</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className="col-12 col-sm-6 my-1 px-3">
+                <div type="button" className={`card cardAnimation  ${setorSelected === "Outro" ? "shadow border-selected" : ""}`} onClick={() => setSetorSelected("Outro")}>
+                    <div className="card-body">
+                        <div className="row">
+                            <div className="col-12 d-flex justify-content-center align-items-center">
+                                <div className="d-flex justify-content-center align-items-center" style={{ width: "40px" }}>
+                                    <img src="OUTROS_ICON.png" alt="Outro" className="w-100" />
+                                </div>
+                                <span className="bold ms-3 fs-5 text-c-secondary">Outro</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className="col-12 my-3 d-flex justify-content-between fadeItem2s">
+                <span className="cardAnimation  " type="button" data-bs-target="#tutorialPages" data-bs-slide-to={6}>
+                    <FontAwesomeIcon icon={faChevronLeft} className="me-1" /> Voltar
+                </span>
+                <span className="cardAnimation pulse " type="button" data-bs-target="#tutorialPages" data-bs-slide-to={8}>
+                    Próximo <FontAwesomeIcon icon={faChevronRight} className="ms-1" />
+                </span>
+            </div>
 
         </div>
     )
