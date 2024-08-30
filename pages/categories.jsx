@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import Title from "../src/components/title/Title2";
 import Sections from "../src/components/Sections";
+import Title from "../src/components/title/Title2";
 import jwt from 'jsonwebtoken'
 import Cookie from 'js-cookie'
 import { useDispatch } from "react-redux";
@@ -9,10 +9,7 @@ import axios from "axios";
 import TagsPage from "../src/tags/TagsPage";
 import { SpinnerLG } from "../src/components/loading/Spinners";
 
-
-
-
-export default function Tags() {
+export default function categories() {
 
     const token = jwt.decode(Cookie.get('auth'));
     const dispatch = useDispatch()
@@ -51,7 +48,6 @@ export default function Tags() {
 
     return (
         <div>
-
             <Title title={'Categorias'} subtitle='Crie e gerencie suas categorias' backButton='/' />
 
             <div className="pagesContent shadow">
@@ -60,30 +56,31 @@ export default function Tags() {
                     :
                     <div className="row fadeItem">
                         <div className="col-12">
-                            <div className=" carousel  " data-bs-touch="false" data-bs-interval='false' id="accoutSetupPages">
+                            <div className=" carousel slide " data-bs-touch="false" data-bs-interval='false' id="accoutSetupPages">
 
                                 <Sections section={section} idTarget="accoutSetupPages"
                                     setSection={value => setSection(value)}
-                                    sections={["Categorias de receita", "Categorias de despeza"]} />
+                                    sections={["Categorias de receita", "Categorias de despesa"]} />
 
 
                                 <div className="carousel-inner ">
                                     <div className="carousel-item active">
-                                        <TagsPage tags={incomeTags} section={'incomeTags'} dataFunction={() => dataFunction(token.sub)} />
+                                        1
                                     </div>
-                                    <div className="carousel-item">
-                                        <TagsPage tags={expenseTags} section={'expenseTags'} dataFunction={() => dataFunction(token.sub)} />
-
+                                    <div className="carousel-item ">
+                                        2
                                     </div>
-
                                 </div>
+
                             </div>
                         </div>
+
+
+
                     </div>
                 }
-
-
             </div>
+
         </div>
     )
 }

@@ -35,6 +35,7 @@ export default function TutorialModal(props) {
     const [diaFechamento, setDiaFechamento] = useState(1)
     const [diaLancamento, setDiaLancamento] = useState(5)
     const [setorSelected, setSetorSelected] = useState(null);
+    const [newSetorName, setNewSetorName] = useState('')
     const [incomeTags, setIncomeTags] = useState([])
     const [expenseTags, setExpenseTags] = useState([])
 
@@ -50,7 +51,6 @@ export default function TutorialModal(props) {
 
     useEffect(() => {
         if (setorSelected) {
-            console.log(setorSelected,getTagsBySector(setorSelected).incomeTags)
             setIncomeTags(getTagsBySector(setorSelected).incomeTags)
             setExpenseTags(getTagsBySector(setorSelected).expenseTags)
         }
@@ -147,7 +147,7 @@ export default function TutorialModal(props) {
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable ">
                 <div class="modal-content">
                     <div className="modal-body">
-                        <div className=" carousel  " data-bs-touch="false" data-bs-interval='false' id="tutorialPages">
+                        <div className=" carousel slide " data-bs-touch="false" data-bs-interval='false' id="tutorialPages">
                             <div className="carousel-inner ">
                                 <div className="carousel-item active">{/*  0 slide */}
                                     <WelcomePage />
@@ -194,10 +194,12 @@ export default function TutorialModal(props) {
                                     <TagConfig1Page />
                                 </div>
                                 <div className="carousel-item"> {/*  7 slide */}
-                                    <TagConfig2Page setorSelected={setorSelected} setSetorSelected={setSetorSelected} />
+                                    <TagConfig2Page
+                                        setorSelected={setorSelected} setSetorSelected={setSetorSelected}
+                                        newSetorName={newSetorName} setNewSetorName={setNewSetorName} />
                                 </div>
                                 <div className="carousel-item"> {/*  8 slide */}
-                                    <TagConfig3Page setorSelected={setorSelected} incomeTags={incomeTags} expenseTags={expenseTags} setIncomeTags={setIncomeTags} setExpenseTags={setExpenseTags} />
+                                    <TagConfig3Page newSetorName={newSetorName} setorSelected={setorSelected} incomeTags={incomeTags} expenseTags={expenseTags} setIncomeTags={setIncomeTags} setExpenseTags={setExpenseTags} />
                                 </div>
                                 <div className="carousel-item"> {/*  9 slide */}
                                     <TagConfig4Page />

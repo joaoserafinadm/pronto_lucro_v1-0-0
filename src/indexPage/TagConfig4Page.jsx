@@ -1,10 +1,22 @@
 import { faBank, faChevronLeft, faChevronRight, faTag, faWallet } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
+import axios from "axios";
+import Cookie from 'js-cookie'
+import jwt from 'jsonwebtoken'
 
 
 
 export default function TagConfig4Page(props) {
+
+    const token = jwt.decode(Cookie.get('auth'))
+
+
+    const handleTutorialExit = async () => {
+
+        await axios.post(`/api/indexPage/tutorialExit`, { user_id: token.sub })
+
+
+    }
 
 
     return (
@@ -29,10 +41,10 @@ export default function TagConfig4Page(props) {
 
             <hr />
             <div className="col-12 my-3 d-flex justify-content-between fadeItem2s">
-                <span className="cardAnimation  " type="button" data-bs-target="#tutorialPages" data-bs-slide-to={7}>
+                <span className="cardAnimation  " type="button" data-bs-target="#tutorialPages" data-bs-slide-to={8}>
                     <FontAwesomeIcon icon={faChevronLeft} className="me-1" /> Voltar
                 </span>
-                <span className="cardAnimation pulse fw-bold fs-5" type="button" data-bs-dismiss="modal">
+                <span className="cardAnimation pulse fw-bold fs-5" type="button" data-bs-dismiss="modal" onClick={() => handleTutorialExit()}>
                     Iniciar!
                 </span>
             </div>

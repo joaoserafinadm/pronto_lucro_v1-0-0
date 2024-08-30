@@ -34,7 +34,7 @@ export default authenticated(async (req, res) => {
                 res.status(400).json({ error: "User doesn't exist." });
             } else {
 
-                const initialTutorial = true
+                const initialTutorial = userExist.initialTutorial
 
                 res.status(200).json({ initialTutorial, bankAccounts: userExist.bankAccounts })
             }

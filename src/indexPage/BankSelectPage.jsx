@@ -117,7 +117,7 @@ export default function BankSelectPage(props) {
                                 {bankList?.map(elem => {
                                     return (
                                         <span className="hoverSelect py-3 row my-2 d-flex" type="button" onClick={() => setBankSelected(elem)}
-                                            data-bs-target="#bankSetupCarousel" data-bs-slide="next" >
+                                        data-bs-target="#tutorialPages" data-bs-slide-to={5} >
                                             <div className="d-flex justify-content-center align-items-center" style={{ width: "60px" }}>
                                                 <img className="bankImage" src={elem.logoUrl} alt="" />
                                             </div>

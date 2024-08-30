@@ -43,7 +43,7 @@ export default function MenuBar(props) {
                     <Link href='/'
                         className={`text-center  ${pathname === '/' ? `${styles.pageSelected}` : 'text-light'}`}>
                         <FontAwesomeIcon icon={faHome} /> <br />
-                        <span style={{ fontSize: '10px' }}>Início</span>
+                        <span className={`${pathname === '/' ? `${styles.pageSelected}` : 'text-light'}`} style={{ fontSize: '10px' }}>Início</span>
                     </Link>
 
                 </div>
@@ -52,7 +52,7 @@ export default function MenuBar(props) {
                     <Link href='/transactions'
                         className={`text-center  ${pathname === '/transactions' ? `${styles.pageSelected}` : 'text-light'}`}>
                         <FontAwesomeIcon icon={faMoneyBillTransfer} /> <br />
-                        <span style={{ fontSize: '10px' }}>Transações</span>
+                        <span className={`${pathname === '/transactions' ? `${styles.pageSelected}` : 'text-light'}`} style={{ fontSize: '10px' }}>Transações</span>
                     </Link>
 
                 </div>
@@ -67,16 +67,16 @@ export default function MenuBar(props) {
                     <Link href='/planning'
                         className={`text-center  ${pathname === '/planning' ? `${styles.pageSelected}` : 'text-light'}`}>
                         <FontAwesomeIcon icon={faChartLine} /> <br />
-                        <span style={{ fontSize: '10px' }}>Resultados</span>
+                        <span className={`${pathname === '/planning' ? `${styles.pageSelected}` : 'text-light'}`} style={{ fontSize: '10px' }}>Resultados</span>
                     </Link>
 
                 </div>
                 <div className="col d-flex justify-content-center align-items-center px-0">
 
-                    <span onClick={() => dispatch(toggleBarChange(false))}
-                        className={`text-center  ${pathname === '/accountSetup' ? `${styles.pageSelected}` : 'text-light'}`}>
+                    <span type='button' onClick={() => dispatch(toggleBarChange(false))}
+                        className={`text-center text-light`}>
                         <FontAwesomeIcon icon={faList} /> <br />
-                        <span style={{ fontSize: '10px' }}>Opções</span>
+                        <span className='text-light' style={{ fontSize: '10px' }}>Opções</span>
                     </span>
 
                 </div>

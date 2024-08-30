@@ -1,13 +1,52 @@
 import { faBank, faChevronLeft, faChevronRight, faTag, faWallet } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
+import axios from "axios";
+import Cookie from 'js-cookie'
+import jwt from 'jsonwebtoken'
+import { useState } from "react";
+import { SpinnerSM } from "../components/loading/Spinners";
 
 
 
 export default function TagConfig3Page(props) {
 
+    const token = jwt.decode(Cookie.get('auth'))
 
-    const { setorSelected, incomeTags, expenseTags } = props
+    const { newSetorName, setorSelected, incomeTags, expenseTags } = props
+
+    const [loadingSave, setLoadingSave] = useState(false)
+    const [newCategories, setNewCategories] = useState(false)
+
+    const handleTagsSave = async () => {
+
+        const body = {
+            user_id: token.sub,
+            setorSelected: setorSelected,
+            newSetorName: newSetorName,
+            incomeTags: newCategories ? [] : incomeTags,
+            expenseTags: newCategories ? [] : expenseTags
+        }
+
+        console.log(body)
+
+        setLoadingSave(true)
+
+        await axios.post(`/api/indexPage/newTagsSave`, body)
+            .then(res => {
+                setLoadingSave(false)
+                var myCarousel = document.querySelector('#tutorialPages');
+                var carousel = new bootstrap.Carousel(myCarousel,);
+                carousel.to(9);
+            }).catch(e => {
+                setLoadingSave(false)
+                var myCarousel = document.querySelector('#tutorialPages');
+                var carousel = new bootstrap.Carousel(myCarousel,);
+                carousel.to(9);
+                console.log(e)
+            })
+
+
+    }
 
     return (
         <div className="row">
@@ -17,6 +56,7 @@ export default function TagConfig3Page(props) {
             <hr />
             <div className="col-12 d-flex justify-content-center text-center my-3 fadeItem">
                 <div className="col-12 col-sm-6 my-1 px-3">
+                    <span className="bold text-c-secondary fs-5">{newSetorName}</span>
                     <div className={`card   shadow border-selected`} >
                         <div className="card-body">
                             <div className="row">
@@ -94,6 +134,16 @@ export default function TagConfig3Page(props) {
                     </div>
                 </div>
             </div>
+            <div className="my-4 col-12">
+                <div className="form-check">
+
+                    <input type="checkbox" className="form-check-input" id="newCategoriesCheck" />
+                    <label htmlFor="newCategoriesCheck" className="form-check-label bold" onClick={() => setNewCategories(!newCategories)} checked={newCategories}>
+                        Essas categorias não se encaixam no meu negócio, quero adicionar manuamente.
+                    </label>
+                </div>
+
+            </div>
 
 
             <hr />
@@ -101,8 +151,14 @@ export default function TagConfig3Page(props) {
                 <span className="cardAnimation  " type="button" data-bs-target="#tutorialPages" data-bs-slide-to={7}>
                     <FontAwesomeIcon icon={faChevronLeft} className="me-1" /> Voltar
                 </span>
-                <span className="cardAnimation pulse " type="button" data-bs-target="#tutorialPages" data-bs-slide-to={9}>
-                    Próximo <FontAwesomeIcon icon={faChevronRight} className="ms-1" />
+                <span className="cardAnimation pulse " type="button" onClick={() => handleTagsSave(token.sub)}>
+                    {loadingSave ?
+                        <SpinnerSM className="mx-3 text-secondary" />
+                        :
+                        <>
+                            Próximo < FontAwesomeIcon icon={faChevronRight} className="ms-1" />
+                        </>
+                    }
                 </span>
             </div>
         </div>

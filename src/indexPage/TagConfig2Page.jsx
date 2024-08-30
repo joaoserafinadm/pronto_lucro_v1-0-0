@@ -7,7 +7,11 @@ import { useEffect } from "react";
 
 export default function TagConfig2Page(props) {
 
-    const { setorSelected, setSetorSelected } = props
+    const { setorSelected, setSetorSelected, newSetorName, setNewSetorName } = props
+
+    useEffect(() => {
+        setNewSetorName('')
+    }, [setorSelected])
 
 
 
@@ -80,6 +84,13 @@ export default function TagConfig2Page(props) {
                     </div>
                 </div>
             </div>
+            {setorSelected === "Outro" && (
+
+                <div className="col-12 mt-3 fadeItem">
+                    <laberl className="form-label bold" htmlFor="newSetorInput">Qual é o setor que melhor se encaixa na sua empresa?</laberl>
+                    <input id="newSetorInput" type="text" className="form-control" onChange={(e) => setNewSetorName(e.target.value)} value={newSetorName} placeholder="Nome do setor" />
+                </div>
+            )}
             <div className="col-12 my-3 d-flex justify-content-between fadeItem2s">
                 <span className="cardAnimation  " type="button" data-bs-target="#tutorialPages" data-bs-slide-to={6}>
                     <FontAwesomeIcon icon={faChevronLeft} className="me-1" /> Voltar
