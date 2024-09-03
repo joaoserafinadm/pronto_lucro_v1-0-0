@@ -57,7 +57,7 @@ export default function TagsPage(props) {
 
 
             <div className="col-12 d-flex justify-content-end mb-3">
-                <button className="btn btn-sm btn-custom-success" data-bs-toggle="modal" data-bs-target={`#newTagModal${section}`}>
+                <button className="btn btn-sm btn-c-success" data-bs-toggle="modal" data-bs-target={`#newTagModal${section}`}>
                     + Adicionar categoria
                 </button>
             </div>

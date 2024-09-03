@@ -8,6 +8,7 @@ import navbarHide from "../utils/navbarHide";
 import axios from "axios";
 import TagsPage from "../src/tags/TagsPage";
 import { SpinnerLG } from "../src/components/loading/Spinners";
+import CategoriesPage from "../src/categories/categoriesTage";
 
 export default function categories() {
 
@@ -30,7 +31,7 @@ export default function categories() {
 
         console.log('funcionou')
 
-        await axios.get('/api/tags', {
+        await axios.get('/api/categories', {
             params: { user_id }
         }).then(res => {
             setIncomeTags(res.data.incomeTags)
@@ -65,10 +66,11 @@ export default function categories() {
 
                                 <div className="carousel-inner ">
                                     <div className="carousel-item active">
-                                        1
+                                        <CategoriesPage categories={incomeTags} section={'incomeTags'} dataFunction={() => dataFunction(token.sub)} />
                                     </div>
                                     <div className="carousel-item ">
-                                        2
+                                        <CategoriesPage categories={expenseTags} section={'expenseTags'} dataFunction={() => dataFunction(token.sub)} />
+
                                     </div>
                                 </div>
 

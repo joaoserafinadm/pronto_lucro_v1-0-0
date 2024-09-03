@@ -1,16 +1,16 @@
 // PRIMARY
-.btn-custom-primary {
+.btn-c-primary {
     color: #fff !important;
     background-color: var(--color-primary) !important;
     border-radius: 5px !important;
     transition: .5s ease;
 }
 
-.btn-custom-primary:hover {
+.btn-c-primary:hover {
     background-color: var(--color-primary-hover) !important;
 }
 
-.btn-custom-primary:disabled {
+.btn-c-primary:disabled {
     background-color: var(--color-primary-disabled) !important;
 }
 
@@ -20,18 +20,18 @@
 
 
 // SECONDARY
-.btn-custom-secondary {
+.btn-c-secondary {
     color: #fff !important;
     background-color: var(--color-secondary) !important;
     border-radius: 5px !important;
     transition: .5s ease;
 }
 
-.btn-custom-secondary:hover {
+.btn-c-secondary:hover {
     background-color: var(--color-secondary-hover) !important;
 }
 
-.btn-custom-secondary:disabled {
+.btn-c-secondary:disabled {
     background-color: var(--color-secondary-disabled) !important;
 }
 
@@ -39,18 +39,18 @@
 
 
 // TERTIAY
-.btn-custom-tertiary {
+.btn-c-tertiary {
     color: #fff !important;
     background-color: var(--color-tertiary) !important;
     border-radius: 5px !important;
     transition: .5s ease;
 }
 
-.btn-custom-tertiary:hover {
+.btn-c-tertiary:hover {
     background-color: var(--color-tertiary-hover) !important;
 }
 
-.btn-custom-tertiary:disabled {
+.btn-c-tertiary:disabled {
     background-color: var(--color-tertiary-disabled) !important;
 }
 
@@ -59,14 +59,14 @@
 
 
 // SUCCESS
-.btn-custom-success {
+.btn-c-success {
     color: #fff !important;
     background-color: var(--color-success) !important;
     border-radius: 5px !important;
     transition: .5s ease;
 }
 
-.btn-custom-success:hover {
+.btn-c-success:hover {
     background-color: var(--color-success-hover) !important;
 }
 
@@ -80,18 +80,18 @@
 
 
 // WARNING
-.btn-custom-warning {
+.btn-c-warning {
     color: #fff !important;
     background-color: var(--color-warning) !important;
     border-radius: 5px !important;
     transition: .5s ease;
 }
 
-.btn-custom-warning:hover {
+.btn-c-warning:hover {
     background-color: var(--color-warning-hover) !important;
 }
 
-.btn-custom-warning:disabled {
+.btn-c-warning:disabled {
     background-color: var(--color-warning-disabled) !important;
 }
 
@@ -99,18 +99,18 @@
 
 
 // DANGER
-.btn-custom-danger {
+.btn-c-danger {
     color: #fff !important;
     background-color: var(--color-danger) !important;
     border-radius: 5px !important;
     transition: .5s ease;
 }
 
-.btn-custom-danger:hover {
+.btn-c-danger:hover {
     background-color: var(--color-danger-hover) !important;
 }
 
-.btn-custom-danger:disabled {
+.btn-c-danger:disabled {
     background-color: var(--color-danger-disabled) !important;
 }
 
@@ -121,7 +121,7 @@
 
 
 //PRIMARY OUTLINE
-.btn-outline-custom-primary {
+.btn-c-outline-primary {
     color: var(--color-primary) !important;
     background-color: #fff !important;
     border: 1px solid var(--color-primary) !important;
@@ -129,13 +129,13 @@
     transition: .5s ease;
 }
 
-.btn-outline-custom-primary:hover {
+.btn-c-outline-primary:hover {
     color: #fff !important;
     background-color: var(--color-primary-hover) !important;
     border: 1px solid var(--color-primary-hover) !important;
 }
 
-.btn-outline-custom-primary:disabled {
+.btn-c-outline-primary:disabled {
     color: var(--color-primary-disabled) !important;
     background-color: #fff !important;
     border: 1px solid var(--color-primary-disabled) !important;
@@ -149,7 +149,7 @@
 
 
 //SECONDARY OUTLINE
-.btn-outline-custom-secondary {
+.btn-c-outline-secondary {
     color: var(--color-secondary) !important;
     background-color: #fff !important;
     border: 1px solid var(--color-secondary) !important;
@@ -157,13 +157,13 @@
     transition: .5s ease;
 }
 
-.btn-outline-custom-secondary:hover {
+.btn-c-outline-secondary:hover {
     color: #fff !important;
     background-color: var(--color-secondary-hover) !important;
     border: 1px solid var(--color-secondary-hover) !important;
 }
 
-.btn-outline-custom-secondary:disabled {
+.btn-c-outline-secondary:disabled {
     color: var(--color-secondary-disabled) !important;
     background-color: #fff !important;
     border: 1px solid var(--color-secondary-disabled) !important;
@@ -175,7 +175,7 @@
 
 
 //TERTIAY OUTLINE
-.btn-outline-custom-tertiary {
+.btn-c-outline-tertiary {
     color: var(--color-tertiary) !important;
     background-color: #fff !important;
     border: 1px solid var(--color-tertiary) !important;
@@ -183,13 +183,13 @@
     transition: .5s ease;
 }
 
-.btn-outline-custom-tertiary:hover {
+.btn-c-outline-tertiary:hover {
     color: #fff !important;
     background-color: var(--color-tertiary-hover) !important;
     border: 1px solid var(--color-tertiary-hover) !important;
 }
 
-.btn-outline-custom-tertiary:disabled {
+.btn-c-outline-tertiary:disabled {
     color: var(--color-tertiary-disabled) !important;
     background-color: #fff !important;
     border: 1px solid var(--color-tertiary-disabled) !important;
@@ -204,7 +204,7 @@
 
 
 //SUCCESS OUTLINE
-.btn-outline-custom-success {
+.btn-c-outline-success {
     color: var(--color-success) !important;
     background-color: #fff !important;
     border: 1px solid var(--color-success) !important;
@@ -212,13 +212,13 @@
     transition: .5s ease;
 }
 
-.btn-outline-custom-success:hover {
+.btn-c-outline-success:hover {
     color: #fff !important;
     background-color: var(--color-success-hover) !important;
     border: 1px solid var(--color-success-hover) !important;
 }
 
-.btn-outline-custom-success:disabled {
+.btn-c-outline-success:disabled {
     color: var(--color-success-disabled) !important;
     background-color: #fff !important;
     border: 1px solid var(--color-success-disabled) !important;
@@ -230,7 +230,7 @@
 
 
 //WARNING OUTLINE
-.btn-outline-custom-warning {
+.btn-c-outline-warning {
     color: var(--color-warning) !important;
     background-color: #fff !important;
     border: 1px solid var(--color-warning) !important;
@@ -238,13 +238,13 @@
     transition: .5s ease;
 }
 
-.btn-outline-custom-warning:hover {
+.btn-c-outline-warning:hover {
     color: #fff !important;
     background-color: var(--color-warning-hover) !important;
     border: 1px solid var(--color-warning-hover) !important;
 }
 
-.btn-outline-custom-warning:disabled {
+.btn-c-outline-warning:disabled {
     color: var(--color-warning-disabled) !important;
     background-color: #fff !important;
     border: 1px solid var(--color-warning-disabled) !important;
@@ -257,7 +257,7 @@
 
 
 //DANGER OUTLINE
-.btn-outline-custom-danger {
+.btn-c-outline-danger {
     color: var(--color-danger) !important;
     background-color: #fff !important;
     border: 1px solid var(--color-danger) !important;
@@ -265,13 +265,13 @@
     transition: .5s ease;
 }
 
-.btn-outline-custom-danger:hover {
+.btn-c-outline-danger:hover {
     color: #fff !important;
     background-color: var(--color-danger-hover) !important;
     border: 1px solid var(--color-danger-hover) !important;
 }
 
-.btn-outline-custom-danger:disabled {
+.btn-c-outline-danger:disabled {
     color: var(--color-danger-disabled) !important;
     background-color: #fff !important;
     border: 1px solid var(--color-danger-disabled) !important;
