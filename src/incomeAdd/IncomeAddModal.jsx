@@ -548,12 +548,12 @@ export default function IncomeAddModal(props) {
                     </div>
 
                     <div className="modal-footer">
-                        <button className="btn btn-custom-tertiary"
+                        <button className="btn btn-c-tertiary"
                             data-bs-dismiss="modal"
                             onClick={() => initialValues()}>
                             Cancelar
                         </button>
-                        <button className="btn btn-custom-success"
+                        <button className="btn btn-c-success"
                             data-bs-dismiss="modal"
                             onClick={() => handleSave()}>
                             Salvar

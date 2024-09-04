@@ -8,7 +8,7 @@ import navbarHide from "../utils/navbarHide";
 import axios from "axios";
 import TagsPage from "../src/tags/TagsPage";
 import { SpinnerLG } from "../src/components/loading/Spinners";
-import CategoriesPage from "../src/categories/categoriesTage";
+import CategoriesPage from "../src/categories/categoriesPage";
 
 export default function categories() {
 
@@ -21,6 +21,7 @@ export default function categories() {
     const [expenseTags, setExpenseTags] = useState([])
 
     const [loadingPage, setLoadingPage] = useState(true)
+    const [forceUpdate, setForceUpdate] = useState(0)
 
     useEffect(() => {
         dataFunction(token.sub)
@@ -28,16 +29,20 @@ export default function categories() {
     }, [])
 
     const dataFunction = async (user_id) => {
+        setLoadingPage(true)
 
         console.log('funcionou')
 
         await axios.get('/api/categories', {
             params: { user_id }
         }).then(res => {
+            console.log(res.data.incomeTags[0])
             setIncomeTags(res.data.incomeTags)
             setExpenseTags(res.data.expenseTags)
             setLoadingPage(false)
+            setForceUpdate(forceUpdate + 1)
         }).catch(e => {
+            console.log('funcionou3')
             console.log(e)
             setLoadingPage(false)
 

@@ -1,19 +1,29 @@
 import { faArrowTurnRight, faArrowTurnUp, faCheck, faPlus, faTimes, faXmark } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import axios from "axios"
 import { useState } from "react"
-
+import jwt from 'jsonwebtoken'
+import Cookie from 'js-cookie'
+import { showModalBs } from "../../utils/modalControl"
+import scrollTo from "../../utils/scrollTo"
 
 
 export default function NewCategorieModal(props) {
 
+    const token = jwt.decode(Cookie.get('auth'));
+
+
     const { dataFunction, section, categories, id } = props
 
-    const [categorieName, setCategorieName] = useState('')
+    const [categoryName, setCategoryName] = useState('')
     const [newTagName, setNewTagName] = useState('')
     const [tags, setTags] = useState([])
     const [color, setColor] = useState('')
     const [editIndex, setEditIndex] = useState('')
     const [newSubTagName, setNewSubTagName] = useState('')
+
+    const [saveError, setSaveError] = useState('')
+
 
     const handleTagAdd = (e, name) => {
 
@@ -64,6 +74,46 @@ export default function NewCategorieModal(props) {
         setTags(updatedTags);
     };
 
+    const initialValues = () => {
+        setCategoryName('')
+        setNewTagName('')
+        setTags([])
+        setColor('')
+        setEditIndex('')
+        setNewSubTagName('')
+    }
+
+    const disabledSave = () => {
+
+        if (!categoryName || !color || tags.length === 0) return true
+
+    }
+
+    const handleSave = async () => {
+
+        const data = {
+            user_id: token.sub,
+            section,
+            categoryName,
+            color,
+            tags
+        }
+
+        await axios.post(`/api/categories`, data)
+            .then(res => {
+                console.log(res.data)
+                dataFunction()
+                initialValues()
+            }).catch(e => {
+                console.log(e)
+                showModalBs(id)
+                setSaveError("Houve um problema ao salvar a categoria. Por favor, tente novamente.")
+                scrollTo(id)
+            })
+
+
+    }
+
 
     return (
         <div class="modal fade" id={id} tabindex="-1" aria-labelledby={id + 'Label'} aria-hidden="true">
@@ -75,9 +125,14 @@ export default function NewCategorieModal(props) {
                     </div>
                     <div className="modal-body">
                         <div className="row">
+                            {saveError && (
+                                <div className="col-12 ">
+                                    <div className="alert alert-danger">{saveError}</div>
+                                </div>
+                            )}
                             <div className="col-12">
                                 <label htmlFor="" className='form-label'>Nome</label>
-                                <input type="text" className="form-control" onChange={(e) => setCategorieName(e.target.value)} value={categorieName} />
+                                <input type="text" className="form-control" onChange={(e) => setCategoryName(e.target.value)} value={categoryName} />
                             </div>
                             <div className="col-12 mt-3">
                                 <label htmlFor="" className="form-label">Cor </label>
@@ -121,10 +176,10 @@ export default function NewCategorieModal(props) {
                                     </div>
                                 </div>
                             </div>
-                            {categorieName && color && (
+                            {categoryName && color && (
 
                                 <div className="col-12 mt-3 fadeItem mb-5">
-                                    <label htmlFor="newTagNameInput" className="form-label">Categoria</label>
+                                    <label htmlFor="newTagNameInput" className="form-label">Subcategorias</label>
                                     <div className="card">
                                         <div className="card-body">
 
@@ -132,7 +187,7 @@ export default function NewCategorieModal(props) {
                                                 <div className="col-12 d-flex">
                                                     <div className="col d-flex my-1 align-items-center">
                                                         <div style={{ backgroundColor: color, height: "17px", width: "17px" }} className="rounded-circle me-2"></div>
-                                                        <span className="bold">{categorieName}</span>
+                                                        <span className="bold">{categoryName}</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -201,31 +256,44 @@ export default function NewCategorieModal(props) {
 
                                                 ))}
                                             </div>
-                                                <div className="row mt-3">
-                                                    <div className="col-12">
-                                                        <form onSubmit={e => handleTagAdd(e, newTagName)}>
+                                            <div className="row mt-3">
+                                                <div className="col-12">
+                                                    <form onSubmit={e => handleTagAdd(e, newTagName)}>
 
-                                                            <div className="input-group">
+                                                        <div className="input-group">
 
-                                                                <input type="text" disabled={editIndex !== ''} className="form-control" id="newTagNameInput" onChange={(e) => setNewTagName(e.target.value)} value={newTagName} placeholder="Nova subcategoria" />
-                                                                <button disabled={!newTagName} className="btn btn-outline-secondary" type="submit" >
-                                                                    <FontAwesomeIcon icon={faPlus} className="pulse text-c-success" />
-                                                                </button>
+                                                            <input type="text" disabled={editIndex !== ''} className="form-control" id="newTagNameInput" onChange={(e) => setNewTagName(e.target.value)} value={newTagName} placeholder="Nova subcategoria" />
+                                                            <button disabled={!newTagName} className="btn btn-outline-secondary" type="submit" >
+                                                                <FontAwesomeIcon icon={faPlus} className="pulse text-c-success" />
+                                                            </button>
 
-                                                            </div>
-                                                        </form>
-                                                        {!tags.length && (
+                                                        </div>
+                                                    </form>
+                                                    {!tags.length && (
 
-                                                            <span className="small text-secondary fadeItem">É necessário incluir no mínimo uma subcategoria</span>
-                                                        )}
-                                                    </div>
+                                                        <span className="small text-secondary fadeItem">É necessário incluir no mínimo uma subcategoria</span>
+                                                    )}
                                                 </div>
+                                            </div>
 
                                         </div>
                                     </div>
                                 </div>
                             )}
                         </div>
+                    </div>
+                    <div className="modal-footer">
+                        <button className="btn btn-c-tertiary"
+                            data-bs-dismiss="modal"
+                            onClick={() => initialValues()}>
+                            Cancelar
+                        </button>
+                        <button className="btn btn-c-success"
+                            data-bs-dismiss="modal"
+                            disabled={disabledSave()}
+                            onClick={() => handleSave()}>
+                            Salvar
+                        </button>
                     </div>
 
                 </div>

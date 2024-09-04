@@ -75,16 +75,59 @@ export default authenticated(async (req, res) => {
                     res.status(200).json(userExist[section])
 
                 }
-
-
-
-
-
-
-
-
             }
         }
+    } else if (req.method === "POST") {
+
+        const { user_id, section, categoryName, color, tags } = req.body
+
+
+        if (!user_id || !section || !categoryName || !color || !tags.length) {
+            res.status(400).json({ error: "Missing parameters on request body" })
+        }
+
+
+        const { db } = await connect();
+
+        const userExist = await db.collection('users').findOne({ _id: new ObjectId(user_id) });
+
+        if (!userExist) {
+            res.status(400).json({ error: "User doesn't exist." });
+        }
+
+        const newCategorie = {
+            _id: new ObjectId(),
+            category: categoryName,
+            color: color,
+            // textColor: getTextColorBasedOnBackground(color), // Função opcional para definir a cor do texto com base no fundo
+            textColor: '#fff', // Função opcional para definir a cor do texto com base no fundo
+            tags: tags.map(elem => ({
+                _id: new ObjectId(),
+                tag: elem.tag,
+                subTags: elem.subTags.map(elem1 => ({
+                    _id: new ObjectId(),
+                    subTag: elem1.subTag
+                }))
+            }))
+        };
+
+        const response = await db.collection('users').updateOne(
+            { _id: ObjectId(user_id) },
+            { $push: { [section]: { $each: [newCategorie], $position: 0 } } }
+        )
+
+        console.log("response", response)
+
+        if (response.modifiedCount) {
+            res.status(200).json({ message: "Categorie created" })
+        } else {
+            res.status(400).json({ error: "Trouble in connect to database" })
+        }
+
+
+
+
+
     }
 
 
