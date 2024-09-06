@@ -42,7 +42,6 @@ export default function categories() {
             setLoadingPage(false)
             setForceUpdate(forceUpdate + 1)
         }).catch(e => {
-            console.log('funcionou3')
             console.log(e)
             setLoadingPage(false)
 

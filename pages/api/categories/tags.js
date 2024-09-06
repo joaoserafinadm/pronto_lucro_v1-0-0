@@ -35,21 +35,45 @@ export default authenticated(async (req, res) => {
             tag: newTagName,
             subTags: subTags.map(elem => ({
                 _id: new ObjectId(),
-                subTag: elem // Considerando que 'subTag' é o nome da subtag
+                subTag: elem
             }))
         };
 
-        const response = await db.collection('users').updateOne(
-            {
-                _id: new ObjectId(user_id),
-                [`incomeTags._id`]: category_id
-            },
-            {
-                $push: { [`incomeTags.$.tags`]: newTag }
-            }
-        );
+        console.log(section, newTag)
 
-        if (response.modifiedCount === 1) {
+        let response;
+
+        if (section === "incomeTags") {
+            console.log("incomeTags");
+
+            response = await db.collection('users').updateOne(
+                {
+                    _id: new ObjectId(user_id),
+                    "incomeTags._id": new ObjectId(category_id)
+                },
+                {
+                    $push: { "incomeTags.$.tags": newTag }
+                }
+            );
+        } else if (section === "expenseTags") {
+            console.log("expenseTags");
+
+            response = await db.collection('users').updateOne(
+                {
+                    _id: new ObjectId(user_id),
+                    "expenseTags._id": new ObjectId(category_id)
+                },
+                {
+                    $push: { "expenseTags.$.tags": newTag }
+                }
+            );
+        } else {
+            return res.status(400).json({ error: "Invalid section provided." });
+        }
+
+        console.log(response);
+
+        if (response && response.modifiedCount === 1) {
             res.status(200).json({ success: true, message: "Tag added successfully." });
         } else {
             res.status(500).json({ error: "Failed to add tag." });

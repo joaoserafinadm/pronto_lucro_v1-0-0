@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowTurnUp, faEllipsis, faGear, faGripLines, faPlus } from "@fortawesome/free-solid-svg-icons";
 import NewCategorieModal from "./newCategorieModal";
 import NewTagModal from "./newTagModal";
+import EditCategoryModal from "./editCategoryModal";
 
 
 
@@ -19,6 +20,7 @@ export default function CategoriesPage(props) {
 
     const [categoriesArray, setCategoriesArray] = useState(categories || [])
     const [categorySelected, setCategorySelected] = useState(null)
+    const [hideTags, setHideTags] = useState(false)
 
     const handleOrderChange = async (res) => {
         const { source, destination } = res
@@ -44,6 +46,8 @@ export default function CategoriesPage(props) {
             tags: newTagArray
         }
 
+        setHideTags(false)
+
         await axios.patch('/api/categories', data)
             .then(res => {
 
@@ -60,6 +64,8 @@ export default function CategoriesPage(props) {
 
             <NewTagModal categorySelected={categorySelected} categories={categoriesArray} section={section} dataFunction={() => dataFunction()} id={`newTagModal${section}`} />
 
+            <EditCategoryModal categorySelected={categorySelected} categories={categoriesArray} section={section} dataFunction={() => dataFunction()} id={`editCategoryModal${section}`} />
+
 
             <div className="col-12 d-flex justify-content-end mb-2">
                 <button className={`btn py-2 btn-sm ${section === 'incomeTags' ? "btn-c-success" : "btn-c-danger"} `} data-bs-toggle="modal" data-bs-target={`#newCategorieModal${section}`}>
@@ -68,7 +74,7 @@ export default function CategoriesPage(props) {
             </div>
             {/* <hr /> */}
 
-            <DragDropContext onDragEnd={res => handleOrderChange(res)}>
+            <DragDropContext onDragEnd={res => handleOrderChange(res)} onDragStart={() => setHideTags(true)}>
                 <Droppable droppableId="droppable" direction="vertical">
                     {(provided) => (
                         <div className="col-12" {...provided.droppableProps} ref={provided.innerRef}>
@@ -82,7 +88,7 @@ export default function CategoriesPage(props) {
                                                     <span>
                                                         <FontAwesomeIcon icon={faGripLines} className="me-2 text-secondary" />
                                                     </span>
-                                                    <span className="optionsButton  text-c-secondary" >
+                                                    <span className="optionsButton  text-c-secondary" data-bs-toggle="modal" data-bs-target={`#editCategoryModal${section}`} onClick={() => setCategorySelected(elem)} >
                                                         <FontAwesomeIcon icon={faGear} />
                                                     </span>
                                                 </div>
@@ -96,9 +102,8 @@ export default function CategoriesPage(props) {
                                                 </div>
                                             </div>
                                             <hr />
-                                            {/* <div className="row"> */}
                                             {elem?.tags?.map((elem1, index1) => (
-                                                <>
+                                                <div  className={`${hideTags ? '' : ''}`}>
                                                     <div className="row ">
 
                                                         <div className="col-12 d-flex  align-items-center">
@@ -120,7 +125,7 @@ export default function CategoriesPage(props) {
                                                         </>
 
                                                     ))}
-                                                </>
+                                                </div>
                                             ))}
                                             <div className="col-12 d-flex my-1 align-items-center mt-3">
                                                 <span type="button" className="px-2 small bold cardAnimation" onClick={() => setCategorySelected(elem)}
