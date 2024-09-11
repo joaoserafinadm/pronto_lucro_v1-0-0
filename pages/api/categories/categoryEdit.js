@@ -37,24 +37,44 @@ export default authenticated(async (req, res) => {
             res.status(400).json({ error: "User doesn't exist." });
         }
 
+        console.log(category._id)
 
-        const data = {
-            user_id: user_id,
-            section: section,
-            category: category
+        let response
+
+        if (section === 'incomeTags') {
+
+            response = await db.collection('users').updateOne(
+                {
+                    _id: new ObjectId(user_id),
+                    "incomeTags._id": category._id // Verifica se a categoria existe na seção
+                },
+                {
+                    $set: {
+                        "incomeTags.$": category  // Substitui a categoria inteira
+                    }
+                }
+            );
+        }
+        if (section === 'expenseTags') {
+
+            response = await db.collection('users').updateOne(
+                {
+                    _id: new ObjectId(user_id),
+                    "expenseTags._id": category._id  // Verifica se a categoria existe na seção
+                },
+                {
+                    $set: {
+                        "expenseTags.$": category  // Substitui a categoria inteira
+                    }
+                }
+            );
         }
 
-        const response = await db.collection('users').updateOne(
-            {
-                _id: new ObjectId(user_id),
-                [`${section}._id`]: new ObjectId(category._id)  // Verifica se a categoria existe na seção
-            },
-            {
-                $set: {
-                    [`${section}.$`]: category  // Substitui a categoria inteira
-                }
-            }
-        );
+
+
+
+
+        console.log(response)
 
         if (response.modifiedCount === 1) {
             res.status(200).json({ message: "Categorie updated" })
