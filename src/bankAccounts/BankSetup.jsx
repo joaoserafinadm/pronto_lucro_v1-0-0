@@ -122,7 +122,7 @@ export default function BankSetup(props) {
                     <input class="form-check-input" type="checkbox"
                         role="switch" id="valueSumCheck" checked={valueSum}
                         onClick={e => setValueSum(!valueSum)} />
-                    <label class="form-check-label" for="valueSumCheck">Incluir valor no saldo total</label>
+                    <label class="form-check-label" for="valueSumCheck">Incluir valor na soma da tela inicial</label>
                 </div>
             </div>
 

@@ -16,7 +16,7 @@ export default function BankAccountsTutorialPage(props) {
             </div>
             <hr />
             <div className="col-12 my-3 fadeItem1s d-flex flex-column">
-                <span className=" fs-5 my-1">Para começarmos, precisamos que você cadastre suas <b >contas bancárias</b>. </span>
+                <span className=" fs-5 my-1">Para começarmos, precisamos que você cadastre suas <b >contas</b>. </span>
                 <span className=" fs-5 my-1"> Isso permitirá monitorar e organizar suas transações financeiras.</span>
                 <span className=" fs-5 my-1">Não se preocupe, seus dados são <b>100% seguros</b> conosco.</span>
             </div>

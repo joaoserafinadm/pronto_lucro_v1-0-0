@@ -9,6 +9,7 @@ import axios from "axios";
 import { showModalBs } from "../../utils/modalControl";
 import ModalBankSelect from "./modalBankSelect";
 import BankSetup from "./BankSetup";
+import scrollCarouselTo from "../../utils/scrollCarouselTo";
 
 
 export default function NewAccountModal(props) {
@@ -79,9 +80,11 @@ export default function NewAccountModal(props) {
             await axios.post('/api/bankAccounts', data)
                 .then(res => {
                     dataFunction()
+                    scrollCarouselTo('bankSetupCarousel', 0)
                     handleCancel()
                 }).catch(e => {
                     showModalBs("newAccountModal")
+
                 })
 
             setLoadingSave(false)
@@ -96,6 +99,11 @@ export default function NewAccountModal(props) {
         setInitialValue('')
         setDescription('')
         setValueSum(true)
+    }
+
+
+    const handleCloseModal = () => {
+        scrollCarouselTo('bankSetupCarousel', 0)
     }
 
 
@@ -135,10 +143,12 @@ export default function NewAccountModal(props) {
                         </div>
                     </div>
                     <div className="modal-footer">
-                        <button className="btn btn-custom-tertiary" data-bs-dismiss="modal" onClick={() => handleCancel(token.sub)}>
+                        <button className="btn btn-c-tertiary"
+                            onClick={() => { handleCancel(token.sub); handleCloseModal() }}
+                            data-bs-dismiss="modal">
                             Cancelar
                         </button>
-                        <button className="btn btn-custom-success" data-bs-dismiss="modal" onClick={() => handleSave(token.sub)}>
+                        <button className="btn btn-c-success" data-bs-dismiss="modal" onClick={() => handleSave(token.sub)}>
                             Salvar
                         </button>
                     </div>

@@ -79,7 +79,7 @@ export default function ResultsCard(props) {
                         </div>
                     </div>
                 </div>
-                <hr />
+                {/* <hr />
                 <div className="row">
                     <div className="col-6">
                         <div className="col-12 d-flex justify-content-center text-center mb-3">
@@ -168,7 +168,7 @@ export default function ResultsCard(props) {
                         </table>
 
                     </div>
-                </div>
+                </div> */}
 
             </div>
 

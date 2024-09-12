@@ -25,19 +25,23 @@ export default authenticated(async (req, res) => {
             if (!userExist) {
                 res.status(400).json({ error: "User does not exist" });
             } else {
+
+                const bankAccounts = userExist.bankAccounts
+
+
                 const dreData = userExist.dre;
                 const dfcData = userExist.dfc.find(elem => elem.year === +year && elem.month === +month)?.data || [];
                 const dfcPending = userExist.dfc.find(elem => elem.year === +year && elem.month === +month)?.data?.filter(elem => elem.active === false) || [];
 
-                
+
 
                 // Classificar os dados por 'value' em ordem crescente
                 const incomeData = dfcData.filter(item => item.type === 'income');
                 const expenseData = dfcData.filter(item => item.type === 'expense');
-                
+
                 // Ordenar os dados por 'value' de forma decrescente para o tipo 'income'
                 const top3Incomes = incomeData.sort((a, b) => b.value - a.value).slice(0, 3);
-                
+
                 // Ordenar os dados por 'value' de forma crescente para o tipo 'expense'
                 const top3Expenses = expenseData.sort((a, b) => a.value - b.value).slice(0, 3);
 
@@ -47,7 +51,7 @@ export default authenticated(async (req, res) => {
 
                 const monthResult = dfcData.reduce((sum, elem) => {
                     return sum + (elem.type === "income" ? elem.value : -elem.value);
-                }, 0);
+                }, 0) + bankAccounts.reduce((acc, elem) => { if (elem.valueSum) return acc + elem.initialValue }, 0);
 
 
                 const monthPendigResult = dfcData.reduce((sum, elem) => {
@@ -64,7 +68,7 @@ export default authenticated(async (req, res) => {
                         acc += activeElements.reduce((sum, activeElem) => sum + (activeElem.type === "income" ? activeElem.value : -activeElem.value), 0);
                     }
                     return acc;
-                }, 0);
+                }, 0) + bankAccounts.reduce((acc, elem) => { if (elem.valueSum) return acc + elem.initialValue }, 0);
 
 
                 const dfcPendingResult = userExist.dfc.reduce((acc, elem) => {

@@ -1,4 +1,4 @@
-import { faArrowTurnUp, faPlus, faXmark } from "@fortawesome/free-solid-svg-icons"
+import { faArrowTurnUp, faDotCircle, faPlus, faTag, faXmark } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useState } from "react"
 import jwt from 'jsonwebtoken'
@@ -85,25 +85,40 @@ export default function NewTagModal(props) {
                         )}
 
                         <div className="row">
-                            <label className="form-label" htmlFor="newTagNameInput">Categoria</label>
-                            <div className="col-12 d-flex  align-items-center">
-
-                                <div style={{ backgroundColor: categorySelected?.color, height: "17px", width: "17px" }} className="rounded-circle me-2"></div>
-                                <span className="bold">{categorySelected?.category}</span>
-
+                            <div className="d-flex">
+                                <FontAwesomeIcon icon={faTag} />
+                                <span className="small fw-bold  ms-3">Categoria</span>
                             </div>
-                            <div className="col-12 mt-3">
-                                <label className="form-label" htmlFor="newTagNameInput">Nome da subcategoria*</label>
-                                <div className="d-flex align-items-center">
-                                    <div style={{ height: "12px", width: "12px", border: `2px solid ${categorySelected?.color}` }} className="rounded-circle ms-2 me-2"></div>
-                                    <input type="text" className="form-control" id="newTagNameInput" onChange={(e) => setNewTagName(e.target.value)} value={newTagName} />
+                            <div className="col-12">
+                                <div className="col-12 d-flex  align-items-center mt-2">
+
+                                    <div style={{ backgroundColor: categorySelected?.color, height: "17px", width: "17px" }} className="rounded-circle me-2"></div>
+                                    <span className="bold">{categorySelected?.category}</span>
+
                                 </div>
                             </div>
-                            <div className="col-12 mt-3">
-                                <label className="form-label" htmlFor="newSubTagNameInput">Marcadores</label>
+                        </div>
+                        <hr />
+                        <div className="row">
+
+                            <div className="col-12 ">
+                                <FontAwesomeIcon icon={faDotCircle} />
+                                <span className="small fw-bold  ms-3">Nome da subcategoria</span>
+                                <div className="d-flex align-items-center mt-2">
+                                    <div style={{ height: "12px", width: "12px", border: `2px solid ${categorySelected?.color}` }} className="rounded-circle ms-2 me-2"></div>
+                                    <input type="text" className="form-control" id="newTagNameInput" placeholder="Nova subcategoria" onChange={(e) => setNewTagName(e.target.value)} value={newTagName} />
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+
+                        <div className="row">
+                            <div className="col-12">
+                                <FontAwesomeIcon icon={faArrowTurnUp} style={{ transform: 'rotate(90deg)' }} />
+                                <span className="small fw-bold  ms-3">Marcadores</span>
                                 {subTags.map(elem => (
 
-                                    <div className="col-12 my-1 d-flex small align-items-center">
+                                    <div className="col-12 my-1 d-flex small align-items-center mt-2">
                                         <div className="col">
 
                                             <FontAwesomeIcon className="me-2 ms-4" icon={faArrowTurnUp} style={{ transform: 'rotate(90deg)', color: categorySelected?.color }} />
@@ -118,7 +133,7 @@ export default function NewTagModal(props) {
                                         </div>
                                     </div>
                                 ))}
-                                <form onSubmit={handleSubTagAdd}>
+                                <form onSubmit={handleSubTagAdd} className="mt-2">
 
                                     <div className="input-group">
                                         <input type="text" className="form-control" id="newSubTagNameInput" onChange={(e) => setNewSubTagName(e.target.value)} value={newSubTagName} placeholder="Novo marcador" />

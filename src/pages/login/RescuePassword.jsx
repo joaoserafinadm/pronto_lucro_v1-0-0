@@ -76,13 +76,16 @@ export default function RescuePassword(props) {
                                 <small className="text-danger fadeItem">{emailError}</small>
                             }
                         </div>
-                        <div className="row my-1">
-                            {loadingSend ?
-                                <button className={`${styles.signInBtn}`} disabled><SpinnerSM /></button>
-                                :
-                                <button className={`${styles.signInBtn}`} >Enviar</button>
-                                // <button className={`${styles.signInBtn}`} onClick={() => handleSendToken(email)}>Enviar</button>
-                            }
+                        <div className="row my-1 ">
+                            {/* <div className="col-12 d-flex justify-content-center"> */}
+
+                                {loadingSend ?
+                                    <button className={`btn btn-c-outline-secondary`} disabled><SpinnerSM /></button>
+                                    :
+                                    <button className={`btn btn-c-outline-secondary`} >Enviar</button>
+                                    // <button className={`${styles.signInBtn}`} onClick={() => handleSendToken(email)}>Enviar</button>
+                                }
+                            {/* </div> */}
                         </div>
                         <div className="row mt-3">
                             <div className="col-12 d-flex justify-content-start">

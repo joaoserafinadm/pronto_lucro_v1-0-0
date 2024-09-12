@@ -28,6 +28,7 @@ export default function MenuBar(props) {
         '/usersManagement',
         '/transactions',
         '/bankAccounts',
+        '/categories',
         '/'
     ]
 

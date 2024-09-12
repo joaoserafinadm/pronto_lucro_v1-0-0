@@ -74,78 +74,89 @@ export default function CategoriesPage(props) {
             </div>
             {/* <hr /> */}
 
-            <DragDropContext onDragEnd={res => handleOrderChange(res)} onDragStart={() => setHideTags(true)}>
-                <Droppable droppableId="droppable" direction="vertical">
-                    {(provided) => (
-                        <div className="col-12" {...provided.droppableProps} ref={provided.innerRef}>
-                            {categoriesArray.map((elem, index) => (
-                                <Draggable key={elem._id} draggableId={elem._id} index={index}>
-                                    {(provided) => (
-                                        <div className="card my-3 bg-white p-3" ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps} id={elem.id}>
-                                            <div className="row d-flex">
-                                                <div className="col-12 d-flex justify-content-between">
+            {categoriesArray.length === 0 ?
+                <div className="col-12 d-flex justify-content-center my-5 align-items-center">
+                    <span className="small text-secondary">Nenhuma categoria cadastrada</span>
 
-                                                    <span>
-                                                        <FontAwesomeIcon icon={faGripLines} className="me-2 text-secondary" />
-                                                    </span>
-                                                    <span className="optionsButton  text-c-secondary" data-bs-toggle="modal" data-bs-target={`#editCategoryModal${section}`} onClick={() => setCategorySelected(elem)} >
-                                                        <FontAwesomeIcon icon={faGear} />
-                                                    </span>
-                                                </div>
+                </div>
+                :
 
-                                            </div>
-                                            <div className="row">
-                                                <div className="col-12 d-flex my-1 align-items-center">
-                                                    <div style={{ backgroundColor: elem.color, height: "17px", width: "17px" }} className="rounded-circle me-2"></div>
-                                                    <span className="bold">{elem.category}</span>
+                <DragDropContext onDragEnd={res => handleOrderChange(res)} onDragStart={() => setHideTags(true)}>
+                    <Droppable droppableId="droppable" direction="vertical">
+                        {(provided) => (
+                            <div className="col-12" {...provided.droppableProps} ref={provided.innerRef}>
+                                {categoriesArray.map((elem, index) => (
+                                    <Draggable key={elem._id} draggableId={elem._id} index={index}>
+                                        {(provided) => (
+                                            <div className="card my-3 bg-white p-3" ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps} id={elem.id}>
+                                                <div className="row d-flex">
+                                                    <div className="col-12 d-flex justify-content-between">
 
-                                                </div>
-                                            </div>
-                                            <hr />
-                                            {elem?.tags?.map((elem1, index1) => (
-                                                <div  className={`${hideTags ? '' : ''}`}>
-                                                    <div className="row ">
-
-                                                        <div className="col-12 d-flex  align-items-center">
-                                                            <div style={{ height: "12px", width: "12px", border: `2px solid ${elem.color}` }} className="rounded-circle ms-2 me-2"></div>
-                                                            <span className="fw-bold" style={{ color: elem.color }}>{elem1.tag}</span>
-                                                        </div>
+                                                        <span>
+                                                            <FontAwesomeIcon icon={faGripLines} className="me-2 text-secondary" />
+                                                        </span>
+                                                        <span className="optionsButton  text-c-secondary" data-bs-toggle="modal" data-bs-target={`#editCategoryModal${section}`} onClick={() => setCategorySelected(elem)} >
+                                                            <FontAwesomeIcon icon={faGear} />
+                                                        </span>
                                                     </div>
-                                                    <hr />
-                                                    {elem1.subTags?.map((elem2, index2) => (
-                                                        <>
-                                                            <div className="row">
 
-                                                                <div className="col-12  d-flex small align-items-center">
-                                                                    <FontAwesomeIcon className="me-2 ms-4" icon={faArrowTurnUp} style={{ transform: 'rotate(90deg)', color: elem.color }} />
-                                                                    <span className="bold" style={{ color: elem.color }}>{elem2.subTag}</span>
-                                                                </div>
-                                                            </div>
-                                                            <hr />
-                                                        </>
-
-                                                    ))}
                                                 </div>
-                                            ))}
-                                            <div className="col-12 d-flex my-1 align-items-center mt-3">
-                                                <span type="button" className="px-2 small bold cardAnimation" onClick={() => setCategorySelected(elem)}
-                                                    data-bs-toggle="modal" data-bs-target={`#newTagModal${section}`}
-                                                    style={{ border: `2px solid ${elem.color}`, borderRadius: '20px', color: elem.color }}>
-                                                    + subcategoria
-                                                </span>
+                                                <div className="row">
+                                                    <div className="col-12 d-flex my-1 align-items-center">
+                                                        <div style={{ backgroundColor: elem.color, height: "17px", width: "17px" }} className="rounded-circle me-2"></div>
+                                                        <span className="bold">{elem.category}</span>
+
+                                                    </div>
+                                                </div>
+                                                <hr />
+                                                {elem?.tags?.map((elem1, index1) => (
+                                                    <div className={`${hideTags ? '' : ''}`}>
+                                                        <div className="row ">
+
+                                                            <div className="col-12 d-flex  align-items-center">
+                                                                <div style={{ height: "12px", width: "12px", border: `2px solid ${elem.color}` }} className="rounded-circle ms-2 me-2"></div>
+                                                                <span className="fw-bold" style={{ color: elem.color }}>{elem1.tag}</span>
+                                                            </div>
+                                                        </div>
+                                                        <hr />
+                                                        {elem1.subTags?.map((elem2, index2) => (
+                                                            <>
+                                                                <div className="row">
+
+                                                                    <div className="col-12  d-flex small align-items-center">
+                                                                        <FontAwesomeIcon className="me-2 ms-4" icon={faArrowTurnUp} style={{ transform: 'rotate(90deg)', color: elem.color }} />
+                                                                        <span className="bold" style={{ color: elem.color }}>{elem2.subTag}</span>
+                                                                    </div>
+                                                                </div>
+                                                                <hr />
+                                                            </>
+
+                                                        ))}
+                                                    </div>
+                                                ))}
+                                                <div className="col-12 d-flex my-1 align-items-center mt-3">
+                                                    <span type="button" className="px-2 small bold cardAnimation" onClick={() => setCategorySelected(elem)}
+                                                        data-bs-toggle="modal" data-bs-target={`#newTagModal${section}`}
+                                                        style={{ border: `2px solid ${elem.color}`, borderRadius: '20px', color: elem.color }}>
+                                                        + subcategoria
+                                                    </span>
+                                                </div>
                                             </div>
-                                        </div>
 
 
-                                        // </div>
-                                    )}
-                                </Draggable>
-                            ))}
-                            {provided.placeholder}
-                        </div>
-                    )}
-                </Droppable>
-            </DragDropContext>
+                                            // </div>
+                                        )}
+                                    </Draggable>
+                                ))}
+                                {provided.placeholder}
+                            </div>
+                        )}
+                    </Droppable>
+                </DragDropContext>
+
+            }
+
+
 
         </div>
     )

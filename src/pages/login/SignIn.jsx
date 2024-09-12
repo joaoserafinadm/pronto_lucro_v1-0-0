@@ -173,7 +173,7 @@ export default function signInPage(props) {
                                         {singInLoading ? (
                                             <button
                                                 disabled
-                                                className="btn btn-outline-custom-secondary"
+                                                className="btn btn-c-outline-secondary"
                                             >
                                                 {/* <button
                                                 disabled
@@ -184,7 +184,7 @@ export default function signInPage(props) {
                                             </button>
                                         ) : (
                                             // <button className={` ${styles.signInBtn}`} type="submit">
-                                            <button className={`btn btn-outline-custom-secondary`} type="submit">
+                                            <button className={`btn btn-c-outline-secondary`} type="submit">
                                                 Entrar
                                             </button>
                                         )}

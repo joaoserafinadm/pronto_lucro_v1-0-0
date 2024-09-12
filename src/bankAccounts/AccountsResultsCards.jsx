@@ -41,7 +41,7 @@ export default function AccountsResultsCards(props) {
                                     <FontAwesomeIcon icon={faWallet} />
                                 </span>
                                 <span className=" bold ms-2 fs-5 text-secondary">
-                                    Saldo previsto <span className="small">({monthName(dateSelected.month)})</span>
+                                    Saldo previsto <span className="small" style={{fontSize: '13px'}}>({monthName(dateSelected.month)})</span>
                                 </span> <br />
                                 <span className="text-success me-1 fs-5">R$</span>
                                 <span className="text-secondary fs-3 bold">{maskNumberMoney(data?.dfcResult || data?.dfcPendigResult ? +data?.dfcResult + +data?.dfcPendingResult : 0)}</span><br />

@@ -13,6 +13,7 @@ import Cookie from 'js-cookie'
 import CardTemplate from "../src/bankAccounts/CardTemplate";
 import { maskNumberMoney } from "../utils/mask";
 import AccountsResultsCards from "../src/bankAccounts/AccountsResultsCards";
+import { SpinnerLG } from "../src/components/loading/Spinners";
 
 
 export default function BankAccounts() {
@@ -22,29 +23,29 @@ export default function BankAccounts() {
 
     const newDataStore = useSelector(state => state.newData)
 
-    useEffect(() => {
-        if (newDataStore) dataFunction(token.sub)
-    }, [newDataStore])
-
-    const [dateSelected, setDateSelected] = useState({
-        month: new Date().getMonth(),
-        year: new Date().getFullYear()
-    })
-
-    useEffect(() => {
-        if (dateSelected) dataFunction(token.sub)
-        navbarHide(dispatch)
-
-    }, [dateSelected])
-
-
     const [institutions, setInstitutions] = useState([])
     const [creditCardList, setCreditCardList] = useState([])
     const [bankAccounts, setBankAccounts] = useState([])
 
     const [data, setData] = useState(null)
 
+    const [dateSelected, setDateSelected] = useState({
+        month: new Date().getMonth(),
+        year: new Date().getFullYear()
+    })
 
+    const [loadingPage, setLoadingPage] = useState(true)
+
+
+    useEffect(() => {
+        if (newDataStore) dataFunction(token.sub)
+    }, [newDataStore])
+
+
+    useEffect(() => {
+        if (dateSelected) dataFunction(token.sub)
+        navbarHide(dispatch)
+    }, [dateSelected])
 
 
     useEffect(() => {
@@ -53,6 +54,7 @@ export default function BankAccounts() {
     }, [])
 
     const dataFunction = async (user_id) => {
+        setLoadingPage(true)
 
         await axios.get(`/api/bankAccounts/institutions`)
             .then(res => {
@@ -68,14 +70,14 @@ export default function BankAccounts() {
                 month: dateSelected.month,
                 year: dateSelected.year
             }
+        }).then(res => {
+            setBankAccounts(res.data.bankAccounts)
+            setData(res.data)
+            setLoadingPage(false)
+        }).catch(err => {
+            setLoadingPage(false)
+            console.log(err)
         })
-            .then(res => {
-                setBankAccounts(res.data.bankAccounts)
-                setData(res.data)
-            }).catch(err => {
-                console.log(err)
-            })
-
     }
 
     return (
@@ -98,47 +100,53 @@ export default function BankAccounts() {
                     />
                 </div>
 
-                <div className="row d-flex justify-content-center my-3">
-                    <div className="col-8">
-                        <AccountsResultsCards dateSelected={dateSelected} data={data} />
-                    </div>
-                </div>
+                {loadingPage ?
+                    <SpinnerLG />
+                    :
+                    <div className="fadeItem">
+                        <div className="row d-flex justify-content-center my-3">
+                            <div className="col-8">
+                                <AccountsResultsCards dateSelected={dateSelected} data={data} />
+                            </div>
+                        </div>
 
 
-                {/* <AccountsTotalCards dateSelected={dateSelected} data={data} /> */}
+                        {/* <AccountsTotalCards dateSelected={dateSelected} data={data} /> */}
 
 
-                <div className="row">
+                        <div className="row">
+
+                            <div className="col-12">
+                                <div className="card">
+                                    <div className="card-body">
 
 
-                    <div className="col-12">
-                        <div className="card">
-                            <div className="card-body">
-
-
-                                <div className="row d-flex">
-                                    <div className="col-12 col-xl-4 col-sm-6 my-2 d-flex justify-content-center">
-                                        <NewAccountCard />
-                                    </div>
-                                    {bankAccounts?.map((elem, index) => {
-                                        return (
+                                        <div className="row d-flex">
                                             <div className="col-12 col-xl-4 col-sm-6 my-2 d-flex justify-content-center">
-                                                <CardTemplate editButtons
-                                                    bankSelected={elem.bankSelected}
-                                                    color={elem.color}
-                                                    value={maskNumberMoney(elem.value + elem.initialValue)}
-                                                    description={elem.description}
-                                                    creditNetwork={elem.creditNetwork} />
+                                                <NewAccountCard />
                                             </div>
-                                        )
-                                    })}
+                                            {bankAccounts?.map((elem, index) => {
+                                                return (
+                                                    <div className="col-12 col-xl-4 col-sm-6 my-2 d-flex justify-content-center">
+                                                        <CardTemplate editButtons
+                                                            bankSelected={elem.bankSelected}
+                                                            color={elem.color}
+                                                            value={maskNumberMoney(elem.value)}
+                                                            description={elem.description}
+                                                            creditNetwork={elem.creditNetwork} />
+                                                    </div>
+                                                )
+                                            })}
 
 
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
+                    </div>}
+
+
 
             </div>
 

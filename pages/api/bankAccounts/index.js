@@ -32,23 +32,33 @@ export default authenticated(async (req, res) => {
                 res.status(400).json({ error: "User doesn't exist." });
             } else {
 
-                const dreData = userExist.dre;
-                const dfcData = userExist.dfc.find(elem => elem.year === +year && elem.month === +month)?.data || [];
-                const dfcPending = userExist.dfc.find(elem => elem.year === +year && elem.month === +month)?.data?.filter(elem => elem.active === false) || [];
 
-                console.log("dfcData", dfcData);
+                //CALCULO DO SALDO NAS CONTAS
 
-                const monthResult = dfcData.reduce((sum, elem) => {
-                    return sum + (elem.type === "income" ? elem.value : -elem.value);
-                }, 0);
+                const bankAccounts = userExist.bankAccounts
 
+                const bankAccountsArray = bankAccounts.map(elem => {
 
-                const monthPendigResult = dfcData.reduce((sum, elem) => {
-                    if (elem.active === false) {
+                    const value = userExist.dfc.reduce((acc, elem1) => {
 
-                        return sum + (elem.type === "income" ? elem.value : -elem.value);
+                        if (isBeforeOrEqual(elem1, { year, month })) {
+                            const activeElements = elem1.data?.filter(dataElem => dataElem.active === true && dataElem.account_id.toString() === elem._id.toString()) || [];
+                            acc += activeElements.reduce((sum, activeElem) => sum + (activeElem.type === "income" ? activeElem.value : -activeElem.value), 0);
+                        }
+
+                        return acc;
+
+                    }, 0);
+
+                    return {
+                        ...elem,
+                        value: value + elem.initialValue
                     }
-                }, 0);
+                })
+
+
+
+                const dfcData = userExist.dfc.find(elem => elem.year === +year && elem.month === +month)?.data || [];
 
 
                 const dfcResult = userExist.dfc.reduce((acc, elem) => {
@@ -57,22 +67,21 @@ export default authenticated(async (req, res) => {
                         acc += activeElements.reduce((sum, activeElem) => sum + (activeElem.type === "income" ? activeElem.value : -activeElem.value), 0);
                     }
                     return acc;
+                }, 0) + bankAccounts.reduce((acc, elem) => { if (elem.valueSum) return acc + elem.initialValue }, 0);
+
+
+
+
+                const monthPendigResult = dfcData.reduce((sum, elem) => {
+                    if (elem.active === false) {
+                        return sum + (elem.type === "income" ? elem.value : -elem.value);
+                    }
                 }, 0);
 
-                const bankAccountsArray = userExist.bankAccounts.map(elem => {
-                    const value = userExist.dfc.reduce((acc, elem1) => {
-                        if (isBeforeOrEqual(elem1, { year, month })) {
-                            const activeElements = elem1.data?.filter(dataElem => dataElem.active === true && dataElem.account_id.toString() === elem._id.toString()) || [];
-                            acc += activeElements.reduce((sum, activeElem) => sum + (activeElem.type === "income" ? activeElem.value : -activeElem.value), 0);
-                        }
-                        return acc;
-                    }, 0);
-                    return {
-                        ...elem,
-                        value: value
-                    }
 
-                })
+
+
+
 
 
                 const dfcPendingResult = userExist.dfc.reduce((acc, elem) => {
@@ -126,7 +135,7 @@ export default authenticated(async (req, res) => {
                     description,
                     valueSum,
                     creditCard,
-                    creditLimit,
+                    creditLimit: maskMoneyNumber(creditLimit),
                     creditNetwork,
                     diaFechamento,
                     diaLancamento,

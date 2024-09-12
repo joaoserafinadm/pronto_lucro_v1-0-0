@@ -29,6 +29,8 @@ export default function InputButton(props) {
     const permitedPages = [
         '/usersManagement',
         '/transactions',
+        '/bankAccounts',
+        '/categories',
         '/'
     ]
 

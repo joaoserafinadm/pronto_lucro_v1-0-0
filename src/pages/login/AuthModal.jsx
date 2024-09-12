@@ -114,7 +114,7 @@ export default function AuthModal(props) {
                         </button>
                         <button
                             type="button" disabled={code ? false : true}
-                            className=" btn btn-custom-secondary btn-sm"
+                            className=" btn btn-c-secondary btn-sm"
                             data-bs-dismiss="modal"
                             onClick={() => props.handleSignUp(code)}
                         >

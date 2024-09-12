@@ -141,6 +141,9 @@ export default function TagConfig3Page(props) {
                     <label htmlFor="newCategoriesCheck" className="form-check-label bold" onClick={() => setNewCategories(!newCategories)} checked={newCategories}>
                         Essas categorias não se encaixam no meu negócio, quero adicionar manuamente.
                     </label>
+                    {newCategories && (
+                        <span className="small text-secondary fadeItem">Ao marcar esta opção, nenhuma categoria será adicionada automaticamente.</span>
+                    )}
                 </div>
 
             </div>

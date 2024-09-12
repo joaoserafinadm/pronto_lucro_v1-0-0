@@ -279,13 +279,13 @@ export default function SignUp(props) {
                                 <div className="col-12 d-flex justify-content-center my-3">
                                     {singUpLoading ?
                                         <button
-                                            className={`btn btn-custom-secondary px-5`}
+                                            className={`btn btn-c-secondary px-5`}
                                             disabled
                                         >
                                             <SpinnerSM />
                                         </button>
                                         :
-                                        <input type="submit" className={`btn  btn-custom-secondary px-5`} value={'Cadastre-se'} />
+                                        <input type="submit" className={`btn  btn-c-secondary px-5`} value={'Cadastre-se'} />
 
                                     }
                                 </div>

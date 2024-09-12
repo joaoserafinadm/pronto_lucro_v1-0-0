@@ -37,7 +37,7 @@ export default function CardTemplate(props) {
                     </div>
 
                     <div className='mb-2 '>
-                        <span className='ms-3 small'>João Serafin</span>
+                        <span className='ms-3 small text-white'>João Serafin</span>
 
                     </div>
                     <img src={creditNetwork?.logoUrl} alt="" className={`${styles.creditNetworkIcon} me-1 my-0 py-0`} />
