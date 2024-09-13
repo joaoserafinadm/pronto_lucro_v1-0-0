@@ -26,6 +26,7 @@ import { createImageUrl } from "../../utils/createImageUrl";
 import { useDispatch } from "react-redux";
 import { newData } from "../../store/NewData/NewData.action";
 import BankAccountsModal from "./BankAccountsModal";
+import TagSelectedComponent from "./TagSelectedComponent";
 
 
 
@@ -220,14 +221,14 @@ export default function IncomeAddModal(props) {
                                 <span className=" text-white bold rounded-pill px-2 py-1 ctm-bg-success">Valor da receita</span>
                             </div>
                             <div className="col-12 mt-2 d-flex justify-content-between">
-                                <div className="d-flex fs-1 pe-2 align-items-center">
+                                <div className="d-flex w-100 fs-1 pe-2 align-items-center">
                                     <span className="me-1">R$</span>
                                     <input type="text" inputMode="numeric" placeholder="0,00"
                                         className="form-control fs-2 " style={{ borderColor: '#00cc99' }}
                                         value={value} id='valueInput'
                                         onChange={e => setValue(maskInputMoney(e.target.value))} />
                                 </div>
-                                {/* <div className="d-flex fs-3 align-items-center">
+                                <div className="d-flex fs-3 align-items-center">
                                     <div class="dropdown">
                                         <span class=" dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                             BRL
@@ -241,7 +242,7 @@ export default function IncomeAddModal(props) {
                                             <li><a class="dropdown-item" href="#">Outras...</a></li>
                                         </ul>
                                     </div>
-                                </div> */}
+                                </div>
                             </div>
                             <span className="text-danger small">{valueError}</span>
 
@@ -389,31 +390,7 @@ export default function IncomeAddModal(props) {
                                                 <FontAwesomeIcon icon={faTag} />
                                                 <span className="small fw-bold mb-2 ms-3">Marcador</span>
                                             </div>
-                                            <div className="col-12 mt-2 d-flex justify-content-between" onClick={() => showModal('tagSelectModalIncome')}>
-                                                {!tagSelected ?
-                                                    <span type="button"
-                                                        class=" px-2 py-1  small mx-1 rounded-pill border pulse shadow">
-                                                        Selecionar Marcador
-                                                    </span>
-                                                    :
-                                                    <>
-                                                        <div className="row">
-                                                            <span className="small ms-3 bold">{tagSelected.category}</span>
-                                                            <div>
-
-                                                                <span type="button" onClick={() => showModal('tagSelectModalIncome')}
-                                                                    className={`cardAnimation px-2 py-1   small mx-1 rounded-pill fw-bold `}
-                                                                    style={{ backgroundColor: tagSelected.color, color: tagSelected.textColor }}>
-                                                                    {tagSelected.tag}
-                                                                </span>
-                                                            </div>
-                                                        </div>
-                                                    </>
-                                                }
-                                                <div className="text-center text-secondary" style={{ width: "40px" }}>
-                                                    <FontAwesomeIcon icon={faChevronRight} />
-                                                </div>
-                                            </div>
+                                            <TagSelectedComponent tagSelected={tagSelected} />
 
                                             <TagSelectModal
                                                 tags={tags}

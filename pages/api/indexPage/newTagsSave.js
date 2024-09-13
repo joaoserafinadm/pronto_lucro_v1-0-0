@@ -32,12 +32,25 @@ export default authenticated(async (req, res) => {
             res.status(400).json({ error: "User doesn't exist." });
         }
 
+        const newIncomeTags = incomeTags.map(elem => {
+            return {
+                _id: new ObjectId(),
+                ...elem
+            }
+        })
+        const newExpenseTags = expenseTags.map(elem => {
+            return {
+                _id: new ObjectId(),
+                ...elem
+            }
+        })
+
         const response = await db.collection('users').updateOne({ _id: new ObjectId(user_id) }, {
             $set: {
                 setorSelected: setorSelected,
                 newSetorName: newSetorName,
-                incomeTags: incomeTags,
-                expenseTags: expenseTags
+                incomeTags: newIncomeTags,
+                expenseTags: newExpenseTags
             }
         })
 

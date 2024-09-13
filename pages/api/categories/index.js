@@ -96,16 +96,16 @@ export default authenticated(async (req, res) => {
         }
 
         const newCategorie = {
-            _id: new ObjectId(),
+            _id: new ObjectId().toString(),
             category: categoryName,
             color: color,
             // textColor: getTextColorBasedOnBackground(color), // Função opcional para definir a cor do texto com base no fundo
             textColor: '#fff', // Função opcional para definir a cor do texto com base no fundo
             tags: tags.map(elem => ({
-                _id: new ObjectId(),
+                _id: new ObjectId().toString(),
                 tag: elem.tag,
                 subTags: elem.subTags.map(elem1 => ({
-                    _id: new ObjectId(),
+                    _id: new ObjectId().toString(),
                     subTag: elem1.subTag
                 }))
             }))

@@ -191,110 +191,94 @@ export default function NewCategorieModal(props) {
                         <hr />
                         <div className="row">
 
-
-
-
                             <div className="col-12 fadeItem mb-5">
                                 <FontAwesomeIcon icon={faDotCircle} />
                                 <span className="small fw-bold  ms-3">Subcategorias</span>
-                                <div className="card mt-2">
-                                    <div className="card-body">
 
-                                        <div className="row">
-                                            <div className="col-12 d-flex">
-                                                <div className="col d-flex my-1 align-items-center">
-                                                    <div style={{ backgroundColor: color, height: "17px", width: "17px" }} className="rounded-circle me-2"></div>
-                                                    <span className="bold">{categoryName}</span>
+                                <div className="row">
+                                    {tags?.map((elem1, index1) => (
+                                        <div className="border-bottom py-2">
+                                            <div className="col-12 d-flex my-1 align-items-center">
+                                                <div style={{ height: "12px", width: "12px", border: `2px solid ${color}` }} className="rounded-circle ms-2 me-2"></div>
+                                                <div className="col">
+                                                    <span className="">{elem1.tag}</span>
                                                 </div>
-                                            </div>
-                                        </div>
-                                        <hr />
-                                        <div className="row">
-                                            {tags?.map((elem1, index1) => (
-                                                <div className="border-bottom py-2">
-                                                    <div className="col-12 d-flex my-1 align-items-center">
-                                                        <div style={{ height: "12px", width: "12px", border: `2px solid ${color}` }} className="rounded-circle ms-2 me-2"></div>
-                                                        <div className="col">
-                                                            <span className="">{elem1.tag}</span>
-                                                        </div>
-                                                        {editIndex === '' && (
-                                                            <div className="btn-group fadeItem" style={{ width: "60px" }}>
-                                                                <button type="button" disabled={editIndex} className={` btn btn-outline-secondary btn-sm ${editIndex === '' ? "text-c-success" : 'text-muted'}`} onClick={() => setEditIndex(index1)}>
-                                                                    <FontAwesomeIcon icon={faArrowTurnUp} style={{ transform: 'rotate(90deg)' }} />
-                                                                </button>
-                                                                <button type="button" disabled={editIndex} className={`  btn btn-outline-secondary btn-sm ${editIndex === '' ? "text-c-danger" : 'text-muted'}`} onClick={() => setTags(tags.filter((elem2, index2) => index1 !== index2))}>
-                                                                    <FontAwesomeIcon icon={faTimes} />
-                                                                </button>
-                                                            </div>
-
-                                                        )}
-                                                    </div>
-                                                    {elem1.subTags?.map((elem2, index2) => (
-
-                                                        <div className="col-12 my-1 d-flex small align-items-center">
-                                                            <div className="col">
-
-                                                                <FontAwesomeIcon className="me-2 ms-4" icon={faArrowTurnUp} style={{ transform: 'rotate(90deg)', color: color }} />
-                                                                <span>{elem2.subTag}</span>
-                                                            </div>
-                                                            <div className="fadeItem" style={{ width: "25px" }}>
-                                                                {editIndex === '' && (
-
-                                                                    <button className="btn btn-sm btn-outline-secondary">
-                                                                        <FontAwesomeIcon icon={faXmark} className="text-c-danger" onClick={() => handleSubTagDelete(index1, index2)} />
-                                                                    </button>
-                                                                )}
-
-                                                            </div>
-                                                        </div>
-                                                    ))}
-                                                    {editIndex === index1 && (
-
-                                                        <div className="col-12 d-flex fadeItem align-items-center">
-                                                            <FontAwesomeIcon className="ms-3 me-2 small" icon={faArrowTurnUp} style={{ transform: 'rotate(90deg)', color: color }} />
-                                                            <form onSubmit={e => handleSubTagAdd(e, newSubTagName, editIndex)} className="w-100">
-
-                                                                <div className="input-group ">
-
-                                                                    <input type="text" className="form-control" onChange={(e) => setNewSubTagName(e.target.value)} value={newSubTagName} placeholder="Novo marcador" />
-
-                                                                    <button disabled={!newSubTagName} className="btn btn-outline-secondary" type="submit" >
-                                                                        <FontAwesomeIcon icon={faPlus} className="pulse text-c-success" />
-                                                                    </button>
-                                                                    <button className="btn btn-outline-secondary" type="submit" onClick={() => { setEditIndex(''); setNewSubTagName('') }} >
-                                                                        <FontAwesomeIcon icon={faXmark} className="pulse text-c-danger" />
-                                                                    </button>
-                                                                </div>
-                                                            </form>
-
-                                                        </div>
-                                                    )}
-                                                </div>
-
-                                            ))}
-                                        </div>
-                                        <div className="row mt-3">
-                                            <div className="col-12">
-                                                <form onSubmit={e => handleTagAdd(e, newTagName)}>
-
-                                                    <div className="input-group">
-
-                                                        <input type="text" disabled={editIndex !== ''} className="form-control" id="newTagNameInput" onChange={(e) => setNewTagName(e.target.value)} value={newTagName} placeholder="Nova subcategoria" />
-                                                        <button disabled={!newTagName} className="btn btn-outline-secondary" type="submit" >
-                                                            <FontAwesomeIcon icon={faPlus} className="pulse text-c-success" />
+                                                {editIndex === '' && (
+                                                    <div className="btn-group fadeItem" style={{ width: "60px" }}>
+                                                        <button type="button" disabled={editIndex} className={` btn btn-outline-secondary btn-sm ${editIndex === '' ? "text-c-success" : 'text-muted'}`} onClick={() => setEditIndex(index1)}>
+                                                            <FontAwesomeIcon icon={faArrowTurnUp} style={{ transform: 'rotate(90deg)' }} />
                                                         </button>
-
+                                                        <button type="button" disabled={editIndex} className={`  btn btn-outline-secondary btn-sm ${editIndex === '' ? "text-c-danger" : 'text-muted'}`} onClick={() => setTags(tags.filter((elem2, index2) => index1 !== index2))}>
+                                                            <FontAwesomeIcon icon={faTimes} />
+                                                        </button>
                                                     </div>
-                                                </form>
-                                                {!tags.length && (
 
-                                                    <span className="small text-secondary fadeItem">É necessário incluir no mínimo uma subcategoria</span>
                                                 )}
                                             </div>
+                                            {elem1.subTags?.map((elem2, index2) => (
+
+                                                <div className="col-12 my-1 d-flex small align-items-center">
+                                                    <div className="col">
+
+                                                        <FontAwesomeIcon className="me-2 ms-4" icon={faArrowTurnUp} style={{ transform: 'rotate(90deg)', color: color }} />
+                                                        <span>{elem2.subTag}</span>
+                                                    </div>
+                                                    <div className="fadeItem" style={{ width: "25px" }}>
+                                                        {editIndex === '' && (
+
+                                                            <button className="btn btn-sm btn-outline-secondary">
+                                                                <FontAwesomeIcon icon={faXmark} className="text-c-danger" onClick={() => handleSubTagDelete(index1, index2)} />
+                                                            </button>
+                                                        )}
+
+                                                    </div>
+                                                </div>
+                                            ))}
+                                            {editIndex === index1 && (
+
+                                                <div className="col-12 d-flex fadeItem align-items-center">
+                                                    <FontAwesomeIcon className="ms-3 me-2 small" icon={faArrowTurnUp} style={{ transform: 'rotate(90deg)', color: color }} />
+                                                    <form onSubmit={e => handleSubTagAdd(e, newSubTagName, editIndex)} className="w-100">
+
+                                                        <div className="input-group ">
+
+                                                            <input type="text" className="form-control" onChange={(e) => setNewSubTagName(e.target.value)} value={newSubTagName} placeholder="Novo marcador" />
+
+                                                            <button disabled={!newSubTagName} className="btn btn-outline-secondary" type="submit" >
+                                                                <FontAwesomeIcon icon={faPlus} className="pulse text-c-success" />
+                                                            </button>
+                                                            <button className="btn btn-outline-secondary" type="submit" onClick={() => { setEditIndex(''); setNewSubTagName('') }} >
+                                                                <FontAwesomeIcon icon={faXmark} className="pulse text-c-danger" />
+                                                            </button>
+                                                        </div>
+                                                    </form>
+
+                                                </div>
+                                            )}
                                         </div>
 
+                                    ))}
+                                </div>
+                                <div className="row mt-3">
+                                    <div className="col-12">
+                                        <form onSubmit={e => handleTagAdd(e, newTagName)}>
+
+                                            <div className="input-group">
+
+                                                <input type="text" disabled={editIndex !== ''} className="form-control" id="newTagNameInput" onChange={(e) => setNewTagName(e.target.value)} value={newTagName} placeholder="Nova subcategoria" />
+                                                <button disabled={!newTagName} className="btn btn-outline-secondary" type="submit" >
+                                                    <FontAwesomeIcon icon={faPlus} className="pulse text-c-success" />
+                                                </button>
+
+                                            </div>
+                                        </form>
+                                        {!tags.length && (
+
+                                            <span className="small text-secondary fadeItem">É necessário incluir no mínimo uma subcategoria</span>
+                                        )}
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>

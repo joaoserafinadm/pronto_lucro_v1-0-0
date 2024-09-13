@@ -29,7 +29,7 @@ export default function TagSelectModal(props) {
                     aria-label="Close"
                 ></button>
             </div>
-            {section === 'tagAdd' ?
+            {/* {section === 'tagAdd' ?
                 <NewTagAdd
                     tags={tags}
                     setSection={setSection}
@@ -39,14 +39,14 @@ export default function TagSelectModal(props) {
                     id={props.id}
 
                 />
-                :
+                : */}
                 <TagSelect
                     tags={tags}
                     setSection={setSection}
                     setTagSelected={setTagSelected}
                     id={props.id}
                     section={props.section} />
-            }
+            {/* } */}
 
 
 

@@ -31,10 +31,10 @@ export default authenticated(async (req, res) => {
         }
 
         const newTag = {
-            _id: new ObjectId(),
+            _id: new ObjectId().toString(),
             tag: newTagName,
             subTags: subTags.map(elem => ({
-                _id: new ObjectId(),
+                _id: new ObjectId().toString(),
                 subTag: elem
             }))
         };
@@ -44,12 +44,11 @@ export default authenticated(async (req, res) => {
         let response;
 
         if (section === "incomeTags") {
-            console.log("incomeTags");
 
             response = await db.collection('users').updateOne(
                 {
                     _id: new ObjectId(user_id),
-                    "incomeTags._id": new ObjectId(category_id)
+                    "incomeTags._id": category_id
                 },
                 {
                     $push: { "incomeTags.$.tags": newTag }
@@ -61,7 +60,7 @@ export default authenticated(async (req, res) => {
             response = await db.collection('users').updateOne(
                 {
                     _id: new ObjectId(user_id),
-                    "expenseTags._id": new ObjectId(category_id)
+                    "expenseTags._id": category_id
                 },
                 {
                     $push: { "expenseTags.$.tags": newTag }

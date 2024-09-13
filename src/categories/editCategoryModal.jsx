@@ -14,6 +14,7 @@ export default function EditCategoryModal(props) {
     const { categorySelected, categories, section, dataFunction, id } = props;
 
     const [categoryEdit, setCategoryEdit] = useState(categorySelected);
+    const [editCategory, setEditCategory] = useState(false)
     const [editTagIndex, setEditTagIndex] = useState('');
     const [editSubTagIndex, setEditSubTagIndex] = useState({ tagIndex: '', subTagIndex: '' });
 
@@ -23,7 +24,7 @@ export default function EditCategoryModal(props) {
     const [saveError, setSaveError] = useState('');
 
     useEffect(() => {
-        setCategoryEdit(categorySelected); 
+        setCategoryEdit(categorySelected);
     }, [categorySelected]);
 
     const initialValues = () => {
@@ -55,6 +56,7 @@ export default function EditCategoryModal(props) {
         updatedCategory.category = editCategoryName;
         setCategoryEdit(updatedCategory);
         setEditCategoryName('');
+        setEditCategory(false)
     };
 
     const handleDisableSave = () => {
@@ -120,7 +122,7 @@ export default function EditCategoryModal(props) {
                             )}
                             <div className="col-12">
                                 <div className="row">
-                                    {editCategoryName ? (
+                                    {editCategory ? (
                                         <div className="col-12 d-flex my-1 align-items-center">
                                             <div style={{ backgroundColor: categoryEdit?.color, height: "17px", width: "17px" }} className="rounded-circle me-2"></div>
 
@@ -140,7 +142,7 @@ export default function EditCategoryModal(props) {
                                                 </button>
                                                 <button
                                                     className="btn btn-outline-secondary"
-                                                    onClick={() => setEditCategoryName('')}
+                                                    onClick={() => { setEditCategoryName(''); setEditCategory(false) }}
                                                 >
                                                     <FontAwesomeIcon icon={faXmark} className="pulse text-c-danger" />
                                                 </button>
@@ -160,7 +162,7 @@ export default function EditCategoryModal(props) {
                                             <span
                                                 className="ms-2 text-c-secondary"
                                                 type="button"
-                                                onClick={() => setEditCategoryName(categoryEdit?.category)}
+                                                onClick={() => { setEditCategoryName(categoryEdit?.category); setEditCategory(true) }}
                                             >
                                                 <FontAwesomeIcon icon={faEdit} />
                                             </span>

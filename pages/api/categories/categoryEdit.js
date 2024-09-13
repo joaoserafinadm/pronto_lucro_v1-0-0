@@ -60,7 +60,7 @@ export default authenticated(async (req, res) => {
             response = await db.collection('users').updateOne(
                 {
                     _id: new ObjectId(user_id),
-                    "expenseTags._id": category._id  // Verifica se a categoria existe na seção
+                    "expenseTags._id": category._id // Verifica se a categoria existe na seção
                 },
                 {
                     $set: {
