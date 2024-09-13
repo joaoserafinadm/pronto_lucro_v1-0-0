@@ -525,12 +525,12 @@ export default function ExpenseAddModal(props) {
                     </div>
 
                     <div className="modal-footer">
-                        <button className="btn btn-custom-tertiary"
+                        <button className="btn btn-c-tertiary"
                             data-bs-dismiss="modal"
                             onClick={() => initialValues()}>
                             Cancelar
                         </button>
-                        <button className="btn btn-custom-danger"
+                        <button className="btn btn-c-danger"
                             data-bs-dismiss="modal"
                             onClick={() => handleSave()}>
                             Salvar
