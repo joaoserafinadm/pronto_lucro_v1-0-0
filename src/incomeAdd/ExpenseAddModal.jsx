@@ -390,7 +390,7 @@ export default function ExpenseAddModal(props) {
                                                 <FontAwesomeIcon icon={faTag} />
                                                 <span className="small fw-bold mb-2 ms-3">Marcador</span>
                                             </div>
-                                            <TagSelectedComponent tagSelected={tagSelected} />
+                                            <TagSelectedComponent tagSelected={tagSelected} type="Expense"/>
 
 
                                             <TagSelectModal
