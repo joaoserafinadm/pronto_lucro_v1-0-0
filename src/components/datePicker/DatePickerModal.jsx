@@ -34,14 +34,14 @@ export default function DatePickerModal(props) {
             <div className="modal-footer">
                 <button
                     type="button"
-                    className="btn btn-outline-custom-tertiary"
+                    className="btn btn-c-outline-tertiary"
                     onClick={() => { hideModal( props.id ) }}
                 >
                     Cancelar
                 </button>
                 <button 
                     type="button"
-                    className={`btn ${props.section === 'income' ? 'btn-outline-custom-success' : props.section === 'expense' ? 'btn-outline-custom-danger' : 'btn-outline-custom-tertiary'}`}
+                    className={`btn ${props.section === 'income' ? 'btn-c-outline-success' : props.section === 'expense' ? 'btn-c-outline-danger' : 'btn-c-outline-tertiary'}`}
                     onClick={() => { hideModal( props.id ); setDate(newDate) }}
                 >
                     Selecionar
