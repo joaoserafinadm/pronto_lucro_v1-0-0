@@ -235,11 +235,11 @@ export default function IncomeAddModal(props) {
                                         </span>
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                             <li><span className="ms-2 small text-secondary">Favoritas</span></li>
-                                            <li><a class="dropdown-item" href="#">BRL</a></li>
-                                            <li><a class="dropdown-item" href="#">USD</a></li>
-                                            <li><a class="dropdown-item" href="#">EUR</a></li>
+                                            <li className="dropdown-item">BRL</li>
+                                            <li className="dropdown-item">USD</li>
+                                            <li className="dropdown-item">EUR</li>
                                             <hr />
-                                            <li><a class="dropdown-item" href="#">Outras...</a></li>
+                                            <li className="dropdown-item">Outras...</li>
                                         </ul>
                                     </div>
                                 </div>

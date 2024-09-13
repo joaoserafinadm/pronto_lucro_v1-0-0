@@ -26,6 +26,7 @@ import { createImageUrl } from "../../utils/createImageUrl";
 import { useDispatch } from "react-redux";
 import { newData } from "../../store/NewData/NewData.action";
 import BankAccountsModal from "./BankAccountsModal";
+import TagSelectedComponent from "./TagSelectedComponent";
 
 
 
@@ -228,21 +229,21 @@ export default function ExpenseAddModal(props) {
                                         value={value} id='valueInput'
                                         onChange={e => setValue(maskInputMoney(e.target.value))} />
                                 </div>
-                                {/* <div className="d-flex fs-3 align-items-center">
+                                <div className="d-flex fs-3 align-items-center">
                                     <div class="dropdown">
                                         <span class=" dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                             BRL
                                         </span>
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                             <li><span className="ms-2 small text-secondary">Favoritas</span></li>
-                                            <li><a class="dropdown-item" href="#">BRL</a></li>
-                                            <li><a class="dropdown-item" href="#">USD</a></li>
-                                            <li><a class="dropdown-item" href="#">EUR</a></li>
+                                            <li className="dropdown-item">BRL</li>
+                                            <li className="dropdown-item">USD</li>
+                                            <li className="dropdown-item">EUR</li>
                                             <hr />
-                                            <li><a class="dropdown-item" href="#">Outras...</a></li>
+                                            <li className="dropdown-item">Outras...</li>
                                         </ul>
                                     </div>
-                                </div> */}
+                                </div>
                             </div>
                             <span className="text-danger small">{valueError}</span>
 
@@ -389,31 +390,8 @@ export default function ExpenseAddModal(props) {
                                                 <FontAwesomeIcon icon={faTag} />
                                                 <span className="small fw-bold mb-2 ms-3">Marcador</span>
                                             </div>
-                                            <div className="col-12 mt-2 d-flex justify-content-between" onClick={() => showModal('tagSelectModalExpense')}>
-                                                {!tagSelected ?
-                                                    <span type="button"
-                                                        class=" px-2 py-1  small mx-1 rounded-pill border pulse shadow">
-                                                        Selecionar Marcador
-                                                    </span>
-                                                    :
-                                                    <>
-                                                        <div className="row">
-                                                            <span className="small ms-3 bold">{tagSelected.category}</span>
-                                                            <div>
+                                            <TagSelectedComponent tagSelected={tagSelected} />
 
-                                                                <span type="button" onClick={() => showModal('tagSelectModalExpense')}
-                                                                    className={`cardAnimation px-2 py-1   small mx-1 rounded-pill fw-bold `}
-                                                                    style={{ backgroundColor: tagSelected.color, color: tagSelected.textColor }}>
-                                                                    {tagSelected.tag}
-                                                                </span>
-                                                            </div>
-                                                        </div>
-                                                    </>
-                                                }
-                                                <div className="text-center text-secondary" style={{ width: "40px" }}>
-                                                    <FontAwesomeIcon icon={faChevronRight} />
-                                                </div>
-                                            </div>
 
                                             <TagSelectModal
                                                 tags={tags}
