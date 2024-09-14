@@ -24,7 +24,7 @@ export default function AccountsResultsCards(props) {
                                     <FontAwesomeIcon icon={faWallet} />
                                 </span>
                                 <span className=" bold ms-2 fs-5 text-secondary">
-                                    Saldo atual
+                                    Saldo total
                                 </span> <br />
                                 <span className="text-success me-1 fs-5">R$</span>
                                 <span className="text-secondary pulse fs-3 bold">

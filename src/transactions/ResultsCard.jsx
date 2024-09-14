@@ -40,7 +40,7 @@ export default function ResultsCard(props) {
                                                 <FontAwesomeIcon icon={faWallet} />
                                             </span>
                                             <span className=" bold ms-2 fs-5 text-secondary">
-                                                Saldo atual
+                                                Saldo total
                                             </span> <br />
                                             <span className="text-success me-1 fs-5">R$</span>
                                             <span className="text-secondary pulse fs-3 bold">
@@ -95,9 +95,9 @@ export default function ResultsCard(props) {
                     </div>
                 </div>
                 :
-                <div className="row d-flex justify-content-center">
+                <div className="row d-flex justify-content-center  pe-0">
 
-                    <div className="col-4 " >
+                    <div className="col-12 col-lg-6 pe-0" >
 
                         <div className="card">
                             <div className="card-body">

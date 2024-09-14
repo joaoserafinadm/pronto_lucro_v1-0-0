@@ -33,7 +33,7 @@ export default function CardTemplate(props) {
                     {accountsPage ?
                         <div className={`${styles.amountCard} ms-2 d-flex flex-column mb-2`}>
                             <span className='text-white my-0 py-0' style={{ fontSize: '10px' }}>
-                                Valor atual
+                                Valor total
                             </span>
                             <span className='text-white'>
                                 R$ {value ? value : '0,00'}
