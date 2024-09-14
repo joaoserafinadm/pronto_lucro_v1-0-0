@@ -6,7 +6,7 @@ import { faArrowTrendDown, faArrowTrendUp, faEdit, faEye, faGear } from '@fortaw
 
 export default function CardTemplate(props) {
 
-    const { bankSelected, color, value, description, creditNetwork } = props
+    const { bankSelected, color, value, predictedValue, description, creditNetwork, accountsPage } = props
 
 
     return (
@@ -30,16 +30,37 @@ export default function CardTemplate(props) {
                         </div>
                         <span className={`${styles.cardTitle} ms-2 small`}>{description}</span>
                     </div>
-                    <div >
-                        <div className={`${styles.amountCard} ms-2`}>
-                            R$ {value ? value : '0,00'}
+                    {accountsPage ?
+                        <div className={`${styles.amountCard} ms-2 d-flex flex-column mb-2`}>
+                            <span className='text-white my-0 py-0' style={{ fontSize: '10px' }}>
+                                Valor atual
+                            </span>
+                            <span className='text-white'>
+                                R$ {value ? value : '0,00'}
+                            </span>
+                            <span className='text-white mt-1 my-0 py-0' style={{ fontSize: '10px' }}>
+                                Valor previsto
+                            </span>
+                            <span className='text-white'>
+                                R$ {predictedValue ? predictedValue : '0,00'}
+                            </span>
                         </div>
-                    </div>
+                        :
+                        <div >
+                            <div className={`${styles.amountCard} ms-2`}>
+                                R$ {value ? value : '0,00'}
+                            </div>
+                        </div>
+                    }
 
-                    <div className='mb-2 '>
-                        <span className='ms-3 small text-white'>João Serafin</span>
+                    {!accountsPage && (
 
-                    </div>
+
+                        <div className='mb-2 '>
+                            <span className='ms-3 text-white' style={{ fontSize: accountsPage ? '10px' : '14px' }}>João Serafin</span>
+
+                        </div>
+                    )}
                     <img src={creditNetwork?.logoUrl} alt="" className={`${styles.creditNetworkIcon} me-1 my-0 py-0`} />
                 </div>
             </div>
@@ -47,9 +68,9 @@ export default function CardTemplate(props) {
                 <div className="row mt-2">
                     <div className="col-12 d-flex justify-content-center ">
                         <div className="btn-group ">
-                            <button className="btn btn-outline-secondary btn-sm  pt-2">
+                            {/* <button className="btn btn-outline-secondary btn-sm  pt-2">
                                 <FontAwesomeIcon icon={faEye} />
-                            </button>
+                            </button> */}
                             <button className="btn btn-outline-secondary btn-sm pt-2">
                                 <FontAwesomeIcon icon={faArrowTrendUp} className='text-success' />
                             </button>

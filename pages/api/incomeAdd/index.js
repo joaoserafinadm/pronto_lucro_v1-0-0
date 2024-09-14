@@ -50,6 +50,9 @@ export default authenticated(async (req, res) => {
     } else if (req.method === "POST") {
         const { user_id, section, ...data } = req.body;
 
+        console.log(data)
+        res.status(400)
+
         if (!user_id || !data?.value || !section) {
             res.status(400).json({ error: "Missing parameters on request body" });
         } else {

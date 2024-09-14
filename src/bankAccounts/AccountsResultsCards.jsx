@@ -2,6 +2,7 @@ import { faWallet } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { maskNumberMoney } from "../../utils/mask";
 import monthName from "../../utils/monthName";
+import isMobile from "../../utils/isMobile";
 
 
 
@@ -13,12 +14,12 @@ export default function AccountsResultsCards(props) {
 
 
     return (
-        <div className="card mx-5">
+        <div className="card">
             <div className="card-body">
                 <div className="row">
-                    <div className="col-6">
+                    <div className="col-12 col-md-6">
                         <div className="row">
-                            <div className="col-12 small text-white text-center">
+                            <div className="col-12 small text-white text-start text-sm-center">
                                 <span className="badge rounded-pill  bold me-1 fs-5" style={{ backgroundColor: '#00c661' }}>
                                     <FontAwesomeIcon icon={faWallet} />
                                 </span>
@@ -34,9 +35,10 @@ export default function AccountsResultsCards(props) {
                             </div>
                         </div>
                     </div>
-                    <div className="col-6 border-start">
+                    <div className={`col-12 col-md-6 ${isMobile() ? '': 'border-start'} `}>
+                    <hr className="d-md-none d-block"/>
                         <div className="row">
-                            <div className="col-12 small text-white  text-center">
+                            <div className="col-12 small text-white  text-start text-sm-center">
                                 <span className="badge rounded-pill  bold me-1 fs-5" style={{ backgroundColor: '#00c661' }}>
                                     <FontAwesomeIcon icon={faWallet} />
                                 </span>

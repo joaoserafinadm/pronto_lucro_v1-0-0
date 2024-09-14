@@ -50,16 +50,18 @@ export default authenticated(async (req, res) => {
 
 
                 const monthResult = dfcData.reduce((sum, elem) => {
-                    return sum + (elem.type === "income" ? elem.value : -elem.value);
-                }, 0) + bankAccounts.reduce((acc, elem) => { if (elem.valueSum) return acc + elem.initialValue }, 0);
+                    if (elem.active === true) return sum + (elem.type === "income" ? elem.value : -elem.value);
+                    else return sum
+                }, 0)
+                // + bankAccounts.reduce((acc, elem) => { if (elem.valueSum) return acc + elem.initialValue }, 0);
 
 
-                const monthPendigResult = dfcData.reduce((sum, elem) => {
-                    if (elem.active === false) {
+                const monthPendingResult = dfcData.reduce((sum, elem) => {
+                    if (elem.active === false) return sum + (elem.type === "income" ? elem.value : -elem.value);
+                    else return sum
+                }, 0)
 
-                        return sum + (elem.type === "income" ? elem.value : -elem.value);
-                    }
-                }, 0);
+                console.log(monthPendingResult)
 
 
                 const dfcResult = userExist.dfc.reduce((acc, elem) => {
@@ -80,7 +82,7 @@ export default authenticated(async (req, res) => {
                 }, 0);
 
 
-                res.status(200).json({ dreData, dfcData, dfcPending, monthResult, dfcResult, monthPendigResult, dfcPendingResult, tags: userExist.incomeTags.concat(userExist.expenseTags), accounts: userExist.bankAccounts, top3Incomes, top3Expenses });
+                res.status(200).json({ dreData, dfcData, dfcPending, monthResult, dfcResult, monthPendingResult, dfcPendingResult, tags: userExist.incomeTags.concat(userExist.expenseTags), accounts: userExist.bankAccounts, top3Incomes, top3Expenses });
             }
         }
     }

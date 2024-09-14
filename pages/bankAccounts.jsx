@@ -105,7 +105,7 @@ export default function BankAccounts() {
                     :
                     <div className="fadeItem">
                         <div className="row d-flex justify-content-center my-3">
-                            <div className="col-8">
+                            <div className="col-12 col-lg-10">
                                 <AccountsResultsCards dateSelected={dateSelected} data={data} />
                             </div>
                         </div>
@@ -125,12 +125,14 @@ export default function BankAccounts() {
                                             <div className="col-12 col-xl-4 col-sm-6 my-2 d-flex justify-content-center">
                                                 <NewAccountCard />
                                             </div>
+                                            <hr className="d-lg-none d-block mt-4"/>
                                             {bankAccounts?.map((elem, index) => {
                                                 return (
-                                                    <div className="col-12 col-xl-4 col-sm-6 my-2 d-flex justify-content-center">
-                                                        <CardTemplate editButtons
+                                                    <div className="col-12 col-xl-4 col-sm-6 my-3 d-flex justify-content-center">
+                                                        <CardTemplate editButtons accountsPage
                                                             bankSelected={elem.bankSelected}
                                                             color={elem.color}
+                                                            predictedValue={maskNumberMoney(elem.predictedValue)}
                                                             value={maskNumberMoney(elem.value)}
                                                             description={elem.description}
                                                             creditNetwork={elem.creditNetwork} />

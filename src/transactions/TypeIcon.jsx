@@ -13,7 +13,7 @@ export default function TypeIcon(props) {
 
     return (
         <FontAwesomeIcon icon={elem.type === 'income' ? faArrowUp : elem.type === 'expense' ? faArrowDown : '-'}
-            className={` me-2  text-${elem.active === false ? 'secondary' : elem.type === 'income' ? 'success' : elem.type === 'expense' ? 'danger' : 'secondary'}`} />
+            className={` me-2  text-${elem.active === false ? 'muted' : elem.type === 'income' ? 'c-success' : elem.type === 'expense' ? 'c-danger' : 'secondary'}`} />
 
     )
 }

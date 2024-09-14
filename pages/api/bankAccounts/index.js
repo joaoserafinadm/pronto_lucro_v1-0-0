@@ -50,11 +50,25 @@ export default authenticated(async (req, res) => {
 
                     }, 0);
 
+                    const predictedValue = userExist.dfc.reduce((acc, elem1) => {
+
+                        if (isBeforeOrEqual(elem1, { year, month })) {
+                            const activeElements = elem1.data?.filter(dataElem => dataElem.active === false && dataElem.account_id.toString() === elem._id.toString()) || [];
+
+                            acc += activeElements?.reduce((sum, activeElem) => sum + (activeElem.type === "income" ? activeElem.value : -activeElem.value), 0);
+                        }
+
+                        return acc;
+
+                    }, 0) + value;
+
                     return {
                         ...elem,
-                        value: value + elem.initialValue
+                        value: value + elem.initialValue,
+                        predictedValue: predictedValue + elem.initialValue
                     }
                 })
+
 
 
 

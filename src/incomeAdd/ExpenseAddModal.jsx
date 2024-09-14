@@ -62,6 +62,10 @@ export default function ExpenseAddModal(props) {
         dataFunction(token.sub)
     }, [])
 
+    useEffect(() => {
+console.log("tagSelected", tagSelected)
+    }, [tagSelected])
+
     const dataFunction = async (user_id) => {
 
         await axios.get(`${baseUrl()}/api/incomeAdd`, {
@@ -143,7 +147,7 @@ export default function ExpenseAddModal(props) {
                     paymentMethod,
                     competenceMonth,
                     description,
-                    tag_id: tagSelected ? tagSelected._id : '',
+                    tag: tagSelected ? tagSelected : '',
                     account_id: accountSelected ? accountSelected._id : '',
                     files: attachment,
                     creditConfig
@@ -398,7 +402,7 @@ export default function ExpenseAddModal(props) {
                                                 setTagSelected={setTagSelected}
                                                 dataFunction={() => dataFunction(token.sub)}
                                                 id="tagSelectModalExpense"
-                                                section="expenseTags" />
+                                                section="expense" />
                                         </div>
 
                                         <hr />

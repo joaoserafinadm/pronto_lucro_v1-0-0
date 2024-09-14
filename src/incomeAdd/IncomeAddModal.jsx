@@ -142,7 +142,7 @@ export default function IncomeAddModal(props) {
                     paymentMethod,
                     competenceMonth,
                     description,
-                    tag_id: tagSelected ? tagSelected._id : '',
+                    tag: tagSelected ? tagSelected : '',
                     account_id: accountSelected ? accountSelected._id : '',
                     files: attachment,
                     creditConfig
@@ -388,9 +388,9 @@ export default function IncomeAddModal(props) {
                                         <div className="row d-flex justify-content-between" >
                                             <div className="col-12">
                                                 <FontAwesomeIcon icon={faTag} />
-                                                <span className="small fw-bold mb-2 ms-3">Marcador</span>
+                                                <span className="small fw-bold mb-2 ms-3">Categoria</span>
                                             </div>
-                                            <TagSelectedComponent tagSelected={tagSelected} type="Income"/>
+                                            <TagSelectedComponent tagSelected={tagSelected} type="Income" />
 
                                             <TagSelectModal
                                                 tags={tags}

@@ -12,18 +12,16 @@ export default function DesktopPage(props) {
 
 
     return (
-        <div className="row d-flex mt-3">
+        <div className="row  mt-3">
 
 
-            <div className="col-12    ">
 
-                {/* <DesktopTotalCards data={data} dateSelected={dateSelected} /> */}
+            {/* <DesktopTotalCards data={data} dateSelected={dateSelected} /> */}
 
-                <ResultsCard data={data} dateSelected={dateSelected} />
+            <ResultsCard data={data} dateSelected={dateSelected} />
 
 
-            </div>
-            <div className="col-12 my-3 px-sm-5">
+            <div className="col-12 my-3 ">
                 <div className="d-none d-lg-flex justify-content-center">
 
                     <DesktopTransactionsList data={data} setIncomeSelected={setIncomeSelected} />

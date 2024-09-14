@@ -113,6 +113,6 @@
 .amountCard {
     border: 2px solid #e6e6e67d;
     border-radius: 5px;
-    width: 160px;
+    width: calc(100% - 90px);
     padding: 7px 5px;
 }
