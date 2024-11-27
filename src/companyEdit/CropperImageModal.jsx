@@ -38,7 +38,7 @@ export default function CropperImageModal(props) {
 
 
     return (
-        <div class="modal fade" id="cropperImageModal" tabindex="-1" aria-labelledby="ImageHeaderModalLabel" aria-hidden="true">
+        <div class="modal fade" id={props.id} tabindex="-1" aria-labelledby="ImageHeaderModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header">

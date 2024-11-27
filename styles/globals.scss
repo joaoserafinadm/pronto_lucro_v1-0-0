@@ -2948,8 +2948,8 @@ h1 {
 }
 
 .logoEdit {
-	max-height: 75px;
-	max-width: 200px;
+	max-height: 150px;
+	max-width: 450px;
 	width: auto;
 	height: auto;
 }
@@ -3193,20 +3193,25 @@ h1 {
 	transition: .2s ease-in-out;
 }
 
+.hover:hover {
+	background-color: #cdcdcd;
+	transition: .2s ease-in-out;
+}
+
 span {
-	color: #343a40 ;
+	color: #343a40;
 }
 
 .newAccountCardIcon {
-    height: 60px;
-    width: 60px;
-    border-radius: 50%;
-    border: 1px solid #8f8f8f;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 30px;
-    color: #8f8f8f;
+	height: 60px;
+	width: 60px;
+	border-radius: 50%;
+	border: 1px solid #8f8f8f;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 30px;
+	color: #8f8f8f;
 }
 
 .text-c-primary {

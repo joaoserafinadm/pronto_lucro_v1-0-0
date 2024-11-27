@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import Title from "../src/components/title/Title2";
+import Title from "../src/components/title/Title2.jsx";
 import navbarHide from "../utils/navbarHide.js";
 import { useDispatch, useSelector } from "react-redux";
 import Link from "next/link";
@@ -7,19 +7,25 @@ import { useState } from "react";
 import Cookies from "js-cookie";
 import jwt from "jsonwebtoken";
 import axios from "axios";
-import baseUrl from "../utils/baseUrl";
-import { SpinnerLG, SpinnerSM } from "../src/components/loading/Spinners";
-import StyledDropzone from "../src/components/styledDropzone/StyledDropzone";
-import CropperImageModal from "../src/companyEdit/CropperImageModal";
-import { FixedTopicsBottom, FixedTopicsTop } from "../src/components/fixedTopics";
-import scrollTo from "../utils/scrollTo";
-import removeInputError from "../utils/removeInputError";
-import { createImageUrl } from "../utils/createImageUrl";
+import baseUrl from "../utils/baseUrl.js";
+import { SpinnerLG, SpinnerSM } from "../src/components/loading/Spinners.jsx";
+import StyledDropzone from "../src/components/styledDropzone/StyledDropzone.jsx";
+import CropperImageModal from "../src/companyEdit/CropperImageModal.jsx";
+import { FixedTopicsBottom, FixedTopicsTop } from "../src/components/fixedTopics/index.jsx";
+import scrollTo from "../utils/scrollTo.js";
+import removeInputError from "../utils/removeInputError.js";
+import { createImageUrl } from "../utils/createImageUrl.js";
 import { useRouter } from "next/router";
-import { maskCelular, maskCpf } from "../utils/mask";
-import EstadosList from "../src/components/estadosList";
-import isMobile from "../utils/isMobile";
+import { maskCelular, maskCpf } from "../utils/mask.js";
+import EstadosList from "../src/components/estadosList/index.jsx";
+import isMobile from "../utils/isMobile.js";
 import { addAlert } from "../store/Alerts/Alerts.actions.js";
+import MyProfilePage from "../src/editProfile/MyProfilePage.jsx";
+import Sections from "../src/components/Sections/index.jsx";
+import MyCompanyPage from "../src/editProfile/MyCompanyPage.jsx";
+
+
+
 
 
 
@@ -32,7 +38,9 @@ export default function EditProfile() {
     const alertsArray = useSelector(state => state.alerts)
 
 
-    //States
+    const [section, setSection] = useState('Meu perfil')
+
+    //Profile
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
     const [cpf, setCpf] = useState('')
@@ -43,8 +51,25 @@ export default function EditProfile() {
     const [profileImageUrl, setProfileImageUrl] = useState('')
     const [profileImageUrlReview, setProfileImageUrlReview] = useState('')
 
+    //Company
+    const [companyName, setCompanyName] = useState('')
+    const [companyLogo, setCompanyLogo] = useState('')
+    const [cnpjPrincipal, setCnpjPrincipal] = useState('')
+    const [companyCep, setCompanyCep] = useState('')
+    const [companyBairro, setCompanyBairro] = useState('')
+    const [companyLogradouro, setCompanyLogradouro] = useState('')
+    const [companyNumero, setCompanyNumero] = useState('')
+    const [companyCidade, setCompanyCidade] = useState('')
+    const [companyEstado, setCompanyEstado] = useState('')
+    const [logoImageUrlReview, setlogoImageUrlReview] = useState('')
+    const [setorPrimario, setSetorPrimario] = useState('')
+    const [setorSecundario, setSetorSecundario] = useState('')
+    const [outroSetorSec, setOutroSetorSec] = useState('')
+
+
     //Image crop
     const [selectFile, setSelectFile] = useState(null)
+    const [selectCompanyFile, setSelectCompanyFile] = useState(null)
 
 
     //Loading 
@@ -79,20 +104,7 @@ export default function EditProfile() {
     }
 
 
-    const handleFileChange = file => {
 
-
-        if (file) {
-            setSelectFile(URL.createObjectURL(file))
-            setTimeout(() => {
-                var modal = document.getElementById('cropperImageModal')
-                var cropperModal = new bootstrap.Modal(modal)
-                cropperModal.show()
-            }, 20)
-        } else {
-            return
-        }
-    }
 
 
     const validate = () => {
@@ -158,116 +170,102 @@ export default function EditProfile() {
 
     return (
         <div id="pageTop">
-            <Title title={'Editar Perfil'} backButton='/' />
+            <Title title={'Meu Perfil'} backButton='/' subtitle='Mantenha o seu perfil atualizado' />
             {loadingPage ?
                 <SpinnerLG />
                 :
                 <>
-                    <div className="pagesContent-sm shadow fadeItem ">
+                    <div className="pagesContent shadow fadeItem ">
+                        <div className="row">
+                            <div className="col-12 ">
+                                <div className=" carousel slide  " data-bs-touch="false" data-bs-interval='false' id="accoutSetupPages">
 
-                        <div className="col-12 ">
+                                    <Sections section={section} idTarget="accoutSetupPages"
+                                        setSection={value => setSection(value)}
+                                        sections={["Meu perfil", "Minha empresa"]} />
 
-                            <div className="row">
-                                <div className="d-flex justify-content-between">
-                                    <input type="file" name="image/*" id="logoItem" accept="image/*" onChange={e => handleFileChange(e.target.files[0])}
-                                        className="form-input" hidden />
-                                    <label className=" fw-bold">Imagem de perfil</label>
-                                    <label htmlFor="logoItem" className="span" type='button'>Editar</label>
-                                </div>
-                                <StyledDropzone setFiles={array => { handleFileChange(array[0]) }} img>
-                                    <div className="row mt-3 d-flex justify-content-center align-items-center" style={{ height: '150px' }}>
 
-                                        <div className="col-12 d-flex justify-content-center align-items-center" >
-                                            {profileImageUrlReview ?
-                                                <img src={profileImageUrlReview} alt="logo" id="logoItem" className="editProfileImage fadeItem" />
-                                                :
-                                                <>
-                                                    {profileImageUrl ?
-                                                        <img src={profileImageUrl} alt="logo" id="logoItem" className="editProfileImage fadeItem" />
-                                                        :
-                                                        <img src="https://res.cloudinary.com/co2blue/image/upload/v1707242679/co2blue_profile_images/default-user-icon_bnrrug.jpg"
-                                                            alt="" className="editProfileImage"
-                                                            type="button" />
-                                                    }
-                                                </>
-                                            }
+                                    <div className="carousel-inner ">
+                                        <div className="carousel-item active">
+                                            <MyProfilePage
+                                                firstName={firstName}
+                                                setFirstName={setFirstName}
+                                                lastName={lastName}
+                                                setLastName={setLastName}
+                                                cpf={cpf}
+                                                setCpf={setCpf}
+                                                cidade={cidade}
+                                                setCidade={setCidade}
+                                                estado={estado}
+                                                setEstado={setEstado}
+                                                email={email}
+                                                setEmail={setEmail}
+                                                celular={celular}
+                                                setCelular={setCelular}
+                                                profileImageUrl={profileImageUrl}
+                                                setProfileImageUrl={setProfileImageUrl}
+                                                profileImageUrlReview={profileImageUrlReview}
+                                                setProfileImageUrlReview={setProfileImageUrlReview}
+                                                selectFile={selectFile}
+                                                setSelectFile={setSelectFile}
+                                            />
                                         </div>
+                                        <div className="carousel-item">
+                                            <MyCompanyPage
+                                                companyName={companyName}
+                                                setCompanyName={setCompanyName}
+                                                companyLogo={companyLogo}
+                                                setCompanyLogo={setCompanyLogo}
+                                                cnpjPrincipal={cnpjPrincipal}
+                                                setCnpjPrincipal={setCnpjPrincipal}
+                                                companyCep={companyCep}
+                                                setCompanyCep={setCompanyCep}
+                                                companyBairro={companyBairro}
+                                                setCompanyBairro={setCompanyBairro}
+                                                companyLogradouro={companyLogradouro}
+                                                setCompanyLogradouro={setCompanyLogradouro}
+                                                companyNumero={companyNumero}
+                                                setCompanyNumero={setCompanyNumero}
+                                                companyCidade={companyCidade}
+                                                setCompanyCidade={setCompanyCidade}
+                                                companyEstado={companyEstado}
+                                                setCompanyEstado={setCompanyEstado}
+                                                selectCompanyFile={selectCompanyFile}
+                                                setSelectCompanyFile={setSelectCompanyFile}
+                                                logoImageUrlReview={logoImageUrlReview}
+                                                setlogoImageUrlReview={setlogoImageUrlReview}
+                                                setorPrimario={setorPrimario}
+                                                setSetorPrimario={setSetorPrimario}
+                                                setorSecundario={setorSecundario}
+                                                setSetorSecundario={setSetorSecundario}
+                                                outroSetorSec={outroSetorSec}
+                                                setOutroSetorSec={setOutroSetorSec}
+                                            />
+                                        </div>
+
                                     </div>
-                                </StyledDropzone>
-
+                                </div>
                             </div>
+                            <FixedTopicsBottom >
+                                <div className="row">
+                                    <div className="col-12 d-flex justify-content-end">
+                                        <Link href="/">
+
+                                            <button className="btn btn-sm btn-secondary">Cancelar</button>
+                                        </Link>
+                                        {loadingSave ?
+                                            <button className="ms-2 btn btn-sm btn-success px-4" disabled><SpinnerSM /></button>
+                                            :
+                                            <button className="ms-2 btn btn-sm btn-success" onClick={() => handleSave(token.company_id)}>Salvar</button>
+                                        }
+                                    </div>
+                                </div>
+
+                            </FixedTopicsBottom>
                         </div>
-                        <div className="row mt-3">
-                            <label for="firstNameItem" className="form-label fw-bold">Identificação*</label>
-                            <div className="col-12 col-lg-4 my-2">
-                                <label for="firstNameItem" className=" ">Nome*</label>
-                                <input type="text" className="form-control" id="firstNameItem" value={firstName} onChange={e => setFirstName(e.target.value)} placeholder="" />
-                            </div>
-                            <div className="col-12 col-lg-4 my-2">
-                                <label for="lastNameItem" className=" ">Sobrenome*</label>
-                                <input type="text" className="form-control" id="lastNameItem" value={lastName} onChange={e => setLastName(e.target.value)} placeholder="" />
-                            </div>
-                            <div className="col-12 col-lg-4 my-2">
-                                <label for="cpfItem" className=" ">CPF*</label>
-                                <input type="text" className="form-control" id="cpfItem" value={maskCpf(cpf)} onChange={e => setCpf(e.target.value)} placeholder="" />
-                            </div>
-                            <div className="d-flex col-12 my-2">
-
-                                <div className="col-9 pe-4">
-                                    <label for="cidadeItem" className=" ">Cidade</label>
-                                    <input type="text" className="form-control" id="cidadeItem" value={cidade} onChange={e => setCidade(e.target.value)} placeholder="" />
-                                </div>
-                                <div className="col-3">
-                                    <label for="estadoItem" className=" ">Estado</label>
-                                    <select name="estadoItem" className="form-select" value={estado} onChange={e => setEstado(e.target.value)} placeholder="UF" id="estadoItem">
-                                        <EstadosList />
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="row mt-3">
-                            <label for="emailItem" className=" fw-bold">Contato</label>
-                            <div className="col-12 d-flex justify-content-between flex-wrap">
-
-                                <div className="col-12 col-xl-6 pe-xl-2 my-2">
-                                    <label for="emailItem" className=" ">E-mail</label>
-                                    <input type="text" className="form-control" id="emailItem" value={email} placeholder="" disabled />
-                                </div>
-                                <div className="col-12 col-xl-6 ps-xl-3 my-2">
-                                    <label for="celularItem" className=" ">Celular*</label>
-                                    <input type="text" className="form-control" id="celularItem" value={maskCelular(celular)} onChange={e => setCelular(e.target.value)} placeholder="" />
-                                </div>
-                            </div>
-                        </div>
-                        {
-                            !isMobile() &&
-                            <hr />
-                        }
-                        <FixedTopicsBottom >
-                            <div className="row">
-                                <div className="col-12 d-flex justify-content-end">
-                                    <Link href="/">
-
-                                        <button className="btn btn-sm btn-secondary">Cancelar</button>
-                                    </Link>
-                                    {loadingSave ?
-                                        <button className="ms-2 btn btn-sm btn-success px-4" disabled><SpinnerSM /></button>
-                                        :
-                                        <button className="ms-2 btn btn-sm btn-success" onClick={() => handleSave(token.company_id)}>Salvar</button>
-                                    }
-                                </div>
-                            </div>
-
-                        </FixedTopicsBottom>
                     </div>
-
-
-
-                    <CropperImageModal selectFile={selectFile} setResult={value => setProfileImageUrlReview(value)} aspect={1} />
-
                 </>
-
             }
-        </div >
+        </div>
     )
 }

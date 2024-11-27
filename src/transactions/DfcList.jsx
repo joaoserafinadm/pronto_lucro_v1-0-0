@@ -126,9 +126,9 @@ export default function DfcList(props) {
                                                                 <span
                                                                     className={` px-2 py-1 small rounded-pill text-white `}
 
-                                                                    style={{ backgroundColor: accountSelected.color }}>
+                                                                    style={{ backgroundColor: accountSelected?.color }}>
                                                                     <img src={accountSelected?.bankSelected?.logoUrl} className="rounded-circle me-2" alt="" width={20} height={20} />
-                                                                    {accountSelected.description}
+                                                                    {accountSelected?.description}
                                                                 </span>
                                                             </div>
                                                         </div>

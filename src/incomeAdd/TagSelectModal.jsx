@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import Modal, { hideModal } from "../components/Modal"
 import NewTagAdd from "./NewTagAdd"
-import TagSelect from "./TagSelect"
+import TagSelect from "./tagSelect"
 
 
 

@@ -14,6 +14,7 @@ import akvoToolReducer from './AkvoTools/AkvoTools.reducer'
 import toggleBarStatus from './ToggleBarStatus/ToggleBarStatus.reducer'
 import alerts from './Alerts/Alerts.reducer'
 import newDataReducer from './NewData/NewData.reducer'
+import dataUpdateReducer from './dataUpdate/DataUpdate.reducer'
 
 const rootReducer = combineReducers({
     // inventoryList: inventoryList,
@@ -28,7 +29,8 @@ const rootReducer = combineReducers({
     tool: akvoToolReducer,
     toggleStatus: toggleBarStatus,
     alerts: alerts,
-    newData: newDataReducer
+    newData: newDataReducer,
+    dataUpdate: dataUpdateReducer
 })
 
 const persistedReducer = persistReducer({

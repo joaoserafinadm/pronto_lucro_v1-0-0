@@ -1,7 +1,7 @@
 import isMobile from "../../../utils/isMobile";
 export default function Sections(props) {
     return (
-        <div className="row  border-bottom mb-4" >
+        <div className="row  border-bottom mb-4 mx-1" >
             <div className="col-12 d-flex align-items-end" style={{ overflowX: isMobile() ? "scroll" : 'auto' }}>
                 {props.sections.map((elem, index) => {
                     return (
