@@ -6,7 +6,7 @@ export default function EstadosList(props) {
 
     return (
         <>
-            <option value="" disabled selected>UF *</option>
+            <option value="" disabled selected>UF</option>
             <option value="AC">AC</option>
             <option value="AL">AL</option>
             <option value="AM">AM</option>

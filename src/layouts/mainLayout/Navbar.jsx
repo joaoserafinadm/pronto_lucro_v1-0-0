@@ -62,7 +62,7 @@ export default function Nav(props) {
                 <div className=" row align-items-center mt-4 mb-2 fadeItem">
                     <div className="col">
 
-                        <div className="row align-items-center">
+                        {/* <div className="row align-items-center">
                             <Link href={`/editProfile`}>
                                 <div className="d-flex justify-content-center">
                                     <span type="button">
@@ -79,17 +79,17 @@ export default function Nav(props) {
                             <div className={`d-flex justify-content-center ${styles.userName}`}>
                                 {token.firstName} {token.lastName}
                             </div>
-                        </div>
+                        </div> 
                         <div className="row align-items-center">
                             <div className="d-flex justify-content-center">
                                 <small className={styles.userStatus}>
                                     {token.userStatus === 'admGlobal' ? 'Administrador' : token.userStatus === 'consultant' ? 'Consultor' : ""}
                                 </small>
                             </div>
-                        </div>
-                        <div style={{ height: (token.companyLogo || token.companyName) ? "75px" : "25px" }} className=" slideDown d-flex justify-content-center align-items-center">
+                        </div>*/}
+                        <div style={{ height: (token.companyLogo || token.companyName) ? "75px" : "75px" }} className=" slideDown d-flex justify-content-center align-items-center">
                             {(token.companyLogo || token.companyName) && (
-                                <Link href="/companyEdit" >
+                                <Link href="/editProfile?section=Minha empresa" >
                                     <span type="button" className="row" >
                                         <div className="d-flex justify-content-center align-items-center">
                                             {token.companyLogo ?
@@ -109,7 +109,7 @@ export default function Nav(props) {
                         </div>
 
                         <Scrollbars
-                            style={{ height: "calc(100vh - 200px" }}
+                            style={{ height: "calc(100vh - 152px" }}
                             autoHide
                             autoHideTimeout={3000}
                             autoHideDuration={200}
@@ -120,7 +120,7 @@ export default function Nav(props) {
                                 <div {...props} className="vthumbSidebar" />
                             )}
                         >
-                            <ul style={{ width: "95%" }}>
+                            <ul style={{ width: "95%" }} className="mt-2">
                                 <Accordion defaultActiveKey="0">
                                     <li>
                                         <ContextAwareToggle eventKey="0" collapse="InicioItem">

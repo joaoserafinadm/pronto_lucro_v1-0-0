@@ -21,7 +21,7 @@ export default async (req, res) => {
             res.status(400).json({ error: 'Wrong e-mail or password.' })
         } else {
 
-            
+
 
             bcrypt.compare(password, userExists.password, async function (err, result) {
                 if (!err && result) {
@@ -30,9 +30,11 @@ export default async (req, res) => {
                             sub: userExists._id,
                             firstName: userExists.firstName,
                             lastName: userExists.lastName,
-                            profileImageUrl: userExists.profileImageUrl,
+                            profileImageUrl: userExists.profileImageUrl.url ? userExists.profileImageUrl.url : userExists.profileImageUrl,
                             dateLimit: userExists.dateLimit,
-                            active: userExists.active
+                            active: userExists.active,
+                            companyLogo: userExists.companyLogo.url ? userExists.companyLogo.url : '',
+                            companyName: userExists.companyName
                         }
 
                         const jwt = sign(clains, process.env.JWT_SECRET, {})

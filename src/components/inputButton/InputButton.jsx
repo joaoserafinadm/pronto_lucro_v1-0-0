@@ -56,7 +56,7 @@ export default function InputButton(props) {
                 {/* <div className={` ${ open ? styles.buttonGroupShow : styles.buttonGroupHide}`} > */}
 
 
-                <div className={`${!props.menubar ? styles.buttonSectionPosition1 : styles.buttonSectionPosition1Menubar}`}>
+                <div className={`${!props.menubar ? styles.buttonSectionPosition1 : styles.buttonSectionPosition2Menubar}`}>
                     {/* <Link href="/incomeAdd"> */}
                     <div className={`${styles.buttonSection} cardAnimation`}
                         type='button' data-bs-toggle="modal" data-bs-target="#addIncomeModal"
@@ -70,9 +70,9 @@ export default function InputButton(props) {
                     </div>
                     {/* </ Link> */}
                 </div>
-                <div className={`${!props.menubar ? styles.buttonSectionPosition2 : styles.buttonSectionPosition2Menubar}`}>
-                    <div className={`${styles.buttonSection} cardAnimation`} 
-                    type='button' onClick={() => setOpen(!open)} data-bs-toggle="modal" data-bs-target="#expenseAddModal">
+                <div className={`${!props.menubar ? styles.buttonSectionPosition3 : styles.buttonSectionPosition3Menubar}`}>
+                    <div className={`${styles.buttonSection} cardAnimation`}
+                        type='button' onClick={() => setOpen(!open)} data-bs-toggle="modal" data-bs-target="#expenseAddModal">
                         <span className={`${styles.buttonIcon} shadow`}>
                             <FontAwesomeIcon icon={faArrowTrendDown} className='text-danger' />
                         </span>
@@ -81,7 +81,7 @@ export default function InputButton(props) {
                         </span>
                     </div>
                 </div>
-                <div className={`${!props.menubar ? styles.buttonSectionPosition3 : styles.buttonSectionPosition3Menubar}`}>
+                {/* <div className={`${!props.menubar ? styles.buttonSectionPosition3 : styles.buttonSectionPosition3Menubar}`}>
                     <div className={`${styles.buttonSection} cardAnimation`} type='button' onClick={() => setOpen(!open)}>
                         <span className={`${styles.buttonIcon} shadow`}>
                             <FontAwesomeIcon icon={faCreditCardAlt} className='text-primary' />
@@ -90,7 +90,7 @@ export default function InputButton(props) {
                             Cartão
                         </span>
                     </div>
-                </div>
+                </div> */}
 
 
 

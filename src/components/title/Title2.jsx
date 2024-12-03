@@ -32,10 +32,13 @@ export default function Title(props) {
                     )}
 
                 </div>
-                {props.backButton  && (
+                {props.backButton && typeof props.backButton === 'boolean' && (
                     // <Link href='/'>
-                        <span type="button" className={styles.backButton} onClick={() => router.back()}><AiOutlineLeft className="me-2" />Voltar</span>
+                    <span type="button" className={styles.backButton} onClick={() => router.back()}><AiOutlineLeft className="me-2" />Voltar</span>
                     // </Link>
+                )}
+                {props.backButton && typeof props.backButton === 'string' && (
+                    <span type="button" className={styles.backButton} onClick={() => router.push(props.backButton)}><AiOutlineLeft className="me-2" />Voltar</span>
                 )}
                 {props.title && (
 

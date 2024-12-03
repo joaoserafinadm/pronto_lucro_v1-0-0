@@ -1,9 +1,10 @@
 import axios from "axios"
-import { maskCep } from "../../utils/mask"
+import { maskCep, maskCnpj } from "../../utils/mask"
 import CropperImageModal from "../companyEdit/CropperImageModal"
 import EstadosList from "../components/estadosList"
 import Setores from "../components/Setores/Setores"
 import StyledDropzone from "../components/styledDropzone/StyledDropzone"
+import { useEffect } from "react"
 
 
 
@@ -79,6 +80,18 @@ export default function MyCompanyPage(props) {
             })
     }
 
+    useEffect(() => {
+
+        setSetorSecundario('')
+
+    }, [setorPrimario])
+
+    useEffect(() => {
+
+        setOutroSetorSec('')
+
+    }, [setorSecundario])
+
 
     return (
         <>
@@ -130,7 +143,7 @@ export default function MyCompanyPage(props) {
                 </div>
                 <div className="col-12 col-lg-5 my-2">
                     <label for="cnpjPrincipalInput" className=" ">CNPJ Principal*</label>
-                    <input type="text" className="form-control" id="cnpjPrincipalInput" value={cnpjPrincipal} onChange={e => setCnpjPrincipal(e.target.value)} placeholder="00.000.000/0000-0" />
+                    <input type="text" className="form-control" id="cnpjPrincipalInput" value={maskCnpj(cnpjPrincipal)} onChange={e => setCnpjPrincipal(e.target.value)} placeholder="00.000.000/0000-0" />
                 </div>
             </div>
             <div className="row mt-3">
@@ -155,7 +168,7 @@ export default function MyCompanyPage(props) {
                     <label for="companyCidadeInput" className=" ">Cidade</label>
                     <input type="text" className="form-control" id="companyCidadeInput" value={companyCidade} onChange={e => setCompanyCidade(e.target.value)} placeholder="" />
                 </div>
-                <div className="col-3 col-lg-2 my-2">
+                <div className="col-12 col-lg-2 my-2">
                     <label for="companyEstadoItem" className=" ">Estado</label>
                     <select name="companyEstadoItem" className="form-select" value={companyEstado} onChange={e => setCompanyEstado(e.target.value)} placeholder="UF" id="companyEstadoItem">
                         <EstadosList />
@@ -164,8 +177,8 @@ export default function MyCompanyPage(props) {
             </div>
             <div className="row mt-4 d-flex ">
                 <label for="telefoneItem" className="form-label fw-bold">Setor*</label>
-                <div className=" col-12 col-xl-4 ">
-
+                <small className="text-secondary">Escolha o(s) setor(es) da sua empresa para que a nossa IA possa te dar análises mais precisas.</small>
+                <div className=" col-12 col-xl-6 mt-3">
                     <Setores
                         setorPrimario={setorPrimario}
                         setorSecundario={setorSecundario}

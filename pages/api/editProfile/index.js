@@ -41,6 +41,18 @@ export default authenticated(async (req, res) => {
                         email: 1,
                         celular: 1,
                         profileImageUrl: 1,
+                        companyName: 1,
+                        companyLogo: 1,
+                        cnpjPrincipal: 1,
+                        companyCep: 1,
+                        companyBairro: 1,
+                        companyLogradouro: 1,
+                        companyNumero: 1,
+                        companyCidade: 1,
+                        companyEstado: 1,
+                        setorPrimario: 1,
+                        setorSecundario: 1,
+                        outroSetorSec: 1
                     },
                 });
 
@@ -50,16 +62,20 @@ export default authenticated(async (req, res) => {
                 res.status(200).json(userExist);
             }
         } else if (method === 'PATCH') {
+
             const updateObject = req.body;
+
             const { token, user_id, ...profileInfos } = updateObject;
+
             const { db } = await connect();
+
             await db.collection('users').updateOne({ _id: ObjectId(user_id) }, { $set: profileInfos });
 
             const clains = {
                 ...token,
                 firstName: profileInfos.firstName,
                 lastName: profileInfos.lastName,
-                profileImageUrl: profileInfos.profileImageUrl,
+                profileImageUrl: profileInfos.profileImageUrl.url,
             };
 
             const jwt = sign(clains, process.env.JWT_SECRET, {});

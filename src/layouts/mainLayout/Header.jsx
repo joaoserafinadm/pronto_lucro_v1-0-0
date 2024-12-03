@@ -30,41 +30,41 @@ export default function Header(props) {
     const [dropdownStatus, setDropdownStatus] = useState(true)
     const [showNotification, setShowNotification] = useState(false)
 
-    useEffect(() => {
-        dataFunction(token.sub)
-    }, [])
+    // useEffect(() => {
+    //     dataFunction(token.sub)
+    // }, [])
 
-    useEffect(() => {
-        const dropdownElement = dropdownRef.current;
+    // useEffect(() => {
+    //     const dropdownElement = dropdownRef.current;
 
-        const showDropdownHandler = () => {
-            setDropdownStatus(true);
-        };
+    //     const showDropdownHandler = () => {
+    //         setDropdownStatus(true);
+    //     };
 
-        const hideDropdownHandler = () => {
-            setDropdownStatus(false);
-        };
+    //     const hideDropdownHandler = () => {
+    //         setDropdownStatus(false);
+    //     };
 
-        dropdownElement.addEventListener('show.bs.dropdown', showDropdownHandler);
-        dropdownElement.addEventListener('hide.bs.dropdown', hideDropdownHandler);
+    //     dropdownElement.addEventListener('show.bs.dropdown', showDropdownHandler);
+    //     dropdownElement.addEventListener('hide.bs.dropdown', hideDropdownHandler);
 
-        return () => {
-            dropdownElement.removeEventListener('show.bs.dropdown', showDropdownHandler);
-            dropdownElement.removeEventListener('hide.bs.dropdown', hideDropdownHandler);
-        };
-    }, []);
+    //     return () => {
+    //         dropdownElement.removeEventListener('show.bs.dropdown', showDropdownHandler);
+    //         dropdownElement.removeEventListener('hide.bs.dropdown', hideDropdownHandler);
+    //     };
+    // }, []);
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        setTimeout(() => {
+    //     setTimeout(() => {
 
-            if (!dropdownStatus) {
-                handleNotificationCheck()
-            }
-        }, 100)
+    //         if (!dropdownStatus) {
+    //             handleNotificationCheck()
+    //         }
+    //     }, 100)
 
 
-    }, [dropdownStatus])
+    // }, [dropdownStatus])
 
 
     const hendleSession = async () => {
@@ -76,57 +76,47 @@ export default function Header(props) {
     }
 
 
-    const dataFunction = async (user_id) => {
+    // const dataFunction = async (user_id) => {
 
-        await axios.get(`${baseUrl()}/api/notifications`, {
-            params: {
-                user_id: user_id
-            }
-        })
-            .then(res => {
-                setNotifications(res.data.data)
-            }).catch(e => {
-                console.log(e)
-            })
+    //     await axios.get(`${baseUrl()}/api/notifications`, {
+    //         params: {
+    //             user_id: user_id
+    //         }
+    //     })
+    //         .then(res => {
+    //             setNotifications(res.data.data)
+    //         }).catch(e => {
+    //             console.log(e)
+    //         })
 
-    }
+    // }
 
-    const handleShowNotifications = () => {
+    // const handleShowNotifications = () => {
 
-        const unviewedNot = notifications?.filter(elem => elem.checked === false)
+    //     const unviewedNot = notifications?.filter(elem => elem.checked === false)
 
-        return unviewedNot?.length
-    }
+    //     return unviewedNot?.length
+    // }
 
-    const handleNotificationCheck = async () => {
+    // const handleNotificationCheck = async () => {
 
-        const newNotStatus = notifications.map(elem => {
-            return { ...elem, checked: true }
-        })
+    //     const newNotStatus = notifications.map(elem => {
+    //         return { ...elem, checked: true }
+    //     })
 
-        setNotifications(newNotStatus)
+    //     setNotifications(newNotStatus)
 
-        if (handleShowNotifications()) {
+    //     if (handleShowNotifications()) {
 
-            await axios.patch(`${baseUrl()}/api/notifications`, {
-                company_id: token.company_id,
-                user_id: token.sub
-            }).then(res => {
-                dataFunction(token.sub)
-            })
+    //         await axios.patch(`${baseUrl()}/api/notifications`, {
+    //             company_id: token.company_id,
+    //             user_id: token.sub
+    //         }).then(res => {
+    //             dataFunction(token.sub)
+    //         })
 
-        }
-    }
-
-    const hendleSessionBack = async () => {
-
-        
-            dispatch(akvoToolInitialValues())
-            Cookies.remove('auth')
-            localStorage.removeItem('auth')
-            window.location.href = `https://akvo-consultant-v1-0-0.vercel.app/companies`
-    }
-    
+    //     }
+    // }
 
 
 
@@ -151,7 +141,62 @@ export default function Header(props) {
 
             <div className={`d-flex ${styles.configIcons}`}>
 
-                <div className={` dropdown`} ref={dropdownRef}>
+
+
+
+                <div className={` dropdown `}>
+                    <span type="button" className="me-3" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src={token.profileImageUrl} alt="" className={`${styles.profilePicture}`} />
+                    </span>
+
+                    <ul className="dropdown-menu dropdown-menu-end mt-4 me-2" aria-labelledby="dropdownMenuButton1" >
+                        <small >
+
+                            <li className='my-1'>
+                                <Link href="/editProfile">
+                                    <span className="dropdown-item text-gray-dark" >
+                                        <FontAwesomeIcon icon={faUser} className="me-1 icon" /> Meu perfil
+                                    </span>
+                                </Link>
+                            </li>
+                            <li className='my-1'>
+                                <Link href="/editProfile?section=Minha empresa">
+                                    <span className="dropdown-item text-gray-dark" >
+                                        <FontAwesomeIcon icon={faBuilding} className="me-1 icon" /> Minha empresa
+                                    </span>
+                                </Link>
+                            </li>
+                            <li className='my-1'>
+                                <Link href="/passwordChange">
+                                    <span className="dropdown-item text-gray-dark" >
+                                        <FontAwesomeIcon icon={faKey} className="me-1 icon" /> Alterar senha
+                                    </span>
+                                </Link>
+                            </li>
+                            <li className='my-1'>
+                                <Link href="/accountSetup">
+                                    <span className="dropdown-item text-gray-dark" >
+                                        <FontAwesomeIcon icon={faGear} className="me-1 icon" /> Configurações
+                                    </span>
+                                </Link>
+                            </li>
+
+                            <li className='my-1'><hr className='dropdown-divider' /></li>
+                            <li className='mt-1'>
+                                <a className="dropdown-item text-gray-dark" type='button' onClick={() => hendleSession()}>
+                                    <FontAwesomeIcon icon={faCircleRight} className="me-1 icon" /> Sair
+                                </a>
+                            </li>
+                        </small>
+                    </ul>
+                </div>
+
+
+
+
+
+
+                {/* <div className={` dropdown`} ref={dropdownRef}>
                     <span type="button" className="" role="button" data-bs-toggle={!isMobile() ? "dropdown" : ''} aria-expanded="false" onClick={() => setShowNotification(!showNotification)}>
                         <FontAwesomeIcon icon={faBell} className={`text-white  px-2 mx-3`} style={{  fontSize: '23px' }} />
                         {!!handleShowNotifications() && (
@@ -175,54 +220,13 @@ export default function Header(props) {
 
                     }
 
-                </div>
+                </div> */}
 
 
 
 
 
-                {/*<div className={` dropdown `}>
-                    <span type="button" className="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <FontAwesomeIcon icon={faGear} className="text-light icon px-3 me-2" />
-                    </span>
 
-                     <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1" >
-                        <small >
-                            <li className='mb-1 '>
-                                <Link href={`/editProfile/${token.sub}`}>
-                                    <span className="dropdown-item text-gray-dark" >
-                                        <FontAwesomeIcon icon={faUser} className="me-1 icon" /> Editar perfil
-                                    </span>
-                                </Link>
-                            </li>
-                            <li className='my-1'>
-                                <Link href="/passwordChange">
-                                    <span className="dropdown-item text-gray-dark" >
-                                        <FontAwesomeIcon icon={faKey} className="me-1 icon" /> Alterar senha
-                                    </span>
-                                </Link>
-                            </li>
-                            <li className='my-1'>
-                                <Link href="/companyEdit">
-                                    <span className="dropdown-item text-gray-dark" >
-                                        <FontAwesomeIcon icon={faBuilding} className="me-1 icon" /> Editar instituição
-                                    </span>
-                                </Link>
-                            </li>
-                            <li className='my-1' onClick={() => hendleSessionBack()}>
-                                    <span className="dropdown-item text-gray-dark" >
-                                        <FontAwesomeIcon icon={faLeftLong} className="me-1 icon" /> Voltar
-                                    </span>
-                            </li>
-                            <li className='my-1'><hr className='dropdown-divider' /></li>
-                            <li className='mt-1'>
-                                <a className="dropdown-item text-gray-dark" type='button' onClick={() => hendleSession()}>
-                                    <FontAwesomeIcon icon={faCircleRight} className="me-1 icon" /> Sair
-                                </a>
-                            </li>
-                        </small>
-                    </ul> 
-                </div>*/}
             </div>
         </div>
     );

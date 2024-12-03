@@ -37,6 +37,8 @@ export default function EditProfile() {
     const router = useRouter()
     const alertsArray = useSelector(state => state.alerts)
 
+    const pageSection = router.query.section
+
 
     const [section, setSection] = useState('Meu perfil')
 
@@ -82,6 +84,10 @@ export default function EditProfile() {
 
     }, [])
 
+    useEffect(() => {
+        pageSection && setSection(pageSection)
+    }, [pageSection])
+
     const dataFunction = async (user_id) => {
 
         await axios.get(`${baseUrl()}/api/editProfile`, {
@@ -98,7 +104,19 @@ export default function EditProfile() {
             setEstado(res.data.estado)
             setEmail(res.data.email)
             setCelular(res.data.celular)
-            setProfileImageUrl(res.data.profileImageUrl)
+            setProfileImageUrl(res.data.profileImageUrl.url ? res.data.profileImageUrl.url : res.data.profileImageUrl)
+            setCompanyName(res.data.companyName)
+            setCompanyLogo(res.data.companyLogo.url ? res.data.companyLogo.url : res.data.companyLogo)
+            setCnpjPrincipal(res.data.cnpjPrincipal)
+            setCompanyCep(res.data.companyCep)
+            setCompanyBairro(res.data.companyBairro)
+            setCompanyLogradouro(res.data.companyLogradouro)
+            setCompanyNumero(res.data.companyNumero)
+            setCompanyCidade(res.data.companyCidade)
+            setCompanyEstado(res.data.companyEstado)
+            setSetorPrimario(res.data.setorPrimario)
+            setSetorSecundario(res.data.setorSecundario)
+            setOutroSetorSec(res.data.outroSetorSec)
 
         })
     }
@@ -107,7 +125,7 @@ export default function EditProfile() {
 
 
 
-    const validate = () => {
+    const profileValidate = () => {
 
         removeInputError()
 
@@ -122,46 +140,113 @@ export default function EditProfile() {
         else return true
     }
 
+    const companyValidate = () => {
+
+        removeInputError()
+
+        if (!firstName || !lastName || !celular || !cpf) {
+            if (!firstName) document.getElementById("firstNameItem").classList.add('inputError')
+            if (!lastName) document.getElementById("lastNameItem").classList.add('inputError')
+            if (!celular) document.getElementById("celularItem").classList.add('inputError')
+            if (!cpf) document.getElementById("cpfItem").classList.add('inputError')
+            scrollTo('pageTop')
+            return false
+        }
+
+        else return true
+    }
+
     const handleSave = async (company_id) => {
 
         setLoadingSave(true)
 
-        const isValid = validate()
 
-        if (isValid) {
+        if (section === 'Meu perfil') {
 
-            const blobFile = profileImageUrlReview ? await fetch(profileImageUrlReview).then(r => r.blob()) : '';
+            const profileIsValid = profileValidate()
 
-            const newProfileImage = profileImageUrlReview ? await createImageUrl([blobFile], "PROFILE_IMAGES").url : ''
+            if (profileIsValid) {
 
-            await axios.patch(`${baseUrl()}/api/editProfile`, {
-                token: token,
-                company_id,
-                user_id: token.sub,
-                profileImageUrl: newProfileImage ? newProfileImage[0].url : profileImageUrl,
-                firstName,
-                lastName,
-                cpf,
-                cidade,
-                estado,
-                celular
-            }).then(res => {
-                localStorage.setItem('auth', (Cookies.get('auth')))
 
-                const alert = {
-                    type: 'alert',
-                    message: 'Perfil atualizado.',
-                }
+                const blobFile = profileImageUrlReview ? await fetch(profileImageUrlReview).then(r => r.blob()) : '';
 
-                dispatch(addAlert(alertsArray, [alert]))
+                const newProfileImage = profileImageUrlReview ? await createImageUrl([blobFile], "PRONTOLUCRO_PROFILE_IMAGES") : ''
 
-                router.push('/')
-                setLoadingSave(false)
+                console.log("newProfileImage", profileImageUrlReview, blobFile, newProfileImage)
 
-            }).catch(e => {
-                setLoadingSave(false)
+                await axios.patch(`${baseUrl()}/api/editProfile`, {
+                    token: token,
+                    user_id: token.sub,
+                    profileImageUrl: newProfileImage ? newProfileImage[0] : profileImageUrl,
+                    firstName,
+                    lastName,
+                    cpf,
+                    cidade,
+                    estado,
+                    celular
+                }).then(res => {
+                    localStorage.setItem('auth', (Cookies.get('auth')))
 
-            })
+                    const alert = {
+                        type: 'alert',
+                        message: 'Perfil atualizado.',
+                    }
+
+                    dispatch(addAlert(alertsArray, [alert]))
+
+                    setLoadingSave(false)
+
+                }).catch(e => {
+                    setLoadingSave(false)
+
+                })
+            }
+        }
+
+
+        if (section === 'Minha empresa') {
+
+            const companyIsValid = companyValidate()
+
+            if (companyIsValid) {
+
+                const blobFile = logoImageUrlReview ? await fetch(logoImageUrlReview).then(r => r.blob()) : '';
+
+                const newProfileImage = logoImageUrlReview ? await createImageUrl([blobFile], "PRONTOLUCRO_LOGOS") : ''
+
+                await axios.patch(`${baseUrl()}/api/editProfile/companyUpdate`, {
+                    token: token,
+                    user_id: token.sub,
+                    companyName,
+                    companyLogo: newProfileImage ? newProfileImage[0] : companyLogo,
+                    cnpjPrincipal,
+                    companyCep,
+                    companyBairro,
+                    companyLogradouro,
+                    companyNumero,
+                    companyCidade,
+                    companyEstado,
+                    setorPrimario,
+                    setorSecundario,
+                    outroSetorSec
+                }).then(res => {
+                    localStorage.setItem('auth', (Cookies.get('auth')))
+
+                    const alert = {
+                        type: 'alert',
+                        message: 'Informações atualizadas.',
+                    }
+
+                    dispatch(addAlert(alertsArray, [alert]))
+
+                    setLoadingSave(false)
+
+                }).catch(e => {
+                    setLoadingSave(false)
+
+                })
+
+            }
 
         }
 
@@ -251,7 +336,7 @@ export default function EditProfile() {
                                     <div className="col-12 d-flex justify-content-end">
                                         <Link href="/">
 
-                                            <button className="btn btn-sm btn-secondary">Cancelar</button>
+                                            <button className="btn btn-sm btn-secondary">Voltar</button>
                                         </Link>
                                         {loadingSave ?
                                             <button className="ms-2 btn btn-sm btn-success px-4" disabled><SpinnerSM /></button>
