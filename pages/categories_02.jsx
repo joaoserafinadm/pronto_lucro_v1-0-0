@@ -8,7 +8,7 @@ import navbarHide from "../utils/navbarHide";
 import axios from "axios";
 import TagsPage from "../src/tags/TagsPage";
 import { SpinnerLG } from "../src/components/loading/Spinners";
-import CategoriesPage from "../src/categories/categoriesPage";
+import CategoriesPage from "../src/categories_02/categoriesPage";
 
 export default function categories() {
 
