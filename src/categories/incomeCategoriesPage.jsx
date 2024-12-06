@@ -52,7 +52,7 @@ export default function IncomeCategoriesPage(props) {
             setIncomeCategories(res.data.categories)
             setLoadingPage(false)
             tippyFunction()
-            // setForceUpdate(forceUpdate + 1)
+            setForceUpdate(forceUpdate + 1)
         }).catch(e => {
             console.log(e)
             // setLoadingPage(false)
