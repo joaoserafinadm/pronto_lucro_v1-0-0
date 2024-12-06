@@ -1,13 +1,15 @@
 import { faCheck, faDotCircle, faPlus, faQuoteRight, faSwatchbook, faTrashAlt } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import axios from "axios"
 import { useState } from "react"
+import { showModalBs } from "../../utils/modalControl"
 
 
 
 
 export default function CategoryAddModal(props) {
 
-    const { id, type } = props
+    const { id, type, token, dataFunction} = props
 
     const [categoryName, setCategoryName] = useState('')
     const [color, setColor] = useState('')
@@ -62,6 +64,25 @@ export default function CategoryAddModal(props) {
 
     const handleSave = async () => {
 
+        const data = {
+            user_id: token.sub,
+            type: type,
+            categoryName,
+            color,
+            subCategories
+        }
+
+        await axios.post(`/api/categories`, data)
+            .then(res => {
+                dataFunction()
+                initialValues()
+            }).catch(e => {
+                console.log(e)
+                showModalBs(id)
+                setSaveError("Houve um problema ao salvar a categoria. Por favor, tente novamente.")
+                scrollTo(id)
+            })
+
 
 
     }
@@ -106,7 +127,7 @@ export default function CategoryAddModal(props) {
 
                                         <div className="row">
                                             <div className="col-12 d-flex flex-wrap">
-                                                {type === 'income' && incomeColors.map((elem, index) => {
+                                                {type === 'incomeCategories' && incomeColors.map((elem, index) => {
                                                     return (
                                                         <span type="button" onClick={() => setColor(elem)}
                                                             className={`cardAnimation d-flex justify-content-center align-items-center   m-1  small rounded-pill ${color === elem ? '  shadow' : ''} `}

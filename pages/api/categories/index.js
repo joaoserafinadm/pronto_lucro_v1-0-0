@@ -38,6 +38,53 @@ export default authenticated(async (req, res) => {
             }
 
         }
+    } else if (req.method === "POST") {
+
+        const { user_id, type, categoryName, color, subCategories } = req.body
+
+
+        if (!user_id || !type || !categoryName || !color || !subCategories.length) {
+            res.status(400).json({ error: "Missing parameters on request body" })
+        }
+
+
+        const { db } = await connect();
+
+        const userExist = await db.collection('users').findOne({ _id: new ObjectId(user_id) });
+
+        if (!userExist) {
+            res.status(400).json({ error: "User doesn't exist." });
+        }
+
+        const newCategorie = {
+            _id: new ObjectId().toString(),
+            categoryName: categoryName,
+            color: color,
+            // textColor: getTextColorBasedOnBackground(color), // Função opcional para definir a cor do texto com base no fundo
+            // textColor: '#fff', // Função opcional para definir a cor do texto com base no fundo
+            subCategories: subCategories.map(elem => ({
+                _id: new ObjectId().toString(),
+                name: elem.name,
+            }))
+        };
+
+        const response = await db.collection('users').updateOne(
+            { _id: ObjectId(user_id) },
+            { $push: { [type]: { $each: [newCategorie], $position: 0 } } }
+        )
+
+        console.log("response", response)
+
+        if (response.modifiedCount) {
+            res.status(200).json({ message: "Categorie created" })
+        } else {
+            res.status(400).json({ error: "Trouble in connect to database" })
+        }
+
+
+
+
+
     }
 
 })
