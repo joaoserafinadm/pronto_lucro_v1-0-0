@@ -7,6 +7,7 @@ import CategoryAddModal from "./categoryAddModal"
 import tippy from "tippy.js"
 import CategoriesOrderModal from "./categoriesOrderModal"
 import CategoryIcon, { SubCategoryIcon } from "./categoryIcon"
+import EditCategoryModal from "../categories/editCategoryModal"
 
 
 
@@ -68,6 +69,7 @@ export default function IncomeCategoriesPage(props) {
 
             <CategoryAddModal id='incomeCategoryAddModal' type='incomeCategories' token={token} dataFunction={() => dataFunction(token.sub)} />
             <CategoriesOrderModal id="incomeCategoriesOrderModal" categories={incomeCategories} token={token} type='incomeCategories' dataFunction={() => dataFunction(token.sub)} />
+            <EditCategoryModal categorySelected={categorySelected} categories={incomeCategories} type='incomeCategories' token={token} dataFunction={() => dataFunction()} id={`editIncomeCategoryModal`} />
 
             {loadingPage ?
                 <SpinnerLG />

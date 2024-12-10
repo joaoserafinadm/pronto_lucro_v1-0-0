@@ -30,7 +30,7 @@ export default function Categories() {
 
     return (
         <div>
-            <Title title={'Categorias'} subtitle='Crie e gerencie suas categorias' backButton='/' />
+            <Title title={'Categorias'} subtitle='Crie e gerencie suas categorias e marcadores' backButton='/' />
 
             <div className="pagesContent fadeItem shadow">
                 <div className="row">
@@ -41,8 +41,6 @@ export default function Categories() {
                             <Sections section={section} idTarget="accoutSetupPages"
                                 setSection={value => setSection(value)}
                                 sections={["Categorias de receita", "Categorias de despesa", "Marcadores"]} />
-
-
 
                             <div className="carousel-inner ">
                                 <div className="carousel-item active">
