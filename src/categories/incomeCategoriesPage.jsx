@@ -5,6 +5,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faGear, faGripLines, faPlus, faShuffle } from "@fortawesome/free-solid-svg-icons"
 import CategoryAddModal from "./categoryAddModal"
 import tippy from "tippy.js"
+import CategoriesOrderModal from "./categoriesOrderModal"
+import CategoryIcon, { SubCategoryIcon } from "./categoryIcon"
 
 
 
@@ -48,7 +50,6 @@ export default function IncomeCategoriesPage(props) {
         await axios.get('/api/categories', {
             params: { user_id, type: 'income' }
         }).then(res => {
-            console.log("res.data.categories", res.data.categories)
             setIncomeCategories(res.data.categories)
             setLoadingPage(false)
             tippyFunction()
@@ -66,14 +67,16 @@ export default function IncomeCategoriesPage(props) {
         <>
 
             <CategoryAddModal id='incomeCategoryAddModal' type='incomeCategories' token={token} dataFunction={() => dataFunction(token.sub)} />
-
+            <CategoriesOrderModal id="incomeCategoriesOrderModal" categories={incomeCategories} token={token} type='incomeCategories' dataFunction={() => dataFunction(token.sub)} />
 
             {loadingPage ?
                 <SpinnerLG />
                 :
                 <div className="row">
                     <div className="col-12 d-flex justify-content-end">
-                        <button className="btn btn-c-outline-secondary  mx-1" id="reorderCategoryBtn">
+                        <button className="btn btn-c-outline-secondary  mx-1"
+                            id="reorderCategoryBtn"
+                            data-bs-toggle="modal" data-bs-target="#incomeCategoriesOrderModal">
                             <FontAwesomeIcon icon={faShuffle} />
                         </button>
                         <button className="btn btn-c-outline-success  mx-1"
@@ -91,16 +94,13 @@ export default function IncomeCategoriesPage(props) {
                         :
                         <>
                             {incomeCategories.map((elem, index) => (
-                                <div className="col-12">
+                                <div className="col-12 fadeItem">
                                     <div className="card my-3 bg-white p-3" id={elem.id}>
                                         <div className="row d-flex">
                                             <div className="col-12 d-flex justify-content-between">
 
                                                 <div className="d-flex align-items-center">
-                                                    <div style={{ height: '17px', width: '17px' }}>
-
-                                                        <div style={{ backgroundColor: elem.color, height: "17px", width: "17px" }} className="rounded-circle me-2"></div>
-                                                    </div>
+                                                    <CategoryIcon color={elem.color} />
                                                     <span className="bold mx-2">{elem.categoryName}</span>
 
                                                 </div>
@@ -119,7 +119,7 @@ export default function IncomeCategoriesPage(props) {
 
                                             {elem.subCategories.map((elem1, index) => (
                                                 <div className="col-12 d-flex  align-items-center my-2">
-                                                    <div style={{ height: "12px", width: "12px", border: `2px solid ${elem.color}` }} className="rounded-circle ms-2 me-2"></div>
+                                                    <SubCategoryIcon color={elem.color} />
                                                     <span className="fw-bold" style={{ color: elem.color }}>{elem1.name}</span>
                                                 </div>
 

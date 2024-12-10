@@ -37,9 +37,11 @@ export default function Categories() {
                     <div className="col-12">
                         <div className=" carousel slide " data-bs-touch="false" data-bs-interval='false' id="accoutSetupPages">
 
+
                             <Sections section={section} idTarget="accoutSetupPages"
                                 setSection={value => setSection(value)}
                                 sections={["Categorias de receita", "Categorias de despesa", "Marcadores"]} />
+
 
 
                             <div className="carousel-inner ">

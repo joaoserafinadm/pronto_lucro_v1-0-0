@@ -62,7 +62,7 @@ export default function InputButton(props) {
                         type='button' data-bs-toggle="modal" data-bs-target="#addIncomeModal"
                         onClick={() => setOpen(!open)}>
                         <span className={`${styles.buttonIcon} shadow`}>
-                            <FontAwesomeIcon icon={faArrowTrendUp} className='text-success' />
+                            <FontAwesomeIcon icon={faArrowTrendUp} className='text-c-success' />
                         </span>
                         <span className='text-center small bold text-white' style={{ fontSize: '10px' }}>
                             Receita
@@ -74,7 +74,7 @@ export default function InputButton(props) {
                     <div className={`${styles.buttonSection} cardAnimation`}
                         type='button' onClick={() => setOpen(!open)} data-bs-toggle="modal" data-bs-target="#expenseAddModal">
                         <span className={`${styles.buttonIcon} shadow`}>
-                            <FontAwesomeIcon icon={faArrowTrendDown} className='text-danger' />
+                            <FontAwesomeIcon icon={faArrowTrendDown} className='text-c-danger' />
                         </span>
                         <span className='text-center small bold text-white' style={{ fontSize: '10px' }}>
                             Despesa
