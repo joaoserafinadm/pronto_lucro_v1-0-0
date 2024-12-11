@@ -19,11 +19,11 @@ export default authenticated(async (req, res) => {
 
     if (req.method === "PATCH") {
 
-        const { user_id, section, category } = req.body
+        const { user_id, type, category } = req.body
 
-        console.log(user_id, section, category)
+        console.log(user_id, type, category)
 
-        if (!user_id || !section || !category) {
+        if (!user_id || !type || !category) {
             res.status(400).json({ error: "Missing parameters on request body" })
         }
 
@@ -41,30 +41,30 @@ export default authenticated(async (req, res) => {
 
         let response
 
-        if (section === 'incomeTags') {
+        if (type === 'incomeCategories') {
 
             response = await db.collection('users').updateOne(
                 {
                     _id: new ObjectId(user_id),
-                    "incomeTags._id": category._id // Verifica se a categoria existe na seção
+                    "incomeCategories._id": category._id // Verifica se a categoria existe na seção
                 },
                 {
                     $set: {
-                        "incomeTags.$": category  // Substitui a categoria inteira
+                        "incomeCategories.$": category  // Substitui a categoria inteira
                     }
                 }
             );
         }
-        if (section === 'expenseTags') {
+        if (type === 'expenseCategories') {
 
             response = await db.collection('users').updateOne(
                 {
                     _id: new ObjectId(user_id),
-                    "expenseTags._id": category._id // Verifica se a categoria existe na seção
+                    "expenseCategories._id": category._id // Verifica se a categoria existe na seção
                 },
                 {
                     $set: {
-                        "expenseTags.$": category  // Substitui a categoria inteira
+                        "expenseCategories.$": category  // Substitui a categoria inteira
                     }
                 }
             );

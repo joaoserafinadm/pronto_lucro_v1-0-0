@@ -13,12 +13,12 @@ import SubCategoryAddModal from "./subCategoryAddModal"
 
 
 
-export default function IncomeCategoriesPage(props) {
+export default function ExpenseCategoriesPage(props) {
 
     const { token } = props
 
 
-    const [incomeCategories, setIncomeCategories] = useState([])
+    const [expenseCategories, setExpenseCategories] = useState([])
 
     const [categorySelected, setCategorySelected] = useState(null)
 
@@ -50,9 +50,9 @@ export default function IncomeCategoriesPage(props) {
     const dataFunction = async (user_id) => {
 
         await axios.get('/api/categories', {
-            params: { user_id, type: 'income' }
+            params: { user_id, type: 'expense' }
         }).then(res => {
-            setIncomeCategories(res.data.categories)
+            setExpenseCategories(res.data.categories)
             setLoadingPage(false)
             tippyFunction()
             setForceUpdate(forceUpdate + 1)
@@ -68,10 +68,11 @@ export default function IncomeCategoriesPage(props) {
     return (
         <>
 
-            <CategoryAddModal id='incomeCategoryAddModal' type='incomeCategories' token={token} dataFunction={() => dataFunction(token.sub)} />
-            <CategoriesOrderModal id="incomeCategoriesOrderModal" categories={incomeCategories} token={token} type='incomeCategories' dataFunction={() => dataFunction(token.sub)} />
-            <EditCategoryModal categorySelected={categorySelected} categories={incomeCategories} type='incomeCategories' token={token} dataFunction={() => dataFunction(token.sub)} id={`editIncomeCategoryModal`} />
-            <SubCategoryAddModal categorySelected={categorySelected} categories={incomeCategories} type='incomeCategories' token={token} dataFunction={() => dataFunction(token.sub)} id={`incomeSubCategoryAddModal`} />
+            <CategoryAddModal id='expenseCategoryAddModal' type='expenseCategories' token={token} dataFunction={() => dataFunction(token.sub)} />
+            <CategoriesOrderModal id="expenseCategoriesOrderModal" categories={expenseCategories} token={token} type='expenseCategories' dataFunction={() => dataFunction(token.sub)} />
+            <EditCategoryModal categorySelected={categorySelected} categories={expenseCategories} type='expenseCategories' token={token} dataFunction={() => dataFunction(token.sub)} id={`editExpenseCategoryModal`} />
+            <SubCategoryAddModal categorySelected={categorySelected} categories={expenseCategories} type='expenseCategories' token={token} dataFunction={() => dataFunction(token.sub)} id={`expenseSubCategoryAddModal`} />
+
 
             {loadingPage ?
                 <SpinnerLG />
@@ -80,24 +81,24 @@ export default function IncomeCategoriesPage(props) {
                     <div className="col-12 d-flex justify-content-end">
                         <button className="btn btn-c-outline-secondary  mx-1"
                             id="reorderCategoryBtn"
-                            data-bs-toggle="modal" data-bs-target="#incomeCategoriesOrderModal">
+                            data-bs-toggle="modal" data-bs-target="#expenseCategoriesOrderModal">
                             <FontAwesomeIcon icon={faShuffle} />
                         </button>
-                        <button className="btn btn-c-outline-success  mx-1"
+                        <button className="btn btn-c-outline-danger  mx-1"
                             data-bs-toggle="modal"
-                            data-bs-target="#incomeCategoryAddModal"
+                            data-bs-target="#expenseCategoryAddModal"
                             id="addCategoryBtn">
                             <FontAwesomeIcon icon={faPlus} />
                         </button>
                     </div>
 
-                    {incomeCategories.length === 0 ?
+                    {expenseCategories.length === 0 ?
                         <div className="col-12 d-flex justify-content-center my-5">
                             <span className="small">Nenhuma categoria encontrada</span>
                         </div>
                         :
                         <>
-                            {incomeCategories.map((elem, index) => (
+                            {expenseCategories.map((elem, index) => (
                                 <div className="col-12 fadeItem">
                                     <div className="card my-3 bg-white p-3" id={elem.id}>
                                         <div className="row d-flex">
@@ -111,7 +112,7 @@ export default function IncomeCategoriesPage(props) {
 
                                                 <div style={{ width: '40px' }}>
 
-                                                    <span className="optionsButton  text-c-secondary" data-bs-toggle="modal" data-bs-target={`#editIncomeCategoryModal`} onClick={() => setCategorySelected(elem)} >
+                                                    <span className="optionsButton  text-c-secondary" data-bs-toggle="modal" data-bs-target={`#editExpenseCategoryModal`} onClick={() => setCategorySelected(elem)} >
                                                         <FontAwesomeIcon icon={faGear} />
                                                     </span>
                                                 </div>
@@ -132,7 +133,7 @@ export default function IncomeCategoriesPage(props) {
                                         <hr />
                                         <div className="col-12 d-flex my-1 align-items-center mt-2">
                                             <span type="button" className="px-2 small bold cardAnimation" onClick={() => setCategorySelected(elem)}
-                                                data-bs-toggle="modal" data-bs-target={`#incomeSubCategoryAddModal`}
+                                                data-bs-toggle="modal" data-bs-target={`#expenseSubCategoryAddModal`}
                                                 style={{ border: `2px solid ${elem.color}`, borderRadius: '20px', color: elem.color }}>
                                                 + subcategoria
                                             </span>

@@ -60,11 +60,13 @@ export default authenticated(async (req, res) => {
             _id: new ObjectId().toString(),
             categoryName: categoryName,
             color: color,
+            active: true,
             // textColor: getTextColorBasedOnBackground(color), // Função opcional para definir a cor do texto com base no fundo
             // textColor: '#fff', // Função opcional para definir a cor do texto com base no fundo
             subCategories: subCategories.map(elem => ({
                 _id: new ObjectId().toString(),
                 name: elem.name,
+                active: true
             }))
         };
 
@@ -82,6 +84,37 @@ export default authenticated(async (req, res) => {
         }
 
 
+
+
+
+    } else if (req.method === "DELETE") {
+
+        const { user_id, type, category_id } = req.query
+
+        if (!user_id || !type || !category_id) {
+            res.status(400).json({ error: "Missing parameters on request body" })
+        } else {
+
+            const { db } = await connect();
+
+            const userExist = await db.collection('users').findOne({ _id: new ObjectId(user_id) });
+
+            if (!userExist) {
+                res.status(400).json({ error: "User doesn't exist." });
+            } else {
+
+                const response = await db.collection('users').updateOne(
+                    { _id: ObjectId(user_id) },
+                    { $pull: { [type]: { _id: category_id } } }
+                )
+
+                if (response.modifiedCount) {
+                    res.status(200).json({ message: "Categorie deleted" })
+                } else {
+                    res.status(400).json({ error: "Trouble in connect to database" })
+                }
+            }
+        }
 
 
 

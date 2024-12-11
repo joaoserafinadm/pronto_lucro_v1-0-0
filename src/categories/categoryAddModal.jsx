@@ -9,7 +9,7 @@ import { showModalBs } from "../../utils/modalControl"
 
 export default function CategoryAddModal(props) {
 
-    const { id, type, token, dataFunction} = props
+    const { id, type, token, dataFunction } = props
 
     const [categoryName, setCategoryName] = useState('')
     const [color, setColor] = useState('')
@@ -27,7 +27,8 @@ export default function CategoryAddModal(props) {
         e.preventDefault()
 
         const data = {
-            name: name
+            name: name,
+            active: true
         }
 
         setSubCategories([...subCategories, data])
@@ -142,7 +143,7 @@ export default function CategoryAddModal(props) {
                                                         </span>
                                                     )
                                                 })}
-                                                {type === 'expense' && expenseColors.map((elem, index) => {
+                                                {type === 'expenseCategories' && expenseColors.map((elem, index) => {
                                                     return (
                                                         <span type="button" onClick={() => setColor(elem)}
                                                             className={`cardAnimation d-flex justify-content-center align-items-center   m-1  small rounded-pill ${color === elem ? '  shadow' : ''} `}

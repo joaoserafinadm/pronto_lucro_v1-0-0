@@ -8,6 +8,7 @@ import axios from "axios";
 import navbarHide from "../utils/navbarHide";
 import Sections from "../src/components/Sections";
 import IncomeCategoriesPage from "../src/categories/incomeCategoriesPage";
+import ExpenseCategoriesPage from "../src/categories/expenseCategoriesPage";
 
 
 
@@ -47,7 +48,7 @@ export default function Categories() {
                                     <IncomeCategoriesPage token={token} />
                                 </div>
                                 <div className="carousel-item ">
-                                    <IncomeCategoriesPage token={token} />
+                                    <ExpenseCategoriesPage token={token} />
                                 </div>
                             </div>
 
