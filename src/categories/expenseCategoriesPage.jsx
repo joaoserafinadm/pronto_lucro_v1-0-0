@@ -33,13 +33,16 @@ export default function ExpenseCategoriesPage(props) {
     }, [])
 
     const tippyFunction = () => {
-        tippy('#addCategoryBtn', {
-            content: 'Adicionar categoria',
-            placement: 'bottom'
-        })
-        tippy('#reorderCategoryBtn', {
-            content: 'Ordenar categoria',
-            placement: 'bottom'
+        setTimeout(() => {
+
+            tippy('#expenseAddCategoryBtn', {
+                content: 'Adicionar categoria',
+                placement: 'bottom'
+            })
+            tippy('#expenseReorderCategoryBtn', {
+                content: 'Ordenar categoria',
+                placement: 'bottom'
+            })
         })
 
     }
@@ -80,14 +83,14 @@ export default function ExpenseCategoriesPage(props) {
                 <div className="row">
                     <div className="col-12 d-flex justify-content-end">
                         <button className="btn btn-c-outline-secondary  mx-1"
-                            id="reorderCategoryBtn"
+                            id="expenseReorderCategoryBtn"
                             data-bs-toggle="modal" data-bs-target="#expenseCategoriesOrderModal">
                             <FontAwesomeIcon icon={faShuffle} />
                         </button>
                         <button className="btn btn-c-outline-danger  mx-1"
                             data-bs-toggle="modal"
                             data-bs-target="#expenseCategoryAddModal"
-                            id="addCategoryBtn">
+                            id="expenseAddCategoryBtn">
                             <FontAwesomeIcon icon={faPlus} />
                         </button>
                     </div>
