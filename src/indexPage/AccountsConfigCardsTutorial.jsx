@@ -63,6 +63,7 @@ export default function AccountsConfigCardsTutorial(props) {
 
 
             </div>
+            <hr />
             <div className="col-12 my-3 d-flex justify-content-between fadeItem2s">
                 <span className="cardAnimation  " type="button" data-bs-target="#tutorialPages" data-bs-slide-to={2}>
                     <FontAwesomeIcon icon={faChevronLeft} className="me-1" /> Voltar

@@ -91,6 +91,7 @@ export default function TagConfig2Page(props) {
                     <input id="newSetorInput" type="text" className="form-control" onChange={(e) => setNewSetorName(e.target.value)} value={newSetorName} placeholder="Nome do setor" />
                 </div>
             )}
+            <hr className="mt-3"/>
             <div className="col-12 my-3 d-flex justify-content-between fadeItem2s">
                 <span className="cardAnimation  " type="button" data-bs-target="#tutorialPages" data-bs-slide-to={6}>
                     <FontAwesomeIcon icon={faChevronLeft} className="me-1" /> Voltar

@@ -14,7 +14,7 @@ export default function TagSelect(props) {
         <>
 
             <div className="modal-body">
-                {tags.map((elem, index) => (
+                {tags?.map((elem, index) => (
                     <>
                         <div className="row mb-2" >
                             <div className="col-12">

@@ -35,7 +35,8 @@ export default function SignUp(props) {
 
     //LOADING
     const [singUpLoading, setSignUpLoading] = useState(false);
-    const [googleLoading, setGoogleLoading] = useState(false)
+    const [loadingGoogle, setLoadingGoogle] = useState(false);
+
 
 
     const validate = (
@@ -315,34 +316,22 @@ export default function SignUp(props) {
                                     </div>
                                 </div>
                                 <div className="row">
-                                    {!googleLoading ?
-                                        <span className="card py-2 px-1 my-2 cardAnimation" type="button"  >
-                                            {/* <span className="card py-2 px-1 my-2 cardAnimation" type="button" onClick={() => { signIn('google'); setGoogleLoading(true) }}  > */}
-                                            <div className="row ">
-                                                <div className="col-12 d-flex justify-content-center">
-                                                    <div className="icon-start">
-                                                        <img
-                                                            src="/ICON-GOOGLE.png"
-                                                            alt=""
-                                                            className="socialIcon"
-                                                        />
-                                                    </div>
-                                                    <div>
-                                                        <span >Cadastre-se com o Google</span>
-                                                    </div>
+                                    <button className="btn btn-outline-secondary" disabled={loadingGoogle} onClick={() => { setLoadingGoogle(true); signIn('google') }}>
+                                        <div className="row ">
+                                            <div className="col-12 d-flex text-center justify-content-center align-items-center">
+                                                {/* <div className="icon-start"> */}
+                                                <img
+                                                    src="/ICON_GOOGLE.png"
+                                                    alt=""
+                                                    className="socialIcon me-2"
+                                                />
+                                                {/* </div> */}
+                                                <div>
+                                                    <span className="text-center" >Continuar com o Google</span>
                                                 </div>
                                             </div>
-                                        </span>
-                                        :
-                                        <span className="card py-2 px-1 my-2 cardAnimation" type="button" onClick={() => { signIn('google'); setGoogleLoading(true) }}  >
-                                            <div className="row ">
-                                                <div className="col-12 d-flex justify-content-center text-success py-1">
-                                                    <SpinnerSM />
-                                                </div>
-                                            </div>
-                                        </span>
-                                    }
-
+                                        </div>
+                                    </button>
                                 </div>
                             </form>
                         </div>

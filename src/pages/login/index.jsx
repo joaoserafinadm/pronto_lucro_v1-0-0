@@ -16,74 +16,7 @@ import { signIn } from 'next-auth/react'
 export default function Login() {
   const [section, setSection] = useState("signIn");
 
-  const session = useSession()
-
-
-
-  useEffect(() => {
-
-    console.log("session", session)
-
-    if (session.status === "authenticated") {
-      console.log('session', session)
-      handleSocialAuth(session.data.token)
-    }
-
-  }, [session.status])
-
-
-  const handleSocialAuth = async (token) => {
-
-    const data = {
-      name: token.name,
-      email: token.email,
-      image: token.picture
-    }
-
-
-    await axios.post(`${baseUrl()}/api/login/socialSignIn`, data)
-      .then(res => {
-        signOut()
-      }).catch(e => {
-        signOut()
-      })
-
-  }
-
-
-
-
-  if (session.status !== "unauthenticated") {
-
-    return (
-      <div className="d-flex align-items-center fadeItem" style={{ height: '100vh', width: '100vw' }}>
-        <div className="col-12 d-flex justify-content-center ">
-          <AkvoSpinner static />
-          <span className="text-secondary ms-2 pt-1"></span>
-
-        </div>
-      </div>
-    )
-  }
-  // if (session.status === "authenticated") {
-
-  //   console.log("session", session)
-
-  //   handleSocialAuth(session.data.token)
-  //   return (
-  //     <div className="d-flex align-items-center fadeItem" style={{ height: '100vh', width: '100vw' }}>
-  //       <div className="col-12 d-flex justify-content-center ">
-  //         <AkvoSpinner static />
-  //         <span className="text-secondary ms-2 pt-1"></span>
-
-  //       </div>
-  //     </div>
-  //   )
-  // }
-
-
-
-
+  
 
 
 
