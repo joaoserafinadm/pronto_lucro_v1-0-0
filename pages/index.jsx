@@ -45,7 +45,7 @@ export default function Home() {
                 setModalOpen(true)
                 showModalBs('tutorialModal')
             }
-            setBankAccounts(res.data.bankAccounts)
+            setBankAccounts(res.data.bankAccounts.filter(elem => elem.active))
 
         }).catch(e => {
             console.log(e)

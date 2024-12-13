@@ -65,11 +65,16 @@ export function maskInputMoney(number) {
 
 export function maskMoneyNumber(value) {
 
+	if (value) {
 
-	value = value?.replace(/\D/g, ''); // Remove all non-digit characters
 
-	value = (Number(value) / 100).toFixed(2)
-	return +value
+		value = value?.replace(/\D/g, ''); // Remove all non-digit characters
+
+		value = (Number(value) / 100).toFixed(2)
+		return +value
+	} else {
+		return 0;
+	}
 
 }
 

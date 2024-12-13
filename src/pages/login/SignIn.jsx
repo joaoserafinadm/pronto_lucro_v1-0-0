@@ -272,8 +272,8 @@ export default function signInPage(props) {
                                                         className="socialIcon me-2"
                                                     />
                                                     {/* </div> */}
-                                                    <div>
-                                                        <span className="text-center" >Continuar com o Google</span>
+                                                    <div className="text-center">
+                                                        Continuar com o Google
                                                     </div>
                                                     {loadingGoogle && (
                                                         <SpinnerSM className="ms-1" />

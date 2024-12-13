@@ -153,6 +153,7 @@ export default authenticated(async (req, res) => {
                     creditNetwork,
                     diaFechamento,
                     diaLancamento,
+                    active: true,
                     date: dateObject(new Date())
                 }
 
@@ -175,6 +176,93 @@ export default authenticated(async (req, res) => {
                 }
 
 
+            }
+        }
+    } else if (req.method === "PATCH") {
+
+        const { user_id,
+            bankAccount_id,
+            bankSelected,
+            color,
+            initialValue,
+            description,
+            valueSum,
+            creditCard,
+            creditLimit,
+            creditNetwork,
+            diaFechamento,
+            diaLancamento } = req.body
+
+        if (!user_id || !bankSelected || !description) {
+
+            res.status(400).json({ error: "Missing parameters on request body" })
+        } else {
+
+            const { db } = await connect();
+
+            const userExist = await db.collection('users').findOne({ _id: new ObjectId(user_id) });
+
+            if (!userExist) {
+                res.status(400).json({ error: "User doesn't exist." });
+            } else {
+
+                const result = await db.collection('users').updateOne(
+                    { _id: new ObjectId(user_id), "bankAccounts._id": new ObjectId(bankAccount_id) },
+                    {
+                        $set: {
+                            "bankAccounts.$.bankSelected": bankSelected,
+                            "bankAccounts.$.color": color,
+                            "bankAccounts.$.initialValue": maskMoneyNumber(initialValue),
+                            "bankAccounts.$.description": description,
+                            "bankAccounts.$.valueSum": valueSum,
+                            "bankAccounts.$.creditCard": creditCard,
+                            "bankAccounts.$.creditLimit": maskMoneyNumber(creditLimit),
+                            "bankAccounts.$.creditNetwork": creditNetwork,
+                            "bankAccounts.$.diaFechamento": diaFechamento,
+                            "bankAccounts.$.diaLancamento": diaLancamento
+                        }
+                    }
+                );
+
+                if (result.modifiedCount > 0) {
+                    res.status(200).json({ success: 'Account updated' })
+                } else {
+                    res.status(400).json({ error: 'An error occurred' })
+                }
+            }
+        }
+    } else if (req.method === "DELETE") {
+
+        const { user_id,
+            bankAccount_id } = req.body
+
+        if (!user_id || !bankAccount_id) {
+
+            res.status(400).json({ error: "Missing parameters on request body" })
+        } else {
+
+            const { db } = await connect();
+
+            const userExist = await db.collection('users').findOne({ _id: new ObjectId(user_id) });
+
+            if (!userExist) {
+                res.status(400).json({ error: "User doesn't exist." });
+            } else {
+
+                const result = await db.collection('users').updateOne(
+                    { _id: new ObjectId(user_id), "bankAccounts._id": new ObjectId(bankAccount_id) },
+                    {
+                        $set: {
+                            "bankAccounts.$.active": false,
+                        }
+                    }
+                );
+
+                if (result.modifiedCount > 0) {
+                    res.status(200).json({ success: 'Account deleted' })
+                } else {
+                    res.status(400).json({ error: 'An error occurred' })
+                }
             }
         }
     }

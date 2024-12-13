@@ -9,7 +9,7 @@ import NewAccountCard from "../bankAccounts/NewAccountCard";
 
 export default function AccountsConfigCardsTutorial(props) {
 
-    const { bankAccounts } = props
+    const { bankAccounts , setBankAccountSelected} = props
 
 
 
@@ -34,7 +34,7 @@ export default function AccountsConfigCardsTutorial(props) {
                                     description={elem.description}
                                     creditNetwork={elem.creditNetwork} />
 
-                                <button className="btn btn-outline-secondary btn-sm ms-1">
+                                <button className="btn btn-outline-secondary btn-sm ms-1" data-bs-target="#tutorialPages" data-bs-slide-to={10} onClick={() => setBankAccountSelected(elem)}>
                                     <FontAwesomeIcon icon={faEdit} />
                                 </button>
                             </div>

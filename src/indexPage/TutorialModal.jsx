@@ -15,6 +15,7 @@ import TagConfig2Page from "./TagConfig2Page";
 import TagConfig3Page from "./TagConfig3Page";
 import { getTagsBySector } from "../tags/tags";
 import TagConfig4Page from "./TagConfig4Page";
+import BankEditPage from "./bankEditPage";
 
 
 export default function TutorialModal(props) {
@@ -38,6 +39,8 @@ export default function TutorialModal(props) {
     const [newSetorName, setNewSetorName] = useState('')
     const [incomeTags, setIncomeTags] = useState([])
     const [expenseTags, setExpenseTags] = useState([])
+
+    const [bankAccountSelected, setBankAccountSelected] = useState(null)
 
 
     const [institutions, setInstitutions] = useState([])
@@ -159,7 +162,7 @@ export default function TutorialModal(props) {
                                     <AccountsConfigTutorial />
                                 </div>
                                 <div className="carousel-item"> {/*  3 slide */}
-                                    <AccountsConfigCardsTutorial bankAccounts={bankAccounts} />
+                                    <AccountsConfigCardsTutorial bankAccounts={bankAccounts} setBankAccountSelected={setBankAccountSelected} />
                                 </div>
                                 <div className="carousel-item"> {/*  4 slide */}
                                     <BankSelectPage bankAccounts={bankAccounts} setBankSelected={setBankSelected} institutions={institutions} />
@@ -203,6 +206,12 @@ export default function TutorialModal(props) {
                                 </div>
                                 <div className="carousel-item"> {/*  9 slide */}
                                     <TagConfig4Page />
+                                </div>
+                                <div className="carousel-item"> {/*  10 slide */}
+                                    <BankEditPage bankAccountSelected={bankAccountSelected}
+                                        setBankAccountSelected={setBankAccountSelected}
+                                        creditCardList={creditCardList} dataFunction={dataFunction}
+                                        bankAccountsLength={bankAccounts.length} token={token}/>
                                 </div>
                             </div>
                         </div>

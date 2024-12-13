@@ -8,7 +8,7 @@ export default function baseUrl() {
 
     //Produçã 
     const baseUrl = 'https://app.prontolucro.com.br'
-    
+
 
     return baseUrl
 }
