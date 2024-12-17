@@ -97,6 +97,8 @@ export default function EditProfile() {
         }).then(res => {
             setLoadingPage(false)
 
+            const companyData = res.data.companyData
+
             setFirstName(res.data.firstName)
             setLastName(res.data.lastName)
             setCpf(res.data.cpf)
@@ -104,19 +106,19 @@ export default function EditProfile() {
             setEstado(res.data.estado)
             setEmail(res.data.email)
             setCelular(res.data.celular)
-            setProfileImageUrl(res.data.profileImageUrl.url ? res.data.profileImageUrl.url : res.data.profileImageUrl)
-            setCompanyName(res.data.companyName)
-            setCompanyLogo(res.data.companyLogo.url ? res.data.companyLogo.url : res.data.companyLogo)
-            setCnpjPrincipal(res.data.cnpjPrincipal)
-            setCompanyCep(res.data.companyCep)
-            setCompanyBairro(res.data.companyBairro)
-            setCompanyLogradouro(res.data.companyLogradouro)
-            setCompanyNumero(res.data.companyNumero)
-            setCompanyCidade(res.data.companyCidade)
-            setCompanyEstado(res.data.companyEstado)
-            setSetorPrimario(res.data.setorPrimario)
-            setSetorSecundario(res.data.setorSecundario)
-            setOutroSetorSec(res.data.outroSetorSec)
+            setProfileImageUrl(res.data?.profileImageUrl?.url ? res.data?.profileImageUrl?.url : res.data.profileImageUrl)
+            setCompanyName(companyData?.companyName)
+            setCompanyLogo(companyData?.companyLogo?.url ? companyData?.companyLogo?.url : companyData?.companyLogo)
+            setCnpjPrincipal(companyData?.cnpjPrincipal)
+            setCompanyCep(companyData?.cep)
+            setCompanyBairro(companyData?.bairro)
+            setCompanyLogradouro(companyData?.logradouro)
+            setCompanyNumero(companyData?.numero)
+            setCompanyCidade(companyData?.cidade)
+            setCompanyEstado(companyData?.estado)
+            setSetorPrimario(companyData?.setorPrimario)
+            setSetorSecundario(companyData?.setorSecundario)
+            setOutroSetorSec(companyData?.outroSetorSec)
 
         })
     }
@@ -194,6 +196,8 @@ export default function EditProfile() {
 
                     dispatch(addAlert(alertsArray, [alert]))
 
+                    router.reload()
+
                     setLoadingSave(false)
 
                 }).catch(e => {
@@ -214,21 +218,26 @@ export default function EditProfile() {
 
                 const newProfileImage = logoImageUrlReview ? await createImageUrl([blobFile], "PRONTOLUCRO_LOGOS") : ''
 
-                await axios.patch(`${baseUrl()}/api/editProfile/companyUpdate`, {
-                    token: token,
-                    user_id: token.sub,
+                const companyData = {
                     companyName,
                     companyLogo: newProfileImage ? newProfileImage[0] : companyLogo,
                     cnpjPrincipal,
-                    companyCep,
-                    companyBairro,
-                    companyLogradouro,
-                    companyNumero,
-                    companyCidade,
-                    companyEstado,
+                    cep: companyCep,
+                    bairro: companyBairro,
+                    logradouro: companyLogradouro,
+                    numero: companyNumero,
+                    cidade: companyCidade,
+                    estado: companyEstado,
                     setorPrimario,
                     setorSecundario,
                     outroSetorSec
+                }
+
+
+                await axios.patch(`${baseUrl()}/api/editProfile/companyUpdate`, {
+                    token: token,
+                    user_id: token.sub,
+                    companyData
                 }).then(res => {
                     localStorage.setItem('auth', (Cookies.get('auth')))
 
@@ -238,6 +247,8 @@ export default function EditProfile() {
                     }
 
                     dispatch(addAlert(alertsArray, [alert]))
+                    router.reload()
+
 
                     setLoadingSave(false)
 

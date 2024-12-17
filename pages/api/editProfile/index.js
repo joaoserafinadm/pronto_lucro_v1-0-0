@@ -41,18 +41,7 @@ export default authenticated(async (req, res) => {
                         email: 1,
                         celular: 1,
                         profileImageUrl: 1,
-                        companyName: 1,
-                        companyLogo: 1,
-                        cnpjPrincipal: 1,
-                        companyCep: 1,
-                        companyBairro: 1,
-                        companyLogradouro: 1,
-                        companyNumero: 1,
-                        companyCidade: 1,
-                        companyEstado: 1,
-                        setorPrimario: 1,
-                        setorSecundario: 1,
-                        outroSetorSec: 1
+                        companyData: 1
                     },
                 });
 
@@ -75,7 +64,7 @@ export default authenticated(async (req, res) => {
                 ...token,
                 firstName: profileInfos.firstName,
                 lastName: profileInfos.lastName,
-                profileImageUrl: profileInfos.profileImageUrl.url,
+                profileImageUrl: profileInfos.profileImageUrl.url ? profileInfos.profileImageUrl.url : profileInfos.profileImageUrl,
             };
 
             const jwt = sign(clains, process.env.JWT_SECRET, {});

@@ -22,7 +22,7 @@ export default authenticated(async (req, res) => {
 
         if (req.method === "PATCH") {
 
-            const { token, user_id, ...companyData } = req.body
+            const { token, user_id, companyData } = req.body
 
 
             if (!token || !user_id || !companyData) {
@@ -40,9 +40,14 @@ export default authenticated(async (req, res) => {
 
                 } else {
 
+
                     const result = await db.collection('users').updateOne(
                         { _id: new ObjectId(user_id) },
-                        { $set: companyData }
+                        {
+                            $set: {
+                                "companyData": companyData
+                            }
+                        }
                     );
 
                     if (result.matchedCount) {

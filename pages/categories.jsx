@@ -9,6 +9,7 @@ import navbarHide from "../utils/navbarHide";
 import Sections from "../src/components/Sections";
 import IncomeCategoriesPage from "../src/categories/incomeCategoriesPage";
 import ExpenseCategoriesPage from "../src/categories/expenseCategoriesPage";
+import TagsPage from "../src/categories/tagsPage";
 
 
 
@@ -49,6 +50,9 @@ export default function Categories() {
                                 </div>
                                 <div className="carousel-item ">
                                     <ExpenseCategoriesPage token={token} />
+                                </div>
+                                <div className="carousel-item ">
+                                    <TagsPage />
                                 </div>
                             </div>
 

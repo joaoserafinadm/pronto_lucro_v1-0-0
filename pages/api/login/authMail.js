@@ -36,6 +36,9 @@ export default async (req, res) => {
                 const saltCode = await bcrypt.genSalt(10)
                 const secureCode = await bcrypt.hash(code, saltCode)
 
+                console.log(secureCode)
+
+
                 const data = await resend.emails.send({
                     from: 'Autenticação <autenticacao@prontolucro.com.br>',
                     to: [email],
@@ -43,9 +46,14 @@ export default async (req, res) => {
                     react: AuthEmail({ firstName: firstName, code }),
                 });
 
-                console.log(data)
+                if (data) {
 
-                res.status(200).json({ secureCode })
+
+                    res.status(200).json({ secureCode })
+                } else {
+
+                    res.status(400).json({ error: "Server Error" })
+                }
 
 
             }

@@ -177,7 +177,7 @@ export default function MyCompanyPage(props) {
             </div>
             <div className="row mt-4 d-flex ">
                 <label for="telefoneItem" className="form-label fw-bold">Setor*</label>
-                <small className="text-secondary">Escolha o(s) setor(es) da sua empresa para que a nossa IA possa te dar análises mais precisas.</small>
+                <small className="text-secondary">Escolha o(s) setor(es) da sua empresa para que a nossa IA possa te fornecer análises mais precisas.</small>
                 <div className=" col-12 col-xl-6 mt-3">
                     <Setores
                         setorPrimario={setorPrimario}

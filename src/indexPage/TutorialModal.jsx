@@ -16,6 +16,7 @@ import TagConfig3Page from "./TagConfig3Page";
 import { getTagsBySector } from "../tags/tags";
 import TagConfig4Page from "./TagConfig4Page";
 import BankEditPage from "./bankEditPage";
+import TagConfig3Page_02 from "./TagConfig3Page_02";
 
 
 export default function TutorialModal(props) {
@@ -52,12 +53,7 @@ export default function TutorialModal(props) {
         childDataFunction()
     }, [])
 
-    useEffect(() => {
-        if (setorSelected) {
-            setIncomeTags(getTagsBySector(setorSelected).incomeTags)
-            setExpenseTags(getTagsBySector(setorSelected).expenseTags)
-        }
-    }, [setorSelected])
+
 
 
     const childDataFunction = async () => {
@@ -202,7 +198,7 @@ export default function TutorialModal(props) {
                                         newSetorName={newSetorName} setNewSetorName={setNewSetorName} />
                                 </div>
                                 <div className="carousel-item"> {/*  8 slide */}
-                                    <TagConfig3Page newSetorName={newSetorName} setorSelected={setorSelected} incomeTags={incomeTags} expenseTags={expenseTags} setIncomeTags={setIncomeTags} setExpenseTags={setExpenseTags} />
+                                    <TagConfig3Page_02 newSetorName={newSetorName} setorSelected={setorSelected} />
                                 </div>
                                 <div className="carousel-item"> {/*  9 slide */}
                                     <TagConfig4Page />
@@ -211,7 +207,7 @@ export default function TutorialModal(props) {
                                     <BankEditPage bankAccountSelected={bankAccountSelected}
                                         setBankAccountSelected={setBankAccountSelected}
                                         creditCardList={creditCardList} dataFunction={dataFunction}
-                                        bankAccountsLength={bankAccounts.length} token={token}/>
+                                        bankAccountsLength={bankAccounts.length} token={token} />
                                 </div>
                             </div>
                         </div>
