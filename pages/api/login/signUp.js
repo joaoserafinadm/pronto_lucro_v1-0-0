@@ -4,8 +4,6 @@ import { ObjectId } from 'bson'
 import baseUrl from '../../../utils/baseUrl'
 import { dateObject } from '../../../utils/handleDate'
 import { exempleTags } from '../../../src/tags/tags'
-import notifications from './notifications'
-import bankAccounts from './bankAccounts'
 
 export default async function (req, res) {
 
@@ -37,6 +35,66 @@ export default async function (req, res) {
 
                 let date = new Date()
 
+                const notifications =
+                    [
+                        {
+                            _id: ObjectId(),
+                            dateAdded: new Date(),
+                            subject: 'star',
+                            text: "Bem vindo à Pronto Lucro! Clique aqui para conhecer a plataforma!",
+                            link: `https://app.prontolucro.com.br/tutorials`,
+                            button: 'Tutoriais',
+                            imageUrl: 'https://res.cloudinary.com/joaoserafinadm/image/upload/v1693963692/PUBLIC/TEMPLATE_IMG_shcaor.png',
+                            user_id: '',
+                            checked: false
+                        },
+                        {
+                            _id: ObjectId(),
+                            dateAdded: new Date(),
+                            subject: 'star',
+                            text: "Configure o seu perfil.",
+                            link: `https://app.prontolucro.com.br/profileEdit`,
+                            imageUrl: 'https://res.cloudinary.com/joaoserafinadm/image/upload/v1692760589/PUBLIC/user_template_ocrbrg.png',
+                            user_id: '',
+                            checked: false
+                        }
+                    ]
+
+
+                const bankAccounts = [
+                    {
+                        "_id": new ObjectId(),
+                        "bankSelected": {
+                            "id": "1",
+                            "name": "Carteira",
+                            "legalName": "Carteira",
+                            "logoUrl": "https://res.cloudinary.com/joaoserafinadm/image/upload/v1723513994/PRONTO%20LUCRO/PUBLIC/rvfp6bsncja0my1mkynp.png",
+                            "keyWord": "intermedium",
+                            "active": true,
+                            "dataCriacao": "2020-05-20T16:29:20.473",
+                            "dataModificacao": "2020-05-20T16:29:20.473",
+                            "countries": [
+                                "BR"
+                            ],
+                            "institutionType": [
+                                "checking_account",
+                                "savings_account"
+                            ],
+                            "ranking": 1
+                        },
+                        "color": "#333333",
+                        "initialValue": 0,
+                        "description": "Carteira",
+                        "valueSum": true,
+                        "creditCard": false,
+                        "creditLimit": 0,
+                        "creditNetwork": null,
+                        "diaFechamento": 1,
+                        "diaLancamento": 5,
+                        "active": true,
+                        "date": dateObject(new Date())
+                    }
+                ]
 
 
 
@@ -68,11 +126,11 @@ export default async function (req, res) {
                     accessCount: 0,
                     active: true,
                     deleted: false,
-                    notifications: notifications(),
+                    notifications: notifications,
                     history: [],
                     dre: [],
                     dfc: [],
-                    bankAccounts: bankAccounts(),
+                    bankAccounts: bankAccounts,
                     initialTutorial: true
                 })
 
