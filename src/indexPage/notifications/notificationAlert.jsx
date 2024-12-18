@@ -31,7 +31,7 @@ export default function NotificationAlert(props) {
                 <span className="small fw-bold"> {elem.title} </span> <br />
                 <span> {elem.message} </span> <br />
                 <button className="btn btn-outline-secondary btn-sm mt-1" onClick={() => handleRedirect(elem)}>{elem.button}</button>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" onClick={() => handleClose()}></button>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" onClick={() => handleClose(elem)}></button>
             </div >
         )
     }
