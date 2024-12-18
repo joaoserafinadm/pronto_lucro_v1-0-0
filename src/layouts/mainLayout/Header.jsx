@@ -18,12 +18,12 @@ import { akvoToolInitialValues } from "../../../store/AkvoTools/AkvoTools.action
 
 export default function Header(props) {
 
+    const token = jwt.decode(Cookies.get('auth'))
     const dropdownRef = useRef(null);
 
     const dispatch = useDispatch()
 
     const router = useRouter();
-    const token = jwt.decode(Cookies.get('auth'))
     const toggleStatus = useSelector(state => state.toggleStatus)
 
     const [notifications, setNotifications] = useState([])

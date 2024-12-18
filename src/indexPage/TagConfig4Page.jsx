@@ -31,7 +31,7 @@ export default function TagConfig4Page(props) {
                 <span className=" fs-5 my-1"><b>Parabéns!</b> A configuração inicial está completa.</span>
             </div>
             <div className="col-12 fadeItem1s d-flex flex-column">
-                <span className=" fs-5 my-1">Agora você está pronto para começar a usar o <b>Pronto Lucro</b> e simplificar a gestão financeira da sua empresa.</span>
+                <span className=" fs-5 my-1">Agora você está pronto para começar a usar a plataforma <b>Pronto Lucro</b> e simplificar a gestão financeira da sua empresa.</span>
             </div>
             <div className="col-12 fadeItem1s d-flex flex-column">
                 <span className=" fs-5 my-1">Se precisar de ajuda, estamos sempre por aqui. <b>Vamos lá</b>?</span>

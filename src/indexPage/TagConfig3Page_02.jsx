@@ -1,4 +1,4 @@
-import { faBank, faChevronLeft, faChevronRight, faExclamationCircle, faTag, faWallet, faWarning } from "@fortawesome/free-solid-svg-icons";
+import { faBank, faChevronLeft, faChevronRight, faCircle, faCircleDot, faExclamationCircle, faTag, faWallet, faWarning } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import Cookie from 'js-cookie'
@@ -10,6 +10,7 @@ import { categories_geral } from "../categories/categories_geral";
 import { categories_industria } from "../categories/categories_industria";
 import { categories_servicos } from "../categories/categories_servicos";
 import { set } from "lodash";
+import CategoryIcon, { SubCategoryIcon } from "../categories/categoryIcon";
 
 
 
@@ -115,12 +116,14 @@ export default function TagConfig3Page_02(props) {
                             {incomeCategories?.map((elem, index) => (
                                 <div key={index} className="row my-2">
                                     <div className="col-12 d-flex my-1 align-items-center">
-                                        <div style={{ backgroundColor: elem.color, height: "15px", width: "15px" }} className="rounded-circle me-2"></div>
+                                        <CategoryIcon color={elem.color} />
+                                        {/* <div style={{ backgroundColor: elem.color, height: "15px", width: "15px" }} className="rounded-circle me-2"></div> */}
                                         <span className="bold">{elem.categoryName}</span>
                                     </div>
                                     {elem.subCategories?.map((elem1, index) => (
                                         <div className="col-12 d-flex my-1 align-items-center">
-                                            <div style={{ height: "10px", width: "10px", border: `2px solid ${elem.color}` }} className="rounded-circle ms-2 me-2"></div>
+                                            <SubCategoryIcon color={elem.color} />
+                                            {/* <div style={{ height: "10px", width: "10px", border: `2px solid ${elem.color}` }} className="rounded-circle ms-2 me-2"></div> */}
                                             <span>{elem1.name}</span>
                                         </div>
                                     ))}
@@ -143,12 +146,14 @@ export default function TagConfig3Page_02(props) {
                             {expenseCategories?.map((elem, index) => (
                                 <div key={index} className="row my-2">
                                     <div className="col-12 d-flex my-1 align-items-center">
-                                        <div style={{ backgroundColor: elem.color, height: "15px", width: "15px" }} className="rounded-circle me-2"></div>
+                                        <CategoryIcon color={elem.color} />
+                                        {/* <div style={{ backgroundColor: elem.color, height: "15px", width: "15px" }} className="rounded-circle me-2"></div> */}
                                         <span className="bold">{elem.categoryName}</span>
                                     </div>
                                     {elem.subCategories?.map((elem1, index) => (
                                         <div className="col-12 d-flex my-1 align-items-center">
-                                            <div style={{ height: "10px", width: "10px", border: `2px solid ${elem.color}` }} className="rounded-circle ms-2 me-2"></div>
+                                            <SubCategoryIcon color={elem.color} />
+                                            {/* <div style={{ height: "10px", width: "10px", border: `2px solid ${elem.color}` }} className="rounded-circle ms-2 me-2"></div> */}
                                             <span className="">{elem1.name}</span>
                                         </div>
                                     ))}

@@ -101,6 +101,7 @@
     "scss": "^0.2.4",
     "styled-components": "^6.0.7",
     "swiper": "^9.4.1",
+    "swr": "^2.2.5",
     "tippy.js": "^6.3.7"
   },
   "devDependencies": {

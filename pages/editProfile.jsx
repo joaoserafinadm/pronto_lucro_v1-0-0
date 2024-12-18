@@ -131,31 +131,36 @@ export default function EditProfile() {
 
         removeInputError()
 
-        if (!firstName || !lastName || !celular || !cpf) {
-            if (!firstName) document.getElementById("firstNameItem").classList.add('inputError')
-            if (!lastName) document.getElementById("lastNameItem").classList.add('inputError')
-            if (!celular) document.getElementById("celularItem").classList.add('inputError')
-            if (!cpf) document.getElementById("cpfItem").classList.add('inputError')
-            scrollTo('pageTop')
-            return false
-        }
-        else return true
+        // if (!firstName || !lastName || !celular || !cpf) {
+        //     if (!firstName) document.getElementById("firstNameItem").classList.add('inputError')
+        //     if (!lastName) document.getElementById("lastNameItem").classList.add('inputError')
+        //     if (!celular) document.getElementById("celularItem").classList.add('inputError')
+        //     if (!cpf) document.getElementById("cpfItem").classList.add('inputError')
+        //     scrollTo('pageTop')
+        //     return false
+        // }
+        // else return true
+
+        return true
     }
 
     const companyValidate = () => {
 
-        removeInputError()
+        // removeInputError()
 
-        if (!firstName || !lastName || !celular || !cpf) {
-            if (!firstName) document.getElementById("firstNameItem").classList.add('inputError')
-            if (!lastName) document.getElementById("lastNameItem").classList.add('inputError')
-            if (!celular) document.getElementById("celularItem").classList.add('inputError')
-            if (!cpf) document.getElementById("cpfItem").classList.add('inputError')
-            scrollTo('pageTop')
-            return false
-        }
+        // if (!firstName || !lastName || !celular || !cpf) {
+        //     if (!firstName) document.getElementById("firstNameItem").classList.add('inputError')
+        //     if (!lastName) document.getElementById("lastNameItem").classList.add('inputError')
+        //     if (!celular) document.getElementById("celularItem").classList.add('inputError')
+        //     if (!cpf) document.getElementById("cpfItem").classList.add('inputError')
+        //     scrollTo('pageTop')
+        //     return false
+        // }
 
-        else return true
+        // else return true
+
+
+        return true
     }
 
     const handleSave = async (company_id) => {

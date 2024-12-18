@@ -17,6 +17,7 @@ import EntriesHistoricModal from '../src/indexPage/entriesHistoricModal.jsx'
 import axios from 'axios'
 import { showModalBs } from '../utils/modalControl.js'
 import TutorialModal from '../src/indexPage/TutorialModal.jsx'
+import NotificationsCard from '../src/indexPage/notifications/notificationsCard.jsx'
 
 
 
@@ -56,12 +57,21 @@ export default function Home() {
 
         <div className='fadeItem1s'>
 
-            <TutorialModal bankAccounts={bankAccounts} dataFunction={() => dataFunction(token.sub)} />
+            <TutorialModal bankAccounts={bankAccounts} dataFunction={() => dataFunction(token.sub)}  />
 
             <EntriesHistoricModal />
             {/* <Title title={`Olá, ${token.firstName}!`} subtitle={'Qual a sua meta de lucro para hoje?'} /> */}
 
-            <div className="pagesContent-lg">
+            <div className=" pagesContent-lg shadow">
+
+
+
+                <NotificationsCard token={token} />
+
+
+
+
+
                 {/* <div className="row d-flex" >
                     <div className="col">
                         <SaldoView valueView={valueView} setValueView={(value) => setValueView(value)} />
