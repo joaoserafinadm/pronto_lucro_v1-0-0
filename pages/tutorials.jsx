@@ -27,7 +27,7 @@ export default function Tutorials() {
             <p className="fs-3 fw-bold text-secondary">Esta ferramenta não está disponível no plano atual!</p>
             <p className="text-secondary">
                 Acesse <i>"Seus produtos"</i> na página {isMobileDevice ? <br /> : ''}
-                <Link href="/accountSetup"><span className="text-success text-decoration-underline">Configuração da Conta</span></Link> para verificar
+                <Link href="/accountSetup"><span className="text-primary text-decoration-underline">Configuração da Conta</span></Link> para verificar
                 {isMobileDevice ? <br /> : ''} as opções disponíveis!
             </p>
         </div>
@@ -49,7 +49,7 @@ export default function Tutorials() {
                         <Sections
                             section={section} idTarget="tutorialsPages"
                             setSection={value => setSection(value)}
-                            sections={["Calculadora GEE", "Indicadores ESG"]} />
+                            sections={["Configuração da Conta", "Categorias", "Transações", "Resultados", "Precificação"]} />
                     </div>
 
                     <div className="carousel-inner">
@@ -57,6 +57,30 @@ export default function Tutorials() {
                             {
                                 token?.tools?.geeCalculator ?
                                     <GeeCalculatorPage enablePlayVideo={section === 'Calculadora GEE' && true} />
+                                    :
+                                    unacessibleToolsMessage
+                            }
+                        </div>
+                        <div className="carousel-item">
+                            {
+                                token?.tools?.esgIndicators ?
+                                    <CorporateSustainabilityPage enablePlayVideo={section === 'Sustentabilidade Corporativa' && true} />
+                                    :
+                                    unacessibleToolsMessage
+                            }
+                        </div>
+                        <div className="carousel-item">
+                            {
+                                token?.tools?.esgIndicators ?
+                                    <CorporateSustainabilityPage enablePlayVideo={section === 'Sustentabilidade Corporativa' && true} />
+                                    :
+                                    unacessibleToolsMessage
+                            }
+                        </div>
+                        <div className="carousel-item">
+                            {
+                                token?.tools?.esgIndicators ?
+                                    <CorporateSustainabilityPage enablePlayVideo={section === 'Sustentabilidade Corporativa' && true} />
                                     :
                                     unacessibleToolsMessage
                             }

@@ -115,7 +115,8 @@ export default async function (req, res) {
                     userStatus: 'admGlobal',
                     profileImageUrl: 'https://res.cloudinary.com/joaoserafinadm/image/upload/v1713399957/PRONTO%20LUCRO/PUBLIC/sl5olrvacnox9u1c1z39.png',
                     password: securePassword,
-                    permissions: {
+                    permissions: {},
+                    tools: {
                         dfc: true,
                         dre: false
                     },

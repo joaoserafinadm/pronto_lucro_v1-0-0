@@ -1,24 +1,24 @@
 .alertsPosition {
-    position: fixed;
-    right: 0;
-    top: calc(var(--header-height) + 10px);
-    width: calc(100vw - var(--aside-width));
-    // height: 100vh;
-    padding: 10px 10px;
+  position: fixed;
+  right: 0px;
+  top: calc(var(--header-height) + 10px);
+  width: calc(100vw - var(--aside-width) - 10px);
+  // height: 100vh;
+  padding: 10px 10px;
   transition: ease-in-out .3s;
   z-index: 10000000001 !important;
 
 }
 
 @media (max-width: 850px) {
-    .alertsPosition {
-        position: fixed;
-        top: calc(var(--header-height) + 10px);
-        width: 100vw;
-        // height: 100vh;
-  transition: ease-in-out .3s;
+  .alertsPosition {
+    position: fixed;
+    top: calc(var(--header-height) + 10px);
+    width: 100vw;
+    // height: 100vh;
+    transition: ease-in-out .3s;
 
-    }
+  }
 
 
 }

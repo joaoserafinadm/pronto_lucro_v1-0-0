@@ -219,7 +219,7 @@ export default function Nav(props) {
                                         </Accordion.Collapse>
                                     </li>
 
-                                    <li>
+                                    {/* <li>
                                         <ContextAwareToggle eventKey="91">
                                             <div className="d-flex">
                                                 <div className="col-1 text-center me-3">
@@ -241,9 +241,19 @@ export default function Nav(props) {
                                                 </li>
                                             </ul>
                                         </Accordion.Collapse>
+                                    </li> */}
+
+
+                                    <li>
+                                        <ContextAwareToggle eventKey="90" collapse="InicioItem">
+                                            <div className="d-flex justify-content-start " type='button' onClick={() => router.push("/tutorials")}>
+                                                <div className="col-1 text-center me-3">
+                                                    <FontAwesomeIcon icon={faBookOpen} className="me-2 icon" />
+                                                </div>
+                                                <div className="col-9 bold">Tutoriais</div>
+                                            </div>
+                                        </ContextAwareToggle>
                                     </li>
-
-
                                     <li>
                                         <ContextAwareToggle eventKey="101" collapse="InicioItem">
                                             <div className="d-flex justify-content-start " type='button' onClick={() => router.push("/sac")}>

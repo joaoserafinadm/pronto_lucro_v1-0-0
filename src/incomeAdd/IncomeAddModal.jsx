@@ -27,6 +27,11 @@ import { useDispatch } from "react-redux";
 import { newData } from "../../store/NewData/NewData.action";
 import BankAccountsModal from "./BankAccountsModal";
 import TagSelectedComponent from "./TagSelectedComponent";
+import CurrencySelect from "./currencySelect";
+import currencies from "../../utils/currencies.json"
+import DescriptionInput from "./descriptionInput";
+import CategorySelectModal from "./categorySelectModal";
+import CategorySelectedComponent from "./categorySelectedComponent";
 
 
 
@@ -38,6 +43,7 @@ export default function IncomeAddModal(props) {
     const router = useRouter()
 
     const [value, setValue] = useState('');
+    const [currencyId, setCurrencyId] = useState(1);
     const [paymentMethod, setPaymentMethod] = useState(null);
     const [paymentDate, setPaymentDate] = useState(dateObject(new Date()));
     const [competenceMonth, setCompetenceMonth] = useState({
@@ -46,13 +52,13 @@ export default function IncomeAddModal(props) {
     })
     const [creditConfig, setCreditConfig] = useState('')
     const [description, setDescription] = useState('');
-    const [tagSelected, setTagSelected] = useState(null);
+    const [subCategorySelected, setSubCategorySelected] = useState(null);
     const [files, setFiles] = useState(null)
     const [bankAccounts, setBankAccounts] = useState([])
     const [accountSelected, setAccountSelected] = useState(null)
 
 
-    const [tags, setTags] = useState([])
+    const [categories, setCategories] = useState([])
     const [loadingSave, setLoadingSave] = useState(false)
 
     const [valueError, setValueError] = useState('')
@@ -70,7 +76,7 @@ export default function IncomeAddModal(props) {
                 user_id
             }
         }).then(res => {
-            setTags(res.data.incomeTags)
+            setCategories(res.data.incomeCategories)
             setBankAccounts(res.data.bankAccounts)
         }).catch(e => {
             console.log(e)
@@ -142,7 +148,7 @@ export default function IncomeAddModal(props) {
                     paymentMethod,
                     competenceMonth,
                     description,
-                    tag: tagSelected ? tagSelected : '',
+                    tag: subCategorySelected ? subCategorySelected : '',
                     account_id: accountSelected ? accountSelected._id : '',
                     files: attachment,
                     creditConfig
@@ -197,13 +203,16 @@ export default function IncomeAddModal(props) {
         })
         setCreditConfig('')
         setDescription('')
-        setTagSelected(null)
+        setSubCategorySelected(null)
         setFiles(null)
         setValueError('')
         removeInputError()
 
         return
     }
+
+
+    const currency = currencies.find(elem => elem.id === currencyId)
 
 
 
@@ -222,27 +231,13 @@ export default function IncomeAddModal(props) {
                             </div>
                             <div className="col-12 mt-2 d-flex justify-content-between">
                                 <div className="d-flex w-100 fs-1 pe-2 align-items-center">
-                                    <span className="me-1">R$</span>
+                                    <span className="me-1">{currency.symbol}</span>
                                     <input type="text" inputMode="numeric" placeholder="0,00"
                                         className="form-control fs-2 " style={{ borderColor: '#00cc99' }}
                                         value={value} id='valueInput'
                                         onChange={e => setValue(maskInputMoney(e.target.value))} />
                                 </div>
-                                <div className="d-flex fs-3 align-items-center">
-                                    <div class="dropdown">
-                                        <span class=" dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                            BRL
-                                        </span>
-                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                            <li><span className="ms-2 small text-secondary">Favoritas</span></li>
-                                            <li className="dropdown-item">BRL</li>
-                                            <li className="dropdown-item">USD</li>
-                                            <li className="dropdown-item">EUR</li>
-                                            <hr />
-                                            <li className="dropdown-item">Outras...</li>
-                                        </ul>
-                                    </div>
-                                </div>
+                                <CurrencySelect setCurrencyId={setCurrencyId} currencyId={currencyId} />
                             </div>
                             <span className="text-danger small">{valueError}</span>
 
@@ -252,7 +247,7 @@ export default function IncomeAddModal(props) {
                         <div className="row">
                             <div className="col-12">
 
-                                <div className="card shadow">
+                                <div className="card ">
                                     <div className="card-body">
 
                                         <div className="row d-flex justify-content-between">
@@ -374,11 +369,7 @@ export default function IncomeAddModal(props) {
 
                                             </div>
                                             <div className="col-12 mt-2 d-flex">
-                                                <div className="input-group">
-
-                                                    <input type="text" class="form-control" placeholder="Descrição"
-                                                        value={description} onChange={(e) => setDescription(e.target.value)} />
-                                                </div>
+                                                <DescriptionInput setDescription={setDescription} description={description} />
 
                                             </div>
                                         </div>
@@ -390,11 +381,11 @@ export default function IncomeAddModal(props) {
                                                 <FontAwesomeIcon icon={faTag} />
                                                 <span className="small fw-bold mb-2 ms-3">Categoria</span>
                                             </div>
-                                            <TagSelectedComponent tagSelected={tagSelected} type="Income" />
+                                            <CategorySelectedComponent subCategorySelected={subCategorySelected} categories={categories} type="Income" />
 
-                                            <TagSelectModal
-                                                tags={tags}
-                                                setTagSelected={setTagSelected}
+                                            <CategorySelectModal
+                                                categories={categories}
+                                                setSubCategorySelected={setSubCategorySelected}
                                                 dataFunction={() => dataFunction(token.sub)}
                                                 id="tagSelectModalIncome"
                                                 section="income" />
@@ -508,7 +499,7 @@ export default function IncomeAddModal(props) {
 
                                         </div>
 
-                                        <hr />
+                                        {/* <hr /> */}
 
                                     </div>
                                 </div>

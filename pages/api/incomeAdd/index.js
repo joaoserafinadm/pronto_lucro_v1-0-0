@@ -28,8 +28,8 @@ export default authenticated(async (req, res) => {
             if (!userExist) {
                 res.status(400).json({ error: "User doesn't exist." });
             } else {
-                const incomeTags = userExist.incomeTags
-                const expenseTags = userExist.expenseTags
+                const incomeCategories = userExist.incomeCategories
+                const expenseCategories = userExist.expenseCategories
                 const bankAccounts = userExist.bankAccounts.map(elem => {
                     return {
                         _id: elem._id,
@@ -40,7 +40,7 @@ export default authenticated(async (req, res) => {
                     }
                 })
 
-                res.status(200).json({ incomeTags, expenseTags, bankAccounts });
+                res.status(200).json({ incomeCategories, expenseCategories, bankAccounts });
             }
         }
 

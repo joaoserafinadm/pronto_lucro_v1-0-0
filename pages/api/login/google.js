@@ -114,7 +114,8 @@ export default async (req, res) => {
                         url: user.image
                     },
                     password: 'google',
-                    permissions: {
+                    permissions: {},
+                    tools: {
                         dfc: true,
                         dre: false
                     },
@@ -149,7 +150,9 @@ export default async (req, res) => {
                         dateLimit: newUser.dateLimit,
                         active: newUser.active,
                         companyLogo: newUser.companyData?.companyLogo?.url ? newUser.companyData?.companyLogo?.url : '',
-                        companyName: newUser.companyName
+                        companyName: newUser.companyName,
+                        tools: newUser.tools
+
                     }
 
                     const jwt = sign(clains, process.env.JWT_SECRET, {})
@@ -179,7 +182,9 @@ export default async (req, res) => {
                     dateLimit: userExists.dateLimit,
                     active: userExists.active,
                     companyLogo: userExists?.companyData?.companyLogo?.url ? userExists?.companyData?.companyLogo?.url : '',
-                    companyName: userExists.companyName
+                    companyName: userExists.companyName,
+                    tools: userExists.tools
+
                 }
 
                 const jwt = sign(clains, process.env.JWT_SECRET, {})

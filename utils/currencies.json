@@ -1,0 +1,170 @@
+[
+    {
+        "id": 1,
+        "code": "BRL",
+        "symbol": "R$",
+        "active": true
+    },
+    {
+        "id": 2,
+        "code": "USD",
+        "symbol": "$",
+        "active": true
+    },
+    {
+        "id": 3,
+        "code": "EUR",
+        "symbol": "€",
+        "active": true
+    },
+    {
+        "id": 4,
+        "code": "JPY",
+        "symbol": "¥",
+        "active": true
+    },
+    {
+        "id": 5,
+        "code": "GBP",
+        "symbol": "£",
+        "active": true
+    },
+    {
+        "id": 6,
+        "code": "AUD",
+        "symbol": "A$",
+        "active": true
+    },
+    {
+        "id": 7,
+        "code": "CAD",
+        "symbol": "C$",
+        "active": true
+    },
+    {
+        "id": 8,
+        "code": "CHF",
+        "symbol": "Fr",
+        "active": true
+    },
+    {
+        "id": 9,
+        "code": "CNY",
+        "symbol": "¥",
+        "active": true
+    },
+    {
+        "id": 10,
+        "code": "SEK",
+        "symbol": "kr",
+        "active": true
+    },
+    {
+        "id": 11,
+        "code": "NZD",
+        "symbol": "NZ$",
+        "active": true
+    },
+    {
+        "id": 12,
+        "code": "MXN",
+        "symbol": "$",
+        "active": true
+    },
+    {
+        "id": 13,
+        "code": "SGD",
+        "symbol": "S$",
+        "active": true
+    },
+    {
+        "id": 14,
+        "code": "HKD",
+        "symbol": "HK$",
+        "active": true
+    },
+    {
+        "id": 15,
+        "code": "NOK",
+        "symbol": "kr",
+        "active": true
+    },
+    {
+        "id": 16,
+        "code": "KRW",
+        "symbol": "₩",
+        "active": true
+    },
+    {
+        "id": 17,
+        "code": "TRY",
+        "symbol": "₺",
+        "active": true
+    },
+    {
+        "id": 18,
+        "code": "INR",
+        "symbol": "₹",
+        "active": true
+    },
+    {
+        "id": 19,
+        "code": "RUB",
+        "symbol": "₽",
+        "active": true
+    },
+    {
+        "id": 20,
+        "code": "ZAR",
+        "symbol": "R",
+        "active": true
+    },
+    {
+        "id": 21,
+        "code": "PLN",
+        "symbol": "zł",
+        "active": true
+    },
+    {
+        "id": 22,
+        "code": "ARS",
+        "symbol": "$",
+        "active": true
+    },
+    {
+        "id": 23,
+        "code": "CLP",
+        "symbol": "$",
+        "active": true
+    },
+    {
+        "id": 24,
+        "code": "PEN",
+        "symbol": "S/",
+        "active": true
+    },
+    {
+        "id": 25,
+        "code": "AED",
+        "symbol": "د.إ",
+        "active": true
+    },
+    {
+        "id": 26,
+        "code": "SAR",
+        "symbol": "﷼",
+        "active": true
+    },
+    {
+        "id": 27,
+        "code": "MYR",
+        "symbol": "RM",
+        "active": true
+    },
+    {
+        "id": 28,
+        "code": "THB",
+        "symbol": "฿",
+        "active": true
+    }
+]

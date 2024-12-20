@@ -34,7 +34,8 @@ export default async (req, res) => {
                             dateLimit: userExists.dateLimit,
                             active: userExists.active,
                             companyLogo: userExists.companyLogo?.url ? userExists.companyLogo?.url : '',
-                            companyName: userExists.companyName
+                            companyName: userExists.companyName,
+                            tools: userExists.tools
                         }
 
                         const jwt = sign(clains, process.env.JWT_SECRET, {})
