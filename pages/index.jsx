@@ -59,7 +59,7 @@ export default function Home() {
 
         <div className='fadeItem1s'>
 
-            <TutorialModal bankAccounts={bankAccounts} dataFunction={() => dataFunction(token.sub)}  />
+            <TutorialModal bankAccounts={bankAccounts} dataFunction={() => dataFunction(token.sub)} />
 
             <EntriesHistoricModal />
             {/* <Title title={`Olá, ${token.firstName}!`} subtitle={'Qual a sua meta de lucro para hoje?'} /> */}
@@ -71,7 +71,7 @@ export default function Home() {
                 <NotificationsCard token={token} />
 
 
-                                                <DescriptionInput setDescription={setDescription} description={description} />
+                <DescriptionInput setDescription={setDescription} description={description} />
 
 
 

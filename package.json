@@ -29,6 +29,7 @@
     "@react-google-maps/api": "^2.19.2",
     "@react-icons/all-files": "^4.1.0",
     "@sendgrid/mail": "^8.1.1",
+    "annyang": "^2.6.1",
     "apexcharts": "^3.35.5",
     "axios": "^1.6.7",
     "bcrypt": "^5.0.1",
