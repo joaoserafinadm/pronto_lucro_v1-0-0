@@ -16,7 +16,7 @@ export default function NotificationAlert(props) {
 
             axios.patch(`/api/indexPage/notifications`, { user_id: token.sub, notification_id: not._id })
 
-            router.push("/editProfile" )
+            router.push(not.link )
         }
     }
 
