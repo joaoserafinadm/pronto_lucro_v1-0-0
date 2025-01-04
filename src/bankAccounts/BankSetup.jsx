@@ -13,6 +13,7 @@ import { SpinnerSM } from "../components/loading/Spinners"
 export default function BankSetup(props) {
 
     const {
+        edit,
         creditCardList,
         bankSelected,
         setInitialValue,
@@ -54,7 +55,7 @@ export default function BankSetup(props) {
     }
 
 
-    
+
 
     return (
         <div className="row">
@@ -68,7 +69,7 @@ export default function BankSetup(props) {
                 :
                 <div className="col-12">
                     <span className="text-secondary" type="button"
-                        data-bs-target="#bankSetupCarousel" data-bs-slide="prev" >
+                        data-bs-target={edit ? "#editAccountCarousel" : "#bankSetupCarousel"} data-bs-slide="prev" >
                         <FontAwesomeIcon icon={faAngleLeft} className="me-2" /> Voltar
                     </span>
                 </div>
@@ -257,7 +258,7 @@ export default function BankSetup(props) {
             )
             }
 
-         
+
         </div >
     )
 

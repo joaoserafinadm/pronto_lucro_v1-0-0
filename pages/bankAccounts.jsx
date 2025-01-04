@@ -14,6 +14,7 @@ import CardTemplate from "../src/bankAccounts/CardTemplate";
 import { maskNumberMoney } from "../utils/mask";
 import AccountsResultsCards from "../src/bankAccounts/AccountsResultsCards";
 import { SpinnerLG } from "../src/components/loading/Spinners";
+import EditAccountModal from "../src/bankAccounts/EditAccountModal";
 
 
 export default function BankAccounts() {
@@ -26,6 +27,8 @@ export default function BankAccounts() {
     const [institutions, setInstitutions] = useState([])
     const [creditCardList, setCreditCardList] = useState([])
     const [bankAccounts, setBankAccounts] = useState([])
+
+    const [accountSelected, setAccountSelected] = useState(null)
 
     const [data, setData] = useState(null)
 
@@ -89,6 +92,13 @@ export default function BankAccounts() {
                 dataFunction={() => dataFunction(token.sub)} />
 
 
+            <EditAccountModal
+                creditCardList={creditCardList}
+                accountSelected={accountSelected}
+                institutions={institutions}
+                setAccountSelected={setAccountSelected} />
+
+
             <Title title={'Contas bancárias'} subtitle='Gerencie suas contas bancárias' backButton='/' />
 
             <div className="pagesContent shadow">
@@ -125,17 +135,19 @@ export default function BankAccounts() {
                                             <div className="col-12 col-xl-4 col-sm-6 my-2 d-flex justify-content-center">
                                                 <NewAccountCard />
                                             </div>
-                                            <hr className="d-lg-none d-block mt-4"/>
+                                            <hr className="d-lg-none d-block mt-4" />
                                             {bankAccounts?.map((elem, index) => {
                                                 return (
                                                     <div className="col-12 col-xl-4 col-sm-6 my-3 d-flex justify-content-center">
                                                         <CardTemplate editButtons accountsPage
+                                                            elem={elem}
                                                             bankSelected={elem.bankSelected}
                                                             color={elem.color}
                                                             predictedValue={maskNumberMoney(elem.predictedValue)}
                                                             value={maskNumberMoney(elem.value)}
                                                             description={elem.description}
-                                                            creditNetwork={elem.creditNetwork} />
+                                                            creditNetwork={elem.creditNetwork}
+                                                            setAccountSelected={setAccountSelected} />
                                                     </div>
                                                 )
                                             })}

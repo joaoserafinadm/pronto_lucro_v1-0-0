@@ -18,7 +18,6 @@ import axios from 'axios'
 import { showModalBs } from '../utils/modalControl.js'
 import TutorialModal from '../src/indexPage/TutorialModal.jsx'
 import NotificationsCard from '../src/indexPage/notifications/notificationsCard.jsx'
-import DescriptionInput from '../src/incomeAdd/descriptionInput.jsx'
 
 
 
@@ -31,8 +30,6 @@ export default function Home() {
     const [valueView, setValueView] = useState(true)
     const [bankAccounts, setBankAccounts] = useState([])
     const [modalOpen, setModalOpen] = useState(false)
-    const [description, setDescription] = useState('')
-
 
     useEffect(() => {
         dataFunction(token.sub)
@@ -71,7 +68,6 @@ export default function Home() {
                 <NotificationsCard token={token} />
 
 
-                <DescriptionInput setDescription={setDescription} description={description} />
 
 
 

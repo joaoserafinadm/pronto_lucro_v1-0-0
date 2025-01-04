@@ -6,7 +6,7 @@ import { faArrowTrendDown, faArrowTrendUp, faEdit, faEye, faGear } from '@fortaw
 
 export default function CardTemplate(props) {
 
-    const { bankSelected, color, value, predictedValue, description, creditNetwork, accountsPage } = props
+    const { bankSelected, color, value, predictedValue, description, creditNetwork, accountsPage, setAccountSelected, elem } = props
 
 
     return (
@@ -68,16 +68,19 @@ export default function CardTemplate(props) {
                 <div className="row mt-2">
                     <div className="col-12 d-flex justify-content-center ">
                         <div className="btn-group ">
-                            {/* <button className="btn btn-outline-secondary btn-sm  pt-2">
+                            <button className="btn btn-outline-secondary btn-sm  pt-2">
                                 <FontAwesomeIcon icon={faEye} />
-                            </button> */}
-                            <button className="btn btn-outline-secondary btn-sm pt-2">
+                            </button>
+                            {/* <button className="btn btn-outline-secondary btn-sm pt-2">
                                 <FontAwesomeIcon icon={faArrowTrendUp} className='text-success' />
                             </button>
                             <button className="btn btn-outline-secondary btn-sm pt-2">
                                 <FontAwesomeIcon icon={faArrowTrendDown} className='text-danger' />
-                            </button>
-                            <button className="btn btn-outline-secondary btn-sm pt-2">
+                            </button> */}
+                            <button
+                                className="btn btn-outline-secondary btn-sm pt-2"
+                                onClick={() => setAccountSelected(elem)}
+                                data-bs-toggle="modal" data-bs-target="#editAccountModal">
                                 <FontAwesomeIcon icon={faGear} />
                             </button>
                         </div>

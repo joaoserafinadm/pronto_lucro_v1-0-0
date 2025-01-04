@@ -7,7 +7,7 @@ import { useState } from "react";
 
 export default function ModalBankSelect(props) {
 
-    const { institutions, setBankSelected } = props
+    const { institutions, setBankSelected, edit } = props
 
     const [bankList, setBankList] = useState(institutions)
 
@@ -59,7 +59,7 @@ export default function ModalBankSelect(props) {
                         {handleMostUsedBanks().map(elem => {
                             return (
                                 <span className="hoverSelect py-3 row my-2 d-flex" type="button" onClick={() => setBankSelected(elem)}
-                                    data-bs-target="#bankSetupCarousel" data-bs-slide="next">
+                                    data-bs-target={edit ? "#editAccountCarousel" : "#bankSetupCarousel"} data-bs-slide="next">
                                     <div className="d-flex justify-content-center align-items-center" style={{ width: "60px" }}>
                                         <img className="bankImage" src={elem.logoUrl} alt="" />
                                     </div>
@@ -80,7 +80,7 @@ export default function ModalBankSelect(props) {
                         {institutions?.map(elem => {
                             return (
                                 <span className="hoverSelect py-3 row my-2 d-flex" type="button" onClick={() => setBankSelected(elem)}
-                                    data-bs-target="#bankSetupCarousel" data-bs-slide="next" >
+                                    data-bs-target={edit ? "#editAccountCarousel" : "#bankSetupCarousel"} data-bs-slide="next" >
                                     <div className="d-flex justify-content-center align-items-center" style={{ width: "60px" }}>
                                         <img className="bankImage" src={elem.logoUrl} alt="" />
                                     </div>
@@ -104,8 +104,8 @@ export default function ModalBankSelect(props) {
                             <div className="col-12">
                                 {bankList?.map(elem => {
                                     return (
-                                        <span className="hoverSelect py-3 row my-2 d-flex" type="button"  onClick={() => setBankSelected(elem)}
-                                        data-bs-target="#bankSetupCarousel" data-bs-slide="next" >
+                                        <span className="hoverSelect py-3 row my-2 d-flex" type="button" onClick={() => setBankSelected(elem)}
+                                            data-bs-target={edit ? "#editAccountCarousel" : "#bankSetupCarousel"} data-bs-slide="next" >
                                             <div className="d-flex justify-content-center align-items-center" style={{ width: "60px" }}>
                                                 <img className="bankImage" src={elem.logoUrl} alt="" />
                                             </div>

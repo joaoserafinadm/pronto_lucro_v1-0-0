@@ -86,7 +86,7 @@ export default function BankSelectPage(props) {
                             )
                         })}
                     </div>
-                    <hr />
+                    <hr  />
                     <div className="col-12 px-4">
                         <label >Todos os bancos</label>
                         {institutions?.map(elem => {
@@ -112,12 +112,12 @@ export default function BankSelectPage(props) {
                 <>
                     {bankList.length > 0 ?
                         <>
-                            <hr />
+                            <hr className={searchValue ? "d-none" : ""} />
                             <div className="col-12 px-4">
                                 {bankList?.map(elem => {
                                     return (
                                         <span className="hoverSelect py-3 row my-2 d-flex" type="button" onClick={() => setBankSelected(elem)}
-                                        data-bs-target="#tutorialPages" data-bs-slide-to={5} >
+                                            data-bs-target="#tutorialPages" data-bs-slide-to={5} >
                                             <div className="d-flex justify-content-center align-items-center" style={{ width: "60px" }}>
                                                 <img className="bankImage" src={elem.logoUrl} alt="" />
                                             </div>
