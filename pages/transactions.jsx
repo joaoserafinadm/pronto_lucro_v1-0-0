@@ -31,7 +31,7 @@ export default function Transactions() {
         month: new Date().getMonth(),
         year: new Date().getFullYear()
     })
-    const [tags, setTags] = useState([])
+    const [categories, setCategories] = useState([])
 
     const [incomeSelected, setIncomeSelected] = useState(null)
 
@@ -60,8 +60,9 @@ export default function Transactions() {
                     year: dateSelected.year
                 }
             }).then(res => {
+                console.log("res.data", res.data)
                 setLoadingData(false)
-                setTags(res.data.tags)
+                setCategories(res.data.categories)
                 setData(res.data)
                 dispatch(newData(false))
             })
@@ -100,7 +101,11 @@ export default function Transactions() {
                             <SpinnerLG />
                             :
                             <div className="fadeItem">
-                                <DesktopPage data={data} dateSelected={dateSelected} setIncomeSelected={setIncomeSelected} />
+                                <DesktopPage
+                                    data={data}
+                                    dateSelected={dateSelected}
+                                    categories={categories}
+                                    setIncomeSelected={setIncomeSelected} />
 
                             </div>
                         }

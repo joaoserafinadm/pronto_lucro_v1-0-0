@@ -425,7 +425,7 @@ export default function BankEditPage(props) {
                 <button className="btn btn-sm btn-c-outline-tertiary mx-1" data-bs-target="#tutorialPages" data-bs-slide-to={3} onClick={() => initialValues()}>
                     Cancelar
                 </button>
-                <button className="btn btn-sm btn-c-outline-success mx-1" onClick={() => handleAccountSave(token.sub)}>
+                <button className="btn btn-sm btn-c-outline-success mx-1" disabled={loadingAccountSave} onClick={() => handleAccountSave(token.sub)}>
                     {loadingAccountSave ? <SpinnerSM className="mx-3" /> : 'Salvar'}
                 </button>
 

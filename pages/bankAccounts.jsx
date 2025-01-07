@@ -15,6 +15,7 @@ import { maskNumberMoney } from "../utils/mask";
 import AccountsResultsCards from "../src/bankAccounts/AccountsResultsCards";
 import { SpinnerLG } from "../src/components/loading/Spinners";
 import EditAccountModal from "../src/bankAccounts/EditAccountModal";
+import ViewAccountModal from "../src/bankAccounts/ViewAccountModal";
 
 
 export default function BankAccounts() {
@@ -93,10 +94,21 @@ export default function BankAccounts() {
 
 
             <EditAccountModal
+                token={token} bankAccountsLength={bankAccounts.length}
+                dataFunction={() => dataFunction(token.sub)}
                 creditCardList={creditCardList}
                 accountSelected={accountSelected}
                 institutions={institutions}
                 setAccountSelected={setAccountSelected} />
+
+            <ViewAccountModal
+                token={token}
+                creditCardList={creditCardList}
+                accountSelected={accountSelected}
+                institutions={institutions}
+                setAccountSelected={setAccountSelected} />
+
+
 
 
             <Title title={'Contas bancárias'} subtitle='Gerencie suas contas bancárias' backButton='/' />
@@ -137,7 +149,7 @@ export default function BankAccounts() {
                                             </div>
                                             <hr className="d-lg-none d-block mt-4" />
                                             {bankAccounts?.map((elem, index) => {
-                                                return (
+                                                if (elem?.active) return (
                                                     <div className="col-12 col-xl-4 col-sm-6 my-3 d-flex justify-content-center">
                                                         <CardTemplate editButtons accountsPage
                                                             elem={elem}

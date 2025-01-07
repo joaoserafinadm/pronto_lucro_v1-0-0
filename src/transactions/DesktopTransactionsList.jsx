@@ -9,9 +9,8 @@ import TagSelected from "./tagSelected"
 
 export default function DesktopTransactionsList(props) {
 
-    const { data, setIncomeSelected } = props
+    const { data, setIncomeSelected, categories } = props
 
-    console.log('data', data)
 
     const brlMoney = {
         format: (value) => value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
@@ -43,7 +42,7 @@ export default function DesktopTransactionsList(props) {
                                 Descrição
                             </th>
                             <th className="text-start small">
-                                Marcador
+                                Categoria
                             </th>
                             <th className="text-start small">
                                 Conta
@@ -63,7 +62,6 @@ export default function DesktopTransactionsList(props) {
 
                         {data?.dfcData?.map((elem, index) => {
 
-                            const tagSelected = data?.tags?.find(elem1 => elem1._id === elem?.tag_id);
 
                             const accountSelected = data?.accounts?.find(elem1 => elem1._id === elem?.account_id);
 
@@ -82,7 +80,7 @@ export default function DesktopTransactionsList(props) {
                                         {elem?.description ? elem?.description : 'Sem descricão'}
                                     </td>
                                     <td className="text-start">
-                                        <TagSelected tag={elem.tag} tagsArray={data?.tags} />
+                                        <TagSelected subCategory_id={elem.subCategory_id} categories={categories} />
                                     </td>
                                     <td className="text-start">
                                         {!accountSelected ?
@@ -92,7 +90,7 @@ export default function DesktopTransactionsList(props) {
                                             :
                                             <>
                                                 <span
-                                                    className={`cardAnimation px-2 py-1 small rounded-pill text-white `}
+                                                    className={`cardAnimation px-2 py-1 small rounded-pill text-white fw-bold`}
 
                                                     style={{ backgroundColor: accountSelected.color }}>
                                                     <img src={accountSelected?.bankSelected?.logoUrl} className="rounded-circle me-2" alt="" width={20} height={20} />

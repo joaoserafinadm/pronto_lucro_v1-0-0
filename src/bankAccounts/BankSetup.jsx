@@ -67,12 +67,25 @@ export default function BankSetup(props) {
                     </span>
                 </div>
                 :
-                <div className="col-12">
-                    <span className="text-secondary" type="button"
-                        data-bs-target={edit ? "#editAccountCarousel" : "#bankSetupCarousel"} data-bs-slide="prev" >
-                        <FontAwesomeIcon icon={faAngleLeft} className="me-2" /> Voltar
-                    </span>
-                </div>
+                <>
+                    {edit ?
+                        <div className="col-12">
+                            <span className="text-secondary" type="button"
+                                data-bs-target={"#editAccountCarousel"} data-bs-slide="prev" >
+                                <FontAwesomeIcon icon={faAngleLeft} className="me-2" /> Insituições financeiras
+                            </span>
+                        </div>
+                        :
+                        <div className="col-12">
+                            <span className="text-secondary" type="button"
+                                data-bs-target={"#bankSetupCarousel"} data-bs-slide="prev" >
+                                <FontAwesomeIcon icon={faAngleLeft} className="me-2" /> Voltar
+                            </span>
+                        </div>
+
+                    }
+                </>
+
             }
 
             <div className="col-12 mb-3  mt-2">

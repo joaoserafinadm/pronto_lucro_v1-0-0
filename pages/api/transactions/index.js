@@ -45,7 +45,6 @@ export default authenticated(async (req, res) => {
                 // Ordenar os dados por 'value' de forma crescente para o tipo 'expense'
                 const top3Expenses = expenseData.sort((a, b) => a.value - b.value).slice(0, 3);
 
-                console.log()
 
 
 
@@ -61,7 +60,7 @@ export default authenticated(async (req, res) => {
                     else return sum
                 }, 0)
 
-                console.log(monthPendingResult)
+                console.log("monthPendingResult", monthPendingResult)
 
 
                 const dfcResult = userExist.dfc.reduce((acc, elem) => {
@@ -70,8 +69,13 @@ export default authenticated(async (req, res) => {
                         acc += activeElements.reduce((sum, activeElem) => sum + (activeElem.type === "income" ? activeElem.value : -activeElem.value), 0);
                     }
                     return acc;
-                }, 0) + bankAccounts.reduce((acc, elem) => { if (elem.valueSum) return acc + elem.initialValue }, 0);
+                }, 0) + bankAccounts.reduce((acc, elem) => {
+                    if (elem.active) return acc + elem.initialValue
+                    else return acc
+                }, 0);
+                // }, 0) + bankAccounts.reduce((acc, elem) => { if (elem.valueSum && elem.active) return acc + elem.initialValue }, 0);
 
+                console.log("dfcResult", dfcResult)
 
                 const dfcPendingResult = userExist.dfc.reduce((acc, elem) => {
                     if (isBeforeOrEqual(elem, { year, month })) {
@@ -82,7 +86,7 @@ export default authenticated(async (req, res) => {
                 }, 0);
 
 
-                res.status(200).json({ dreData, dfcData, dfcPending, monthResult, dfcResult, monthPendingResult, dfcPendingResult, tags: userExist.incomeTags.concat(userExist.expenseTags), accounts: userExist.bankAccounts, top3Incomes, top3Expenses });
+                res.status(200).json({ dreData, dfcData, dfcPending, monthResult, dfcResult, monthPendingResult, dfcPendingResult, categories: userExist.incomeCategories?.concat(userExist.expenseCategories || []), accounts: userExist.bankAccounts, top3Incomes, top3Expenses });
             }
         }
     }

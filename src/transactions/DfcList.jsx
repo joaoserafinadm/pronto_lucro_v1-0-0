@@ -3,10 +3,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useRef, useState } from 'react';
 import { formatDate } from '../../utils/mask';
 import TypeIcon from './TypeIcon';
+import TagSelected from './tagSelected';
 // import './DfcList.css'; // Importe o arquivo CSS, se necessário
 
 export default function DfcList(props) {
-    const { data, setIncomeSelected } = props;
+    const { data, setIncomeSelected , categories} = props;
     const containerRef = useRef(null);
     const [height, setHeight] = useState(0);
 
@@ -103,20 +104,8 @@ export default function DfcList(props) {
                                                         </div>
                                                         <div className="row">
                                                             <div className="col-12">
-                                                                {!tagSelected ?
-                                                                    <span class=" px-2 py-1  small rounded-pill border">
-                                                                        Sem marcador
-                                                                    </span>
-                                                                    :
-                                                                    <>
+                                                                <TagSelected subCategory_id={elem.subCategory_id} categories={categories} />
 
-                                                                        <span
-                                                                            className={` px-2 py-1 small rounded-pill `}
-                                                                            style={{ backgroundColor: tagSelected.color, color: tagSelected.textColor }}>
-                                                                            {tagSelected.tag}
-                                                                        </span>
-                                                                    </>
-                                                                }
 
                                                             </div>
                                                         </div>
@@ -124,7 +113,7 @@ export default function DfcList(props) {
                                                             <div>
 
                                                                 <span
-                                                                    className={` px-2 py-1 small rounded-pill text-white `}
+                                                                    className={` cardAnimation px-2 py-2  text-white small mx-1 rounded-pill fw-bold `}
 
                                                                     style={{ backgroundColor: accountSelected?.color }}>
                                                                     <img src={accountSelected?.bankSelected?.logoUrl} className="rounded-circle me-2" alt="" width={20} height={20} />

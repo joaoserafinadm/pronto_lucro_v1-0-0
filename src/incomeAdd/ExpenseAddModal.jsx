@@ -149,7 +149,7 @@ export default function ExpenseAddModal(props) {
                     paymentMethod,
                     competenceMonth,
                     description,
-                    tag: tagSelected ? tagSelected : '',
+                    subCategory_id: subCategorySelected ? subCategorySelected.tag_id : '',
                     account_id: accountSelected ? accountSelected._id : '',
                     files: attachment,
                     creditConfig

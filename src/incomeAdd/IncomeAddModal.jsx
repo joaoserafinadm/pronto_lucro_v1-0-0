@@ -148,11 +148,13 @@ export default function IncomeAddModal(props) {
                     paymentMethod,
                     competenceMonth,
                     description,
-                    tag: subCategorySelected ? subCategorySelected : '',
+                    subCategory_id: subCategorySelected ? subCategorySelected.tag_id : '',
                     account_id: accountSelected ? accountSelected._id : '',
                     files: attachment,
                     creditConfig
                 };
+
+                console.log("data", data)
 
                 if (paymentMethod === 2) {
                     const res = await axios.post(`${baseUrl()}/api/incomeAdd/creditPayment`, data)

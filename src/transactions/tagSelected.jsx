@@ -1,32 +1,34 @@
-import { faArrowTurnUp } from "@fortawesome/free-solid-svg-icons"
+import { faArrowTurnUp, faChevronDown } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { SubCategoryIcon } from "../categories/categoryIcon"
 
 
 
 
 export default function TagSelected(props) {
 
-    const { tag, tagsArray } = props
+    const { subCategory_id,
+        categories } = props
 
-    console.log("ttt'", tag, tagsArray)
+    console.log("ttt'", subCategory_id, categories)
+
+    const categorySelected = categories.find(elem => elem.subCategories.find(elem1 => elem1._id === subCategory_id))
+    const subCategorySelected = categorySelected?.subCategories.find(elem => elem._id === subCategory_id)
+
+    const data = {
+        name: subCategorySelected?.name,
+        color: categorySelected?.color,
+    }
+
+
 
 
     const renderTag = () => {
 
-        const category_id = tag?.category_id
-        const tag_id = tag?.tag_id
-        const subTag_id = tag?.subTag_id
-
-        const categorySelected = tagsArray?.find(e => e._id === category_id)
-        const tagSelected = categorySelected?.tags?.find(e => e._id === tag_id)
-        const subTagSelected = tagSelected?.subTags?.find(e => e._id === subTag_id)
-
-        console.log('ccc1', categorySelected, tagSelected, subTagSelected)
-
-        if (!categorySelected || !tagSelected) {
+        if (!subCategory_id || !categorySelected) {
             return (
                 <span class=" px-2 py-1  small rounded-pill border text-muted">
-                    Sem categoria
+                    Sem categoria <FontAwesomeIcon icon={faChevronDown} />
                 </span>
             )
         } else {
@@ -37,15 +39,11 @@ export default function TagSelected(props) {
                         <div>
 
 
-                            <span style={{ color: categorySelected.color }}
-                                className=" border  d-flex align-items-center px-2 py-1   small mx-1 rounded-pill fw-bold">
-                                {!subTagSelected ?
-                                    <div style={{ height: "12px", width: "12px", border: `2px solid ${categorySelected.color}` }} className="rounded-circle ms-2 me-2"></div>
-                                    :
-                                    <FontAwesomeIcon className="me-2 ms-2" icon={faArrowTurnUp} style={{ transform: 'rotate(90deg)', color: categorySelected.color }} />
-                                }
+                            <span style={{ backgroundColor: data.color }}
+                                className=" border text-white  d-flex align-items-center px-2 py-1   small mx-1 rounded-pill fw-bold">
 
-                                {subTagSelected ? subTagSelected.subTag : tagSelected.tag}
+                                <SubCategoryIcon color={data.color} className="text-white" />
+                                {data?.name}
                             </span>
                         </div>
                     </div>

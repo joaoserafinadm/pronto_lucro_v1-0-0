@@ -90,7 +90,7 @@ export function maskMoneyNumber(value) {
 
 export function formatDate(dateObj) {
 	const day = String(dateObj.day).padStart(2, '0');
-	const month = String(dateObj.month).padStart(2, '0');
+	const month = String(dateObj.month+1).padStart(2, '0');
 	const year = dateObj.year;
 	return `${day}/${month}/${year}`;
 }

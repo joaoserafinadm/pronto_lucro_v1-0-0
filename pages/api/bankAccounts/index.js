@@ -35,9 +35,10 @@ export default authenticated(async (req, res) => {
 
                 //CALCULO DO SALDO NAS CONTAS
 
-                const bankAccounts = userExist.bankAccounts
+                const bankAccounts = userExist.bankAccounts.filter(elem => elem.active);
 
                 const bankAccountsArray = bankAccounts.map(elem => {
+
 
                     const value = userExist.dfc.reduce((acc, elem1) => {
 
@@ -81,7 +82,7 @@ export default authenticated(async (req, res) => {
                         acc += activeElements.reduce((sum, activeElem) => sum + (activeElem.type === "income" ? activeElem.value : -activeElem.value), 0);
                     }
                     return acc;
-                }, 0) + bankAccounts.reduce((acc, elem) => { if (elem.valueSum) return acc + elem.initialValue }, 0);
+                }, 0) + bankAccounts.reduce((acc, elem) => {return acc + elem.initialValue }, 0);
 
 
 
@@ -224,7 +225,7 @@ export default authenticated(async (req, res) => {
                     }
                 );
 
-                if (result.modifiedCount > 0) {
+                if (result.matchedCount > 0) {
                     res.status(200).json({ success: 'Account updated' })
                 } else {
                     res.status(400).json({ error: 'An error occurred' })

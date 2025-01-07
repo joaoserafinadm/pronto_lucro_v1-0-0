@@ -28,7 +28,7 @@ export default function CardTemplate(props) {
                                 <span className={`${styles.cardTitle}`}>{bankSelected?.name}</span>
                             </div>
                         </div>
-                        <span className={`${styles.cardTitle} ms-2 small`}>{description}</span>
+                        <span className={`${styles.cardTitle} ms-2 small fw-bold`}>{description}</span>
                     </div>
                     {accountsPage ?
                         <div className={`${styles.amountCard} ms-2 d-flex flex-column mb-2`}>
@@ -68,7 +68,10 @@ export default function CardTemplate(props) {
                 <div className="row mt-2">
                     <div className="col-12 d-flex justify-content-center ">
                         <div className="btn-group ">
-                            <button className="btn btn-outline-secondary btn-sm  pt-2">
+                            <button
+                                className="btn btn-outline-secondary btn-sm  pt-2"
+                                onClick={() => setAccountSelected(elem)}
+                                data-bs-toggle="modal" data-bs-target="#viewAccountModal">
                                 <FontAwesomeIcon icon={faEye} />
                             </button>
                             {/* <button className="btn btn-outline-secondary btn-sm pt-2">

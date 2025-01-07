@@ -7,7 +7,7 @@ import ResultsCard from "./ResultsCard"
 
 export default function DesktopPage(props) {
 
-    const { data, dateSelected, setIncomeSelected } = props
+    const { data, dateSelected, setIncomeSelected, categories } = props
 
 
 
@@ -24,11 +24,11 @@ export default function DesktopPage(props) {
             <div className="col-12 my-3 ">
                 <div className="d-none d-lg-flex justify-content-center">
 
-                    <DesktopTransactionsList data={data} setIncomeSelected={setIncomeSelected} />
+                    <DesktopTransactionsList data={data} setIncomeSelected={setIncomeSelected} categories={categories} />
                 </div>
                 <div className="d-lg-none">
 
-                    <DfcList data={data} setIncomeSelected={setIncomeSelected} />
+                    <DfcList data={data} setIncomeSelected={setIncomeSelected} categories={categories} />
 
                 </div>
             </div>
