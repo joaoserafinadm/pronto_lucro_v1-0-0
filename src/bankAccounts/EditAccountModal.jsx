@@ -178,7 +178,7 @@ export default function EditAccountModal(props) {
                                         <div className="row mb-3">
                                             <div className="col-12 d-flex justify-content-end mt-2">
                                                 <button className="btn btn-c-outline-danger btn-sm" onClick={() => setDeleteButton(!deleteButton)}>
-                                                    Excluir conta
+                                                    Arquivar conta
                                                 </button>
 
                                             </div>
@@ -186,13 +186,13 @@ export default function EditAccountModal(props) {
 
                                                 <div className="col-12 fadeItem mt-2">
                                                     <div className="alert alert-danger">
-                                                        <span>Tem certeza que deseja excluir essa conta?</span>
+                                                        <span>Tem certeza que deseja arquivar essa conta?</span>
                                                         <div className="d-flex justify-content-start mt-2">
                                                             <button className="btn btn-secondary mx-1" onClick={() => setDeleteButton(false)}>
                                                                 Cancelar
                                                             </button>
                                                             <button className="btn btn-danger" disabled={loadingDelete} data-bs-dismiss="modal" onClick={() => handleDelete()}>
-                                                                {loadingDelete ? <SpinnerSM /> : "Excluir"}
+                                                                {loadingDelete ? <SpinnerSM /> : "Arquivar"}
                                                             </button>
                                                         </div>
                                                         {deleteError && <span className="text-danger small mt-2">{deleteError}</span>}

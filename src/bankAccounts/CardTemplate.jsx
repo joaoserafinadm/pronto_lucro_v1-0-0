@@ -1,12 +1,12 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styles from './BankAccounts.module.scss'
-import { faArrowTrendDown, faArrowTrendUp, faEdit, faEye, faGear } from '@fortawesome/free-solid-svg-icons'
+import { faArrowTrendDown, faArrowTrendUp, faEdit, faEye, faGear, faReply, faTrash, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 
 
 
 export default function CardTemplate(props) {
 
-    const { bankSelected, color, value, predictedValue, description, creditNetwork, accountsPage, setAccountSelected, elem } = props
+    const { bankSelected, color, value, predictedValue, description, creditNetwork, accountsPage, setAccountSelected, elem, archiveButtons } = props
 
 
     return (
@@ -70,7 +70,7 @@ export default function CardTemplate(props) {
                         <div className="btn-group ">
                             <button
                                 className="btn btn-outline-secondary btn-sm  pt-2"
-                                onClick={() => setAccountSelected(elem)}
+                                onClick={() => setAccountSelected(elem)} id="viewAccountBtn"
                                 data-bs-toggle="modal" data-bs-target="#viewAccountModal">
                                 <FontAwesomeIcon icon={faEye} />
                             </button>
@@ -82,9 +82,29 @@ export default function CardTemplate(props) {
                             </button> */}
                             <button
                                 className="btn btn-outline-secondary btn-sm pt-2"
-                                onClick={() => setAccountSelected(elem)}
+                                onClick={() => setAccountSelected(elem)} id="editAccountBtn"
                                 data-bs-toggle="modal" data-bs-target="#editAccountModal">
                                 <FontAwesomeIcon icon={faGear} />
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+            {archiveButtons && (
+                <div className="row mt-2">
+                    <div className="col-12 d-flex justify-content-center ">
+                        <div className="btn-group">
+                            <button
+                                className="btn btn-outline-secondary btn-sm  pt-2"
+                                onClick={() => setAccountSelected(elem)} id="activeAccountBtn"
+                                data-bs-toggle="modal" data-bs-target="#activeAccountModal">
+                                <FontAwesomeIcon icon={faReply} />
+                            </button>
+                            <button
+                                className="btn btn-outline-danger btn-sm pt-2"
+                                onClick={() => setAccountSelected(elem)} id="deleteAccountBtn"
+                                data-bs-toggle="modal" data-bs-target="#deleteAccountModal">
+                                <FontAwesomeIcon icon={faTrashAlt} />
                             </button>
                         </div>
                     </div>

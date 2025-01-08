@@ -35,7 +35,7 @@ export default authenticated(async (req, res) => {
 
                 //CALCULO DO SALDO NAS CONTAS
 
-                const bankAccounts = userExist.bankAccounts.filter(elem => elem.active);
+                const bankAccounts = userExist.bankAccounts
 
                 const bankAccountsArray = bankAccounts.map(elem => {
 
@@ -70,6 +70,9 @@ export default authenticated(async (req, res) => {
                     }
                 })
 
+                const activeBankAccounts = bankAccountsArray.filter(elem => elem.active)
+                const archivedBankAccounts = bankAccountsArray.filter(elem => !elem.active)
+
 
 
 
@@ -82,7 +85,7 @@ export default authenticated(async (req, res) => {
                         acc += activeElements.reduce((sum, activeElem) => sum + (activeElem.type === "income" ? activeElem.value : -activeElem.value), 0);
                     }
                     return acc;
-                }, 0) + bankAccounts.reduce((acc, elem) => {return acc + elem.initialValue }, 0);
+                }, 0) + bankAccounts.filter(elem => elem.active).reduce((acc, elem) => { return acc + elem.initialValue }, 0);
 
 
 
@@ -108,7 +111,7 @@ export default authenticated(async (req, res) => {
                 }, 0);
 
 
-                res.status(200).json({ bankAccounts: bankAccountsArray, dfcResult, monthPendigResult, dfcPendingResult });
+                res.status(200).json({ archivedBankAccounts, bankAccounts: activeBankAccounts, dfcResult, monthPendigResult, dfcPendingResult });
 
             }
         }
