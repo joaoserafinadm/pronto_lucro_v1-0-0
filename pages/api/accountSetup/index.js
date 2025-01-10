@@ -17,31 +17,13 @@ export default authenticated(async (req, res) => {
 
     if (req.method === "GET") {
 
-        const { user_id, company_id } = req.query
+        const { user_id } = req.query
 
-        if (!user_id || !company_id) {
+        if (!user_id) {
             res.status(400).json({ error: 'Missing parameters on request body' })
         } else {
 
             const { db } = await connect()
-
-            const companyExist = await db.collection('companies').findOne(
-                { _id: ObjectId(company_id) },
-                {
-                    projection: {
-                        companyName: 1,
-                        cep: 1,
-                        logradouro: 1,
-                        numero: 1,
-                        cidade: 1,
-                        estado: 1,
-                        responsavel: 1,
-                        email: 1,
-                        tools: 1
-                    }
-                }
-            )
-
 
             const userExist = await db.collection('users').findOne(
                 { _id: ObjectId(user_id) },
@@ -50,16 +32,21 @@ export default authenticated(async (req, res) => {
                         firstName: 1,
                         lastName: 1,
                         email: 1,
-                        userStatus: 1
+                        celular: 1,
+                        companyData: 1,
+                        tools: 1
                     }
                 }
             )
 
-            if (!companyExist || !userExist) {
+
+
+
+            if (!userExist) {
                 res.status(400).json({ error: 'Company or user does not exist' })
             } else {
 
-                res.status(200).json({ company: companyExist, user: userExist })
+                res.status(200).json({ user: userExist })
 
 
             }

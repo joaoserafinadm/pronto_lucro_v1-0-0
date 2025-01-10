@@ -4,6 +4,7 @@ import Link from "next/link";
 import Cookie from 'js-cookie'
 import jwt from 'jsonwebtoken';
 import { editCompanyView, userStatusName } from "../../utils/permission";
+import ExitAccountModal from "./ExitAccountModal";
 
 
 
@@ -17,7 +18,7 @@ export default function AccountDetailsPage(props) {
         <div className="fadeItem">
             <div className="row ">
                 <div className="col-12 col-md-3 pt-3">
-                    <span className="fs-4 text-bold text-success" >Sua Conta</span> <br />
+                    <span className="fs-4 text-bold text-c-secondary" >Sua Conta</span> <br />
                     {/* <button className="btn btn-sm btn-success">Editar <FontAwesomeIcon icon={faPencilAlt} /></button> */}
                 </div>
                 <div className="col-12 col-md-9">
@@ -33,8 +34,8 @@ export default function AccountDetailsPage(props) {
                                 <small>{props.userData.celular}</small>
                             </div>
                             <div className="d-flex justify-content-end">
-                                <Link href={`/editProfile/${token.sub}`}>
-                                    <span type="button" className="text-success"><FontAwesomeIcon icon={faPencil} className="editIcon" /></span>
+                                <Link href={`/editProfile`}>
+                                    <span type="button" className="text-c-secondary"><FontAwesomeIcon icon={faPencil} className="editIcon" /></span>
                                 </Link>
                             </div>
 
@@ -47,25 +48,17 @@ export default function AccountDetailsPage(props) {
                         <div className="col-12 col-md-9 mt-2 d-flex justify-content-between">
                             <small>*********</small>
                             <Link href={`/passwordChange`}>
-                                <span type="button" className="text-success"><FontAwesomeIcon icon={faPencil} className="editIcon"/></span>
+                                <span type="button" className="text-c-secondary"><FontAwesomeIcon icon={faPencil} className="editIcon" /></span>
                             </Link>
 
                         </div>
                     </div>
-                    <div className="row border-bottom py-4">
-                        <div className="col-12 col-md-3 text-bold">
-                            Status
-                        </div>
-                        <div className="col-12 col-md-9 mt-2 d-flex justify-content-between">
-                            <small>{userStatusName(props.userData.userStatus)}</small>
-                            <span className="text-success"><FontAwesomeIcon icon={faLock} /></span>
-                        </div>
-                    </div>
+
                 </div>
             </div>
             <div className="row mt-5">
                 <div className="col-12 col-md-3 pt-3 pb-4">
-                    <span className="fs-4 text-bold text-success" >Sua Instituição</span> <br />
+                    <span className="fs-4 text-bold text-c-secondary" >Sua Empresa</span> <br />
                     {/* <button className="btn btn-sm btn-success">Editar <FontAwesomeIcon icon={faPencilAlt} /></button> */}
                 </div>
 
@@ -76,13 +69,10 @@ export default function AccountDetailsPage(props) {
                         </div>
                         <div className="col-12 col-md-9 mt-2 d-flex justify-content-between">
                             <small>{props.companyData.companyName}</small>
-                            {editCompanyView(props.userData.userStatus, props.companyData.userConfig) ?
-                                <Link href={`/companyEdit`}>
-                                    <span type="button" className="text-success"><FontAwesomeIcon icon={faPencil}  className="editIcon"/></span>
-                                </Link>
-                                :
-                                <span className="text-success"><FontAwesomeIcon icon={faLock} /></span>
-                            }
+                            <Link href={`/editProfile?section=Minha empresa`}>
+                                <span type="button" className="text-c-secondary"><FontAwesomeIcon icon={faPencil} className="editIcon" /></span>
+                            </Link>
+
 
                         </div>
                     </div>
@@ -99,63 +89,35 @@ export default function AccountDetailsPage(props) {
                                 )}
                                 <small>{props.companyData.cidade} - {props.companyData.estado}, CEP {props.companyData.cep}</small><br />
                             </div>
-                            {editCompanyView(props.userData.userStatus, props.companyData.userConfig) ?
-                                <Link href={`/companyEdit`}>
-                                    <span type="button" className="text-success"><FontAwesomeIcon icon={faPencil} className="editIcon"/></span>
-                                </Link>
-                                :
-                                <span className="text-success"><FontAwesomeIcon icon={faLock} /></span>
-                            }
+                            <Link href={`/editProfile?section=Minha empresa`}>
+                                <span type="button" className="text-c-secondary"><FontAwesomeIcon icon={faPencil} className="editIcon" /></span>
+                            </Link>
+
 
 
                         </div>
                     </div>
-                    {/* <div className="row border-bottom py-4">
+
+                    <div className="row  py-4">
                         <div className="col-12 col-md-3 text-bold">
-                            Estrutura da plataforma
-                        </div>
-                        <div className="col-12 col-md-9 mt-2  d-flex justify-content-between">
-                            <small>{props.companyData.userConfig === 'basico' ? 'Categoria 1' : props.companyData.userConfig === 'avancado' ? 'Categoria 2' : ''}</small>
-                            {editCompanyView(props.userData.userStatus, props.companyData.userConfig) ?
-                                <Link href={`/companyStructure`}>
-                                    <span type="button" className="text-success"><FontAwesomeIcon icon={faPencil} /></span>
-                                </Link>
-                                :
-                                <span className="text-success"><FontAwesomeIcon icon={faLock} /></span>
-                            }
-                        </div>
-                    </div> */}
-                    <div className="row border-bottom py-4">
-                        <div className="col-12 col-md-3 text-bold">
-                            Responsável pelo Inventário
+                            CNPJ
                         </div>
                         <div className="col-12 col-md-9 mt-2 d-flex justify-content-between">
-                            <small>{props.companyData.responsavel}</small>
-                            {editCompanyView(props.userData.userStatus, props.companyData.userConfig) ?
-                                <Link href={`/companyEdit`}>
-                                    <span type="button" className="text-success"><FontAwesomeIcon icon={faPencil}  className="editIcon"/></span>
-                                </Link>
-                                :
-                                <span className="text-success"><FontAwesomeIcon icon={faLock} /></span>
-                            }
+                            <small>{props.companyData.cnpjPrincipal}</small>
+                            <Link href={`/editProfile?section=Minha empresa`}>
+                                <span type="button" className="text-c-secondary"><FontAwesomeIcon icon={faPencil} className="editIcon" /></span>
+                            </Link>
+
 
                         </div>
                     </div>
-                    <div className="row py-4">
-                        <div className="col-12 col-md-3 text-bold">
-                            E-mail para Contato
-                        </div>
-                        <div className="col-12 col-md-9 mt-2 d-flex justify-content-between">
-                            <small>{props.companyData.email}</small>
-                            {editCompanyView(props.userData.userStatus, props.companyData.userConfig) ?
-                                <Link href={`/companyEdit`}>
-                                    <span type="button" className="text-success"><FontAwesomeIcon icon={faPencil} className="editIcon" /></span>
-                                </Link>
-                                :
-                                <span className="text-success"><FontAwesomeIcon icon={faLock} /></span>
-                            }
 
+                    <hr />
+                    <div className="row mt-5">
+                        <div className="col-12 d-flex justify-content-end">
+                            <button data-bs-toggle="modal" data-bs-target="#exitAccountModal" className="btn btn-sm btn-outline-danger">Sair da conta</button>
                         </div>
+                        <ExitAccountModal />
                     </div>
                 </div>
             </div>
