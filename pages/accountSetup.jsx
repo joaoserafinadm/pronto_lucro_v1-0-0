@@ -99,8 +99,7 @@ export default function AccountSetup() {
                                 <AccountDetailsPage userData={userData} companyData={companyData} />
                             </div>
                             <div className="carousel-item">
-                                1
-                                {/* <AccountProductsPage companyData={companyData} /> */}
+                                <AccountProductsPage companyData={companyData} />
                             </div>
                             <div className="carousel-item">
                                 2
