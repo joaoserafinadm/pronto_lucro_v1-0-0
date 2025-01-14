@@ -29,6 +29,7 @@ export default function MenuBar(props) {
         '/transactions',
         '/bankAccounts',
         '/categories',
+        '/results',
         '/'
     ]
 
@@ -65,10 +66,10 @@ export default function MenuBar(props) {
                 </div>
                 <div className="col d-flex justify-content-center align-items-center px-0">
 
-                    <Link href='/planning'
-                        className={`text-center  ${pathname === '/planning' ? `${styles.pageSelected}` : 'text-light'}`}>
+                    <Link href='/results'
+                        className={`text-center  ${pathname === '/results' ? `${styles.pageSelected}` : 'text-light'}`}>
                         <FontAwesomeIcon icon={faChartLine} /> <br />
-                        <span className={`${pathname === '/planning' ? `${styles.pageSelected}` : 'text-light'}`} style={{ fontSize: '10px' }}>Resultados</span>
+                        <span className={`${pathname === '/results' ? `${styles.pageSelected}` : 'text-light'}`} style={{ fontSize: '10px' }}>Resultados</span>
                     </Link>
 
                 </div>

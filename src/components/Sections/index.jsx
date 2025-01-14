@@ -18,6 +18,13 @@ export default function Sections(props) {
         }, 200)
     }, [props.section])
 
+    useEffect(() => {
+        const scrollContainer = document.querySelector("#sectionsScrollbar");
+        if (scrollContainer) {
+            scrollContainer.scrollBy({ left: 1, behavior: "smooth" });
+        }
+    }, []);
+
     const scroll = (id) => {
 
         const element = document.getElementById(id);
@@ -39,7 +46,7 @@ export default function Sections(props) {
 
     return (
         <div className="row  border-bottom mb-4 mx-2" >
-            <div className="col-12 d-flex align-items-end" style={{ overflowX: isMobile() ? "scroll" : 'auto' }}>
+            <div className="col-12 d-flex align-items-end" id="sectionsScrollbar" style={{ overflowX: isMobile() ? "scroll" : 'auto' }}>
                 {props.sections.map((elem, index) => {
                     return (
                         <span style={{ minWidth: '150px', width: 'auto' }} key={index} id={elem + index}

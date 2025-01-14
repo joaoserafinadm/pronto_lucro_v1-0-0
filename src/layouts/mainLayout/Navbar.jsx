@@ -144,7 +144,7 @@ export default function Nav(props) {
                                     </li>
                                     <li>
                                         <ContextAwareToggle eventKey="1" collapse="resultsItem">
-                                            <div className="d-flex justify-content-start " type='button' onClick={() => router.push('/transactions')}>
+                                            <div className="d-flex justify-content-start " type='button' onClick={() => router.push('/results')}>
                                                 <div className="col-1 text-center me-3">
                                                     <FontAwesomeIcon icon={faChartLine} className="me-2 icon" />
                                                 </div>

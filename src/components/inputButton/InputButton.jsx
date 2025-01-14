@@ -31,6 +31,7 @@ export default function InputButton(props) {
         '/transactions',
         '/bankAccounts',
         '/categories',
+        '/results',
         '/'
     ]
 

@@ -106,7 +106,6 @@ export default function Transactions() {
                                     dateSelected={dateSelected}
                                     categories={categories}
                                     setIncomeSelected={setIncomeSelected} />
-
                             </div>
                         }
 
