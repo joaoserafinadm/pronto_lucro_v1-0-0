@@ -19,7 +19,7 @@ export default function DonutChart(props) {
         labels: labels,
         colors: colors,
         legend: {
-            show: false,
+            show: true,
             position: "bottom",
         },
         tooltip: {
