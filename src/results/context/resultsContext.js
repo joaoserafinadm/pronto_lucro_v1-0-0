@@ -17,6 +17,9 @@ export const StateProvider = ({ children }) => {
     const [incomeCategoriesFilter, setIncomeCategoriesFilter] = useState([]);
     const [expenseCategoriesFilter, setExpenseCategoriesFilter] = useState([]);
     const [accountsFilter, setAccountsFilter] = useState([]);
+    const [dfcData, setDfcData] = useState([]);
+    const [incomeDonutChartData, setIncomeDonutChartData] = useState([]);
+    const [expenseDonutChartData, setExpenseDonutChartData] = useState([]);
 
     return (
         <StateContext.Provider
@@ -38,7 +41,13 @@ export const StateProvider = ({ children }) => {
                 expenseCategoriesFilter,
                 setExpenseCategoriesFilter,
                 accountsFilter,
-                setAccountsFilter
+                setAccountsFilter,
+                dfcData,
+                setDfcData,
+                incomeDonutChartData,
+                setIncomeDonutChartData,
+                expenseDonutChartData,
+                setExpenseDonutChartData
             }}>
             {children}
         </StateContext.Provider>

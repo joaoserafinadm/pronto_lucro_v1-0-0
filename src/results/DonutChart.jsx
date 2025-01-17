@@ -1,100 +1,42 @@
+import dynamic from "next/dynamic";
+import React from "react";
 
-
+const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
 export default function DonutChart(props) {
+    const { data } = props;
 
+    // Extrair os valores e labels das categorias para o gráfico
+    const series = data.map(category => category.value); // Valores das categorias
+    const labels = data.map(category => category.name); // Nomes das categorias
+    const colors = data.map(category => category.color); // Cores associadas às categorias
 
-
-    // const budgetsState = {
-
-    //     series: [budgetsResult?.budgetsActive || 0, budgetsResult?.budgetsFinished || 0, budgetsResult?.budgetsDenied || 0],
-    //     options: {
-    //         chart: {
-    //             type: 'donut',
-    //         },
-    //         colors: ["#fbba27", "#00c661", "#e9083f"],
-    //         labels: ["Pendentes", "Aprovados", "Rejeitados"],
-    //         legend: {
-    //             position: 'bottom'
-    //         },
-    //         dataLabels: {
-    //             enabled: true,
-    //             formatter: function (val) {
-    //                 return (+budgetsResult?.budgetsTotal * val.toFixed(0) / 100).toFixed(0);
-    //             },
-    //             style: {
-    //                 fontSize: '20px',
-    //                 fontWeight: 'bold',
-    //             },
-    //             offsetY: '50px',
-    //         },
-    //         plotOptions: {
-    //             pie: {
-    //                 donut: {
-    //                     labels: {
-    //                         show: true,
-    //                         name: {
-    //                             show: true
-    //                         },
-    //                         value: {
-    //                             show: true,
-    //                             fontSize: '20px',
-    //                             fontWeight: 'bold',
-    //                         },
-    //                         total: {
-    //                             show: true,
-    //                             label: 'Total',
-    //                             fontSize: '15px',
-    //                             fontWeight: 'bold',
-    //                             formatter: function (w) {
-    //                                 if (budgetsResult?.budgetsTotal) {
-    //                                     return (+budgetsResult?.budgetsTotal).toFixed(0);
-    //                                 }
-    //                                 return 0;
-    //                             }
-    //                         }
-    //                     }
-    //                 }
-    //             }
-    //         },
-    //         // fill: {
-    //         //     type: "gradient",
-    //         //     gradient: {
-    //         //         shade: "dark",
-    //         //         type: "horizontal",
-    //         //         shadeIntensity: 0.5,
-    //         //         inverseColors: true,
-    //         //         opacityFrom: 1,
-    //         //         opacityTo: 1,
-    //         //         stops: [0, 100]
-    //         //     }
-    //         // },
-    //         responsive: [{
-    //             breakpoint: 575,
-    //             options: {
-    //                 chart: {
-    //                     width: '100%'
-    //                 },
-    //                 legend: {
-    //                     position: 'right'
-
-    //                 }
-    //             }
-    //         }]
-    //     },
-
-
-    // };
-
+    // Configurações do gráfico
+    const chartOptions = {
+        chart: {
+            type: "donut",
+        },
+        labels: labels,
+        colors: colors,
+        legend: {
+            show: false,
+            position: "bottom",
+        },
+        tooltip: {
+            y: {
+                formatter: (value) => `R$ ${value.toFixed(2)}`,
+            },
+        },
+    };
 
     return (
         <div>
-
+            <Chart
+                options={chartOptions}
+                series={series}
+                type="donut"
+                height="400"
+            />
         </div>
-
-    )
-
-
-
-
+    );
 }

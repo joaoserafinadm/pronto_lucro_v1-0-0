@@ -11,6 +11,7 @@ import MonthSelect from "../src/incomeAdd/MonthSelect";
 import DrePage from "../src/results/DrePage";
 import { StateProvider, useStateContext } from "../src/results/context/resultsContext";
 import FilterSetup from "../src/results/FilterSetup";
+import handleResults from "../src/results/calc/handleResults";
 
 export default function ResultsPage(props) {
     return (
@@ -26,14 +27,24 @@ function Results() {
 
     const {
         setBankAccounts,
+        bankAccounts,
         setIncomeCategories,
+        incomeCategories,
         setExpenseCategories,
+        expenseCategories,
         type,
         setType,
         status,
         setStatus,
         view,
         setView,
+        setDfcData,
+        dfcData,
+        incomeCategoriesFilter,
+        expenseCategoriesFilter,
+        accountsFilter,
+        setIncomeDonutChartData,
+        setExpenseDonutChartData
     } = useStateContext();
 
     const [dateSelected, setDateSelected] = useState({
@@ -48,6 +59,37 @@ function Results() {
         if (dateSelected) dataFunction(token.sub);
     }, [dateSelected]);
 
+    useEffect(() => {
+        const incomeResults = handleResults(
+            "income",
+            status,
+            view,
+            dfcData,
+            incomeCategoriesFilter,
+            expenseCategoriesFilter,
+            accountsFilter,
+            bankAccounts,
+            incomeCategories,
+            expenseCategories
+        );
+        const expenseResults = handleResults(
+            "expense",
+            status,
+            view,
+            dfcData,
+            incomeCategoriesFilter,
+            expenseCategoriesFilter,
+            accountsFilter,
+            bankAccounts,
+            incomeCategories,
+            expenseCategories
+        );
+
+        setIncomeDonutChartData(incomeResults);
+        setExpenseDonutChartData(expenseResults);
+
+    }, [type, status, view, dfcData, incomeCategoriesFilter, expenseCategoriesFilter, accountsFilter]);
+
     const dataFunction = async (user_id) => {
         await axios
             .get("/api/results", {
@@ -61,9 +103,11 @@ function Results() {
                 setBankAccounts(res.data.bankAccountsArray);
                 setIncomeCategories(res.data.incomeCategories);
                 setExpenseCategories(res.data.expenseCategories);
+                setDfcData(res.data.dfcData);
                 setLoadingPage(false);
             })
             .catch((e) => {
+                setLoadingPage(false);
                 console.log(e);
             });
     };

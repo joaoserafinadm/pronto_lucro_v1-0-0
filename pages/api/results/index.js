@@ -100,7 +100,7 @@ export default authenticated(async (req, res) => {
                     return acc;
                 }, 0);
 
-                res.status(200).json({ bankAccountsArray, incomeCategories, expenseCategories })
+                res.status(200).json({ bankAccountsArray, incomeCategories, expenseCategories, dfcData, dreData })
 
 
                 // res.status(200).json({ dreData, dfcData, dfcPending, monthResult, dfcResult, monthPendingResult, dfcPendingResult, categories: userExist.incomeCategories?.concat(userExist.expenseCategories || []), accounts: userExist.bankAccounts, top3Incomes, top3Expenses });
