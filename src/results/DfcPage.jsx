@@ -30,7 +30,7 @@ export default function DfcPage(props) {
                     <DonutChart data={incomeDonutChartData} />
                 </div>
             </div>
-            <div className="card">
+            <div className="card mt-3">
                 <div className="card-body">
                     <div className="row text-c-danger">
                         <div className="col-12">

@@ -33,61 +33,85 @@ export default function DonutChart(props) {
     };
 
     return (
-        <div className="row">
-            <div className="col-12 col-lg-6">
-                <Chart
-                    options={chartOptions}
-                    series={series}
-                    type="donut"
-                    height="400"
-                />
-            </div>
-            <div className="col-12 col-lg-6">
-                <div className="row fw-responsive" >
-                    {data.map((elem, index) => (
-                        <>
-                            <hr />
+        <>
+            {!data.length ?
+                <div className="row d-flex justify-content-center">
 
-                            <div className="col-12 mb-2">
-                                <div className="d-flex align-items-center justify-content-between">
-                                    <div>
-                                        <CategoryIcon color={elem.color} />
-                                        <span className="bold mx-2">{elem.name}</span>
-                                    </div>
-                                    <div className="d-flex flex-column align-items-end">
-                                        <span className="bold text-nowrap">
-                                            R$ {elem.value?.toFixed(2)}
-                                        </span>
-                                        <span className="text-nowrap">
-                                            {(+elem.percentage)?.toFixed(2)}%
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                            {elem.subCategories && elem.subCategories.map((elem1, index) => (
+                    <div className="col-12 d-flex justify-content-center my-5">
+                        <span className="text-center text-secondary">
+                            Nenhuma transação encontrada
+                        </span>
 
-                                <div className="col-12 d-flex  align-items-center my-2 justify-content-between">
-                                    <div>
-                                        <SubCategoryIcon color={elem.color} />
-                                        <span className="fw-bold" style={{ color: elem.color }}>{elem1.name}</span>
-                                    </div>
-                                    <div className="d-flex flex-column align-items-end">
-                                        <span className="small text-nowrap">
-                                            R$ {elem1.value?.toFixed(2)}
-                                        </span>
-                                        <span className="small text-nowrap">
-                                            {(+elem1.percentage)?.toFixed(2)}%
-                                        </span>
-                                    </div>
-                                </div>
-                            ))}
-                        </>
+                    </div>
 
-                    ))}
+
                 </div>
+                :
+                <div className="row d-flex justify-content-center">
+                    <div className="col-12 col-md-6 ">
+                        <Chart
+                            options={chartOptions}
+                            series={series}
+                            type="donut"
+                        // height="400"
+                        />
+                    </div>
+                    <div className="col-12 col-lg-6">
+                        <div className="row fw-responsive" >
+                            {data.map((elem, index) => (
+                                <>
+
+                                    <div className="col-12 mb-2">
+                                        <div className="d-flex align-items-center justify-content-between">
+                                            <div>
+                                                <CategoryIcon color={elem.color} />
+                                                <span className="bold mx-2">{elem.name}</span>
+                                            </div>
+                                            <div className="d-flex flex-column align-items-end">
+                                                <span className="fw-bold text-nowrap">
+                                                    R$ {elem.value?.toFixed(2)}
+                                                </span>
+                                                <span className="bold text-nowrap">
+                                                    {(+elem.percentage)?.toFixed(2)}%
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {elem.subCategories && elem.subCategories.map((elem1, index) => (
+
+                                        <div className="col-12 d-flex  align-items-center my-2 justify-content-between">
+                                            <div>
+                                                <SubCategoryIcon color={elem.color} />
+                                                <span className="fw-bold" style={{ color: elem.color }}>{elem1.name}</span>
+                                            </div>
+                                            <div className="d-flex flex-column align-items-end">
+                                                <span className="small text-nowrap">
+                                                    R$ {elem1.value?.toFixed(2)}
+                                                </span>
+                                                <span className="small text-nowrap">
+                                                    {(+elem1.percentage)?.toFixed(2)}%
+                                                </span>
+                                            </div>
+                                        </div>
+                                    ))}
+                                    <hr />
+
+                                </>
+
+                            ))}
+                            <div className="col-12 d-flex justify-content-between">
+                                <span className="fw-bold">Total</span>
+                                <span className="fw-bold text-nowrap">R$ {data.reduce((total, elem) => total + elem.value, 0)?.toFixed(2)}</span>
+
+                            </div>
+
+                        </div>
 
 
-            </div>
-        </div>
+                    </div>
+                </div>
+            }
+        </>
+
     );
 }
