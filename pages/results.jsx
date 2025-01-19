@@ -12,6 +12,8 @@ import DrePage from "../src/results/DrePage";
 import { StateProvider, useStateContext } from "../src/results/context/resultsContext";
 import FilterSetup from "../src/results/FilterSetup";
 import handleResults from "../src/results/calc/handleResults";
+import navbarHide from "../utils/navbarHide";
+import { useDispatch } from "react-redux";
 
 export default function ResultsPage(props) {
     return (
@@ -24,6 +26,9 @@ export default function ResultsPage(props) {
 function Results() {
 
     const token = jwt.decode(Cookie.get("auth"));
+
+    const dispatch = useDispatch()
+
 
     const {
         setBankAccounts,
@@ -55,6 +60,9 @@ function Results() {
     const [section, setSection] = useState("DFC");
     const [loadingPage, setLoadingPage] = useState(true);
 
+    useEffect(() => {
+        navbarHide(dispatch)
+    }, [])
     useEffect(() => {
         if (dateSelected) dataFunction(token.sub);
     }, [dateSelected]);

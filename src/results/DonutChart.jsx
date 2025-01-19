@@ -1,5 +1,6 @@
 import dynamic from "next/dynamic";
 import React from "react";
+import CategoryIcon, { SubCategoryIcon } from "../categories/categoryIcon";
 
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
@@ -11,6 +12,8 @@ export default function DonutChart(props) {
     const labels = data.map(category => category.name); // Nomes das categorias
     const colors = data.map(category => category.color); // Cores associadas às categorias
 
+    console.log('data', data)
+
     // Configurações do gráfico
     const chartOptions = {
         chart: {
@@ -19,7 +22,7 @@ export default function DonutChart(props) {
         labels: labels,
         colors: colors,
         legend: {
-            show: true,
+            show: false,
             position: "bottom",
         },
         tooltip: {
@@ -30,13 +33,61 @@ export default function DonutChart(props) {
     };
 
     return (
-        <div>
-            <Chart
-                options={chartOptions}
-                series={series}
-                type="donut"
-                height="400"
-            />
+        <div className="row">
+            <div className="col-12 col-lg-6">
+                <Chart
+                    options={chartOptions}
+                    series={series}
+                    type="donut"
+                    height="400"
+                />
+            </div>
+            <div className="col-12 col-lg-6">
+                <div className="row" style={{ fontSize: "11px" }}>
+                    {data.map((elem, index) => (
+                        <>
+                            <hr />
+
+                            <div className="col-12 mb-2">
+                                <div className="d-flex align-items-center justify-content-between">
+                                    <div>
+                                        <CategoryIcon color={elem.color} />
+                                        <span className="bold mx-2">{elem.name}</span>
+                                    </div>
+                                    <div className="d-flex flex-column align-items-end">
+                                        <span className="bold">
+                                            R$ {elem.value?.toFixed(2)}
+                                        </span>
+                                        <span>
+                                            {(+elem.percentage)?.toFixed(2)}%
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            {elem.subCategories && elem.subCategories.map((elem1, index) => (
+
+                                <div className="col-12 d-flex  align-items-center my-2 justify-content-between">
+                                    <div>
+                                        <SubCategoryIcon color={elem.color} />
+                                        <span className="fw-bold" style={{ color: elem.color }}>{elem1.name}</span>
+                                    </div>
+                                    <div className="d-flex flex-column align-items-end">
+                                        <span className="small">
+                                            R$ {elem1.value?.toFixed(2)}
+                                        </span>
+                                        <span className="small">
+                                            {(+elem1.percentage)?.toFixed(2)}%
+                                        </span>
+                                    </div>
+                                </div>
+                            ))}
+                        </>
+
+                    ))}
+                </div>
+
+
+            </div>
         </div>
     );
 }

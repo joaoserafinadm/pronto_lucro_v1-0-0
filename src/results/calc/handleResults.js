@@ -133,6 +133,5 @@ export default function handleResults(
         return chartData;
     }
 
-    console.log('não foi');
     return [];
 }
