@@ -43,7 +43,7 @@ export default function DonutChart(props) {
                 />
             </div>
             <div className="col-12 col-lg-6">
-                <div className="row" style={{ fontSize: "11px" }}>
+                <div className="row fw-responsive" >
                     {data.map((elem, index) => (
                         <>
                             <hr />
@@ -55,10 +55,10 @@ export default function DonutChart(props) {
                                         <span className="bold mx-2">{elem.name}</span>
                                     </div>
                                     <div className="d-flex flex-column align-items-end">
-                                        <span className="bold">
+                                        <span className="bold text-nowrap">
                                             R$ {elem.value?.toFixed(2)}
                                         </span>
-                                        <span>
+                                        <span className="text-nowrap">
                                             {(+elem.percentage)?.toFixed(2)}%
                                         </span>
                                     </div>
@@ -72,10 +72,10 @@ export default function DonutChart(props) {
                                         <span className="fw-bold" style={{ color: elem.color }}>{elem1.name}</span>
                                     </div>
                                     <div className="d-flex flex-column align-items-end">
-                                        <span className="small">
+                                        <span className="small text-nowrap">
                                             R$ {elem1.value?.toFixed(2)}
                                         </span>
-                                        <span className="small">
+                                        <span className="small text-nowrap">
                                             {(+elem1.percentage)?.toFixed(2)}%
                                         </span>
                                     </div>

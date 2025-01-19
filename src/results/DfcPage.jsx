@@ -21,7 +21,7 @@ export default function DfcPage(props) {
         <div>
             <div className="card">
                 <div className="card-body">
-                    <div className="row">
+                    <div className="row text-c-success">
                         <div className="col-12">
                             <FontAwesomeIcon icon={faChartPie} />
                             <span className="small fw-bold mb-2 ms-3">Receitas por {view}</span>
@@ -32,7 +32,7 @@ export default function DfcPage(props) {
             </div>
             <div className="card">
                 <div className="card-body">
-                    <div className="row">
+                    <div className="row text-c-danger">
                         <div className="col-12">
                             <FontAwesomeIcon icon={faChartPie} />
                             <span className="small fw-bold mb-2 ms-3">Despesas por {view}</span>
