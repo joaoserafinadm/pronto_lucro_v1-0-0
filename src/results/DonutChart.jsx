@@ -25,6 +25,28 @@ export default function DonutChart(props) {
             show: false,
             position: "bottom",
         },
+        plotOptions: {
+            pie: {
+                donut: {
+                    labels: {
+                        show: true,
+                        total: {
+                            showAlways: true,
+                            show: true,
+                            label: "Total",
+                            formatter: () => {
+                                // Calcula o total e formata como moeda
+                                const total = data.reduce((acc, category) => acc + category.value, 0);
+                                return new Intl.NumberFormat("pt-BR", {
+                                    style: "currency",
+                                    currency: "BRL",
+                                }).format(total);
+                            },
+                        },
+                    },
+                },
+            },
+        },
         tooltip: {
             y: {
                 formatter: (value) => `R$ ${value.toFixed(2)}`,
