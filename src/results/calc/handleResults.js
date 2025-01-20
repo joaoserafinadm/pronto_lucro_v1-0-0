@@ -10,51 +10,38 @@ export default function handleResults(
     incomeCategories = [],
     expenseCategories = []
 ) {
-    console.log('data', status, view, dfcData, incomeCategoriesFilter, expenseCategoriesFilter, accountsFilter, bankAccounts, incomeCategories, expenseCategories);
-
-    // Determina o valor booleano esperado para "active" com base no status
     const statusFilter = status === "Efetuadas" ? true : status === "Pendentes" ? false : null;
-
-    // Determina as categorias baseadas no tipo (income ou expense)
     const categories = type === "income" ? incomeCategories : expenseCategories;
     const categoryFilters = type === "income" ? incomeCategoriesFilter : expenseCategoriesFilter;
 
-    // Verifica se há filtros aplicados às categorias e contas
     const hasCategoryFilters = categoryFilters.length > 0;
     const hasAccountFilters = accountsFilter.length > 0;
 
-    // Aplica os filtros nas categorias
+    // Filtragem inicial
     const filteredCategories = hasCategoryFilters
         ? categories.filter(cat => categoryFilters.some(filter => filter._id === cat._id))
         : categories;
 
-    // Filtra os dados com base no status, categorias, contas e tipo
     const filteredData = dfcData.filter(item => {
         const isStatusMatch = statusFilter === null || item.active === statusFilter;
         const isTypeMatch = item.type === type;
+        const isCategoryMatch = filteredCategories.some(cat =>
+            cat.subCategories.some(subCat => subCat._id === item.subCategory_id)
+        );
+        const isAccountMatch = hasAccountFilters
+            ? accountsFilter.some(filter => filter._id === item.account_id)
+            : true;
 
-        if (view === "Categorias") {
-            // Filtra por categorias
-            const isCategoryMatch = filteredCategories.some(cat =>
-                cat.subCategories.some(subCat => subCat._id === item.subCategory_id)
-            );
-            return isStatusMatch && isTypeMatch && isCategoryMatch;
-        } else if (view === "Contas") {
-            // Filtra por contas bancárias
-            const isAccountMatch = hasAccountFilters
-                ? accountsFilter.some(filter => filter._id === item.account_id)
-                : true;
-            return isStatusMatch && isTypeMatch && isAccountMatch;
-        }
-        return false;
+        return isStatusMatch && isTypeMatch  && isAccountMatch;
+        // return isStatusMatch && isTypeMatch && isCategoryMatch && isAccountMatch;
     });
 
     if (view === "Categorias") {
-        // Agrupa os valores por categoria e subcategoria
         const groupedData = filteredData.reduce((acc, item) => {
             const category = filteredCategories.find(cat =>
                 cat.subCategories.some(subCat => subCat._id === item.subCategory_id)
             );
+
             if (category) {
                 if (!acc[category.categoryName]) {
                     acc[category.categoryName] = {
@@ -76,13 +63,23 @@ export default function handleResults(
                     }
                     acc[category.categoryName].subCategories[subCategory.name].value += item.value;
                 }
+            } else {
+                if (!acc["Sem categoria"]) {
+                    acc["Sem categoria"] = {
+                        name: "Sem categoria",
+                        value: 0,
+                        color: "#CCCCCC",
+                        subCategories: {},
+                    };
+                }
+                acc["Sem categoria"].value += item.value;
             }
             return acc;
         }, {});
 
         const totalValue = Object.values(groupedData).reduce((sum, category) => sum + category.value, 0);
 
-        const chartData = Object.entries(groupedData).map(([categoryName, categoryData]) => {
+        return Object.entries(groupedData).map(([categoryName, categoryData]) => {
             const categoryPercentage = ((categoryData.value / totalValue) * 100).toFixed(2);
             const subCategoryData = Object.entries(categoryData.subCategories).map(([subCategoryName, subCategory]) => ({
                 name: subCategory.name,
@@ -97,13 +94,10 @@ export default function handleResults(
                 subCategories: subCategoryData,
             };
         });
-
-        console.log('foi', chartData);
-        return chartData;
     } else if (view === "Contas") {
-        // Agrupa os valores por contas bancárias
         const groupedData = filteredData.reduce((acc, item) => {
             const bankAccount = bankAccounts.find(account => account._id === item.account_id);
+
             if (bankAccount) {
                 if (!acc[bankAccount.description]) {
                     acc[bankAccount.description] = {
@@ -113,13 +107,22 @@ export default function handleResults(
                     };
                 }
                 acc[bankAccount.description].value += item.value;
+            } else {
+                if (!acc["Sem conta"]) {
+                    acc["Sem conta"] = {
+                        name: "Sem conta",
+                        value: 0,
+                        color: "#CCCCCC",
+                    };
+                }
+                acc["Sem conta"].value += item.value;
             }
             return acc;
         }, {});
 
         const totalValue = Object.values(groupedData).reduce((sum, account) => sum + account.value, 0);
 
-        const chartData = Object.entries(groupedData).map(([accountName, accountData]) => {
+        return Object.entries(groupedData).map(([accountName, accountData]) => {
             const accountPercentage = ((accountData.value / totalValue) * 100).toFixed(2);
             return {
                 name: accountData.name,
@@ -128,9 +131,6 @@ export default function handleResults(
                 color: accountData.color,
             };
         });
-
-        console.log('foi', chartData);
-        return chartData;
     }
 
     return [];
