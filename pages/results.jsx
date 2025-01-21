@@ -14,6 +14,8 @@ import FilterSetup from "../src/results/FilterSetup";
 import handleResults from "../src/results/calc/handleResults";
 import navbarHide from "../utils/navbarHide";
 import { useDispatch } from "react-redux";
+import PlanoDeContasPage from "../src/results/planoDeContasPage";
+
 
 export default function ResultsPage(props) {
     return (
@@ -49,7 +51,8 @@ function Results() {
         expenseCategoriesFilter,
         accountsFilter,
         setIncomeDonutChartData,
-        setExpenseDonutChartData
+        setExpenseDonutChartData,
+        setPlanoDeContasConfig
     } = useStateContext();
 
     const [dateSelected, setDateSelected] = useState({
@@ -112,6 +115,7 @@ function Results() {
                 setIncomeCategories(res.data.incomeCategories);
                 setExpenseCategories(res.data.expenseCategories);
                 setDfcData(res.data.dfcData);
+                setPlanoDeContasConfig(res.data.planoDeContasConfig);
                 setLoadingPage(false);
             })
             .catch((e) => {
@@ -153,7 +157,7 @@ function Results() {
                             section={section}
                             idTarget="resultsPage"
                             setSection={(value) => setSection(value)}
-                            sections={["DFC", "DRE"]}
+                            sections={["DFC", "Plano de contas"]}
                         />
 
                         <div className="carousel-inner">
@@ -161,7 +165,7 @@ function Results() {
                                 <DfcPage />
                             </div>
                             <div className="carousel-item">
-                                <DrePage />
+                                <PlanoDeContasPage />
                             </div>
                         </div>
                     </div>

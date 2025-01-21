@@ -20,6 +20,7 @@ export const StateProvider = ({ children }) => {
     const [dfcData, setDfcData] = useState([]);
     const [incomeDonutChartData, setIncomeDonutChartData] = useState([]);
     const [expenseDonutChartData, setExpenseDonutChartData] = useState([]);
+    const [planoDeContasConfig, setPlanoDeContasConfig] = useState([]);
 
     return (
         <StateContext.Provider
@@ -47,7 +48,9 @@ export const StateProvider = ({ children }) => {
                 incomeDonutChartData,
                 setIncomeDonutChartData,
                 expenseDonutChartData,
-                setExpenseDonutChartData
+                setExpenseDonutChartData,
+                planoDeContasConfig,
+                setPlanoDeContasConfig
             }}>
             {children}
         </StateContext.Provider>
