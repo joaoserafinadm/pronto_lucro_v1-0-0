@@ -5,6 +5,8 @@ import PlanoDeContasNewConfig from "./planoDeContasNewConfig";
 
 export default function PlanoDeContasConfigModal(props) {
 
+    const { dataFunction } = props
+
 
 
     return (
@@ -31,7 +33,7 @@ export default function PlanoDeContasConfigModal(props) {
                                         </div>
                                         <div className="carousel-item ">
 
-                                            <PlanoDeContasNewConfig />
+                                            <PlanoDeContasNewConfig dataFunction={dataFunction} />
                                         </div>
                                     </div>
                                 </div>

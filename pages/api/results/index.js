@@ -28,7 +28,6 @@ export default authenticated(async (req, res) => {
                 res.status(400).json({ error: "User does not exist" });
             } else {
 
-                const planoDeContasConfig = userExist.planoDeContasConfig || []
 
                 const bankAccounts = userExist.bankAccounts
 
@@ -102,7 +101,7 @@ export default authenticated(async (req, res) => {
                     return acc;
                 }, 0);
 
-                res.status(200).json({ bankAccountsArray, incomeCategories, expenseCategories, dfcData, dreData, planoDeContasConfig })
+                res.status(200).json({ bankAccountsArray, incomeCategories, expenseCategories, dfcData, dreData })
 
 
                 // res.status(200).json({ dreData, dfcData, dfcPending, monthResult, dfcResult, monthPendingResult, dfcPendingResult, categories: userExist.incomeCategories?.concat(userExist.expenseCategories || []), accounts: userExist.bankAccounts, top3Incomes, top3Expenses });

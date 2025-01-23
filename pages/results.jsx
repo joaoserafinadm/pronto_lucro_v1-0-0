@@ -115,7 +115,6 @@ function Results() {
                 setIncomeCategories(res.data.incomeCategories);
                 setExpenseCategories(res.data.expenseCategories);
                 setDfcData(res.data.dfcData);
-                setPlanoDeContasConfig(res.data.planoDeContasConfig);
                 setLoadingPage(false);
             })
             .catch((e) => {
