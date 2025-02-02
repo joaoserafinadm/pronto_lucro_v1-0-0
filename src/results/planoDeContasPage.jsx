@@ -6,6 +6,7 @@ import Cookie from "js-cookie";
 import jwt from "jsonwebtoken";
 import axios from "axios";
 import { useEffect } from "react";
+import PlanoDeContasTable from "./planoDeContasTable";
 
 
 
@@ -55,12 +56,17 @@ export default function PlanoDeContasPage(props) {
                             </button>
                         </div>
                         :
-                        <div className="col-12 my-5 d-flex justify-content-center">
-                            <button className="btn btn-c-secondary" data-bs-toggle="modal" data-bs-target="#planoDeContasConfigModal">
-                                <FontAwesomeIcon icon={faList} className="me-2" />
-                                Configurar Plano de Contas
-                            </button>
-                        </div>
+                        <>
+                            <div className="col-12">
+                                <PlanoDeContasTable />
+                            </div>
+                            <div className="col-12 my-5 d-flex justify-content-center">
+                                <button className="btn btn-c-secondary" data-bs-toggle="modal" data-bs-target="#planoDeContasConfigModal">
+                                    <FontAwesomeIcon icon={faList} className="me-2" />
+                                    Configurar Plano de Contas
+                                </button>
+                            </div>
+                        </>
                     }
                 </div>
 

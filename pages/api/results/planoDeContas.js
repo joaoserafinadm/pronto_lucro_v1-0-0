@@ -76,6 +76,73 @@ export default authenticated(async (req, res) => {
         }
 
 
+    } else if (req.method === "DELETE") {
+        const { user_id, id } = req.query
+
+        if (!user_id || !id) {
+            res.status(400).json({ error: "Missing parameters on request body" })
+        } else {
+
+            const { db } = await connect();
+
+            const userExist = await db.collection('users').findOne({ _id: new ObjectId(user_id) });
+
+            if (!userExist) {
+                res.status(400).json({ error: "User doesn't exist." });
+            } else {
+
+                const response = await db.collection('users').updateOne(
+                    { _id: new ObjectId(user_id) },
+                    {
+                        $pull: {
+                            planoDeContasConfig: { _id: new ObjectId(id) }
+                        }
+                    }
+                );
+
+                if (response.modifiedCount === 1) {
+                    res.status(200).json({ message: "Plano de contas deletado com sucesso." });
+                } else {
+                    res.status(400).json({ error: "Não foi possível deletar o plano de contas." });
+                }
+            }
+        }
+    } else if (req.method === "PATCH") {
+
+        const { user_id, id, name, categories } = req.body
+
+        if (!user_id || !id || !name || !categories.length) {
+            res.status(400).json({ error: "Missing parameters on request body" })
+        } else {
+
+            const { db } = await connect();
+
+            const userExist = await db.collection('users').findOne({ _id: new ObjectId(user_id) });
+
+            if (!userExist) {
+                res.status(400).json({ error: "User doesn't exist." });
+            } else {
+
+                const response = await db.collection('users').updateOne(
+                    { _id: new ObjectId(user_id), "planoDeContasConfig._id": new ObjectId(id) },
+                    {
+                        $set: {
+                            "planoDeContasConfig.$.resultName": name,
+                            "planoDeContasConfig.$.selectedCategories": categories
+                        }
+                    }
+                );
+
+                if (response.modifiedCount === 1) {
+                    res.status(200).json({ message: "Plano de contas atualizado com sucesso." });
+                } else {
+                    res.status(400).json({ error: "Não foi possível atualizar o plano de contas." });
+                }
+            }
+        }
+
+
+
     }
 
 })

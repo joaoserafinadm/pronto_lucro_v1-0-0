@@ -1,11 +1,15 @@
+import { useState } from "react";
 import PlanoDeContasConfig from "./planoDeContasConfig";
 import PlanoDeContasNewConfig from "./planoDeContasNewConfig";
+import PlanoDeContasConfigEdit from "./planoDeContasConfigEdit";
 
 
 
 export default function PlanoDeContasConfigModal(props) {
 
     const { dataFunction } = props
+
+    const [planoDeContasEdit, setPlanoDeContasEdit] = useState(null)
 
 
 
@@ -28,12 +32,21 @@ export default function PlanoDeContasConfigModal(props) {
                                 >
                                     <div className="carousel-inner">
                                         <div className="carousel-item active">
-                                            <PlanoDeContasConfig />
+                                            <PlanoDeContasConfig
+                                                dataFunction={dataFunction}
+                                                setPlanoDeContasEdit={elem => setPlanoDeContasEdit(elem)} />
 
                                         </div>
                                         <div className="carousel-item ">
 
                                             <PlanoDeContasNewConfig dataFunction={dataFunction} />
+                                        </div>
+                                        <div className="carousel-item ">
+
+                                            <PlanoDeContasConfigEdit
+                                                dataFunction={dataFunction}
+                                                planoDeContasEdit={planoDeContasEdit}
+                                                setPlanoDeContasEdit={elem => setPlanoDeContasEdit(elem)} />
                                         </div>
                                     </div>
                                 </div>

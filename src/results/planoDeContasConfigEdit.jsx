@@ -2,7 +2,7 @@ import { faChevronLeft, faEquals, faInfo, faTags, faWarning } from "@fortawesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useStateContext } from "./context/resultsContext";
 import CategoryIcon from "../categories/categoryIcon";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Cookie from "js-cookie";
 import jwt from "jsonwebtoken";
 import axios from "axios";
@@ -11,18 +11,11 @@ import { SpinnerSM } from "../components/loading/Spinners";
 import scrollCarouselTo from "../../utils/scrollCarouselTo";
 
 
-export default function PlanoDeContasNewConfig(props) {
+export default function PlanoDeContasConfigEdit(props) {
 
     const token = jwt.decode(Cookie.get("auth"));
 
-    const { dataFunction } = props
-
-    const {
-        incomeCategories,
-        expenseCategories,
-        planoDeContasConfig
-    } = useStateContext();
-
+    const { dataFunction, planoDeContasEdit, setPlanoDeContasEdit } = props
 
     const [resultName, setResultName] = useState('');
     const [selectedCategories, setSelectedCategories] = useState([]);
@@ -32,6 +25,28 @@ export default function PlanoDeContasNewConfig(props) {
     const [saveError, setSaveError] = useState('');
 
     const [loadingSave, setLoadingSave] = useState(false);
+
+    const {
+        incomeCategories,
+        expenseCategories,
+        planoDeContasConfig
+    } = useStateContext();
+
+    useEffect(() => {
+
+        if (planoDeContasEdit === null) return
+
+        setResultName(planoDeContasEdit.resultName)
+        setSelectedCategories(planoDeContasEdit.selectedCategories || [])
+        // setPlanoDeContasEdit(null)
+
+    }, [planoDeContasEdit])
+
+
+
+
+
+
 
 
     const handleSelectCategory = (id) => {
@@ -80,15 +95,16 @@ export default function PlanoDeContasNewConfig(props) {
 
             const data = {
                 user_id: token.sub,
+                id: planoDeContasEdit._id,
                 name: resultName,
                 categories: selectedCategories
             }
 
-            await axios.post(`/api/results/planoDeContas`, data)
+            await axios.patch(`/api/results/planoDeContas`, data)
                 .then(res => {
                     dataFunction()
                     scrollCarouselTo("planoDeContasConfigCarousel", 0)
-
+                    setPlanoDeContasEdit(null)
                     setResultName('')
                     setSelectedCategories([])
                     setNameError('')
@@ -131,58 +147,54 @@ export default function PlanoDeContasNewConfig(props) {
 
             <div className="col-12 mb-2 ">
 
-                {incomeCategories.map((elem, index) => {
-
-                    const selectedCategory = planoDeContasConfig.find(result => result.selectedCategories.includes(elem._id));
-                    if (selectedCategory) {
-                        return null
-                    }
-
-                    return (
-
-                        <div class="form-check form-switch d-flex align-items-center my-2" type="button">
-                            <input class="form-check-input me-1" type="checkbox" role="switch" id={'income' + index} onChange={() => handleSelectCategory(elem._id)} checked={selectedCategories.includes(elem._id)} />
-                            <label class="form-check-label d-flex align-items-center" for={'income' + index} type="button">
-                                <span className="bold me-2 text-c-success">
-                                    (+)
-                                </span>
+                {incomeCategories
+                    .filter(elem =>
+                        // Mantém apenas categorias que NÃO foram usadas em outras configurações OU que estão selecionadas atualmente
+                        !planoDeContasConfig.some(result => result.selectedCategories.includes(elem._id)) ||
+                        planoDeContasEdit?.selectedCategories.includes(elem._id)
+                    )
+                    .map((elem, index) => (
+                        <div className="form-check form-switch d-flex align-items-center my-2" type="button" key={'income' + index}>
+                            <input className="form-check-input me-1" type="checkbox" role="switch"
+                                id={'income' + index}
+                                onChange={() => handleSelectCategory(elem._id)}
+                                checked={selectedCategories.includes(elem._id)}
+                            />
+                            <label className="form-check-label d-flex align-items-center" htmlFor={'income' + index} type="button">
+                                <span className="bold me-2 text-c-success">(+)</span>
                                 <div className="d-flex align-items-center">
-
                                     <CategoryIcon color={elem.color} />
                                     <span className="bold text-muted ms-1">{elem.categoryName}</span>
                                 </div>
                             </label>
                         </div>
+                    ))
+                }
 
-
+                {expenseCategories
+                    .filter(elem =>
+                        // Mantém apenas categorias que NÃO foram usadas em outras configurações OU que estão selecionadas atualmente
+                        !planoDeContasConfig.some(result => result.selectedCategories.includes(elem._id)) ||
+                        planoDeContasEdit?.selectedCategories.includes(elem._id)
                     )
-                })}
-                {expenseCategories.map((elem, index) => {
-
-                    const selectedCategory = planoDeContasConfig.find(result => result.selectedCategories.includes(elem._id));
-                    if (selectedCategory) {
-                        return null
-                    }
-
-                    return (
-
-                        <div class="form-check form-switch d-flex align-items-center my-2" type="button">
-                            <input class="form-check-input me-1" type="checkbox" role="switch" id={'expense' + index} onChange={() => handleSelectCategory(elem._id)} checked={selectedCategories.includes(elem._id)} />
-                            <label class="form-check-label d-flex align-items-center" for={'expense' + index} type="button">
-                                <span className="bold me-2 text-c-danger">
-                                    (-)
-                                </span>
+                    .map((elem, index) => (
+                        <div className="form-check form-switch d-flex align-items-center my-2" type="button" key={'expense' + index}>
+                            <input className="form-check-input me-1" type="checkbox" role="switch"
+                                id={'expense' + index}
+                                onChange={() => handleSelectCategory(elem._id)}
+                                checked={selectedCategories.includes(elem._id)}
+                            />
+                            <label className="form-check-label d-flex align-items-center" htmlFor={'expense' + index} type="button">
+                                <span className="bold me-2 text-c-danger">(-)</span>
                                 <div className="d-flex align-items-center">
-
                                     <CategoryIcon color={elem.color} />
                                     <span className="bold text-muted ms-1">{elem.categoryName}</span>
                                 </div>
                             </label>
                         </div>
+                    ))
+                }
 
-
-                    )
-                })}
 
             </div>
 
