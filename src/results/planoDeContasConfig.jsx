@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import CategoryIcon from "../categories/categoryIcon";
 import { useStateContext } from "./context/resultsContext";
-import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faEdit, faShuffle, faTrash } from "@fortawesome/free-solid-svg-icons";
 import tippy from "tippy.js";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -31,6 +31,7 @@ export default function PlanoDeContasConfig(props) {
     const tippyFunction = () => {
         tippy('#editPlanoDeContasBtn', { content: 'Editar', placement: 'bottom' });
         tippy('#deletePlanoDeContasBtn', { content: 'Deletar', placement: 'bottom' });
+        tippy('#shufflePlanoDeContasBtn', { content: 'Ordenar categorias', placement: 'bottom' });
     };
 
     // Verifica se todas as categorias já estão alocadas
@@ -66,6 +67,14 @@ export default function PlanoDeContasConfig(props) {
 
     return (
         <>
+
+            <div className="row">
+                <div className="col-12 d-flex justify-content-end">
+                    <button className="btn btn-c-outline-secondary" data-bs-target="#planoDeContasConfigCarousel" data-bs-slide-to={3}>
+                        <FontAwesomeIcon icon={faShuffle} /> Ordenar Resultados
+                    </button>
+                </div>
+            </div>
             {planoDeContasConfig.length > 0 && planoDeContasConfig.map((elem, index) => (
                 <div className="card my-2" key={index}>
                     <div className="card-body">
@@ -104,6 +113,12 @@ export default function PlanoDeContasConfig(props) {
                         <div className="row mt-3">
                             <div className="col-12 d-flex justify-content-center">
                                 <div className="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                                    <button type="button"
+                                        className="btn btn-outline-secondary"
+                                        id="shufflePlanoDeContasBtn" data-bs-target="#planoDeContasConfigCarousel" data-bs-slide-to={4}
+                                        onClick={() => setPlanoDeContasEdit(elem)}>
+                                        <FontAwesomeIcon icon={faShuffle} />
+                                    </button>
                                     <button type="button"
                                         className="btn btn-outline-secondary"
                                         id="editPlanoDeContasBtn" data-bs-target="#planoDeContasConfigCarousel" data-bs-slide-to={2}

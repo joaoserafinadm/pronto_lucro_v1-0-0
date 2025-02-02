@@ -2,6 +2,8 @@ import { useState } from "react";
 import PlanoDeContasConfig from "./planoDeContasConfig";
 import PlanoDeContasNewConfig from "./planoDeContasNewConfig";
 import PlanoDeContasConfigEdit from "./planoDeContasConfigEdit";
+import PlanoDeContasShuffleResults from "./planoDeContasShuffleResults";
+import PlanoDeContasShuffleCategories from "./planoDeContasShuffleCategories";
 
 
 
@@ -47,6 +49,18 @@ export default function PlanoDeContasConfigModal(props) {
                                                 dataFunction={dataFunction}
                                                 planoDeContasEdit={planoDeContasEdit}
                                                 setPlanoDeContasEdit={elem => setPlanoDeContasEdit(elem)} />
+                                        </div>
+                                        <div className="carousel-item ">
+
+                                            <PlanoDeContasShuffleResults
+                                                dataFunction={dataFunction} />
+                                        </div>
+                                        <div className="carousel-item ">
+
+                                            <PlanoDeContasShuffleCategories
+                                                planoDeContasEdit={planoDeContasEdit}
+                                                setPlanoDeContasEdit={elem => setPlanoDeContasEdit(elem)}
+                                                dataFunction={dataFunction} />
                                         </div>
                                     </div>
                                 </div>
