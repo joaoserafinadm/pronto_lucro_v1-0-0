@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useStateContext } from "./context/resultsContext";
+import { maskNumberMoney } from "../../utils/mask";
 
 
 
@@ -28,9 +29,11 @@ export default function PlanoDeContasTable(props) {
         planoDeContasConfig
     } = useStateContext();
 
+    const newIncomeCategories = incomeCategories.map((cat) => ({ ...cat, type: "income" }));
+    const newExpenseCategories = expenseCategories.map((cat) => ({ ...cat, type: "expense" }));
 
     const statusFilter = status === "Efetuadas" ? true : status === "Pendentes" ? false : null;
-    const categories = incomeCategories.concat(expenseCategories);
+    const categories = newIncomeCategories.concat(newExpenseCategories);
     const categoryFilters = incomeCategoriesFilter.concat(expenseCategoriesFilter);
 
 
@@ -56,6 +59,16 @@ export default function PlanoDeContasTable(props) {
         // return isStatusMatch && isTypeMatch && isCategoryMatch && isAccountMatch;
     });
 
+    const totalIncomeValue = filteredData
+        .filter(item => item.type === "income")
+        .reduce((sum, elem) => sum + elem.value, 0);
+    const totalExpenseValue = filteredData
+        .filter(item => item.type === "expense")
+        .reduce((sum, elem) => sum + elem.value, 0);
+
+
+
+
 
 
 
@@ -65,8 +78,8 @@ export default function PlanoDeContasTable(props) {
                 <thead>
                     <tr>
                         <th>Plano de Contas</th>
-                        <th>Valor</th>
-                        <th>%</th>
+                        <th className="text-end">Valor</th>
+                        <th className="text-end">%</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -76,12 +89,43 @@ export default function PlanoDeContasTable(props) {
 
                                 const categoryExist = categories.find((elem2) => elem2._id === elem1);
 
+                                const value = dfcData
+                                    .filter((item) => categoryExist?.subCategories?.some(sub => sub._id === item.subCategory_id))
+                                    .reduce((sum, elem) => sum + elem.value, 0);
 
+                                let percent = (categoryExist.type === "expense" ? ((value / totalExpenseValue) * 100).toFixed(2) : ((value / totalIncomeValue) * 100).toFixed(2));
+
+                                percent = percent ? 0 : percent
 
                                 return (
-                                    <tr>
-                                        <td className="text-start">{categoryExist.categoryName}</td>
-                                    </tr>
+                                    <>
+                                        <tr>
+                                            <td className="text-start bold" style={{minWidth: "250px"}}>{categoryExist.categoryName}</td>
+                                            <td className={`text-end text-nowrap bold ${categoryExist.type === "expense" && "text-c-danger"}`}>{categoryExist.type === "expense" && "- "}R$ {maskNumberMoney(value)}</td>
+                                            <td className={`text-end text-nowrap bold ${categoryExist.type === "expense" && "text-c-danger"}`}>{percent}%</td>
+                                        </tr>
+
+                                        {categoryExist.subCategories.map((elem2, index2) => {
+
+                                            const value = dfcData
+                                                .filter((item) => item.subCategory_id === elem2._id)
+                                                .reduce((sum, elem) => sum + elem.value, 0);
+
+                                            let percent = categoryExist.type === "expense" ? ((value / totalExpenseValue) * 100).toFixed(2) : ((value / totalIncomeValue) * 100).toFixed(2);
+
+
+                                            if (value === 0) return
+
+                                            return (
+                                                <tr key={index2}>
+                                                    <td className="text-start small ps-4" style={{minWidth: "250px"}}>{elem2.name}</td>
+                                                    <td className={`text-end text-nowrap small ps-4 ${categoryExist.type === "expense" && "text-c-danger"}`}>{categoryExist.type === "expense" && "- "}R$ {maskNumberMoney(value)}</td>
+                                                    <td className={`text-end text-nowrap small ps-4 ${categoryExist.type === "expense" && "text-c-danger"}`}>{percent}%</td>
+                                                </tr>
+                                            )
+                                        })}
+
+                                    </>
                                 )
                             })}
 
