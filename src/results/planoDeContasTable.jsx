@@ -95,7 +95,7 @@ export default function PlanoDeContasTable(props) {
 
                                 let percent = (categoryExist.type === "expense" ? ((value / totalExpenseValue) * 100).toFixed(2) : ((value / totalIncomeValue) * 100).toFixed(2));
 
-                                percent = percent ? 0 : percent
+                                percent =  isNaN(percent) ? 0 : percent
 
                                 return (
                                     <>
