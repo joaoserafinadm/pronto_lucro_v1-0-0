@@ -166,7 +166,7 @@ export default function TagConfig2Page(props) {
                 </div>
             )}
 
-<hr />
+            <hr />
 
 
             <div className="col-12 my-3 d-flex justify-content-between fadeItem2s">
