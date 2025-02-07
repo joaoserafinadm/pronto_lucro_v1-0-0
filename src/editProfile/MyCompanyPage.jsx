@@ -4,7 +4,7 @@ import CropperImageModal from "../companyEdit/CropperImageModal"
 import EstadosList from "../components/estadosList"
 import Setores from "../components/Setores/Setores"
 import StyledDropzone from "../components/styledDropzone/StyledDropzone"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 
 
 
@@ -39,8 +39,15 @@ export default function MyCompanyPage(props) {
         setorSecundario,
         setSetorSecundario,
         outroSetorSec,
-        setOutroSetorSec
+        setOutroSetorSec,
+        companyCategory,
+        setCompanyCategory,
+        regimeTributario,
+        setRegimeTributario
     } = props
+
+    const [regimeTributarioSelected, setRegimeTributarioSelected] = useState(null);
+
 
 
     const handleFileChange = file => {
@@ -91,6 +98,19 @@ export default function MyCompanyPage(props) {
         setOutroSetorSec('')
 
     }, [setorSecundario])
+
+    useEffect(() => {
+
+        if (regimeTributario) {
+            const regimeExist = regimeTributarioOptions.find(elem => elem.name === regimeTributario)
+
+            console.log("regimeExist", regimeExist)
+            if (regimeExist) {
+                setRegimeTributarioSelected(regimeExist)
+            }
+
+        }
+    }, [regimeTributario])
 
 
     return (
@@ -192,9 +212,100 @@ export default function MyCompanyPage(props) {
 
             </div>
 
+            <div className="row mt-4 d-flex ">
+                <label for="telefoneItem" className="form-label fw-bold">Categoria da empresa</label>
+                <div className=" col-12 col-xl-6 mt-3">
+                    <select name="" id="" onChange={(e) => setCompanyCategory(e.target.value)} value={companyCategory} className="form-select">
+                        <option value="" disabled >Escolha...</option>
+                        {companyCategories.map(elem => (
+                            <option value={elem.shortName}>{elem.name}</option>
+                        ))}
+                    </select>
+                </div>
+
+            </div>
+            <div className="row mt-4 d-flex ">
+                <label for="telefoneItem" className="form-label fw-bold">Regime tributário</label>
+                <div className=" col-12 col-xl-6 mt-3">
+
+                    <select name="" id="" onChange={(e) => setRegimeTributario(e.target.value)} value={regimeTributario} className="form-select">
+                        <option value="" disabled >Escolha...</option>
+                        {regimeTributarioOptions.map(elem => (
+                            <option value={elem.name}>{elem.name}</option>
+                        ))}
+                    </select>
+
+                </div>
+            </div>
+
+            {regimeTributarioSelected && (
+                <div className="row">
+
+                    <div className="col-12 my-3 fadeItem1s d-flex flex-column">
+                        {regimeTributarioSelected.description.map(elem => (
+                            <span className=" small my-1 ">&#x2022; {elem}</span>
+                        ))}
+                    </div>
+                </div>
+            )}
+
             <hr className="d-none d-lg-block" />
 
 
         </>
     )
 }
+
+
+
+const companyCategories = [
+    { shortName: "MEI", name: "Microempreendedor Individual", description: "Empreendedor individual com faturamento anual de até R$ 81 mil." },
+    { shortName: "EI", name: "Empresário Individual", description: "Empresa de um único titular sem separação entre bens pessoais e empresariais." },
+    { shortName: "SLU", name: "Sociedade Limitada Unipessoal", description: "Empresa de um único sócio, com responsabilidade limitada ao capital social." },
+    { shortName: "LTDA", name: "Sociedade Limitada", description: "Empresa com dois ou mais sócios, limitada ao capital social." },
+    { shortName: "SA_ABERTO", name: "Sociedade Anônima de Capital Aberto", description: "Empresa com ações negociadas na bolsa de valores." },
+    { shortName: "SA_FECHADO", name: "Sociedade Anônima de Capital Fechado", description: "Empresa com ações restritas a um grupo específico de investidores." },
+    { shortName: "COOP", name: "Cooperativa", description: "Entidade sem fins lucrativos formada por associados para benefícios comuns." },
+    { shortName: "ASSOC", name: "Associação", description: "Organização sem fins lucrativos com objetivos sociais, culturais ou esportivos." },
+    { shortName: "FUND", name: "Fundação", description: "Entidade criada para fins sociais, culturais ou assistenciais, sem fins lucrativos." },
+    { shortName: "CONS", name: "Consórcio de Empresas", description: "Acordo entre empresas para execução de projetos específicos." },
+    { shortName: "SOC_SIMP", name: "Sociedade Simples", description: "Sociedade formada por profissionais que exercem atividades intelectuais." }
+];
+
+
+
+
+const regimeTributarioOptions = [
+    {
+        name: "Simples Nacional",
+        description: [
+            "Regime simplificado para micro e pequenas empresas com faturamento de até R$ 4,8 milhões/ano.",
+            "Tributação unificada em uma única guia (DAS).",
+            "Alíquota varia conforme o faturamento e atividade da empresa."
+        ]
+    },
+    {
+        name: "Lucro Presumido",
+        description: [
+            "Regime para empresas com faturamento de até R$ 78 milhões/ano.",
+            "Base de cálculo do imposto é presumida sobre a receita bruta, variando conforme o setor.",
+            "Pode ter alíquotas menores do que o Lucro Real dependendo da margem de lucro da empresa."
+        ]
+    },
+    {
+        name: "Lucro Real",
+        description: [
+            "Obrigatório para empresas com faturamento acima de R$ 78 milhões/ano.",
+            "O imposto é calculado sobre o lucro real da empresa, considerando receitas e despesas.",
+            "Geralmente usado por empresas com margens de lucro menores ou com grande volume de despesas dedutíveis."
+        ]
+    },
+    {
+        name: "Lucro Arbitrado",
+        description: [
+            "Regime aplicado quando a empresa não mantém escrituração contábil regular.",
+            "A Receita Federal determina arbitrariamente o lucro tributável com base na receita bruta.",
+            "Geralmente é utilizado como penalidade para empresas que não cumprem obrigações fiscais."
+        ]
+    }
+];

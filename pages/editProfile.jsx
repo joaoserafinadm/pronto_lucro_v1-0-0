@@ -67,6 +67,8 @@ export default function EditProfile() {
     const [setorPrimario, setSetorPrimario] = useState('')
     const [setorSecundario, setSetorSecundario] = useState('')
     const [outroSetorSec, setOutroSetorSec] = useState('')
+    const [companyCategory, setCompanyCategory] = useState('')
+    const [regimeTributario, setRegimeTributario] = useState('')
 
 
     //Image crop
@@ -119,7 +121,8 @@ export default function EditProfile() {
             setSetorPrimario(companyData?.setorPrimario)
             setSetorSecundario(companyData?.setorSecundario)
             setOutroSetorSec(companyData?.outroSetorSec)
-
+            setCompanyCategory(companyData?.companyCategory)
+            setRegimeTributario(companyData?.regimeTributario)
         })
     }
 
@@ -235,7 +238,9 @@ export default function EditProfile() {
                     estado: companyEstado,
                     setorPrimario,
                     setorSecundario,
-                    outroSetorSec
+                    outroSetorSec,
+                    companyCategory,
+                    regimeTributario
                 }
 
 
@@ -341,6 +346,10 @@ export default function EditProfile() {
                                                 setSetorSecundario={setSetorSecundario}
                                                 outroSetorSec={outroSetorSec}
                                                 setOutroSetorSec={setOutroSetorSec}
+                                                companyCategory={companyCategory}
+                                                setCompanyCategory={setCompanyCategory}
+                                                regimeTributario={regimeTributario}
+                                                setRegimeTributario={setRegimeTributario}
                                             />
                                         </div>
 

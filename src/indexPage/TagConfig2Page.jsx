@@ -41,11 +41,6 @@ export default function TagConfig2Page(props) {
         }
     }, [regimeTributario])
 
-    const handleRegimeTributario = (id) => {
-
-
-
-    }
 
 
 
@@ -136,7 +131,7 @@ export default function TagConfig2Page(props) {
 
             <div className="px-3">
                 <select name="" id="" onChange={(e) => setCompanyCategory(e.target.value)} value={companyCategory} className="form-select">
-                    <option value="" selected>Escolha...</option>
+                    <option value="" disabled >Escolha...</option>
                     {companyCategories.map(elem => (
                         <option value={elem.shortName}>{elem.name}</option>
                     ))}
@@ -151,7 +146,7 @@ export default function TagConfig2Page(props) {
 
             <div className="px-3">
                 <select name="" id="" onChange={(e) => setRegimeTributario(e.target.value)} value={regimeTributario} className="form-select">
-                    <option value="" selected>Escolha...</option>
+                    <option value="" disabled >Escolha...</option>
                     {regimeTributarioOptions.map(elem => (
                         <option value={elem.name}>{elem.name}</option>
                     ))}
@@ -166,7 +161,7 @@ export default function TagConfig2Page(props) {
                 </div>
             )}
 
-            <hr />
+            <hr className="mt-3" />
 
 
             <div className="col-12 my-3 d-flex justify-content-between fadeItem2s">
