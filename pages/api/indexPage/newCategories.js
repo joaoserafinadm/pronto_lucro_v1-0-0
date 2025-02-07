@@ -18,7 +18,7 @@ export default authenticated(async (req, res) => {
 
     if (req.method === "POST") {
 
-        const { user_id, setorSelected, newSetorName, incomeCategories, expenseCategories } = req.body
+        const { user_id, setorSelected, newSetorName, incomeCategories, expenseCategories, companyCategory, regimeTributario } = req.body
 
         if (!user_id || !setorSelected || !incomeCategories || !expenseCategories) {
             res.status(400).json({ error: "Missing parameters on request body" })
@@ -51,7 +51,9 @@ export default authenticated(async (req, res) => {
             $set: {
                 companyData: {
                     setorPrimario: setorSelected,
-                    newSetorName: newSetorName
+                    newSetorName: newSetorName,
+                    companyCategory: companyCategory,
+                    regimeTributario: regimeTributario
                 },
                 incomeCategories: newIncomeCategories,
                 expenseCategories: newExpenseCategories

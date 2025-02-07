@@ -38,6 +38,8 @@ export default function TutorialModal(props) {
     const [diaLancamento, setDiaLancamento] = useState(5)
     const [setorSelected, setSetorSelected] = useState(null);
     const [newSetorName, setNewSetorName] = useState('')
+    const [companyCategory, setCompanyCategory] = useState('')
+    const [regimeTributario, setRegimeTributario] = useState('')
     const [incomeTags, setIncomeTags] = useState([])
     const [expenseTags, setExpenseTags] = useState([])
 
@@ -195,10 +197,16 @@ export default function TutorialModal(props) {
                                 <div className="carousel-item"> {/*  7 slide */}
                                     <TagConfig2Page
                                         setorSelected={setorSelected} setSetorSelected={setSetorSelected}
-                                        newSetorName={newSetorName} setNewSetorName={setNewSetorName} />
+                                        newSetorName={newSetorName} setNewSetorName={setNewSetorName}
+                                        companyCategory={companyCategory} setCompanyCategory={setCompanyCategory}
+                                        regimeTributario={regimeTributario} setRegimeTributario={setRegimeTributario} />
                                 </div>
                                 <div className="carousel-item"> {/*  8 slide */}
-                                    <TagConfig3Page_02 newSetorName={newSetorName} setorSelected={setorSelected} />
+                                    <TagConfig3Page_02
+                                        newSetorName={newSetorName}
+                                        setorSelected={setorSelected}
+                                        companyCategory={companyCategory}
+                                        regimeTributario={regimeTributario} />
                                 </div>
                                 <div className="carousel-item"> {/*  9 slide */}
                                     <TagConfig4Page />

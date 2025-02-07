@@ -327,7 +327,7 @@ export default function BankEditPage(props) {
                     <div className="col-12 mt-2 mb-4">
 
                         <FontAwesomeIcon icon={faCalendarDay} />
-                        <span className="small fw-bold  ms-3">Dia de fechamento</span>
+                        <span className="small fw-bold  ms-3">Dia de pagamento</span>
 
                         <select class="form-select mt-2" aria-label="Default select example" value={diaFechamento} onChange={e => setDiaFechamento(e.target.value)}>
                             <option value={1}>1</option>

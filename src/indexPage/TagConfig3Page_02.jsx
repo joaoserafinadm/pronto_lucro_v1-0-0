@@ -18,7 +18,12 @@ export default function TagConfig3Page_02(props) {
 
     const token = jwt.decode(Cookie.get('auth'))
 
-    const { newSetorName, setorSelected } = props
+    const {
+        newSetorName,
+        setorSelected,
+        companyCategory,
+        regimeTributario
+    } = props
 
     const [loadingSave, setLoadingSave] = useState(false)
     const [newCategories, setNewCategories] = useState(false)
@@ -54,7 +59,9 @@ export default function TagConfig3Page_02(props) {
             setorSelected: setorSelected,
             newSetorName: newSetorName,
             incomeCategories: newCategories ? [] : incomeCategories,
-            expenseCategories: newCategories ? [] : expenseCategories
+            expenseCategories: newCategories ? [] : expenseCategories,
+            companyCategory: companyCategory,
+            regimeTributario: regimeTributario
         }
 
         setLoadingSave(true)
