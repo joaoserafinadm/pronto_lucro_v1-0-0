@@ -164,7 +164,7 @@ export default function Nav(props) {
                                     </li>
                                     <li>
                                         <ContextAwareToggle eventKey="2" collapse="cardsItem">
-                                            <div className="d-flex justify-content-start " type='button' onClick={() => router.push('/transactions')}>
+                                            <div className="d-flex justify-content-start " type='button' onClick={() => router.push('/creditNetworkConfig')}>
                                                 <div className="col-1 text-center me-3">
                                                     <FontAwesomeIcon icon={faCreditCard} className="me-2 icon" />
                                                 </div>

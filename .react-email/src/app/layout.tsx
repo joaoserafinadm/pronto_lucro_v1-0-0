@@ -13,7 +13,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="pt-BR">
       <body className="bg-black text-slate-12 font-sans">
         <div className={classnames(inter.variable, 'font-sans')}>
           {children}
