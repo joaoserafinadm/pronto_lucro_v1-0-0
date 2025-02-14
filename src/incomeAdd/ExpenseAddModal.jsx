@@ -314,18 +314,18 @@ export default function ExpenseAddModal(props) {
                                                             class={`cardAnimation px-2 py-1 text-white small mx-1 rounded-pill ${JSON.stringify(paymentDate) == JSON.stringify(dateObject(new Date())) ? 'ctm-bg-danger' : 'ctm-bg-primary'}`}>
                                                             Hoje
                                                         </span>
-                                                        <span onClick={() => setPaymentDate(dateObject(new Date(), -1))}
+                                                        <span type="button" onClick={() => setPaymentDate(dateObject(new Date(), -1))}
                                                             class={`cardAnimation px-2 py-1 text-white small mx-1 rounded-pill ${JSON.stringify(paymentDate) == JSON.stringify(dateObject(new Date(), -1)) ? 'ctm-bg-danger' : 'ctm-bg-primary'}`}>
                                                             Ontem
                                                         </span>
                                                     </>
                                                     :
-                                                    <span onClick={() => showModal('datePickerModalExpense')}
+                                                    <span type="button" onClick={() => showModal('datePickerModalExpense')}
                                                         className={`cardAnimation px-2 py-1 text-white small mx-1 rounded-pill bold ctm-bg-danger`}>
                                                         {dateFormat(paymentDate)}
                                                     </span>
                                                 }
-                                                <span onClick={() => showModal('datePickerModalExpense')}
+                                                <span type="button" onClick={() => showModal('datePickerModalExpense')}
                                                     className={`cardAnimation px-2 py-1 text-white small mx-1 rounded-pill ctm-bg-primary`}>
                                                     Outro
                                                 </span>

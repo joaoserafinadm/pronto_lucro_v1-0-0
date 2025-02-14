@@ -42,6 +42,7 @@ export default function CategorySelectModal(props) {
                 />
                 : */}
             <CategorySelect
+                dataFunction={dataFunction}
                 categories={categories}
                 setSection={setSection}
                 setSubCategorySelected={setSubCategorySelected}

@@ -316,18 +316,18 @@ export default function IncomeAddModal(props) {
                                                             class={`cardAnimation px-2 py-1 text-white small mx-1 rounded-pill ${JSON.stringify(paymentDate) == JSON.stringify(dateObject(new Date())) ? 'ctm-bg-success' : 'ctm-bg-primary'}`}>
                                                             Hoje
                                                         </span>
-                                                        <span onClick={() => setPaymentDate(dateObject(new Date(), -1))}
+                                                        <span type="button" onClick={() => setPaymentDate(dateObject(new Date(), -1))}
                                                             class={`cardAnimation px-2 py-1 text-white small mx-1 rounded-pill ${JSON.stringify(paymentDate) == JSON.stringify(dateObject(new Date(), -1)) ? 'ctm-bg-success' : 'ctm-bg-primary'}`}>
                                                             Ontem
                                                         </span>
                                                     </>
                                                     :
-                                                    <span onClick={() => showModal('datePickerModalIncome')}
+                                                    <span type="button" onClick={() => showModal('datePickerModalIncome')}
                                                         className={`cardAnimation px-2 py-1 text-white small mx-1 rounded-pill ctm-bg-success`}>
                                                         {dateFormat(paymentDate)}
                                                     </span>
                                                 }
-                                                <span onClick={() => showModal('datePickerModalIncome')}
+                                                <span type="button" onClick={() => showModal('datePickerModalIncome')}
                                                     className={`cardAnimation px-2 py-1 text-white small mx-1 rounded-pill ctm-bg-primary`}>
                                                     Outro
                                                 </span>
