@@ -1,4 +1,4 @@
-import { faAngleLeft, faArrowsUpToLine, faCalendarCheck, faCalendarDay, faComment, faCommentAlt, faMoneyBill, faSwatchbook } from "@fortawesome/free-solid-svg-icons"
+import { faAngleLeft, faArrowsUpToLine, faBank, faCalendarCheck, faCalendarDay, faComment, faCommentAlt, faMoneyBill, faSwatchbook } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { maskInputMoney } from "../../utils/mask"
 import scrollTo from "../../utils/scrollTo"
@@ -14,7 +14,7 @@ import axios from "axios"
 
 export default function BankEditPage(props) {
 
-    const { bankAccountSelected, creditCardList, bankAccountsLength, setBankAccountSelected, token, dataFunction } = props
+    const { newBank, bankAccountSelected, creditCardList, bankAccountsLength, setBankAccountSelected, token, dataFunction } = props
 
     const [bankSelected, setBankSelected] = useState('')
     const [initialValue, setInitialValue] = useState('');
@@ -37,6 +37,8 @@ export default function BankEditPage(props) {
 
     useEffect(() => {
 
+        console.log("bankAccountSelected", bankAccountSelected)
+
         handleData(bankAccountSelected)
 
     }, [bankAccountSelected])
@@ -44,6 +46,8 @@ export default function BankEditPage(props) {
     const handleData = (data) => {
 
         if (data) {
+
+            console.log("data", data.bankSelected)
             setBankSelected(data.bankSelected)
             setInitialValue(maskInputMoney((data.initialValue * 100).toString()))
             setDescription(data.description)
@@ -245,6 +249,17 @@ export default function BankEditPage(props) {
                 <BankColorSelect color={color} setColor={value => setColor(value)} />
             </div>
             <hr />
+
+            {bankSelected.newBank && (
+                <div className="col-12 mt-2 mb-4">
+                    <FontAwesomeIcon icon={faBank} />
+                    <span className="small fw-bold  ms-3">Nome da instituição financeira</span>
+                    <input type="text" id="descriptionInput" className="form-control mt-2" value={bankSelected?.name}
+                        onChange={e => e.target.value.length <= 25 && setBankSelected({ ...bankSelected, name: e.target.value })} />
+                    <span className="small text-muted">Caracteres restantes: {25 - description.length}</span>
+                </div>
+            )}
+
 
             <div className="col-12 mt-2 mb-4">
 

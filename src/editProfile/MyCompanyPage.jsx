@@ -112,6 +112,19 @@ export default function MyCompanyPage(props) {
         }
     }, [regimeTributario])
 
+    const handleCategorySelect = (id) => {
+        const categoryExist = companyCategories.find(elem => elem.shortName === id);
+
+        
+        if (categoryExist) {
+            const categoryData = companyCategories.find((elem) => elem.shortName === id);
+            console.log("categoryData", categoryData)
+            setCompanyCategory(categoryData);
+        } else {
+            return
+        }
+    }
+
 
     return (
         <>
@@ -215,7 +228,7 @@ export default function MyCompanyPage(props) {
             <div className="row mt-4 d-flex ">
                 <label for="telefoneItem" className="form-label fw-bold">Categoria da empresa</label>
                 <div className=" col-12 col-xl-6 mt-3">
-                    <select name="" id="" onChange={(e) => setCompanyCategory(e.target.value)} value={companyCategory} className="form-select">
+                    <select name="" id="" onChange={(e) => handleCategorySelect(e.target.value)} value={companyCategory.shortName} className="form-select">
                         <option value="" disabled >Escolha...</option>
                         {companyCategories.map(elem => (
                             <option value={elem.shortName}>{elem.name}</option>
@@ -224,6 +237,11 @@ export default function MyCompanyPage(props) {
                 </div>
 
             </div>
+            {companyCategory?.description && (
+                <div className="col-12 my-3 fadeItem1s d-flex flex-column">
+                    <span className=" small my-1 ">&#x2022; {companyCategory.description}</span>
+                </div>
+            )}
             <div className="row mt-4 d-flex ">
                 <label for="telefoneItem" className="form-label fw-bold">Regime tributário</label>
                 <div className=" col-12 col-xl-6 mt-3">
@@ -269,27 +287,29 @@ const companyCategories = [
     { shortName: "ASSOC", name: "Associação", description: "Organização sem fins lucrativos com objetivos sociais, culturais ou esportivos." },
     { shortName: "FUND", name: "Fundação", description: "Entidade criada para fins sociais, culturais ou assistenciais, sem fins lucrativos." },
     { shortName: "CONS", name: "Consórcio de Empresas", description: "Acordo entre empresas para execução de projetos específicos." },
-    { shortName: "SOC_SIMP", name: "Sociedade Simples", description: "Sociedade formada por profissionais que exercem atividades intelectuais." }
+    { shortName: "SOC_SIMP", name: "Sociedade Simples", description: "Sociedade formada por profissionais que exercem atividades intelectuais." },
+    { shortName: "OUTRA", name: "Outra categoria", description: "" }
 ];
 
 
 
-
 const regimeTributarioOptions = [
+
+    {
+        name: "Microempreendedor Individual (MEI)",
+        description: [
+            "Regime simplificado para pequenos empreendedores com faturamento anual de até R$ 81 mil.",
+            "Pagamento de tributos fixos mensais reduzidos (DAS-MEI), incluindo INSS, ISS e ICMS.",
+            "Não pode ter mais de um empregado registrado.",
+            "Não permite a participação como sócio, titular ou administrador de outra empresa."
+        ]
+    },
     {
         name: "Simples Nacional",
         description: [
             "Regime simplificado para micro e pequenas empresas com faturamento de até R$ 4,8 milhões/ano.",
             "Tributação unificada em uma única guia (DAS).",
             "Alíquota varia conforme o faturamento e atividade da empresa."
-        ]
-    },
-    {
-        name: "Lucro Presumido",
-        description: [
-            "Regime para empresas com faturamento de até R$ 78 milhões/ano.",
-            "Base de cálculo do imposto é presumida sobre a receita bruta, variando conforme o setor.",
-            "Pode ter alíquotas menores do que o Lucro Real dependendo da margem de lucro da empresa."
         ]
     },
     {
@@ -301,11 +321,12 @@ const regimeTributarioOptions = [
         ]
     },
     {
-        name: "Lucro Arbitrado",
+        name: "Lucro Presumido",
         description: [
-            "Regime aplicado quando a empresa não mantém escrituração contábil regular.",
-            "A Receita Federal determina arbitrariamente o lucro tributável com base na receita bruta.",
-            "Geralmente é utilizado como penalidade para empresas que não cumprem obrigações fiscais."
+            "Regime para empresas com faturamento de até R$ 78 milhões/ano.",
+            "Base de cálculo do imposto é presumida sobre a receita bruta, variando conforme o setor.",
+            "Pode ter alíquotas menores do que o Lucro Real dependendo da margem de lucro da empresa."
         ]
-    }
+    },
+    
 ];

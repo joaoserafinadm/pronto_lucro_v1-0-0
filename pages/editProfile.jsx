@@ -101,6 +101,8 @@ export default function EditProfile() {
 
             const companyData = res.data.companyData
 
+            console.log("res.data?.profileImageUrl?.url", res.data?.profileImageUrl?.url)
+
             setFirstName(res.data.firstName)
             setLastName(res.data.lastName)
             setCpf(res.data.cpf)

@@ -1,6 +1,7 @@
 import { faAngleRight, faBank, faChevronLeft, faChevronRight, faMagnifyingGlass, faWallet } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
+import { ObjectId } from "bson";
 import { useEffect, useState } from "react";
 
 
@@ -12,6 +13,30 @@ export default function BankSelectPage(props) {
 
     const [searchValue, setSearchValue] = useState('')
     const [bankList, setBankList] = useState([])
+
+    const [newBankData, setNewBankData] = useState(null)
+
+    useEffect(() => {
+
+        const data = {
+            "active": true,
+            "countries": ["BR"],
+            "dataCriacao": '',
+            "dataModificacao": '',
+            "id": '',
+            "institutionType": ["credit_card"],
+            "keyWord": "newBank",
+            "legalName": '',
+            "logoUrl": "https://res.cloudinary.com/joaoserafinadm/image/upload/v1739841037/PRONTO%20LUCRO/PUBLIC/rnuzjltwxkjfghxmmii8.png",
+            "name": "",
+            "ranking": 99,
+            "newBank": true
+        }
+
+
+        setNewBankData(data)
+
+    }, [])
 
 
 
@@ -38,6 +63,7 @@ export default function BankSelectPage(props) {
 
 
     }
+
 
 
     return (
@@ -86,7 +112,7 @@ export default function BankSelectPage(props) {
                             )
                         })}
                     </div>
-                    <hr  />
+                    <hr />
                     <div className="col-12 px-4">
                         <label >Todos os bancos</label>
                         {institutions?.map(elem => {
@@ -115,6 +141,7 @@ export default function BankSelectPage(props) {
                             <hr className={searchValue ? "d-none" : ""} />
                             <div className="col-12 px-4">
                                 {bankList?.map(elem => {
+
                                     return (
                                         <span className="hoverSelect py-3 row my-2 d-flex" type="button" onClick={() => setBankSelected(elem)}
                                             data-bs-target="#tutorialPages" data-bs-slide-to={5} >
@@ -135,9 +162,24 @@ export default function BankSelectPage(props) {
                         </>
                         :
                         <>
-                            <div className="col-12 text-center my-5">
+                            <div className="col-12 text-center my-3">
                                 <span className="text-secondary small" >
                                     Nenhuma instituição encontrada
+                                </span>
+                            </div>
+                            <div className="col-12 px-4">
+
+                                <span className="hoverSelect py-3 row my-2 d-flex" type="button" onClick={() => setBankSelected(newBankData)}
+                                    data-bs-target="#tutorialPages" data-bs-slide-to={5} >
+                                    <div className="d-flex justify-content-center align-items-center" style={{ width: "60px" }}>
+                                        <img className="bankImage" src='https://res.cloudinary.com/joaoserafinadm/image/upload/v1739841037/PRONTO%20LUCRO/PUBLIC/rnuzjltwxkjfghxmmii8.png' alt="" />
+                                    </div>
+                                    <div className="col d-flex  align-items-center">
+                                        <span className="bold">Outra instituição</span>
+                                    </div>
+                                    <div className="d-flex justify-content-center align-items-center" style={{ width: "40px" }}>
+                                        <FontAwesomeIcon icon={faAngleRight} />
+                                    </div>
                                 </span>
                             </div>
 

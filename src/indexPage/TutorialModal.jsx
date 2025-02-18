@@ -167,8 +167,8 @@ export default function TutorialModal(props) {
                                 </div>
                                 <div className="carousel-item"> {/*  5 slide */}
 
-                                    <BankSetup tutorial
-                                        bankSelected={bankSelected} creditCardList={creditCardList}
+                                    <BankSetup tutorial newBank={bankSelected.newBank}
+                                        bankSelected={bankSelected} setBankSelected={setBankSelected} creditCardList={creditCardList}
                                         color={color} setColor={value => setColor(value)}
                                         setInitialValue={value => setInitialValue(value)} initialValue={initialValue}
                                         setDescription={value => setDescription(value)} description={description}
@@ -212,7 +212,7 @@ export default function TutorialModal(props) {
                                     <TagConfig4Page />
                                 </div>
                                 <div className="carousel-item"> {/*  10 slide */}
-                                    <BankEditPage bankAccountSelected={bankAccountSelected}
+                                    <BankEditPage  bankAccountSelected={bankAccountSelected}
                                         setBankAccountSelected={setBankAccountSelected}
                                         creditCardList={creditCardList} dataFunction={dataFunction}
                                         bankAccountsLength={bankAccounts.length} token={token} />

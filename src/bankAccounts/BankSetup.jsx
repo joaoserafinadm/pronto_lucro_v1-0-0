@@ -1,4 +1,4 @@
-import { faAngleLeft, faArrowsUpToLine, faCalendarCheck, faCalendarDay, faComment, faCommentAlt, faMoneyBill, faSwatchbook } from "@fortawesome/free-solid-svg-icons"
+import { faAngleLeft, faArrowsUpToLine, faBank, faCalendarCheck, faCalendarDay, faComment, faCommentAlt, faMoneyBill, faSwatchbook } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import CardTemplate from "./CardTemplate"
 import BankColorSelect from "./BankColorSelect"
@@ -13,8 +13,10 @@ import { SpinnerSM } from "../components/loading/Spinners"
 export default function BankSetup(props) {
 
     const {
+        newBank,
         edit,
         creditCardList,
+        setBankSelected,
         bankSelected,
         setInitialValue,
         initialValue,
@@ -103,6 +105,16 @@ export default function BankSetup(props) {
                 <BankColorSelect color={color} setColor={value => setColor(value)} />
             </div>
             <hr />
+
+            {newBank && (
+                <div className="col-12 mt-2 mb-4">
+                    <FontAwesomeIcon icon={faBank} />
+                    <span className="small fw-bold  ms-3">Nome da instituição financeira</span>
+                    <input type="text" id="descriptionInput" className="form-control mt-2" value={bankSelected?.name}
+                        onChange={e => e.target.value.length <= 25 && setBankSelected({ ...bankSelected, name: e.target.value })} />
+                    <span className="small text-muted">Caracteres restantes: {25 - description.length}</span>
+                </div>
+            )}
 
             <div className="col-12 mt-2 mb-4">
 
