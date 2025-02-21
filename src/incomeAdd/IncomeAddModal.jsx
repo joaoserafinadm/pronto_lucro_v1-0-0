@@ -284,7 +284,8 @@ export default function IncomeAddModal(props) {
                                                 </span>
 
 
-                                                <PaymentMethodSelectModal paymentMethod={paymentMethod}
+                                                <PaymentMethodSelectModal
+                                                    paymentMethod={paymentMethod}
                                                     setPaymentMethod={setPaymentMethod}
                                                     id="paymentMethodSelectModalIncome"
                                                     section="income" />
@@ -297,6 +298,8 @@ export default function IncomeAddModal(props) {
 
 
                                         <PaymentMethodConfig
+                                            value={value}
+                                            
                                             paymentMethod={paymentMethod}
                                             setCreditConfig={setCreditConfig}
                                             section="income" />

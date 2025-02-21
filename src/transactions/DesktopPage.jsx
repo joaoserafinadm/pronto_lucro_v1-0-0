@@ -21,7 +21,7 @@ export default function DesktopPage(props) {
             <ResultsCard data={data} dateSelected={dateSelected} />
 
 
-            <div className="col-12 my-3 ">
+            <div className="col-12 my-3 " style={{fontSize: '14px'}}>
                 <div className="d-none d-lg-flex justify-content-center">
 
                     <DesktopTransactionsList data={data} setIncomeSelected={setIncomeSelected} categories={categories} />

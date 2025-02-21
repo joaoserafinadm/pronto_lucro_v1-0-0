@@ -1,7 +1,7 @@
 import { connect } from '../../../utils/db';
 import { verify } from 'jsonwebtoken';
 import { ObjectId } from 'bson';
-import cookie from 'cookie';
+// import cookie from 'cookie';
 import { maskMoneyNumber } from '../../../utils/mask';
 import { dateObject } from '../../../utils/handleDate';
 
@@ -53,7 +53,7 @@ export default authenticated(async (req, res) => {
 
                 const dreData = {
                     ...data,
-                    tag: data.tagSelected._id,
+                    // tag: data.tagSelected._id,
                     value: maskMoneyNumber(data.value),
                     taxedValue: +data.value - +data.value * +data.creditConfig.taxa / 100,
                     _id: newId,
@@ -215,7 +215,7 @@ function handleDfcData(newId, dateAdded, dateAddedObj, data, section) {
         const newElem = {
             ...data,
             paymentDate: currentPaymentDate,
-            tag: data.tagSelected._id,
+            // tag: data.tagSelected._id,
             value: maskMoneyNumber((newValue / +data.creditConfig.parcelas).toFixed(2)),
             _id: newId,
             dateAdded,

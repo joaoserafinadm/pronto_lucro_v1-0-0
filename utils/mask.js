@@ -53,7 +53,7 @@ export function maskCelular(value) {
 }
 
 export function maskNumero(value) {
-	if (value) return value.replace(/[^0-9.,]/g, '');
+	if (value) return value?.replace(/[^0-9.,]/g, '');
 	else return ''
 }
 

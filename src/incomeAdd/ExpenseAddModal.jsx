@@ -297,6 +297,7 @@ export default function ExpenseAddModal(props) {
 
                                         <PaymentMethodConfig paymentMethod={paymentMethod}
                                             setCreditConfig={setCreditConfig}
+                                            value={value}
                                             section="expense" />
 
                                         <hr />
