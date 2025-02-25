@@ -3218,3 +3218,26 @@ span {
 	color: #4D88BB;
 }
 
+
+
+/* Receita (verde) */
+.form-check-input-income {
+    background-color: #ccc; /* Cinza padrão quando desligado */
+    border-color: #aaa;
+}
+
+.form-check-input-income:checked {
+    background-color: #0c9 !important; /* Verde quando ligado */
+    border-color: #0c9 !important;
+}
+
+/* Despesa (vermelho) */
+.form-check-input-expense {
+    background-color: #ccc; /* Cinza padrão quando desligado */
+    border-color: #aaa;
+}
+
+.form-check-input-expense:checked {
+    background-color: #f2545b !important; /* Vermelho quando ligado */
+    border-color: #f2545b !important;
+}

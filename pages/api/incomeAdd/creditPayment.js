@@ -59,7 +59,7 @@ export default authenticated(async (req, res) => {
                     _id: newId,
                     dateAdded,
                     type: section,
-                    active: isDateBefore(data.competenceMonth, dateAddedObj)
+                    active: data.active ? data.active : isDateBefore(data.competenceMonth, dateAddedObj)
                 };
 
                 try {

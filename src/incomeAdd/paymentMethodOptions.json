@@ -13,7 +13,7 @@
     },
     {
         "id": 4,
-        "description": "Transferência Bancária"
+        "description": "Pix"
     },
     {
         "id": 5,
@@ -21,18 +21,26 @@
     },
     {
         "id": 6,
-        "description": "Pix"
+        "description": "Parcelamento no Boleto"
     },
     {
         "id": 7,
-        "description": "Cheque"
+        "description": "Assinatura"
     },
     {
         "id": 8,
-        "description": "Crédito em Conta"
+        "description": "Transferência Bancária"
     },
     {
         "id": 9,
+        "description": "Cheque"
+    },
+    {
+        "id": 10,
+        "description": "Crédito em Conta"
+    },
+    {
+        "id": 11,
         "description": "Outro"
     }
 ]

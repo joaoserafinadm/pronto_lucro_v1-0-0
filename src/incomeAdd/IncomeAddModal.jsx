@@ -57,6 +57,8 @@ export default function IncomeAddModal(props) {
     const [bankAccounts, setBankAccounts] = useState([])
     const [accountSelected, setAccountSelected] = useState(null)
 
+    const [active, setActive] = useState(true)
+
 
     const [categories, setCategories] = useState([])
     const [loadingSave, setLoadingSave] = useState(false)
@@ -151,7 +153,8 @@ export default function IncomeAddModal(props) {
                     subCategory_id: subCategorySelected ? subCategorySelected.tag_id : '',
                     account_id: accountSelected ? accountSelected._id : '',
                     files: attachment,
-                    creditConfig
+                    creditConfig,
+                    active
                 };
 
                 console.log("data", data)
@@ -197,6 +200,7 @@ export default function IncomeAddModal(props) {
     const initialValues = () => {
 
         setValue('')
+        setActive(true)
         setPaymentMethod(null)
         setPaymentDate(dateObject(new Date()))
         setCompetenceMonth({
@@ -242,6 +246,13 @@ export default function IncomeAddModal(props) {
                                 <CurrencySelect setCurrencyId={setCurrencyId} currencyId={currencyId} />
                             </div>
                             <span className="text-danger small">{valueError}</span>
+
+                            <div className="col-12 mt-3 d-flex">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input form-check-input-income" type="checkbox" role="switch" id="activeInput" checked={active} onClick={() => setActive(!active)} />
+                                    <label type="button"  class={`form-check-label ${active ? 'bold' : ''}`} for="activeInput" >Foi paga</label>
+                                </div>
+                            </div>
 
                         </div>
 
@@ -299,7 +310,7 @@ export default function IncomeAddModal(props) {
 
                                         <PaymentMethodConfig
                                             value={value}
-                                            
+
                                             paymentMethod={paymentMethod}
                                             setCreditConfig={setCreditConfig}
                                             section="income" />

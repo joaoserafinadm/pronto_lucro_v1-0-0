@@ -57,6 +57,7 @@ export default function ExpenseAddModal(props) {
     const [bankAccounts, setBankAccounts] = useState([])
     const [accountSelected, setAccountSelected] = useState(null)
 
+    const [active, setActive] = useState(true)
 
     const [categories, setCategories] = useState([])
     const [loadingSave, setLoadingSave] = useState(false)
@@ -152,7 +153,8 @@ export default function ExpenseAddModal(props) {
                     subCategory_id: subCategorySelected ? subCategorySelected.tag_id : '',
                     account_id: accountSelected ? accountSelected._id : '',
                     files: attachment,
-                    creditConfig
+                    creditConfig,
+                    active
                 };
 
                 if (paymentMethod === 2) {
@@ -197,6 +199,7 @@ export default function ExpenseAddModal(props) {
     const initialValues = () => {
 
         setValue('')
+        setActive(true)
         setPaymentMethod(null)
         setPaymentDate(dateObject(new Date()))
         setCompetenceMonth({
@@ -241,6 +244,13 @@ export default function ExpenseAddModal(props) {
 
                             </div>
                             <span className="text-danger small">{valueError}</span>
+
+                            <div className="col-12 mt-3 d-flex">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input form-check-input-expense" type="checkbox" role="switch" id="activeExpenseInput" checked={active} onClick={() => setActive(!active)} />
+                                    <label type="button" class={`form-check-label ${active ? 'bold' : ''}`} for="activeExpenseInput" >Foi paga</label>
+                                </div>
+                            </div>
 
                         </div>
 
