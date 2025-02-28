@@ -7,6 +7,7 @@ import axios from "axios";
 import { newData } from "../../store/NewData/NewData.action";
 import { showModalBs } from "../../utils/modalControl";
 import { useState } from "react";
+import { useStateContext } from "./context/transactionsContext";
 
 
 
@@ -16,7 +17,7 @@ export default function DeleteIncomeModal(props) {
     const dispatch = useDispatch()
 
 
-    const { incomeSelected } = props
+    const { incomeSelected } = useStateContext()
 
     const [deleteError, setDeleteError] = useState('')
 

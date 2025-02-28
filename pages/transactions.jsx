@@ -13,9 +13,18 @@ import DesktopPage from "../src/transactions/DesktopPage"
 import { newData } from "../store/NewData/NewData.action"
 import AttachmentModal from "../src/transactions/AttachmentModal"
 import DeleteIncomeModal from "../src/transactions/DeleteIncomeModal"
+import { StateProvider, useStateContext } from "../src/transactions/context/transactionsContext"
 
-export default function Transactions() {
 
+export default function transactions(props) {
+    return (
+        <StateProvider>
+            <TransactionsPage />
+        </StateProvider>
+    );
+}
+
+function TransactionsPage() {
     const token = jwt.decode(Cookie.get('auth'));
     const dispatch = useDispatch()
 
@@ -26,17 +35,18 @@ export default function Transactions() {
     }, [newDataStore])
 
 
-    const [data, setData] = useState(null)
-    const [dateSelected, setDateSelected] = useState({
-        month: new Date().getMonth(),
-        year: new Date().getFullYear()
-    })
-    const [categories, setCategories] = useState([])
-
-    const [incomeSelected, setIncomeSelected] = useState(null)
-
-    const [loadingData, setLoadingData] = useState(true)
-
+    const {
+        data,
+        setData,
+        dateSelected,
+        setDateSelected,
+        categories,
+        setCategories,
+        incomeSelected,
+        setIncomeSelected,
+        loadingData,
+        setLoadingData
+    } = useStateContext();
 
     useEffect(() => {
         if (dateSelected) dataFunction(token.sub)
@@ -79,8 +89,8 @@ export default function Transactions() {
 
             <Title title={'Transações'} subtitle='Controle seu histório de transações' backButton='/' />
 
-            <AttachmentModal incomeSelected={incomeSelected} />
-            <DeleteIncomeModal incomeSelected={incomeSelected} />
+            <AttachmentModal />
+            <DeleteIncomeModal  />
 
 
             <div className="pagesContent-lg shadow">
@@ -101,11 +111,7 @@ export default function Transactions() {
                             <SpinnerLG />
                             :
                             <div className="fadeItem">
-                                <DesktopPage
-                                    data={data}
-                                    dateSelected={dateSelected}
-                                    categories={categories}
-                                    setIncomeSelected={setIncomeSelected} />
+                                <DesktopPage />
                             </div>
                         }
 

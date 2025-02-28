@@ -9,6 +9,7 @@ import { newData } from "../../store/NewData/NewData.action";
 import jwt from 'jsonwebtoken'
 import Cookie from 'js-cookie'
 import { showModalBs } from "../../utils/modalControl";
+import { useStateContext } from "./context/transactionsContext";
 
 
 
@@ -18,7 +19,7 @@ export default function AttachmentModal(props) {
     const dispatch = useDispatch()
 
 
-    const { incomeSelected } = props
+    const { incomeSelected } = useStateContext()
 
 
 

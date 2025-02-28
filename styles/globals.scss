@@ -3241,3 +3241,15 @@ span {
     background-color: #f2545b !important; /* Vermelho quando ligado */
     border-color: #f2545b !important;
 }
+
+.checkButton {
+	cursor: pointer;
+	height: 15px;
+	width: 15px;
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 10px;
+	border: 2px solid #8f8f8f;
+}

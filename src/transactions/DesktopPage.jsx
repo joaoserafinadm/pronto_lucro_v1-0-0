@@ -1,3 +1,4 @@
+import { useStateContext } from "./context/transactionsContext"
 import DesktopTotalCards from "./DesktopTotalCards"
 import DesktopTransactionsList from "./DesktopTransactionsList"
 import DfcList from "./DfcList"
@@ -7,7 +8,7 @@ import ResultsCard from "./ResultsCard"
 
 export default function DesktopPage(props) {
 
-    const { data, dateSelected, setIncomeSelected, categories } = props
+    const { data, dateSelected, setIncomeSelected,incomeSelected, categories } = useStateContext()
 
 
 
@@ -24,7 +25,7 @@ export default function DesktopPage(props) {
             <div className="col-12 my-3 " style={{fontSize: '14px'}}>
                 <div className="d-none d-lg-flex justify-content-center">
 
-                    <DesktopTransactionsList data={data} setIncomeSelected={setIncomeSelected} categories={categories} />
+                    <DesktopTransactionsList />
                 </div>
                 <div className="d-lg-none">
 

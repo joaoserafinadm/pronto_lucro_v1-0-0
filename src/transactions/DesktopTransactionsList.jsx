@@ -1,15 +1,17 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { formatDate } from "../../utils/mask"
 import TypeIcon from "./TypeIcon"
-import { faClipboard, faDotCircle, faEdit, faEllipsis, faFile, faPaperclip, faTrash, faTrashAlt } from "@fortawesome/free-solid-svg-icons"
+import { faCheck, faCheckCircle, faClipboard, faDotCircle, faEdit, faEllipsis, faFile, faPaperclip, faTrash, faTrashAlt } from "@fortawesome/free-solid-svg-icons"
 import TagSelected from "./tagSelected"
+import ActiveButton from "./activeButton"
+import { useStateContext } from "./context/transactionsContext"
 
 
 
 
 export default function DesktopTransactionsList(props) {
 
-    const { data, setIncomeSelected, categories } = props
+    const { data, setIncomeSelected, incomeSelected,categories } = useStateContext()
 
 
     const brlMoney = {
@@ -101,7 +103,15 @@ export default function DesktopTransactionsList(props) {
                                     </td>
                                     <td className={`text-start bold text-${elem?.active === false ? 'secondary' : elem?.type === 'income' ? 'c-success' : 'c-danger'}`}>
                                         {elem?.type === 'expense' && '-'}{elem?.type === 'income' && '+'}{brlMoney.format(elem?.value)} <br />
-                                        <span style={{ fontSize: '12px' }}>{elem?.active === false && 'Pendente'}</span>
+
+                                        {elem?.active === false && 'Pendente' && (
+
+                                            <div className="d-flex">
+                                                <span style={{ fontSize: '12px' }}>Pendente</span>
+
+                                                <ActiveButton incomeSelected={incomeSelected} setIncomeSelected={setIncomeSelected} elem={elem}/>
+                                            </div>
+                                        )}
                                     </td>
                                     <td>
 
