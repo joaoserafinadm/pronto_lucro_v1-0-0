@@ -59,7 +59,7 @@ export default authenticated(async (req, res) => {
                     _id: newId,
                     dateAdded,
                     type: section,
-                    active: data.active ? data.active : isDateBefore(data.competenceMonth, dateAddedObj)
+                    active: !data.active ? false : isDateBefore(data.competenceMonth, dateAddedObj)
                 };
 
                 try {
@@ -221,7 +221,7 @@ function handleDfcData(newId, dateAdded, dateAddedObj, data, section) {
             dateAdded,
             type: section,
             creditConfig: newCreditConfig,
-            active: isDateBefore(currentPaymentDate, dateAddedObj)
+            active: !data.active ? false : isDateBefore(currentPaymentDate, dateAddedObj)
         };
 
         newData.push(newElem);

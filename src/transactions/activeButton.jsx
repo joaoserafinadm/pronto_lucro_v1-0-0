@@ -10,7 +10,7 @@ import { useStateContext } from "./context/transactionsContext";
 
 export default function ActiveButton(props) {
 
-    const { elem } = props
+    const { elem, smallScreen } = props
     const { incomeSelected, setIncomeSelected } = useStateContext()
 
     useEffect(() => {
@@ -43,11 +43,10 @@ export default function ActiveButton(props) {
 
         <>
 
-            <ActiveTransactionModal  />
             <span className="ms-2 cardAnimation checkButton shadow"
                 type="button" onClick={() =>setIncomeSelected(elem)}
                 id="activeButton"
-                data-bs-toggle="modal" data-bs-target="#activeTransactionModal">
+                data-bs-toggle="modal" data-bs-target={"#activeTransactionModal"}>
 
                 <FontAwesomeIcon icon={faCheck} className=" text-secondary " />
             </span>

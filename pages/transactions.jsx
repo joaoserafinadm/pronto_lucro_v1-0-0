@@ -14,6 +14,7 @@ import { newData } from "../store/NewData/NewData.action"
 import AttachmentModal from "../src/transactions/AttachmentModal"
 import DeleteIncomeModal from "../src/transactions/DeleteIncomeModal"
 import { StateProvider, useStateContext } from "../src/transactions/context/transactionsContext"
+import ActiveTransactionModal from "../src/transactions/activeTransactionModal"
 
 
 export default function transactions(props) {
@@ -90,7 +91,8 @@ function TransactionsPage() {
             <Title title={'Transações'} subtitle='Controle seu histório de transações' backButton='/' />
 
             <AttachmentModal />
-            <DeleteIncomeModal  />
+            <DeleteIncomeModal />
+            <ActiveTransactionModal />
 
 
             <div className="pagesContent-lg shadow">

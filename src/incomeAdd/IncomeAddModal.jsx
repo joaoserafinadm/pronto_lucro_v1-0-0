@@ -73,7 +73,7 @@ export default function IncomeAddModal(props) {
 
         console.log("user_id", user_id)
 
-        await axios.get(`${baseUrl()}/api/incomeAdd`, {
+        await axios.get(`/api/incomeAdd`, {
             params: {
                 user_id
             }
@@ -157,10 +157,9 @@ export default function IncomeAddModal(props) {
                     active
                 };
 
-                console.log("data", data)
 
                 if (paymentMethod === 2) {
-                    const res = await axios.post(`${baseUrl()}/api/incomeAdd/creditPayment`, data)
+                    const res = await axios.post(`/api/incomeAdd/creditPayment`, data)
                         .then(res => {
                             dispatch(newData(true))
                             initialValues()
@@ -171,7 +170,7 @@ export default function IncomeAddModal(props) {
                             setLoadingSave(false);
                         });
                 } else {
-                    const res = await axios.post(`${baseUrl()}/api/incomeAdd`, data)
+                    const res = await axios.post(`/api/incomeAdd`, data)
                         .then(res => {
                             dispatch(newData(true))
                             initialValues()

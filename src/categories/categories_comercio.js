@@ -7,47 +7,47 @@ export function categories_comercio() {
     const categories = {
         incomeCategories: [
             {
-                _id: new ObjectId(),
+                _id: "1",
                 categoryName: "Receita Operacional Bruta",
                 color: "#4CAF50", // Verde
                 subCategories: [
                     {
-                        _id: new ObjectId(),
+                        _id: "11",
                         name: 'Venda de produtos'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "12",
                         name: 'Venda de serviços'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "13",
                         name: 'Outras receitas operacionais'
                     }
                 ]
             },
             {
-                _id: new ObjectId(),
+                _id: "2",
                 categoryName: "Receitas Não Operacionais",
                 color: "#2196F3", // Verde
                 subCategories: [
                     {
-                        _id: new ObjectId(),
+                        _id: "21",
                         name: 'Entrada de empréstimos bancários'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "22",
                         name: 'Entrada de dinheiro dos sócios'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "23",
                         name: 'Entrada de empréstimos de terceiros'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "24",
                         name: 'Venda de Imobilizado'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "25",
                         name: 'Juros recebidos'
                     },
                 ]
@@ -56,456 +56,456 @@ export function categories_comercio() {
         ],
         expenseCategories: [
             {
-                _id: new ObjectId(),
+                _id: "3",
                 categoryName: "Impostos e Fretes",
                 color: "#E57373", // Verde
                 subCategories: [
                     {
-                        _id: new ObjectId(),
+                        _id: "31",
                         name: 'Simples nacional (DAS)'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "32",
                         name: 'Imposto MEI'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "33",
                         name: 'ICMS ST - GA'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "34",
                         name: 'Fretes sobre compra'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "35",
                         name: 'ISS (Imposto sobre Serviços)'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "36",
                         name: 'PIS'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "37",
                         name: 'COFINS'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "38",
                         name: 'Contribuição Social (CS)'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "39",
                         name: 'IRPJ'
                     },
                 ]
             },
             {
-                _id: new ObjectId(),
+                _id: "4",
                 categoryName: "Custos com Vendas",
                 color: "#FFB74D",
                 subCategories: [
                     {
-                        _id: new ObjectId(),
+                        _id: "41",
                         name: 'Compra de matéria prima'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "42",
                         name: 'Compra de mercadorias para revenda'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "43",
                         name: 'Serviços terceirizados'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "44",
                         name: 'Comissão de vendas'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "45",
                         name: 'Frete sobre vendas'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "46",
                         name: 'Compra de embalagens'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "47",
                         name: 'Ajuda de custo'
                     }
                 ]
             },
             {
-                _id: new ObjectId(),
+                _id: "5",
                 categoryName: "Despesas Comerciais",
                 color: "#FFD54F",
                 subCategories: [
                     {
-                        _id: new ObjectId(),
+                        _id: "51",
                         name: 'Viagens'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "52",
                         name: 'Hospedagens'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "53",
                         name: 'Combustíveis e lubrificantes'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "54",
                         name: 'Estacionamentos'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "55",
                         name: 'Pedágios'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "56",
                         name: 'Multas de trânsito'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "57",
                         name: 'Manutenção de veículos'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "58",
                         name: 'IPVA/Licenciamento'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "59",
                         name: 'Seguro veículos'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "510",
                         name: 'Lavagem de veículos'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "511",
                         name: 'Alimentação'
                     },
                 ]
             },
             {
-                _id: new ObjectId(),
+                _id: "6",
                 categoryName: "Despesas Administrativas (Fixas)",
                 color: "#F48FB1",
                 subCategories: [
                     {
-                        _id: new ObjectId(),
+                        _id: "61",
                         name: 'Água'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "62",
                         name: 'Aluguel'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "63",
                         name: 'Alvará de localização'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "64",
                         name: 'Assessoria jurídica'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "65",
                         name: 'Associação de classe'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "66",
                         name: 'Consultorias'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "67",
                         name: 'Contabilidade'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "68",
                         name: 'Conselhos profissionais'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "69",
                         name: 'Doações e filantropia'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "610",
                         name: 'Energia elétrica'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "611",
                         name: 'Farmácia'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "612",
                         name: 'Internet e telefone'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "613",
                         name: 'IPTU'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "614",
                         name: 'Licenciamento ambiental'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "615",
                         name: 'Manutenção de máquinas e equip.'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "616",
                         name: 'Manutenção predial'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "617",
                         name: 'Material de escritório'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "618",
                         name: 'Mercado (Café, Erva, Mat. Limpeza)'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "619",
                         name: 'Outras taxas municipais'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "620",
                         name: 'Publicidade e propaganda'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "621",
                         name: 'Segurança privada'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "622",
                         name: 'Seguro empresarial'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "623",
                         name: 'Seguro de vida sócios'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "624",
                         name: 'Serviços de limpeza'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "625",
                         name: 'Softwares'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "626",
                         name: 'Correio'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "627",
                         name: 'Plano de saúde sócios'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "628",
                         name: 'Plano odontológico dos sócios'
                     }
                 ]
             },
             {
-                _id: new ObjectId(),
+                _id: "7",
                 categoryName: "Despesas com Salários e Encargos",
                 color: "#CE93D8",
                 subCategories: [
                     {
-                        _id: new ObjectId(),
+                        _id: "71",
                         name: 'Bonificações'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "72",
                         name: 'Confraternizações'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "73",
                         name: 'Contribuição Sindical'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "74",
                         name: 'Cursos e treinamentos'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "75",
                         name: 'Diferença de salário'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "76",
                         name: 'EPI´s'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "77",
                         name: 'Exames de admissão/demissão'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "78",
                         name: 'Férias'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "79",
                         name: 'FGTS'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "710",
                         name: 'Indenizações'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "711",
                         name: 'INSS sobre Pró-Labore (GPS)'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "712",
                         name: 'INSS sobre Salários (GPS)'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "713",
                         name: 'IRFF sobre Salários (DARF 0561)'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "714",
                         name: 'Medicina do trabalho'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "715",
                         name: 'Plano de saúde funcionários'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "716",
                         name: 'Plano odontológico funcionários'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "717",
                         name: 'Plano de saúde sócios'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "718",
                         name: 'Plano odontológico sócios'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "719",
                         name: 'Pró-labore 1'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "720",
                         name: 'Pró-labore 2'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "721",
                         name: 'Pró-labore 3'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "722",
                         name: 'Pró-Labore 4'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "723",
                         name: 'Diaristas'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "724",
                         name: 'Uniformes'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "725",
                         name: 'Vale alimentação'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "726",
                         name: 'Vale transporte'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "727",
                         name: 'Vales/Adiantamento de salários'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "728",
                         name: 'Seguro de vida funcionários'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "729",
                         name: 'Seguro de vida sócios'
                     },
 
                 ]
             },
             {
-                _id: new ObjectId(),
+                _id: "8",
                 categoryName: "Despesas Financeiras",
                 color: "#A1887F",
                 subCategories: [
                     {
-                        _id: new ObjectId(),
+                        _id: "81",
                         name: 'Tarifas bancárias'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "82",
                         name: 'Imposto sobre aplicações'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "83",
                         name: 'Tarifas Boletos'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "84",
                         name: 'Tarifa sobre venda de cartões'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "85",
                         name: 'Tarifas sobre antecipação de cartões'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "86",
                         name: 'Juros bancários'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "87",
                         name: 'Juros desconto de cheques'
                     }
 
                 ]
             },
             {
-                _id: new ObjectId(),
+                _id: "9",
                 categoryName: "Financiamentos e Dívidas",
                 color: "#90A4AE",
                 subCategories: [
                     {
-                        _id: new ObjectId(),
+                        _id: "91",
                         name: 'Financiamento Pronampe'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "92",
                         name: 'Capital de giro'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "93",
                         name: 'Dívidas com fornecedores'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "94",
                         name: 'Dívidas com empréstimo pessoal'
                     }
 
                 ]
             },
             {
-                _id: new ObjectId(),
+                _id: "10",
                 categoryName: "Investimentos",
                 color: "#FF8A65",
                 subCategories: [
                     {
-                        _id: new ObjectId(),
+                        _id: "101",
                         name: 'Máquinas e equipamentos'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "102",
                         name: 'Móveis'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "103",
                         name: 'Imóveis'
                     },
                     {
-                        _id: new ObjectId(),
+                        _id: "104",
                         name: 'Veículos'
                     },
 

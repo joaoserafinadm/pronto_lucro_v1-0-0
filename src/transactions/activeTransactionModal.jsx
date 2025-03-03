@@ -1,20 +1,28 @@
 import { useEffect, useState } from "react"
 import { useStateContext } from "./context/transactionsContext"
 import TagSelected from "./tagSelected"
-
+import axios from "axios"
+import jwt from 'jsonwebtoken'
+import Cookie from 'js-cookie'
+import { useDispatch } from "react-redux"
+import { newData } from "../../store/NewData/NewData.action"
 
 
 
 export default function ActiveTransactionModal(props) {
 
-    const { incomeSelected, categories, data } = useStateContext()
+    const token = jwt.decode(Cookie.get('auth'));
+
+        const dispatch = useDispatch()
+    
+
+    const { incomeSelected, categories, data, dateSelected } = useStateContext()
 
     const [accountSelected, setAccountSelected] = useState(null)
 
     useEffect(() => {
 
         const value = data?.accounts?.find(elem1 => elem1._id === incomeSelected?.account_id);
-        console.log("value", value.description)
         setAccountSelected(value)
 
     }, [incomeSelected])
@@ -24,14 +32,24 @@ export default function ActiveTransactionModal(props) {
         format: (value) => value?.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
     }
 
-    const handleActive = (incomeSelected) => {
+    const handleActive = async () => {
 
-        console.log("incomeSelected", incomeSelected)
+        const data = {
+            user_id: token.sub,
+            income_id: incomeSelected?._id,
+            value: incomeSelected?.value,
+            dateSelected
+        }
+
+        await axios.post(`/api/transactions/activeValue`,data)
+        .then(res => {
+                dispatch(newData(true))
+        })
 
     }
 
     return (
-        <div class="modal fade" id="activeTransactionModal" tabindex="-1" aria-labelledby="activeTransactionModalLabel" aria-hidden="true">
+        <div class="modal fade" id={"activeTransactionModal"} tabindex="-1" aria-labelledby="activeTransactionModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable ">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -83,15 +101,12 @@ export default function ActiveTransactionModal(props) {
                             <div className={` text-center   my-2 col-12 col-md-6`}>
                                 <span className="small">Valor:</span><br />
                                 <span className={`fs-5  ${incomeSelected?.type === 'expense' ? 'text-c-danger' : 'text-c-success'}`}>
-
                                     {incomeSelected?.type === 'expense' && '-'}{incomeSelected?.type === 'income' && '+'}{brlMoney.format(incomeSelected?.value)} <br />
                                 </span>
-
-
+                                <button className="btn btn-sm btn-c-outline-tertiary" >Editar valor</button>
                             </div>
 
                             <div className="col-12 d-flex justify-content-center mt-4">
-                                <button className="btn btn-sm btn-c-outline-tertiary" >Editar valor</button>
 
                             </div>
                         </div>
@@ -99,7 +114,7 @@ export default function ActiveTransactionModal(props) {
                     </div>
                     <div className="modal-footer">
                         <button type="button" className="btn btn-sm btn-c-tertiary" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="button" className="btn btn-sm btn-c-success" data-bs-dismiss="modal" onClick={() => { handleActive(incomeSelected) }}>Confirmar</button>
+                        <button type="button" className="btn btn-sm btn-c-success" data-bs-dismiss="modal" onClick={handleActive}>Confirmar</button>
                     </div>
                 </div>
             </div>

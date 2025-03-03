@@ -50,7 +50,7 @@ export default authenticated(async (req, res) => {
     } else if (req.method === "POST") {
         const { user_id, section, ...data } = req.body;
 
-        console.log(data)
+        console.log("data.active", data.active)
         res.status(400)
 
         if (!user_id || !data?.value || !section) {
@@ -73,7 +73,7 @@ export default authenticated(async (req, res) => {
                     _id: newId,
                     dateAdded,
                     type: section,
-                    active: data.active ? data.active :  isDateBefore(data.competenceMonth, dateAddedObj)
+                    active: !data.active ? false :  isDateBefore(data.competenceMonth, dateAddedObj)
                 };
 
                 const dfcData = {
@@ -82,7 +82,7 @@ export default authenticated(async (req, res) => {
                     _id: newId,
                     dateAdded,
                     type: section,
-                    active: isDateBefore(data.paymentDate, dateAddedObj)
+                    active: !data.active ? false :isDateBefore(data.paymentDate, dateAddedObj)
                 };
 
                 try {

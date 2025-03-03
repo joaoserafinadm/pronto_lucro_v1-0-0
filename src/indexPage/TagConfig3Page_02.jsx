@@ -27,29 +27,29 @@ export default function TagConfig3Page_02(props) {
 
     const [loadingSave, setLoadingSave] = useState(false)
     const [newCategories, setNewCategories] = useState(false)
-    const [incomeCategories, setIncomeCategories] = useState([])
-    const [expenseCategories, setExpenseCategories] = useState([])
+    const [incomeCategories, setIncomeCategories] = useState(categories_geral().incomeCategories)
+    const [expenseCategories, setExpenseCategories] = useState(categories_geral().expenseCategories)
     const [saveError, setSaveError] = useState('')
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        if (setorSelected) {
-            if (setorSelected === "Comércio") {
-                setIncomeCategories(categories_comercio().incomeCategories)
-                setExpenseCategories(categories_comercio().expenseCategories)
-            } else if (setorSelected === "Serviços") {
-                setIncomeCategories(categories_servicos().incomeCategories)
-                setExpenseCategories(categories_servicos().expenseCategories)
-            } else if (setorSelected === "Indústria") {
-                setIncomeCategories(categories_industria().incomeCategories)
-                setExpenseCategories(categories_industria().expenseCategories)
-            } else if (setorSelected === "Outro") {
-                setIncomeCategories(categories_geral().incomeCategories)
-                setExpenseCategories(categories_geral().expenseCategories)
-            }
-        }
+    //     if (setorSelected) {
+    //         if (setorSelected === "Comércio") {
+    //             setIncomeCategories(categories_comercio().incomeCategories)
+    //             setExpenseCategories(categories_comercio().expenseCategories)
+    //         } else if (setorSelected === "Serviços") {
+    //             setIncomeCategories(categories_servicos().incomeCategories)
+    //             setExpenseCategories(categories_servicos().expenseCategories)
+    //         } else if (setorSelected === "Indústria") {
+    //             setIncomeCategories(categories_industria().incomeCategories)
+    //             setExpenseCategories(categories_industria().expenseCategories)
+    //         } else if (setorSelected === "Outro") {
+    //             setIncomeCategories(categories_geral().incomeCategories)
+    //             setExpenseCategories(categories_geral().expenseCategories)
+    //         }
+    //     }
 
-    }, [setorSelected])
+    // }, [setorSelected])
 
 
     const handleTagsSave = async () => {

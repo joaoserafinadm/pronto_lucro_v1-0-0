@@ -4,10 +4,13 @@ import React, { useEffect, useRef, useState } from 'react';
 import { formatDate } from '../../utils/mask';
 import TypeIcon from './TypeIcon';
 import TagSelected from './tagSelected';
+import ActiveButton from './activeButton';
+import { useStateContext } from './context/transactionsContext';
 // import './DfcList.css'; // Importe o arquivo CSS, se necessário
 
 export default function DfcList(props) {
-    const { data, setIncomeSelected , categories} = props;
+        const { data, setIncomeSelected, incomeSelected,categories } = useStateContext()
+    
     const containerRef = useRef(null);
     const [height, setHeight] = useState(0);
 
@@ -99,7 +102,14 @@ export default function DfcList(props) {
                                                             <span className={`bold text-center text-${elem?.active === false ? 'secondary' : elem?.type === 'income' ? 'success' : 'danger'}`} >
 
                                                                 {elem?.type === 'expense' && '-'}{elem?.type === 'income' && '+'}{brlMoney.format(elem?.value)} <br />
-                                                                {elem?.active === false && 'Pendente'}
+                                                                {elem?.active === false && 'Pendente' && (
+
+                                                                    <div className="d-flex">
+                                                                        <span style={{ fontSize: '12px' }}>Pendente</span>
+
+                                                                        <ActiveButton incomeSelected={incomeSelected} setIncomeSelected={setIncomeSelected} elem={elem} smallScreen />
+                                                                    </div>
+                                                                )}
                                                             </span>
                                                         </div>
                                                         <div className="row">
