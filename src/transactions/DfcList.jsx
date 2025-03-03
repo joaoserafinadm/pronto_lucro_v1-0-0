@@ -112,21 +112,21 @@ export default function DfcList(props) {
                                                                 )}
                                                             </span>
                                                         </div>
-                                                        <div className="row">
+                                                        <div className="" style={{fontSize: '8px'}}>
                                                             <div className="col-12">
                                                                 <TagSelected subCategory_id={elem.subCategory_id} categories={categories} />
 
 
                                                             </div>
                                                         </div>
-                                                        <div className="row mt-1">
-                                                            <div>
+                                                        <div className=" mt-2">
+                                                            <div style={{fontSize: '8px'}}>
 
                                                                 <span
                                                                     className={` cardAnimation px-2 py-2  text-white small mx-1 rounded-pill fw-bold `}
 
                                                                     style={{ backgroundColor: accountSelected?.color }}>
-                                                                    <img src={accountSelected?.bankSelected?.logoUrl} className="rounded-circle me-2" alt="" width={20} height={20} />
+                                                                    <img src={accountSelected?.bankSelected?.logoUrl} className="rounded-circle me-2" alt="" width={10} height={10} />
                                                                     {accountSelected?.description}
                                                                 </span>
                                                             </div>
