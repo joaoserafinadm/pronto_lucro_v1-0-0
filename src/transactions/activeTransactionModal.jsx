@@ -6,6 +6,9 @@ import jwt from 'jsonwebtoken'
 import Cookie from 'js-cookie'
 import { useDispatch } from "react-redux"
 import { newData } from "../../store/NewData/NewData.action"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faCheck, faXmark } from "@fortawesome/free-solid-svg-icons"
+import { maskInputMoney, maskMoneyNumber } from "../../utils/mask"
 
 
 
@@ -13,17 +16,21 @@ export default function ActiveTransactionModal(props) {
 
     const token = jwt.decode(Cookie.get('auth'));
 
-        const dispatch = useDispatch()
-    
+    const dispatch = useDispatch()
 
-    const { incomeSelected, categories, data, dateSelected } = useStateContext()
+
+    const {setIncomeSelected ,incomeSelected, categories, data, dateSelected } = useStateContext()
 
     const [accountSelected, setAccountSelected] = useState(null)
+    const [newValue, setNewValue] = useState(incomeSelected?.value)
+    const [editValueCheck, setEditValueCheck] = useState(false)
 
     useEffect(() => {
 
         const value = data?.accounts?.find(elem1 => elem1._id === incomeSelected?.account_id);
         setAccountSelected(value)
+
+        setNewValue(incomeSelected?.value.toString())
 
     }, [incomeSelected])
 
@@ -37,14 +44,14 @@ export default function ActiveTransactionModal(props) {
         const data = {
             user_id: token.sub,
             income_id: incomeSelected?._id,
-            value: incomeSelected?.value,
+            value:  maskMoneyNumber(newValue),
             dateSelected
         }
 
-        await axios.post(`/api/transactions/activeValue`,data)
-        .then(res => {
+        await axios.post(`/api/transactions/activeValue`, data)
+            .then(res => {
                 dispatch(newData(true))
-        })
+            })
 
     }
 
@@ -98,22 +105,50 @@ export default function ActiveTransactionModal(props) {
                                 </div>
 
                             </div>
-                            <div className={` text-center   my-2 col-12 col-md-6`}>
-                                <span className="small">Valor:</span><br />
-                                <span className={`fs-5  ${incomeSelected?.type === 'expense' ? 'text-c-danger' : 'text-c-success'}`}>
-                                    {incomeSelected?.type === 'expense' && '-'}{incomeSelected?.type === 'income' && '+'}{brlMoney.format(incomeSelected?.value)} <br />
-                                </span>
-                                <button className="btn btn-sm btn-c-outline-tertiary" >Editar valor</button>
-                            </div>
+                            {!editValueCheck ?
+                                <div className={` text-center   my-2 col-12 col-md-6`}>
+                                    <span className="small">Valor:</span><br />
+                                    <span className={`fs-5  ${incomeSelected?.type === 'expense' ? 'text-c-danger' : 'text-c-success'}`}>
+                                        {incomeSelected?.type === 'expense' && '-'}{incomeSelected?.type === 'income' && '+'}R$ {maskInputMoney(newValue)} <br />
+                                    </span>
+                                    <button className="btn btn-sm btn-c-outline-tertiary"
+                                        onClick={() => { setEditValueCheck(true); setNewValue(incomeSelected?.value) }}>
+                                        Editar valor
+                                    </button>
+                                </div>
+                                :
+                                <div className={` text-center   my-2 col-12 col-md-6`}>
+                                    <span className="small">Novo Valor:</span><br />
+                                    <div className="input-group">
+                                        <span className="input-group-text">R$</span>
 
-                            <div className="col-12 d-flex justify-content-center mt-4">
+                                        <input
+                                            type="text" placeholder="0,00"
+                                            className="form-control"
+                                            value={maskInputMoney((newValue).toString())}
+                                            onChange={(e) => setNewValue(e.target.value)}
+                                        />
 
-                            </div>
+                                    </div>
+                                    <div className="btn-group mt-2">
+
+                                        <button class="btn btn-outline-secondary" type="button"
+                                            onClick={() => {setEditValueCheck(false); setNewValue(incomeSelected?.value.toString())}}>
+                                            <FontAwesomeIcon icon={faXmark} className="pulse text-c-danger" />
+                                        </button>
+                                        <button class="btn btn-outline-secondary" type="button" onClick={() => setEditValueCheck(false)}>
+                                            <FontAwesomeIcon icon={faCheck} className="pulse text-c-success" />
+                                        </button>
+                                    </div>
+                                </div>
+                            }
+
+
                         </div>
 
                     </div>
                     <div className="modal-footer">
-                        <button type="button" className="btn btn-sm btn-c-tertiary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" className="btn btn-sm btn-c-tertiary" data-bs-dismiss="modal" onClick={()=> setIncomeSelected(null)}>Cancelar</button>
                         <button type="button" className="btn btn-sm btn-c-success" data-bs-dismiss="modal" onClick={handleActive}>Confirmar</button>
                     </div>
                 </div>

@@ -22,7 +22,7 @@ export default authenticated(async (req, res) => {
         return res.status(405).json({ error: 'Method not allowed' });
     }
 
-    const { user_id, income_id, dateSelected } = req.body;
+    const { user_id, income_id, value, dateSelected } = req.body;
 
     if (!user_id || !income_id || !dateSelected?.year || !dateSelected?.month) {
         return res.status(400).json({ error: 'Missing parameters on request body' });
@@ -46,7 +46,10 @@ export default authenticated(async (req, res) => {
                 "dfc.data._id": new ObjectId(income_id) // Filtra o item exato dentro de "data"
             },
             {
-                $set: { "dfc.$[dfcElem].data.$[dataElem].active": true }
+                $set: {
+                    "dfc.$[dfcElem].data.$[dataElem].active": true,
+                    "dfc.$[dfcElem].data.$[dataElem].value": value
+                }
             },
             {
                 arrayFilters: [
