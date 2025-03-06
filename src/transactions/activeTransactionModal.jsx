@@ -122,7 +122,7 @@ export default function ActiveTransactionModal(props) {
                                     <div className="input-group">
                                         <span className="input-group-text">R$</span>
 
-                                        <input
+                                        <input inputMode="numeric"
                                             type="text" placeholder="0,00"
                                             className="form-control"
                                             value={maskInputMoney((newValue).toString())}
