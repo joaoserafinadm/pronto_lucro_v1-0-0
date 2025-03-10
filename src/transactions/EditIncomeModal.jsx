@@ -40,7 +40,7 @@ export default function EditIncomeModal(props) {
     const token = jwt.decode(Cookie.get('auth'));
     const dispatch = useDispatch()
 
-    const { setIncomeSelected,incomeSelected } = useStateContext()
+    const { setIncomeSelected, incomeSelected } = useStateContext()
 
     const router = useRouter()
 
@@ -59,6 +59,8 @@ export default function EditIncomeModal(props) {
     const [bankAccounts, setBankAccounts] = useState([])
     const [accountSelected, setAccountSelected] = useState(null)
 
+    const [editConfig, setEditConfig] = useState('1')
+
     const [active, setActive] = useState(true)
 
 
@@ -68,7 +70,7 @@ export default function EditIncomeModal(props) {
     const [valueError, setValueError] = useState('')
 
     const brlNumber = {
-        format: (value) => value.toLocaleString('pt-BR', {  style: 'decimal', minimumFractionDigits: 2, maximumFractionDigits: 2 })
+        format: (value) => value.toLocaleString('pt-BR', { style: 'decimal', minimumFractionDigits: 2, maximumFractionDigits: 2 })
     }
 
 
@@ -79,7 +81,7 @@ export default function EditIncomeModal(props) {
 
     useEffect(() => {
         if (incomeSelected) {
-            
+
             const valueIn = brlNumber.format(incomeSelected.value)
 
             const subCategory = categories.find(elem => elem._id === incomeSelected.subCategory_id)
@@ -91,14 +93,14 @@ export default function EditIncomeModal(props) {
             if (account) {
                 setAccountSelected(account)
             }
-            
+
             setValue(maskInputMoney(valueIn))
             console.log("incomeSelected", incomeSelected)
             setPaymentDate(incomeSelected.paymentDate)
             setCompetenceMonth(incomeSelected.competenceMonth)
             // setCreditConfig(incomeSelected.credit_config)
             setDescription(incomeSelected.description)
-            
+
             // setFiles(incomeSelected.files)
             setActive(incomeSelected.active)
         }
@@ -305,37 +307,26 @@ export default function EditIncomeModal(props) {
                                                 <span className="small fw-bold mb-2 ms-3">Configuração de pagamento</span>
                                             </div>
 
-                                            <div className="col-12 d-flex flex-wrap">
-                                                {!paymentMethod ?
-                                                    <>
-                                                        <span type="button" onClick={() => setPaymentMethod(1)}
-                                                            class={`cardAnimation px-2 py-1 m-2 text-white small mx-1 rounded-pill ${paymentMethod === 1 ? 'ctm-bg-danger' : 'ctm-bg-primary'}`}>
-                                                            Dinheiro
-                                                        </span>
-                                                        <span type="button" onClick={() => setPaymentMethod(2)}
-                                                            class={`cardAnimation px-2 py-1 m-2 text-white small mx-1 rounded-pill ${paymentMethod === 2 ? 'ctm-bg-danger' : 'ctm-bg-primary'}`}>
-                                                            Cartão de crédito
-                                                        </span>
-                                                    </>
-                                                    :
-                                                    <span type="button"
-                                                        class={`cardAnimation bold px-2 py-1 m-2 text-white small mx-1 rounded-pill ctm-bg-danger`}>
-                                                        {paymentMethodOptions.find(elem => elem.id === paymentMethod)?.description}
-                                                    </span>
+                                            <div className="col-12 d-flex flex-wrap flex-column">
 
-                                                }
-                                                <span type="button" onClick={() => showModal('paymentMethodSelectModalExpense')}
-                                                    class={`cardAnimation px-2 py-1 m-2 text-white small mx-1 rounded-pill  ctm-bg-primary`}>
-                                                    Outros...
-                                                </span>
-
-
-                                                <PaymentMethodSelectModal paymentMethod={paymentMethod}
-                                                    setPaymentMethod={setPaymentMethod}
-                                                    id="paymentMethodSelectModalExpense"
-                                                    section="expense" />
-
-
+                                                <div class="form-check my-2">
+                                                    <input class="form-check-input form-check-input-income" type="radio" name="editConfigCheck" id="editConfig1"  onClick={() => setCreditConfig('1')} checked={creditConfig === '1'} />
+                                                    <label class="form-check-label" for="editConfig1">
+                                                        Editar somente esta
+                                                    </label>
+                                                </div>
+                                                <div class="form-check my-2">
+                                                    <input class="form-check-input form-check-input-income" type="radio" name="editConfigCheck" id="editConfig2" onClick={() => setCreditConfig('2')} checked={creditConfig === '2'} />
+                                                    <label class="form-check-label" for="editConfig2">
+                                                        Editar essa e todas as pendentes
+                                                    </label>
+                                                </div>
+                                                <div class="form-check my-2">
+                                                    <input class="form-check-input form-check-input-income" type="radio" name="editConfigCheck" id="editConfig3" onClick={() => setCreditConfig('3')} checked={creditConfig === '3'} />
+                                                    <label class="form-check-label" for="editConfig3">
+                                                        Editar todas (incluindo efetivadas)
+                                                    </label>
+                                                </div>
 
                                             </div>
                                         </div>
@@ -568,7 +559,7 @@ export default function EditIncomeModal(props) {
                     <div className="modal-footer">
                         <button className="btn btn-c-tertiary"
                             data-bs-dismiss="modal"
-                            onClick={() => {initialValues(); setIncomeSelected(null)}}>
+                            onClick={() => { initialValues(); setIncomeSelected(null) }}>
                             Cancelar
                         </button>
                         <button className="btn btn-c-success"
