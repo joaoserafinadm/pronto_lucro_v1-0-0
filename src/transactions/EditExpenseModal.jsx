@@ -18,24 +18,22 @@ import paymentMethodOptions from '../incomeAdd/paymentMethodOptions.json'
 import PaymentMethodConfig from "../incomeAdd/PaymentMethodConfig";
 import MonthSelect from "../incomeAdd/MonthSelect";
 import DatePickerModal from "../components/datePicker/DatePickerModal";
-import TagSelectModal from "../incomeAdd/TagSelectModal";
 import { showModal } from "../components/Modal";
 import { showModalBs } from "../../utils/modalControl";
 import StyledDropzone from "../components/styledDropzone/StyledDropzone";
 import { createImageUrl } from "../../utils/createImageUrl";
 import { useDispatch } from "react-redux";
 import { newData } from "../../store/NewData/NewData.action";
-import BankAccountsModal from "./BankAccountsModal";
-import TagSelectedComponent from "./TagSelectedComponent";
-import CurrencySelect from "./currencySelect";
+import BankAccountsModal from "../incomeAdd/BankAccountsModal";
+import CurrencySelect from "../incomeAdd/currencySelect";
 import currencies from "../../utils/currencies.json"
-import DescriptionInput from "./descriptionInput";
-import CategorySelectedComponent from "./categorySelectedComponent";
-import CategorySelectModal from "./categorySelectModal";
+import DescriptionInput from "../incomeAdd/descriptionInput";
+import CategorySelectedComponent from "../incomeAdd/categorySelectedComponent";
+import CategorySelectModal from "../incomeAdd/categorySelectModal";
 
 
 
-export default function ExpenseAddModal(props) {
+export default function EditExpenseModal(props) {
 
     const token = jwt.decode(Cookie.get('auth'));
     const dispatch = useDispatch()
@@ -164,8 +162,8 @@ export default function ExpenseAddModal(props) {
                             initialValues()
                             router.push('/transactions')
                         }).catch(e => {
-                            showModalBs("expenseAddModal")
-                            scrollTo('expenseAddModal');
+                            showModalBs("editExpenseModal")
+                            scrollTo('editExpenseModal');
                             setLoadingSave(false);
                         });
                 } else {
@@ -176,21 +174,21 @@ export default function ExpenseAddModal(props) {
                             initialValues()
                             router.push('/transactions')
                         }).catch(e => {
-                            showModalBs("expenseAddModal")
-                            scrollTo('expenseAddModal');
+                            showModalBs("editExpenseModal")
+                            scrollTo('editExpenseModal');
                             setLoadingSave(false);
                         });
                 }
                 setLoadingSave(false);
 
             } catch (e) {
-                showModalBs("expenseAddModal")
+                showModalBs("editExpenseModal")
                 setLoadingSave(false);
             }
         } else {
 
-            showModalBs("expenseAddModal")
-            scrollTo('expenseAddModal');
+            showModalBs("editExpenseModal")
+            scrollTo('editExpenseModal');
             setLoadingSave(false);
         }
     }
@@ -220,7 +218,7 @@ export default function ExpenseAddModal(props) {
 
 
     return (
-        <div class="modal fade" id="expenseAddModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="editExpenseModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
                 <div class="modal-content">
                     <div className="modal-body px-0" style={{ overflowX: 'hidden' }}>
@@ -233,7 +231,8 @@ export default function ExpenseAddModal(props) {
                             </div>
                             <div className="col-12 mt-2 d-flex justify-content-between">
                                 <div className="d-flex w-100 fs-1 pe-2 align-items-center">
-                                    <span className="me-1">{currency.symbol}</span>
+                                    {/* <span className="me-1">{currency.symbol}</span> */}
+                                    <span className="me-1">R$</span>
 
                                     <input type="text" inputMode="numeric" placeholder="0,00"
                                         className="form-control fs-2 " style={{ borderColor: '#f2545b' }}

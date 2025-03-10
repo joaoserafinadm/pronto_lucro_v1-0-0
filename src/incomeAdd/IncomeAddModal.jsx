@@ -23,7 +23,7 @@ import { showModal } from "../components/Modal";
 import { showModalBs } from "../../utils/modalControl";
 import StyledDropzone from "../components/styledDropzone/StyledDropzone";
 import { createImageUrl } from "../../utils/createImageUrl";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { newData } from "../../store/NewData/NewData.action";
 import BankAccountsModal from "./BankAccountsModal";
 import TagSelectedComponent from "./TagSelectedComponent";
@@ -39,6 +39,12 @@ export default function IncomeAddModal(props) {
 
     const token = jwt.decode(Cookie.get('auth'));
     const dispatch = useDispatch()
+
+    const newDataStore = useSelector(state => state.newData)
+
+    useEffect(() => {
+        if (newDataStore) dataFunction(token.sub)
+    }, [newDataStore])
 
     const router = useRouter()
 
@@ -242,14 +248,14 @@ export default function IncomeAddModal(props) {
                                         value={value} id='valueInput'
                                         onChange={e => setValue(maskInputMoney(e.target.value))} />
                                 </div>
-                                <CurrencySelect setCurrencyId={setCurrencyId} currencyId={currencyId} />
+                                {/* <CurrencySelect setCurrencyId={setCurrencyId} currencyId={currencyId} /> */}
                             </div>
                             <span className="text-danger small">{valueError}</span>
 
                             <div className="col-12 mt-3 d-flex">
                                 <div class="form-check form-switch">
                                     <input class="form-check-input form-check-input-income" type="checkbox" role="switch" id="activeInput" checked={active} onClick={() => setActive(!active)} />
-                                    <label type="button"  class={`form-check-label ${active ? 'bold' : ''}`} for="activeInput" >Foi paga</label>
+                                    <label type="button" class={`form-check-label ${active ? 'bold' : ''}`} for="activeInput" >Foi paga</label>
                                 </div>
                             </div>
 

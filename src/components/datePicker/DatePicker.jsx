@@ -57,7 +57,7 @@ const getCalendarDays = (currentDate) => {
 }
 
 export default function DatePicker(props) {
-    const initialDate = new Date(props.date.year, props.date.month, props.date.day) || new Date();
+    const initialDate = new Date(props.date?.year, props.date?.month, props.date?.day) || new Date();
     const [currentDate, setCurrentDate] = useState(initialDate);
     const [calendarDays, setCalendarDays] = useState([]);
 
@@ -109,7 +109,7 @@ export default function DatePicker(props) {
                     {calendarDays.map((date, index) => {
                         const isCurrentMonth = date.getMonth() === currentDate.getMonth();
                         const isToday = date.toDateString() === new Date().toDateString();
-                        const isSelected = date.getDate() === props.date.day && date.getMonth() === props.date.month && date.getFullYear() === props.date.year;
+                        const isSelected = date.getDate() === props.date?.day && date.getMonth() === props.date?.month && date.getFullYear() === props.date?.year;
                         const dayClasses = `${isCurrentMonth ? '' : styles.textMuted} ${isToday ? 'fw-bold' : ''} ${isSelected ? styles.selected : ''}`;
 
                         return (

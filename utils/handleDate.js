@@ -38,5 +38,5 @@ export function reverseDateObject(dateObj) {
 export function dateFormat(date) {
 
 
-    return (date.day > 9 ? date.day : `0${date.day}`) + ' / ' + (date.month + 1 > 9 ? (date.month + 1) : `0${date.month + 1}`) + ' / ' + (date.year)
+    return (date?.day > 9 ? date?.day : `0${date?.day}`) + ' / ' + (date?.month + 1 > 9 ? (date?.month + 1) : `0${date?.month + 1}`) + ' / ' + (date?.year)
 }

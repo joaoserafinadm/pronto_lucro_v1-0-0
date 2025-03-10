@@ -3,6 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import Cookie from 'js-cookie'
 import jwt from 'jsonwebtoken'
+import { newData } from "../../store/NewData/NewData.action";
+import { useDispatch } from "react-redux";
 
 
 
@@ -10,10 +12,16 @@ export default function TagConfig4Page(props) {
 
     const token = jwt.decode(Cookie.get('auth'))
 
+    const dispatch = useDispatch()
+
 
     const handleTutorialExit = async () => {
 
         await axios.post(`/api/indexPage/tutorialExit`, { user_id: token.sub })
+            .then(res => {
+                dispatch(newData(true))
+
+            })
 
 
     }

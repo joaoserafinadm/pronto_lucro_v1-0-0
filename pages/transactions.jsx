@@ -15,6 +15,8 @@ import AttachmentModal from "../src/transactions/AttachmentModal"
 import DeleteIncomeModal from "../src/transactions/DeleteIncomeModal"
 import { StateProvider, useStateContext } from "../src/transactions/context/transactionsContext"
 import ActiveTransactionModal from "../src/transactions/activeTransactionModal"
+import EditIncomeModal from "../src/transactions/EditIncomeModal"
+import EditExpenseModal from "../src/transactions/EditExpenseModal"
 
 
 export default function transactions(props) {
@@ -93,6 +95,8 @@ function TransactionsPage() {
             <AttachmentModal />
             <DeleteIncomeModal />
             <ActiveTransactionModal />
+            <EditIncomeModal />
+            <EditExpenseModal />
 
 
             <div className="pagesContent-lg shadow">

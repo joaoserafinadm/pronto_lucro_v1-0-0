@@ -71,6 +71,7 @@ export default authenticated(async (req, res) => {
                     ...data,
                     value: maskMoneyNumber(data.value),
                     _id: newId,
+                    ref_id: newId,
                     dateAdded,
                     type: section,
                     active: !data.active ? false :  isDateBefore(data.competenceMonth, dateAddedObj)
@@ -80,6 +81,7 @@ export default authenticated(async (req, res) => {
                     ...data,
                     value: maskMoneyNumber(data.value),
                     _id: newId,
+                    ref_id: newId,
                     dateAdded,
                     type: section,
                     active: !data.active ? false :isDateBefore(data.paymentDate, dateAddedObj)

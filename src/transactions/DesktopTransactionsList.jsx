@@ -133,7 +133,7 @@ export default function DesktopTransactionsList(props) {
                                                 <FontAwesomeIcon icon={faEllipsis} className="text-secondary fs-4" />
                                             </span>
                                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                                <li class="dropdown-item text-secondary" type='button'>
+                                                <li class="dropdown-item text-secondary" type='button' data-bs-toggle="modal" data-bs-target={elem.type === 'expense' ? "#editExpenseModal" : "#editIncomeModal"} onClick={() => { setIncomeSelected(elem) }}>
                                                     <FontAwesomeIcon icon={faEdit} className="small me-1" /> Editar
                                                 </li>
                                                 <li class="dropdown-item text-danger" type='button' data-bs-toggle="modal" data-bs-target="#deleteIncomeModal" onClick={() => { setIncomeSelected(elem) }}>

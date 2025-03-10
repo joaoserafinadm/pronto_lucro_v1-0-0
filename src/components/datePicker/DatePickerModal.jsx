@@ -14,7 +14,7 @@ export default function DatePickerModal(props) {
     useEffect(() => {
 
         setNewDate(date)
-    }, [date.day, date.month, date.year])
+    }, [date?.day, date?.month, date?.year])
 
 
 
