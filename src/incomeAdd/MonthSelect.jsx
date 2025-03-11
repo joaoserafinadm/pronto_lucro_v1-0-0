@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import 'swiper/swiper-bundle.min.css';
 
 export default function MonthSelect(props) {
-
+    const { competenceMonth } = props;
 
     const months = [
         "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
@@ -13,13 +13,36 @@ export default function MonthSelect(props) {
     const [monthSelected, setMonthSelected] = useState(new Date().getMonth());
     const [yearSelected, setYearSelected] = useState(new Date().getFullYear());
 
+    const swiperRef = useRef(null);
+
+    // Atualiza o mês e ano quando `competenceMonth` mudar
     useEffect(() => {
+        if (
+            competenceMonth?.month !== undefined &&
+            competenceMonth?.year !== undefined &&
+            (competenceMonth.month !== monthSelected || competenceMonth.year !== yearSelected)
+        ) {
+            setMonthSelected(competenceMonth.month);
+            setYearSelected(competenceMonth.year);
 
-        props.setMonth({
-            month: monthSelected,
-            year: yearSelected
-        })
+            // Atualiza a posição do Swiper sem disparar outro efeito
+            if (swiperRef.current) {
+                swiperRef.current.slideTo(competenceMonth.month);
+            }
+        }
+    }, [competenceMonth]);
 
+    // Atualiza o mês na prop apenas quando o usuário realmente altera o mês
+    useEffect(() => {
+        if (
+            props.setMonth &&
+            (monthSelected !== competenceMonth?.month || yearSelected !== competenceMonth?.year)
+        ) {
+            props.setMonth({
+                month: monthSelected,
+                year: yearSelected
+            });
+        }
     }, [monthSelected, yearSelected]);
 
     const handleSlideChange = (swiper) => {
@@ -51,7 +74,9 @@ export default function MonthSelect(props) {
                     slidesPerView={1}
                     navigation
                     loop
-                    onSlideChange={handleSlideChange}>
+                    onSlideChange={handleSlideChange}
+                    onSwiper={(swiper) => (swiperRef.current = swiper)}
+                >
                     {months.map((elem, index) => (
                         <SwiperSlide key={index} className="text-center">
                             <span className="bold">{elem}</span>

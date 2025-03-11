@@ -17,7 +17,7 @@ import PaymentMethodSelectModal from "../incomeAdd/PaymentMethodSelectModal";
 import paymentMethodOptions from '../incomeAdd/paymentMethodOptions.json'
 import PaymentMethodConfig from "../incomeAdd/PaymentMethodConfig";
 import MonthSelect from "../incomeAdd/MonthSelect";
-import DatePickerModal from "../components/datePicker/DatePickerModal";
+// import DatePickerModal from "../components/datePicker/DatePickerModal";
 import TagSelectModal from "../incomeAdd/TagSelectModal";
 import { showModal } from "../components/Modal";
 import { showModalBs } from "../../utils/modalControl";
@@ -32,6 +32,7 @@ import DescriptionInput from "../incomeAdd/descriptionInput";
 import CategorySelectModal from "../incomeAdd/categorySelectModal";
 import CategorySelectedComponent from "../incomeAdd/categorySelectedComponent";
 import { useStateContext } from "./context/transactionsContext";
+import DatePickerModal from "../components/datePicker/DatePickerModal";
 
 
 
@@ -101,7 +102,8 @@ export default function EditIncomeModal(props) {
             // setCreditConfig(incomeSelected.credit_config)
             setDescription(incomeSelected.description)
 
-            // setFiles(incomeSelected.files)
+            setFiles(incomeSelected.files)
+            console.log("files", incomeSelected.files)
             setActive(incomeSelected.active)
         }
 
@@ -256,6 +258,26 @@ export default function EditIncomeModal(props) {
 
     const currency = currencies.find(elem => elem.id === currencyId)
 
+    useEffect(() => {
+        handleEditOptions()
+
+    }, [editConfig])
+
+    const handleEditOptions = () => {
+
+        if (editConfig === '3') {
+            const valueIn = brlNumber.format(incomeSelected.value)
+            setValue(maskInputMoney(valueIn))
+            setActive(incomeSelected.active)
+            setPaymentDate(incomeSelected.paymentDate)
+            setCompetenceMonth(incomeSelected.competenceMonth)
+        } else if (editConfig === '2') {
+            setActive(incomeSelected.active)
+            setPaymentDate(incomeSelected.paymentDate)
+            setCompetenceMonth(incomeSelected.competenceMonth)
+        }
+    }
+
 
 
 
@@ -276,7 +298,7 @@ export default function EditIncomeModal(props) {
                                     {/* <span className="me-1">{currency.symbol}</span> */}
                                     <span className="me-1">R$</span>
                                     <input type="text" inputMode="numeric" placeholder="0,00"
-                                        className="form-control fs-2 " style={{ borderColor: '#00cc99' }}
+                                        className="form-control fs-2 " disabled={editConfig === "3"} style={{ borderColor: '#00cc99' }}
                                         value={value} id='valueInput'
                                         onChange={e => setValue(maskInputMoney(e.target.value))} />
                                 </div>
@@ -286,7 +308,7 @@ export default function EditIncomeModal(props) {
 
                             <div className="col-12 mt-3 d-flex">
                                 <div class="form-check form-switch">
-                                    <input class="form-check-input form-check-input-income" type="checkbox" role="switch" id="activeInput" checked={active} onClick={() => setActive(!active)} />
+                                    <input class="form-check-input form-check-input-income" type="checkbox" disabled={editConfig === "2" || editConfig === "3"} role="switch" id="activeInput" checked={active} onClick={() => setActive(!active)} />
                                     <label type="button" class={`form-check-label ${active ? 'bold' : ''}`} for="activeInput" >Foi paga</label>
                                 </div>
                             </div>
@@ -310,23 +332,28 @@ export default function EditIncomeModal(props) {
                                             <div className="col-12 d-flex flex-wrap flex-column">
 
                                                 <div class="form-check my-2">
-                                                    <input class="form-check-input form-check-input-income" type="radio" name="editConfigCheck" id="editConfig1"  onClick={() => setCreditConfig('1')} checked={creditConfig === '1'} />
+                                                    <input class="form-check-input form-check-input-income" type="radio" name="editConfigCheck" id="editConfig1" onClick={() => setEditConfig('1')} checked={editConfig === '1'} />
                                                     <label class="form-check-label" for="editConfig1">
                                                         Editar somente esta
                                                     </label>
                                                 </div>
                                                 <div class="form-check my-2">
-                                                    <input class="form-check-input form-check-input-income" type="radio" name="editConfigCheck" id="editConfig2" onClick={() => setCreditConfig('2')} checked={creditConfig === '2'} />
+                                                    <input class="form-check-input form-check-input-income" type="radio" name="editConfigCheck" id="editConfig2" onClick={() => setEditConfig('2')} checked={editConfig === '2'} />
                                                     <label class="form-check-label" for="editConfig2">
                                                         Editar essa e todas as pendentes
                                                     </label>
                                                 </div>
                                                 <div class="form-check my-2">
-                                                    <input class="form-check-input form-check-input-income" type="radio" name="editConfigCheck" id="editConfig3" onClick={() => setCreditConfig('3')} checked={creditConfig === '3'} />
+                                                    <input class="form-check-input form-check-input-income" type="radio" name="editConfigCheck" id="editConfig3" onClick={() => setEditConfig('3')} checked={editConfig === '3'} />
                                                     <label class="form-check-label" for="editConfig3">
                                                         Editar todas (incluindo efetivadas)
                                                     </label>
                                                 </div>
+                                                <span className="small text-secondary">
+                                                    {editConfig === '1' && 'Não é possível alterar o método de pagamento'}
+                                                    {editConfig === '2' && 'Não é possível alterar o método de pagamento, a data ou confirmar transação'}
+                                                    {editConfig === '3' && 'Não é possível alterar o método de pagamento, o valor, data, conta ou confirmar transação'}
+                                                </span>
 
                                             </div>
                                         </div>
@@ -348,26 +375,56 @@ export default function EditIncomeModal(props) {
 
                                             </div>
 
-                                            <div className="col-12 mt-2 d-flex">
-                                                {isToday(paymentDate) ?
+                                            <div
+                                                className="col-12 mt-2 d-flex"
+                                                style={{
+                                                    opacity: editConfig === "2" || editConfig === "3" ? 0.5 : 1,
+                                                    pointerEvents: editConfig === "2" || editConfig === "3" ? "none" : "auto",
+                                                }}
+                                            >
+                                                {isToday(paymentDate) ? (
                                                     <>
-                                                        <span type="button" onClick={() => setPaymentDate(dateObject(new Date()))}
-                                                            class={`cardAnimation px-2 py-1 text-white small mx-1 rounded-pill ${JSON.stringify(paymentDate) == JSON.stringify(dateObject(new Date())) ? 'ctm-bg-success' : 'ctm-bg-primary'}`}>
+                                                        <span
+                                                            type="button"
+                                                            onClick={() => setPaymentDate(dateObject(new Date()))}
+                                                            className={`${editConfig !== "2" && editConfig !== "3" ? "cardAnimation" : ""
+                                                                } px-2 py-1 text-white small mx-1 rounded-pill ${JSON.stringify(paymentDate) === JSON.stringify(dateObject(new Date()))
+                                                                    ? "ctm-bg-success"
+                                                                    : "ctm-bg-primary"
+                                                                }`}
+                                                        >
                                                             Hoje
                                                         </span>
-                                                        <span type="button" onClick={() => setPaymentDate(dateObject(new Date(), -1))}
-                                                            class={`cardAnimation px-2 py-1 text-white small mx-1 rounded-pill ${JSON.stringify(paymentDate) == JSON.stringify(dateObject(new Date(), -1)) ? 'ctm-bg-success' : 'ctm-bg-primary'}`}>
+                                                        <span
+                                                            type="button"
+                                                            onClick={() => setPaymentDate(dateObject(new Date(), -1))}
+                                                            className={`${editConfig !== "2" && editConfig !== "3" ? "cardAnimation" : ""
+                                                                } px-2 py-1 text-white small mx-1 rounded-pill ${JSON.stringify(paymentDate) === JSON.stringify(
+                                                                    dateObject(new Date(), -1)
+                                                                )
+                                                                    ? "ctm-bg-success"
+                                                                    : "ctm-bg-primary"
+                                                                }`}
+                                                        >
                                                             Ontem
                                                         </span>
                                                     </>
-                                                    :
-                                                    <span type="button" onClick={() => showModal('datePickerModalIncome')}
-                                                        className={`cardAnimation px-2 py-1 text-white small mx-1 rounded-pill ctm-bg-success`}>
+                                                ) : (
+                                                    <span
+                                                        type="button"
+                                                        onClick={() => showModal("datePickerModalIncome")}
+                                                        className={`${editConfig !== "2" && editConfig !== "3" ? "cardAnimation" : ""
+                                                            } px-2 py-1 text-white small mx-1 rounded-pill ctm-bg-success`}
+                                                    >
                                                         {dateFormat(paymentDate)}
                                                     </span>
-                                                }
-                                                <span type="button" onClick={() => showModal('datePickerModalIncome')}
-                                                    className={`cardAnimation px-2 py-1 text-white small mx-1 rounded-pill ctm-bg-primary`}>
+                                                )}
+                                                <span
+                                                    type="button"
+                                                    onClick={() => showModal("datePickerModalIncomeEdit")}
+                                                    className={`${editConfig !== "2" && editConfig !== "3" ? "cardAnimation" : ""
+                                                        } px-2 py-1 text-white small mx-1 rounded-pill ctm-bg-primary`}
+                                                >
                                                     Outro
                                                 </span>
                                             </div>
@@ -377,7 +434,7 @@ export default function EditIncomeModal(props) {
                                                 title="Data da receita"
                                                 date={paymentDate}
                                                 setDate={setPaymentDate}
-                                                id="datePickerModalIncome"
+                                                id="datePickerModalIncomeEdit"
                                                 section="income" />
 
                                         </div>
@@ -388,10 +445,15 @@ export default function EditIncomeModal(props) {
                                                 <span className="small fw-bold mb-2 ms-3">Mês de competência</span>
                                             </div>
 
-                                            <div className="col-12 d-flex justify-content-center mt-2">
+                                            <div className="col-12 d-flex justify-content-center mt-2"
+                                                style={{
+                                                    opacity: editConfig === "2" || editConfig === "3" ? 0.5 : 1,
+                                                    pointerEvents: editConfig === "2" || editConfig === "3" ? "none" : "auto",
+                                                }}>
 
                                                 <MonthSelect
                                                     setMonth={value => { setCompetenceMonth(value) }}
+                                                    competenceMonth={competenceMonth}
                                                 />
                                             </div>
 
@@ -422,13 +484,13 @@ export default function EditIncomeModal(props) {
                                                 <FontAwesomeIcon icon={faTag} />
                                                 <span className="small fw-bold mb-2 ms-3">Categoria</span>
                                             </div>
-                                            <CategorySelectedComponent subCategorySelected={subCategorySelected} categories={categories} type="Income" />
+                                            <CategorySelectedComponent subCategorySelected={subCategorySelected} categories={categories} type="Income" edit />
 
                                             <CategorySelectModal
                                                 categories={categories}
                                                 setSubCategorySelected={setSubCategorySelected}
                                                 dataFunction={() => dataFunction(token.sub)}
-                                                id="tagSelectModalIncome"
+                                                id="tagSelectModalIncomeEdit"
                                                 section="income" />
                                         </div>
 
@@ -440,7 +502,7 @@ export default function EditIncomeModal(props) {
                                                 <FontAwesomeIcon icon={faWallet} />
                                                 <span className="small fw-bold mb-2 ms-3">Conta</span>
                                             </div>
-                                            <div className="col-12 mt-2 d-flex justify-content-between" onClick={() => showModal('bankAccountsModal')}>
+                                            <div className="col-12 mt-2 d-flex justify-content-between" onClick={() => showModal('bankAccountsModalEdit')}>
                                                 {!accountSelected ?
                                                     <span type="button"
                                                         class=" px-2 py-1  small mx-1 rounded-pill border pulse shadow">
@@ -450,7 +512,7 @@ export default function EditIncomeModal(props) {
                                                     <>
                                                         <div className="row fadeItem">
                                                             <div>
-                                                                <span type="button" onClick={() => showModal('bankAccountsModal')}
+                                                                <span type="button" onClick={() => showModal('bankAccountsModalEdit')}
                                                                     className={`cardAnimation px-2 py-1  text-white small mx-1 rounded-pill fw-bold `}
                                                                     style={{ backgroundColor: accountSelected.color }}>
                                                                     <img src={accountSelected?.bankSelected?.logoUrl} className="rounded-circle me-2" alt="" width={20} height={20} />
@@ -468,7 +530,7 @@ export default function EditIncomeModal(props) {
                                             <BankAccountsModal
                                                 bankAccounts={bankAccounts}
                                                 setAccountSelected={setAccountSelected}
-                                                id="bankAccountsModal" />
+                                                id="bankAccountsModalEdit" />
                                         </div>
 
                                         <hr />

@@ -8,13 +8,13 @@ import { SubCategoryIcon } from "../categories/categoryIcon";
 
 export default function CategorySelectedComponent(props) {
 
-    const { subCategorySelected, type } = props
+    const { subCategorySelected, type, edit } = props
 
 
 
 
     return (
-        <div className="col-12 mt-2 d-flex justify-content-between" onClick={() => showModal(`tagSelectModal${type}`)}>
+        <div className="col-12 mt-2 d-flex justify-content-between" onClick={() => showModal(`tagSelectModal${type}${edit && 'Edit'}`)}>
             {!subCategorySelected ?
                 <span type="button"
                     class=" px-2 py-1  small mx-1 rounded-pill border pulse shadow">
