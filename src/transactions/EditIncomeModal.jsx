@@ -74,6 +74,10 @@ export default function EditIncomeModal(props) {
         format: (value) => value.toLocaleString('pt-BR', { style: 'decimal', minimumFractionDigits: 2, maximumFractionDigits: 2 })
     }
 
+    useEffect(() => {
+        console.log("subCategorySelected", subCategorySelected)
+    }, [subCategorySelected])
+
 
 
     useEffect(() => {
@@ -85,9 +89,21 @@ export default function EditIncomeModal(props) {
 
             const valueIn = brlNumber.format(incomeSelected.value)
 
-            const subCategory = categories.find(elem => elem._id === incomeSelected.subCategory_id)
+            const categorySelected = categories.find(elem => elem.subCategories.find(elem1 => elem1._id === incomeSelected.subCategory_id))
+            const subCategory = categorySelected?.subCategories.find(elem => elem._id === incomeSelected.subCategory_id)
+
+            const subCategoryData = {
+                name: subCategory?.name,
+                color: categorySelected?.color,
+                category_id: categorySelected?._id,
+                subCategory_id: subCategory?._id
+            }
+
+
+
+
             if (subCategory) {
-                setSubCategorySelected(subCategory)
+                setSubCategorySelected(subCategoryData)
             }
 
             const account = bankAccounts.find(elem => elem._id === incomeSelected.account_id)
@@ -97,6 +113,7 @@ export default function EditIncomeModal(props) {
 
             setValue(maskInputMoney(valueIn))
             console.log("incomeSelected", incomeSelected)
+            setPaymentMethod(incomeSelected.paymentMethod)
             setPaymentDate(incomeSelected.paymentDate)
             setCompetenceMonth(incomeSelected.competenceMonth)
             // setCreditConfig(incomeSelected.credit_config)
@@ -265,6 +282,8 @@ export default function EditIncomeModal(props) {
 
     const handleEditOptions = () => {
 
+        console.log("subCategorySelected", subCategorySelected)
+
         if (editConfig === '3') {
             const valueIn = brlNumber.format(incomeSelected.value)
             setValue(maskInputMoney(valueIn))
@@ -329,43 +348,58 @@ export default function EditIncomeModal(props) {
                                                 <span className="small fw-bold mb-2 ms-3">Configuração de pagamento</span>
                                             </div>
 
-                                            <div className="col-12 d-flex flex-wrap flex-column">
+                                            <div className="col-12 d-flex flex-wrap"
+                                                style={{
+                                                    opacity: 0.5,
+                                                    pointerEvents: "none",
+                                                }}>
 
-                                                <div class="form-check my-2">
-                                                    <input class="form-check-input form-check-input-income" type="radio" name="editConfigCheck" id="editConfig1" onClick={() => setEditConfig('1')} checked={editConfig === '1'} />
-                                                    <label class="form-check-label" for="editConfig1">
-                                                        Editar somente esta
-                                                    </label>
-                                                </div>
-                                                <div class="form-check my-2">
-                                                    <input class="form-check-input form-check-input-income" type="radio" name="editConfigCheck" id="editConfig2" onClick={() => setEditConfig('2')} checked={editConfig === '2'} />
-                                                    <label class="form-check-label" for="editConfig2">
-                                                        Editar essa e todas as pendentes
-                                                    </label>
-                                                </div>
-                                                <div class="form-check my-2">
-                                                    <input class="form-check-input form-check-input-income" type="radio" name="editConfigCheck" id="editConfig3" onClick={() => setEditConfig('3')} checked={editConfig === '3'} />
-                                                    <label class="form-check-label" for="editConfig3">
-                                                        Editar todas (incluindo efetivadas)
-                                                    </label>
-                                                </div>
-                                                <span className="small text-secondary">
-                                                    {editConfig === '1' && 'Não é possível alterar o método de pagamento'}
-                                                    {editConfig === '2' && 'Não é possível alterar o método de pagamento, a data ou confirmar transação'}
-                                                    {editConfig === '3' && 'Não é possível alterar o método de pagamento, o valor, data, conta ou confirmar transação'}
+                                                <span className={`cardAnimation px-2 py-1 m-2 text-white small mx-1 rounded-pill ctm-bg-success`}>
+                                                    {paymentMethodOptions.find(elem => elem.id === paymentMethod)?.description}
                                                 </span>
 
+
+
+
+
+
                                             </div>
+
+                                            {+paymentMethod === (2 || 6 || 7) && (
+                                                <div className="col-12 d-flex flex-wrap flex-column">
+
+                                                    <div class="form-check my-2">
+                                                        <input class="form-check-input form-check-input-income" type="radio" name="editConfigCheck" id="editConfig1" onClick={() => setEditConfig('1')} checked={editConfig === '1'} />
+                                                        <label class="form-check-label" for="editConfig1">
+                                                            Editar somente esta
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check my-2">
+                                                        <input class="form-check-input form-check-input-income" type="radio" name="editConfigCheck" id="editConfig2" onClick={() => setEditConfig('2')} checked={editConfig === '2'} />
+                                                        <label class="form-check-label" for="editConfig2">
+                                                            Editar essa e todas as pendentes
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check my-2">
+                                                        <input class="form-check-input form-check-input-income" type="radio" name="editConfigCheck" id="editConfig3" onClick={() => setEditConfig('3')} checked={editConfig === '3'} />
+                                                        <label class="form-check-label" for="editConfig3">
+                                                            Editar todas (incluindo efetivadas)
+                                                        </label>
+                                                    </div>
+
+                                                </div>
+                                            )}
+                                            <span className="small text-secondary">
+                                                {editConfig === '1' && 'Não é possível alterar o método de pagamento'}
+                                                {editConfig === '2' && 'Não é possível alterar o método de pagamento, a data ou confirmar transação'}
+                                                {editConfig === '3' && 'Não é possível alterar o método de pagamento, o valor, data, conta ou confirmar transação'}
+                                            </span>
+
                                         </div>
 
 
 
-                                        <PaymentMethodConfig
-                                            value={value}
 
-                                            paymentMethod={paymentMethod}
-                                            setCreditConfig={setCreditConfig}
-                                            section="income" />
 
                                         <hr />
                                         <div className="row d-flex justify-content-between">
@@ -544,23 +578,22 @@ export default function EditIncomeModal(props) {
 
                                             <div className="col-12 mt-2 d-flex justify-content-between">
 
-                                                <StyledDropzone setFiles={array => { setFiles(array[0]); console.log(array) }} >
-                                                    <div className="px-2 text-center fadeItem bg-light  py-5 text-secondary rounded " style={{ border: '1px dashed #ccc', width: "100%" }}>
-                                                        <span>
-                                                            Clique aqui ou arraste o arquivo
-                                                        </span> <br />
-                                                        <span className="small">
-                                                            Permitido apenas um arquivo. Formato: .PNG, .JPG, .PDF.
-                                                        </span><br />
+                                                {!files && (
+                                                    <StyledDropzone setFiles={array => { setFiles(array[0]); console.log(array) }} >
+                                                        <div className="px-2 text-center fadeItem bg-light  py-5 text-secondary rounded " style={{ border: '1px dashed #ccc', width: "100%" }}>
+                                                            <span>
+                                                                Clique aqui ou arraste o arquivo
+                                                            </span> <br />
+                                                            <span className="small">
+                                                                Permitido apenas um arquivo. Formato: .PNG, .JPG, .PDF.
+                                                            </span><br />
 
-                                                    </div>
-                                                </StyledDropzone>
+                                                        </div>
+                                                    </StyledDropzone>
+                                                )}
 
 
-                                                {/* <div className="text-center text-secondary" style={{ width: "40px" }}>
-                                                    <FontAwesomeIcon icon={faChevronRight} />
 
-                                                </div> */}
                                             </div>
                                             {files && (
                                                 <div className="col-12 mt-2 fadeItem">
@@ -569,20 +602,44 @@ export default function EditIncomeModal(props) {
                                                             <div className="row">
                                                                 <div className="col-12 d-flex">
                                                                     <div className="d-flex align-items-center justify-content-center" style={{ width: "40px" }}>
-                                                                        {files?.type?.startsWith('image/') ?
-                                                                            <div>
-                                                                                <img src={URL.createObjectURL(files)} className="border border-rounded " height={40} alt="" />
-                                                                            </div>
-                                                                            :
-
+                                                                        {files?.type?.startsWith('image/') ? (
+                                                                            <img
+                                                                                src={URL.createObjectURL(files)}
+                                                                                className="border border-rounded"
+                                                                                height={40}
+                                                                                alt="Preview"
+                                                                            />
+                                                                        ) : files[0]?.path &&
+                                                                            /\.(png|jpg|jpeg|webp)$/i.test(files[0]?.path) ? (
+                                                                            <img
+                                                                                src={files[0]?.url}
+                                                                                className="border border-rounded"
+                                                                                height={40}
+                                                                                alt="Preview"
+                                                                            />
+                                                                        ) : (
                                                                             <FontAwesomeIcon icon={faFilePdf} className="fs-3 text-secondary" />
-                                                                        }
-
+                                                                        )}
                                                                     </div>
                                                                     <div className="col">
                                                                         <div className="row">
-                                                                            <span className="small ms-3 bold">{files.name}</span>
-                                                                            <span className="small ms-3 text-secondary">{(files.size / 1000000).toFixed(2)}Mb</span>
+                                                                            <span className="small ms-3 bold">
+                                                                                {files?.name || files[0]?.path}
+                                                                            </span>
+                                                                            {files?.size ? (
+                                                                                <span className="small ms-3 text-secondary">
+                                                                                    {(files?.size / 1000000).toFixed(2)}Mb
+                                                                                </span>
+                                                                            ) : (
+                                                                                <a
+                                                                                    className="small ms-3"
+                                                                                    href={files[0]?.url}
+                                                                                    target="_blank"
+                                                                                    rel="noreferrer"
+                                                                                >
+                                                                                    Visualizar
+                                                                                </a>
+                                                                            )}
                                                                         </div>
                                                                     </div>
                                                                     <div className="d-flex align-items-center justify-content-center" style={{ width: "40px" }}>
@@ -599,6 +656,7 @@ export default function EditIncomeModal(props) {
                                                     </div>
                                                 </div>
                                             )}
+
 
                                         </div>
 
