@@ -29,7 +29,7 @@ export default function DesktopPage(props) {
                 </div>
                 <div className="d-lg-none">
 
-                    <DfcList data={data} setIncomeSelected={setIncomeSelected} categories={categories} />
+                    <DfcList />
 
                 </div>
             </div>

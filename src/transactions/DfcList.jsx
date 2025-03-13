@@ -1,4 +1,4 @@
-import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
+import { faArrowUp, faEdit, faEllipsis, faPaperclip, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useRef, useState } from "react";
 import { formatDate } from "../../utils/mask";
@@ -8,6 +8,7 @@ import ActiveButton from "./activeButton";
 import { useStateContext } from "./context/transactionsContext";
 
 export default function DfcList(props) {
+
     const { data, setIncomeSelected, incomeSelected, categories } = useStateContext();
 
     const containerRef = useRef(null);
@@ -109,13 +110,12 @@ export default function DfcList(props) {
                                                             style={{ width: "150px" }}
                                                         >
                                                             <span
-                                                                className={`bold text-center text-${
-                                                                    elem?.active === false
-                                                                        ? "secondary"
-                                                                        : elem?.type === "income"
+                                                                className={`bold text-center text-${elem?.active === false
+                                                                    ? "secondary"
+                                                                    : elem?.type === "income"
                                                                         ? "success"
                                                                         : "danger"
-                                                                }`}
+                                                                    }`}
                                                             >
                                                                 {elem?.type === "expense" && "-"}
                                                                 {elem?.type === "income" && "+"}
@@ -161,10 +161,52 @@ export default function DfcList(props) {
                                                     </div>
 
                                                     {selectedItem === elem && (
-                                                        <div className="row bg-light p-2 rounded">
-                                                            <button className="btn btn-primary btn-sm">Editar</button>
-                                                            <button className="btn btn-danger btn-sm ms-2">Excluir</button>
+                                                        <div className="row mt-2 p-2 rounded fadeItem">
+                                                        <div className="col-12 d-flex justify-content-center">
+                                                          <div className="btn-group" role="group">
+                                                            <button
+                                                              className="btn btn-outline-secondary cardAnimation"
+                                                              type="button"
+                                                              data-bs-toggle="modal"
+                                                              data-bs-target="#attachmentModal"
+                                                              onClick={() => setIncomeSelected(elem)}
+                                                            >
+                                                              {elem.files && (
+                                                                <span
+                                                                  className="bg-success me-1"
+                                                                  style={{
+                                                                    display: 'inline-block',
+                                                                    height: '10px',
+                                                                    width: '10px',
+                                                                    borderRadius: '50%',
+                                                                  }}
+                                                                />
+                                                              )}
+                                                              <FontAwesomeIcon icon={faPaperclip} />
+                                                            </button>
+                                                      
+                                                            <button
+                                                              className="btn btn-outline-secondary cardAnimation"
+                                                              type="button"
+                                                              data-bs-toggle="modal"
+                                                              data-bs-target={elem.type === 'expense' ? "#editExpenseModal" : "#editIncomeModal"}
+                                                              onClick={() => setIncomeSelected(elem)}
+                                                            >
+                                                              <FontAwesomeIcon icon={faEdit} />
+                                                            </button>
+                                                      
+                                                            <button
+                                                              className="btn btn-outline-secondary cardAnimation"
+                                                              type="button"
+                                                              data-bs-toggle="modal"
+                                                              data-bs-target="#deleteIncomeModal"
+                                                              onClick={() => setIncomeSelected(elem)}
+                                                            >
+                                                              <FontAwesomeIcon icon={faTrashAlt} />
+                                                            </button>
+                                                          </div>
                                                         </div>
+                                                      </div>
                                                     )}
 
                                                     <hr />
