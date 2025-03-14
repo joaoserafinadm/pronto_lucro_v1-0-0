@@ -18,7 +18,7 @@ export function SubCategoryIcon(props) {
     const { color, className } = props
 
     return (
-        <FontAwesomeIcon icon={faCircleDot} className={`rounded-circle ms-2 me-2 small ${className}`} style={{ color: ` ${color}` }} />
+        <FontAwesomeIcon icon={faCircleDot} className={`rounded-circle  me-2 small ${className}`} style={{ color: ` ${color}` }} />
     )
 }
 

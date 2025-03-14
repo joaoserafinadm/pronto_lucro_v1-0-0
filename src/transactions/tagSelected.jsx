@@ -27,7 +27,7 @@ export default function TagSelected(props) {
 
         if (!subCategory_id || !categorySelected) {
             return (
-                <span class=" px-2 py-1  small rounded-pill border text-muted">
+                <span class=" px-1 py-1  small rounded-pill border text-muted">
                     Sem categoria <FontAwesomeIcon icon={faChevronDown} />
                 </span>
             )
@@ -40,7 +40,7 @@ export default function TagSelected(props) {
 
 
                             <span style={{ backgroundColor: data.color }}
-                                className=" border text-white  d-flex align-items-center px-2 py-1   small mx-1 rounded-pill fw-bold">
+                                className=" border text-white  d-flex align-items-center px-2 py-1   small  rounded-pill fw-bold">
 
                                 <SubCategoryIcon color={data.color} className="text-white" />
                                 {data?.name}

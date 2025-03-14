@@ -122,7 +122,7 @@ export default function DfcList(props) {
                                                                 {brlMoney.format(elem?.value)} <br />
                                                                 {elem?.active === false && (
                                                                     <div className="d-flex">
-                                                                        <span style={{ fontSize: "12px" }}>Pendente</span>
+                                                                        <span className="me-2" style={{ fontSize: "12px" }}>Pendente </span>
                                                                         <ActiveButton
                                                                             incomeSelected={incomeSelected}
                                                                             setIncomeSelected={setIncomeSelected}
@@ -133,7 +133,7 @@ export default function DfcList(props) {
                                                                 )}
                                                             </span>
                                                         </div>
-                                                        <div className="" style={{ fontSize: "8px" }}>
+                                                        <div className=" mt-2" style={{ fontSize: "8px" }}>
                                                             <div className="col-12">
                                                                 <TagSelected
                                                                     subCategory_id={elem.subCategory_id}
@@ -143,9 +143,9 @@ export default function DfcList(props) {
                                                         </div>
                                                         <div className="mt-2">
                                                             <div style={{ fontSize: "8px" }}>
-                                                                <span
-                                                                    className="cardAnimation px-2 py-2 text-white small mx-1 rounded-pill fw-bold"
-                                                                    style={{ backgroundColor: accountSelected?.color }}
+                                                                <span 
+                                                                    className="cardAnimation px-2  text-white small  rounded-pill fw-bold"
+                                                                    style={{ backgroundColor: accountSelected?.color, padding: "6px 5px" }}
                                                                 >
                                                                     <img
                                                                         src={accountSelected?.bankSelected?.logoUrl}

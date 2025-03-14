@@ -9,7 +9,7 @@ import SubCategoryAdd from "./subCategoryAdd";
 
 export default function CategorySelect(props) {
 
-    const { categories, setSubCategorySelected, setSection, section, dataFunction } = props
+    const { categories, setSubCategorySelected, setSection, section, dataFunction, edit } = props
 
     // const tagsArray = reorganizeTags(categories)
 
@@ -64,7 +64,9 @@ export default function CategorySelect(props) {
 
                                             </>
                                         ))}
-                                        <div className="col-12 d-flex">
+                                        {!edit && (
+
+                                            <div className="col-12 d-flex">
                                             <span type="button"
                                                 className="ms-2 shadow cardAnimation border rounded d-flex align-items-center px-2 py-1 m-2  small mx-1 rounded-pill bold"
                                                 data-bs-target={`${'#categorySelectPages' + section}`} data-bs-slide-to={1}
@@ -75,6 +77,7 @@ export default function CategorySelect(props) {
                                                 </span>
                                             </span>
                                         </div>
+                                                )}
                                     </div>
                                     <hr />
 

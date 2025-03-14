@@ -43,7 +43,7 @@ export default function ActiveButton(props) {
 
         <>
 
-            <span className="ms-2 cardAnimation checkButton shadow"
+            <span className=" cardAnimation checkButton shadow"
                 type="button" onClick={() =>setIncomeSelected(elem)}
                 id="activeButton"
                 data-bs-toggle="modal" data-bs-target={"#activeTransactionModal"}>

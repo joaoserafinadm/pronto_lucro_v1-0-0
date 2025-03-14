@@ -520,7 +520,7 @@ export default function EditIncomeModal(props) {
                                             </div>
                                             <CategorySelectedComponent subCategorySelected={subCategorySelected} categories={categories} type="Income" edit />
 
-                                            <CategorySelectModal
+                                            <CategorySelectModal edit
                                                 categories={categories}
                                                 setSubCategorySelected={setSubCategorySelected}
                                                 dataFunction={() => dataFunction(token.sub)}
@@ -547,7 +547,7 @@ export default function EditIncomeModal(props) {
                                                         <div className="row fadeItem">
                                                             <div>
                                                                 <span type="button" onClick={() => showModal('bankAccountsModalEdit')}
-                                                                    className={`cardAnimation px-2 py-1  text-white small mx-1 rounded-pill fw-bold `}
+                                                                    className={`cardAnimation px-2 py-1 d-flex align-items-center  text-white small mx-1 rounded-pill fw-bold `}
                                                                     style={{ backgroundColor: accountSelected.color }}>
                                                                     <img src={accountSelected?.bankSelected?.logoUrl} className="rounded-circle me-2" alt="" width={20} height={20} />
                                                                     {accountSelected.description}

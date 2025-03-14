@@ -11,7 +11,7 @@ import { useStateContext } from "./context/transactionsContext"
 
 export default function DesktopTransactionsList(props) {
 
-    const { data, setIncomeSelected, incomeSelected,categories } = useStateContext()
+    const { data, setIncomeSelected, incomeSelected, categories } = useStateContext()
 
 
     const brlMoney = {
@@ -55,9 +55,6 @@ export default function DesktopTransactionsList(props) {
                             <th>
 
                             </th>
-                            <th>
-
-                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -95,41 +92,47 @@ export default function DesktopTransactionsList(props) {
                                                     className={`cardAnimation px-2 py-1 small rounded-pill text-white fw-bold`}
 
                                                     style={{ backgroundColor: accountSelected.color }}>
-                                                    <img src={accountSelected?.bankSelected?.logoUrl} className="rounded-circle me-2" alt="" width={20} height={20} />
+                                                    <img src={accountSelected?.bankSelected?.logoUrl} className="rounded-circle me-2" alt="" width={16} height={16} />
                                                     {accountSelected.description}
                                                 </span>
                                             </>
                                         }
                                     </td>
-                                    <td className={`text-start bold text-${elem?.active === false ? 'secondary' : elem?.type === 'income' ? 'c-success' : 'c-danger'}`}>
+                                    <td className={`text-end bold text-${elem?.active === false ? 'secondary' : elem?.type === 'income' ? 'c-success' : 'c-danger'}`}>
                                         {elem?.type === 'expense' && '-'}{elem?.type === 'income' && '+'}{brlMoney.format(elem?.value)} <br />
 
-                                        {elem?.active === false && 'Pendente' && (
+                                        {/*{elem?.active === false && 'Pendente' && (
 
-                                            <div className="d-flex">
+                                            <div className="d-flex text-secondary">
                                                 <span style={{ fontSize: '12px' }}>Pendente</span>
 
-                                                <ActiveButton incomeSelected={incomeSelected} setIncomeSelected={setIncomeSelected} elem={elem}/>
+                                                 <ActiveButton incomeSelected={incomeSelected} setIncomeSelected={setIncomeSelected} elem={elem} /> 
+                                            </div>
+                                        )}*/}
+
+                                        {elem?.creditConfig?.parcelaAtual && (
+                                            <div className="text-end me-2" style={{ fontSize: '10px' }}>
+                                                {elem?.creditConfig?.parcelaAtual} / {elem?.creditConfig?.parcelas}
                                             </div>
                                         )}
                                     </td>
-                                    <td>
-
-                                        <span className=" me-2 cardAnimation" type="button" data-bs-toggle="modal" data-bs-target="#attachmentModal" onClick={() => { setIncomeSelected(elem) }}>
-
-                                            {elem.files && (
-                                                <span className="bg-success me-1" style={{ display: 'inline-block', height: '10px', width: '10px', borderRadius: '50%' }} />
-
-                                            )}
-                                            <FontAwesomeIcon icon={faPaperclip} className="text-secondary" />
-
-
-                                        </span>
-                                    </td>
                                     <td className="text-end">
-                                        <div className="btn-group">
+                                        <div className="btn-group d-flex align-items-center justify-content-end">
+                                            {elem?.active === false && (
+                                                <div className="mx-2">
 
-                                            <span className="cardAnimation me-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    <ActiveButton incomeSelected={incomeSelected} setIncomeSelected={setIncomeSelected} elem={elem} />
+                                                </div>
+                                            )}
+                                            <span className=" mx-2 cardAnimation" type="button" data-bs-toggle="modal" data-bs-target="#attachmentModal" onClick={() => { setIncomeSelected(elem) }}>
+                                                {elem.files && (
+                                                    <span className="bg-success me-1" style={{ display: 'inline-block', height: '10px', width: '10px', borderRadius: '50%' }} />
+                                                )}
+                                                <FontAwesomeIcon icon={faPaperclip} className="text-secondary" />
+                                            </span>
+
+
+                                            <span className="cardAnimation mx-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                                 <FontAwesomeIcon icon={faEllipsis} className="text-secondary fs-4" />
                                             </span>
                                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">

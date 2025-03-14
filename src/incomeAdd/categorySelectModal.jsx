@@ -8,7 +8,7 @@ import CategorySelect from "./categorySelect"
 
 export default function CategorySelectModal(props) {
 
-    const { categories, setSubCategorySelected, dataFunction } = props
+    const { categories, setSubCategorySelected, dataFunction, edit } = props
 
     const [section, setSection] = useState('')
 
@@ -21,7 +21,7 @@ export default function CategorySelectModal(props) {
 
             <div className="modal-header">
                 <h5 className="modal-title title-dark" id="categorySelectModalLabel">
-                    Selecione o categoria
+                    Selecione a categoria
                 </h5>
                 <button
                     type="button"
@@ -41,7 +41,7 @@ export default function CategorySelectModal(props) {
 
                 />
                 : */}
-            <CategorySelect
+            <CategorySelect edit={edit}
                 dataFunction={dataFunction}
                 categories={categories}
                 setSection={setSection}
