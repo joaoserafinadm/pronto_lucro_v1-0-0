@@ -478,7 +478,13 @@ export default function EditIncomeModal(props) {
                                                 <FontAwesomeIcon icon={faCalendarWeek} />
                                                 <span className="small fw-bold mb-2 ms-3">Mês de competência</span>
                                             </div>
-                                            {!incomeSelected?.creditConfig?.parcelaAtual > 1 ?
+                                            {incomeSelected?.creditConfig?.parcelaAtual && incomeSelected?.creditConfig?.parcelaAtual > 1 ?
+                                                <div className="col-12  mt-2">
+                                                    <span className="small text-secondary">
+                                                        Só é possível editar o mês de competência da primeira parcela
+                                                    </span>
+                                                </div>
+                                                :
                                                 <div className="col-12 d-flex justify-content-center mt-2"
                                                     style={{
                                                         opacity: editConfig === "2" || editConfig === "3" ? 0.5 : 1,
@@ -489,12 +495,6 @@ export default function EditIncomeModal(props) {
                                                         setMonth={value => { setCompetenceMonth(value) }}
                                                         competenceMonth={competenceMonth}
                                                     />
-                                                </div>
-                                                :
-                                                <div className="col-12 d-flex justify-content-center mt-2">
-                                                    <span className="small text-secondary">
-                                                        Só é possível editar o mês de competência da primeira parcela
-                                                    </span>
                                                 </div>
                                             }
 
