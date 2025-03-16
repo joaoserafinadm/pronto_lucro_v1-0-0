@@ -473,23 +473,30 @@ export default function EditIncomeModal(props) {
 
                                         </div>
                                         <hr />
-                                        <div className="row d-flex justify-content-between">
+                                        <div className="row d-flex justify-content-between"  >
                                             <div className="col-12">
                                                 <FontAwesomeIcon icon={faCalendarWeek} />
                                                 <span className="small fw-bold mb-2 ms-3">Mês de competência</span>
                                             </div>
+                                            {!incomeSelected?.creditConfig?.parcelaAtual > 1 ?
+                                                <div className="col-12 d-flex justify-content-center mt-2"
+                                                    style={{
+                                                        opacity: editConfig === "2" || editConfig === "3" ? 0.5 : 1,
+                                                        pointerEvents: editConfig === "2" || editConfig === "3" ? "none" : "auto",
+                                                    }}>
 
-                                            <div className="col-12 d-flex justify-content-center mt-2"
-                                                style={{
-                                                    opacity: editConfig === "2" || editConfig === "3" ? 0.5 : 1,
-                                                    pointerEvents: editConfig === "2" || editConfig === "3" ? "none" : "auto",
-                                                }}>
-
-                                                <MonthSelect
-                                                    setMonth={value => { setCompetenceMonth(value) }}
-                                                    competenceMonth={competenceMonth}
-                                                />
-                                            </div>
+                                                    <MonthSelect
+                                                        setMonth={value => { setCompetenceMonth(value) }}
+                                                        competenceMonth={competenceMonth}
+                                                    />
+                                                </div>
+                                                :
+                                                <div className="col-12 d-flex justify-content-center mt-2">
+                                                    <span className="small text-secondary">
+                                                        Só é possível editar o mês de competência da primeira parcela
+                                                    </span>
+                                                </div>
+                                            }
 
 
                                         </div>
@@ -690,7 +697,7 @@ export default function EditIncomeModal(props) {
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     )
 
 }

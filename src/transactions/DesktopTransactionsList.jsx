@@ -76,7 +76,15 @@ export default function DesktopTransactionsList(props) {
                                         {formatDate(elem?.paymentDate)}
                                     </td>
                                     <td className={`text-start small  ${elem?.description ? 'bold' : 'text-muted'}`}>
-                                        {elem?.description ? elem?.description : 'Sem descricão'}
+                                        <div className="d-flex">
+
+                                            {elem?.description ? elem?.description : 'Sem descricão'}
+                                            {elem?.creditConfig?.parcelaAtual && (
+                                                <div className="ms-2">
+                                                    ({elem?.creditConfig?.parcelaAtual} / {elem?.creditConfig?.parcelas})
+                                                </div>
+                                            )}
+                                        </div>
                                     </td>
                                     <td className="text-start">
                                         <TagSelected subCategory_id={elem.subCategory_id} categories={categories} />
@@ -110,11 +118,11 @@ export default function DesktopTransactionsList(props) {
                                             </div>
                                         )}*/}
 
-                                        {elem?.creditConfig?.parcelaAtual && (
+                                        {/* {elem?.creditConfig?.parcelaAtual && (
                                             <div className="text-end me-2" style={{ fontSize: '10px' }}>
                                                 {elem?.creditConfig?.parcelaAtual} / {elem?.creditConfig?.parcelas}
                                             </div>
-                                        )}
+                                        )} */}
                                     </td>
                                     <td className="text-end">
                                         <div className="btn-group d-flex align-items-center justify-content-end">

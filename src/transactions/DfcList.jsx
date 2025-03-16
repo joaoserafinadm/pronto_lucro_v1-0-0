@@ -59,6 +59,7 @@ export default function DfcList(props) {
                             <span className="text-secondary fw-bold">Todas transações</span>
                         </div>
                         <hr />
+                       
                         <div className="row">
                             <div
                                 className="col-12"
@@ -99,9 +100,15 @@ export default function DfcList(props) {
                                                             </div>
                                                             <div className="row mt-1">
                                                                 <div className="col-12">
-                                                                    <span className="fw-bold">
-                                                                        {elem?.description ? elem?.description : "Sem descricão"}
-                                                                    </span>
+                                                                    <div className="d-flex">
+
+                                                                        {elem?.description ? elem?.description : 'Sem descricão'}
+                                                                        {elem?.creditConfig?.parcelaAtual && (
+                                                                            <div className="ms-2">
+                                                                                ({elem?.creditConfig?.parcelaAtual} / {elem?.creditConfig?.parcelas})
+                                                                            </div>
+                                                                        )}
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -143,7 +150,7 @@ export default function DfcList(props) {
                                                         </div>
                                                         <div className="mt-2">
                                                             <div style={{ fontSize: "8px" }}>
-                                                                <span 
+                                                                <span
                                                                     className="cardAnimation px-2  text-white small  rounded-pill fw-bold"
                                                                     style={{ backgroundColor: accountSelected?.color, padding: "6px 5px" }}
                                                                 >
@@ -162,51 +169,51 @@ export default function DfcList(props) {
 
                                                     {selectedItem === elem && (
                                                         <div className="row mt-2 p-2 rounded fadeItem">
-                                                        <div className="col-12 d-flex justify-content-center">
-                                                          <div className="btn-group" role="group">
-                                                            <button
-                                                              className="btn btn-outline-secondary cardAnimation"
-                                                              type="button"
-                                                              data-bs-toggle="modal"
-                                                              data-bs-target="#attachmentModal"
-                                                              onClick={() => setIncomeSelected(elem)}
-                                                            >
-                                                              {elem.files && (
-                                                                <span
-                                                                  className="bg-success me-1"
-                                                                  style={{
-                                                                    display: 'inline-block',
-                                                                    height: '10px',
-                                                                    width: '10px',
-                                                                    borderRadius: '50%',
-                                                                  }}
-                                                                />
-                                                              )}
-                                                              <FontAwesomeIcon icon={faPaperclip} />
-                                                            </button>
-                                                      
-                                                            <button
-                                                              className="btn btn-outline-secondary cardAnimation"
-                                                              type="button"
-                                                              data-bs-toggle="modal"
-                                                              data-bs-target={elem.type === 'expense' ? "#editExpenseModal" : "#editIncomeModal"}
-                                                              onClick={() => setIncomeSelected(elem)}
-                                                            >
-                                                              <FontAwesomeIcon icon={faEdit} />
-                                                            </button>
-                                                      
-                                                            <button
-                                                              className="btn btn-outline-secondary cardAnimation"
-                                                              type="button"
-                                                              data-bs-toggle="modal"
-                                                              data-bs-target="#deleteIncomeModal"
-                                                              onClick={() => setIncomeSelected(elem)}
-                                                            >
-                                                              <FontAwesomeIcon icon={faTrashAlt} />
-                                                            </button>
-                                                          </div>
+                                                            <div className="col-12 d-flex justify-content-center">
+                                                                <div className="btn-group" role="group">
+                                                                    <button
+                                                                        className="btn btn-outline-secondary cardAnimation"
+                                                                        type="button"
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target="#attachmentModal"
+                                                                        onClick={() => setIncomeSelected(elem)}
+                                                                    >
+                                                                        {elem.files && (
+                                                                            <span
+                                                                                className="bg-success me-1"
+                                                                                style={{
+                                                                                    display: 'inline-block',
+                                                                                    height: '10px',
+                                                                                    width: '10px',
+                                                                                    borderRadius: '50%',
+                                                                                }}
+                                                                            />
+                                                                        )}
+                                                                        <FontAwesomeIcon icon={faPaperclip} />
+                                                                    </button>
+
+                                                                    <button
+                                                                        className="btn btn-outline-secondary cardAnimation"
+                                                                        type="button"
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target={elem.type === 'expense' ? "#editExpenseModal" : "#editIncomeModal"}
+                                                                        onClick={() => setIncomeSelected(elem)}
+                                                                    >
+                                                                        <FontAwesomeIcon icon={faEdit} />
+                                                                    </button>
+
+                                                                    <button
+                                                                        className="btn btn-outline-secondary cardAnimation"
+                                                                        type="button"
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target="#deleteIncomeModal"
+                                                                        onClick={() => setIncomeSelected(elem)}
+                                                                    >
+                                                                        <FontAwesomeIcon icon={faTrashAlt} />
+                                                                    </button>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                      </div>
                                                     )}
 
                                                     <hr />
