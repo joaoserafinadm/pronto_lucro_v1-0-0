@@ -36,23 +36,35 @@ export default function DfcList(props) {
         };
     }, []);
 
-    const handleSelectItem = (elem) => {
-
-        if (selectedItem) {
-            setSelectedItem(null)
-        } else {
-
-            setSelectedItem(elem); // Mostra as opções do item selecionado
-
+    const handleTouchStart = (event) => {
+        longPressTimer.current = setTimeout(() => {
             if (navigator.vibrate) {
-                navigator.vibrate(100); // Faz o celular vibrar por 100ms
+                navigator.vibrate(100); // Vibração do celular
             }
+        }, 100); // Pequeno delay para vibração
+
+        // Armazena a posição inicial do toque
+        event.target.dataset.startY = event.touches[0].clientY;
+    };
+
+    const handleTouchEnd = (event, elem) => {
+        clearTimeout(longPressTimer.current);
+    
+        const startY = parseFloat(event.target.dataset.startY);
+        const endY = event.changedTouches[0].clientY;
+        const deltaY = Math.abs(startY - endY);
+    
+        if (deltaY < 10) { // Garante que é um toque e não um scroll
+            setSelectedItem((prevSelected) => {
+                if (prevSelected === elem) {
+                    return null; // Deseleciona o item se já estiver selecionado
+                }
+                return elem; // Seleciona o novo item
+            });
         }
     };
 
-    const handleLongPressEnd = () => {
-        clearTimeout(longPressTimer.current);
-    };
+
 
     return (
         <div className="row d-flex">
@@ -90,9 +102,9 @@ export default function DfcList(props) {
                                                 <React.Fragment key={index}>
                                                     <div
                                                         className="row d-flex"
-                                                        onClick={() => setIncomeSelected(elem)}
-                                                        onTouchStart={() => handleSelectItem(elem)}
-                                                        onTouchEnd={handleLongPressEnd}
+                                                        onClick={() => setSelectedItem(elem)}
+                                                        onTouchStart={handleTouchStart}
+                                                        onTouchEnd={(event) => handleTouchEnd(event, elem)}
                                                     >
                                                         <div className="col">
                                                             <div className="row">
