@@ -37,10 +37,16 @@ export default function DfcList(props) {
     }, []);
 
     const handleSelectItem = (elem) => {
-        setSelectedItem(elem); // Mostra as opções do item selecionado
 
-        if (navigator.vibrate) {
-            navigator.vibrate(100); // Faz o celular vibrar por 100ms
+        if (selectedItem) {
+            setSelectedItem(null)
+        } else {
+
+            setSelectedItem(elem); // Mostra as opções do item selecionado
+
+            if (navigator.vibrate) {
+                navigator.vibrate(100); // Faz o celular vibrar por 100ms
+            }
         }
     };
 
@@ -84,7 +90,9 @@ export default function DfcList(props) {
                                                 <React.Fragment key={index}>
                                                     <div
                                                         className="row d-flex"
-                                                        onClick={() => handleSelectItem(elem)}
+                                                        onClick={() => setIncomeSelected(elem)}
+                                                        onTouchStart={() => handleSelectItem(elem)}
+                                                        onTouchEnd={handleLongPressEnd}
                                                     >
                                                         <div className="col">
                                                             <div className="row">
@@ -97,7 +105,8 @@ export default function DfcList(props) {
                                                             <div className="row mt-1">
                                                                 <div className="col-12">
                                                                     <div className="d-flex">
-                                                                        {elem?.description ? elem?.description : 'Sem descrição'}
+
+                                                                        {elem?.description ? elem?.description : 'Sem descricão'}
                                                                         {elem?.creditConfig?.parcelaAtual && (
                                                                             <div className="ms-2">
                                                                                 ({elem?.creditConfig?.parcelaAtual} / {elem?.creditConfig?.parcelas})
@@ -105,6 +114,59 @@ export default function DfcList(props) {
                                                                         )}
                                                                     </div>
                                                                 </div>
+                                                            </div>
+                                                        </div>
+                                                        <div
+                                                            className="d-flex justify-content-end align-items-center"
+                                                            style={{ width: "150px" }}
+                                                        >
+                                                            <span
+                                                                className={`bold text-center text-${elem?.active === false
+                                                                    ? "secondary"
+                                                                    : elem?.type === "income"
+                                                                        ? "success"
+                                                                        : "danger"
+                                                                    }`}
+                                                            >
+                                                                {elem?.type === "expense" && "-"}
+                                                                {elem?.type === "income" && "+"}
+                                                                {brlMoney.format(elem?.value)} <br />
+                                                                {elem?.active === false && (
+                                                                    <div className="d-flex">
+                                                                        <span className="me-2" style={{ fontSize: "12px" }}>Pendente </span>
+                                                                        <ActiveButton
+                                                                            incomeSelected={incomeSelected}
+                                                                            setIncomeSelected={setIncomeSelected}
+                                                                            elem={elem}
+                                                                            smallScreen
+                                                                        />
+                                                                    </div>
+                                                                )}
+                                                            </span>
+                                                        </div>
+                                                        <div className=" mt-2" style={{ fontSize: "8px" }}>
+                                                            <div className="col-12">
+                                                                <TagSelected
+                                                                    subCategory_id={elem.subCategory_id}
+                                                                    categories={categories}
+                                                                />
+                                                            </div>
+                                                        </div>
+                                                        <div className="mt-2">
+                                                            <div style={{ fontSize: "8px" }}>
+                                                                <span
+                                                                    className="cardAnimation px-2  text-white small  rounded-pill fw-bold"
+                                                                    style={{ backgroundColor: accountSelected?.color, padding: "6px 5px" }}
+                                                                >
+                                                                    <img
+                                                                        src={accountSelected?.bankSelected?.logoUrl}
+                                                                        className="rounded-circle me-2"
+                                                                        alt=""
+                                                                        width={10}
+                                                                        height={10}
+                                                                    />
+                                                                    {accountSelected?.description}
+                                                                </span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -162,7 +224,6 @@ export default function DfcList(props) {
                                                 </React.Fragment>
                                             );
                                         })}
-
                                     </>
                                 )}
                             </div>
