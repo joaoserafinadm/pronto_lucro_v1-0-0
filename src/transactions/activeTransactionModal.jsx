@@ -25,12 +25,18 @@ export default function ActiveTransactionModal(props) {
     const [newValue, setNewValue] = useState(incomeSelected?.value)
     const [editValueCheck, setEditValueCheck] = useState(false)
 
+    const brlNumber = {
+        format: (value) => value?.toLocaleString('pt-BR', { style: 'decimal', minimumFractionDigits: 2, maximumFractionDigits: 2 })
+    }
+
     useEffect(() => {
 
         const value = data?.accounts?.find(elem1 => elem1._id === incomeSelected?.account_id);
         setAccountSelected(value)
 
-        setNewValue(incomeSelected?.value.toString())
+        const valueIn = brlNumber.format(incomeSelected?.value)
+
+        setNewValue(maskInputMoney(valueIn))
 
     }, [incomeSelected])
 

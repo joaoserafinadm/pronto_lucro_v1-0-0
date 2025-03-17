@@ -87,6 +87,8 @@ export default function EditIncomeModal(props) {
     useEffect(() => {
         if (incomeSelected) {
 
+            setEditConfig('1')
+
             const valueIn = brlNumber.format(incomeSelected.value)
 
             const categorySelected = categories.find(elem => elem.subCategories.find(elem1 => elem1._id === incomeSelected.subCategory_id))
@@ -96,7 +98,7 @@ export default function EditIncomeModal(props) {
                 name: subCategory?.name,
                 color: categorySelected?.color,
                 category_id: categorySelected?._id,
-                subCategory_id: subCategory?._id
+                tag_id: subCategory?._id
             }
 
 
@@ -120,7 +122,6 @@ export default function EditIncomeModal(props) {
             setDescription(incomeSelected.description)
 
             setFiles(incomeSelected.files)
-            console.log("files", incomeSelected.files)
             setActive(incomeSelected.active)
         }
 
@@ -191,58 +192,48 @@ export default function EditIncomeModal(props) {
         const isValid = validate();
 
         if (isValid) {
-            try {
+            let attachment = ''
 
-                let attachment = ''
-
+            if (!files.length && files) {
                 if (files) attachment = await createImageUrl([files], 'ATTACHMENTS')
-
-                const data = {
-                    user_id: token.sub,
-                    section: 'income',
-                    value,
-                    currencyId,
-                    paymentDate,
-                    paymentMethod,
-                    competenceMonth,
-                    description,
-                    subCategory_id: subCategorySelected ? subCategorySelected.tag_id : '',
-                    account_id: accountSelected ? accountSelected._id : '',
-                    files: attachment,
-                    creditConfig,
-                    active
-                };
-
-
-                if (paymentMethod === 2) {
-                    const res = await axios.post(`/api/incomeAdd/creditPayment`, data)
-                        .then(res => {
-                            dispatch(newData(true))
-                            initialValues()
-                            router.push('/transactions')
-                        }).catch(e => {
-                            showModalBs("editIncomeModal")
-                            scrollTo('editIncomeModal');
-                            setLoadingSave(false);
-                        });
-                } else {
-                    const res = await axios.post(`/api/incomeAdd`, data)
-                        .then(res => {
-                            dispatch(newData(true))
-                            initialValues()
-                            router.push('/transactions')
-                        }).catch(e => {
-                            showModalBs("editIncomeModal")
-                            scrollTo('editIncomeModal');
-                            setLoadingSave(false);
-                        });
-                }
-                setLoadingSave(false);
-
-            } catch (e) {
-                showModalBs("editIncomeModal")
-                setLoadingSave(false);
             }
+            console.log('subCategorySelected', subCategorySelected) 
+
+
+            const data = {
+                user_id: token.sub,
+                income_id: incomeSelected._id,
+                ref_id: incomeSelected.ref_id,
+                editConfig,
+                section: 'income',
+                value,
+                currencyId,
+                paymentDate,
+                paymentMethod,
+                competenceMonth,
+                description,
+                subCategory_id: subCategorySelected ? subCategorySelected.tag_id : '',
+                account_id: accountSelected ? accountSelected._id : '',
+                files: attachment ? attachment : files,
+                active
+            };
+
+            console.log('data', data)
+
+
+            await axios.patch(`/api/transactions/incomeEdit`, data)
+                .then(res => {
+                    dispatch(newData(true))
+                    initialValues()
+                    router.push('/transactions')
+                }).catch(e => {
+                    showModalBs("editIncomeModal")
+                    scrollTo('editIncomeModal');
+                    setLoadingSave(false);
+                });
+            setLoadingSave(false);
+
+
         } else {
 
             showModalBs("editIncomeModal")
