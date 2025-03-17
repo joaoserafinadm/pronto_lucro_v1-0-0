@@ -36,34 +36,32 @@ export default function DfcList(props) {
         };
     }, []);
 
-    const handleTouchStart = (event) => {
-        longPressTimer.current = setTimeout(() => {
-            if (navigator.vibrate) {
-                navigator.vibrate(100); // Vibração do celular
-            }
-        }, 100); // Pequeno delay para vibração
+    const pendingSelection = useRef({});  // Inicializa como objeto vazio
 
-        // Armazena a posição inicial do toque
-        event.target.dataset.startY = event.touches[0].clientY;
+    const handleTouchStart = (event, elem) => {
+        // Armazena o item tocado e a posição inicial do toque
+        pendingSelection.current = {
+            element: elem,
+            startY: event.touches[0].clientY
+        };
     };
 
-    const handleTouchEnd = (event, elem) => {
-        clearTimeout(longPressTimer.current);
-    
-        const startY = parseFloat(event.target.dataset.startY);
+    const handleTouchEnd = (event) => {
+        const { startY, element } = pendingSelection.current || {};  // Desestrutura de pendingSelection.current
+
+        if (!startY || !element) return; // Se não houver dados, retorna
+
         const endY = event.changedTouches[0].clientY;
         const deltaY = Math.abs(startY - endY);
-    
-        if (deltaY < 10) { // Garante que é um toque e não um scroll
-            setSelectedItem((prevSelected) => {
-                if (prevSelected === elem) {
-                    return null; // Deseleciona o item se já estiver selecionado
-                }
-                return elem; // Seleciona o novo item
-            });
-        }
-    };
 
+        if (deltaY < 10) { // Se não houve scroll significativo
+            setSelectedItem((prevSelected) =>
+                prevSelected === element ? null : element // Se o item já está selecionado, desmarque
+            )
+        }
+
+        pendingSelection.current = {};  // Reseta a seleção pendente
+    };
 
 
     return (

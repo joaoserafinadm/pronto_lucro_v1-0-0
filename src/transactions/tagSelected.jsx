@@ -10,7 +10,6 @@ export default function TagSelected(props) {
     const { subCategory_id,
         categories } = props
 
-    console.log("ttt'", subCategory_id, categories)
 
     const categorySelected = categories.find(elem => elem.subCategories.find(elem1 => elem1._id === subCategory_id))
     const subCategorySelected = categorySelected?.subCategories.find(elem => elem._id === subCategory_id)
