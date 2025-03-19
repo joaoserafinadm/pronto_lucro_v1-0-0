@@ -14,14 +14,14 @@ export default function SaldoView(props) {
     return (
         <div className="row pt-4 pb-3">
             <div className="col-12 d-flex justify-content-center">
-                <span className=" small fw-bold text-secondary">
+                <span className=" bold text-secondary">
                     Saldo em conta
                 </span>
 
             </div>
             <div className="col-12 d-flex justify-content-center align-items-center" style={{ height: "50px" }}>
                 {props.valueView ?
-                    <span className="fs-1 bold ">
+                    <span className="fs-1 bold">
                         R$ 15.000,00
                     </span>
                     :

@@ -37,50 +37,48 @@ export default function EntriesHistoric() {
 
     return (
         <div className="card" style={{ height: '100%' }}>
-            <div className="card-body">
-                <div className="row">
-                    <span className='bold text-secondary'>
-                        Histórico de entradas
-                    </span>
-                </div>
-                <table className="table table-sm" style={{ overflowY: 'scroll' }}>
+            <div className="row">
+                <span className='bold text-secondary'>
+                    Histórico de entradas
+                </span>
+            </div>
+            <table className="table table-sm" style={{ overflowY: 'scroll' }}>
 
-                    <tbody>
+                <tbody>
 
-                        {data.map((elem, index) => (
-                            <tr className="small">
-                                <td >
-                                    <FontAwesomeIcon className={`${elem.type === 'revenue' ? 'text-success' : 'text-danger'}`}
-                                        icon={elem.type === 'revenue' ? faArrowUp : faArrowDown} />
+                    {data.map((elem, index) => (
+                        <tr className="small">
+                            <td >
+                                <FontAwesomeIcon className={`${elem.type === 'revenue' ? 'text-success' : 'text-danger'}`}
+                                    icon={elem.type === 'revenue' ? faArrowUp : faArrowDown} />
 
-                                </td>
-                                <td className=" bold text-secondary text-start">
-                                    <div className="row">
-                                        <div>
+                            </td>
+                            <td className=" bold text-secondary text-start">
+                                <div className="row">
+                                    <div>
 
-                                            <span class="badge" style={{ backgroundColor: `${elem.color}` }}>
-                                                {elem.tag}
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div className="row">
-                                        <span>
-
-
-                                            {elem.description}
+                                        <span class="badge" style={{ backgroundColor: `${elem.color}` }}>
+                                            {elem.tag}
                                         </span>
                                     </div>
-                                </td>
-                                <td className=" bold text-secondary text-end">
+                                </div>
+                                <div className="row">
+                                    <span>
 
-                                    R${elem.value},00
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
 
-                </table>
-            </div>
+                                        {elem.description}
+                                    </span>
+                                </div>
+                            </td>
+                            <td className=" bold text-secondary text-end">
+
+                                R${elem.value},00
+                            </td>
+                        </tr>
+                    ))}
+                </tbody>
+
+            </table>
         </div>
     )
 

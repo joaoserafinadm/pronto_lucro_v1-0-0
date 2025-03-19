@@ -18,6 +18,7 @@ import axios from 'axios'
 import { showModalBs } from '../utils/modalControl.js'
 import TutorialModal from '../src/indexPage/TutorialModal.jsx'
 import NotificationsCard from '../src/indexPage/notifications/notificationsCard.jsx'
+import GeralValuesCard from '../src/index/GeralValuesCard.jsx'
 
 
 
@@ -66,37 +67,15 @@ export default function Home() {
 
 
                 <NotificationsCard token={token} />
-               
+
                 <hr />
 
                 <div className="row d-flex" >
-                    <div className="col">
-                        <SaldoView valueView={valueView} setValueView={(value) => setValueView(value)} />
-
-
-                        <GeralView valueView={valueView} />
-                        {isMobile() && (
-
-                            <div className="row">
-                                <div className="col-12 d-flex justify-content-center">
-                                    <span className='badge rounded-pill bg-secondary cardAnimation '
-                                        type="button" data-bs-toggle="modal"
-                                        data-bs-target="#entriesHistoricModal">
-                                        <FontAwesomeIcon icon={faList} />
-                                    </span>
-                                </div>
-                            </div>
-                        )}
-
-
-                    </div>
-                    {!isMobile() && (
-                        <div className="col-4" >
-                            <EntriesHistoric />
-                        </div>
-                    )}
-
+                    <GeralValuesCard />
                 </div>
+
+                <hr />
+                
 
 
 
