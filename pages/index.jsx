@@ -66,12 +66,10 @@ export default function Home() {
 
 
                 <NotificationsCard token={token} />
+               
+                <hr />
 
-
-
-
-
-                {/* <div className="row d-flex" >
+                <div className="row d-flex" >
                     <div className="col">
                         <SaldoView valueView={valueView} setValueView={(value) => setValueView(value)} />
 
@@ -98,11 +96,10 @@ export default function Home() {
                         </div>
                     )}
 
-                </div> */}
+                </div>
 
 
 
-                <hr />
 
             </div>
 
