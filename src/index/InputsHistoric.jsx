@@ -22,11 +22,12 @@ export default function InputsHistoric(props) {
             <div className="card-body">
                 <div className="row">
 
-                    <div className="col-12">
+                    <div className="col-12 mb-2">
 
                         <FontAwesomeIcon icon={faMoneyBill} />
                         <span className="small fw-bold mb-2 ms-3">Últimas de transações</span>
                     </div>
+                    <hr />
                     <div
                         className="col-12"
                         style={{ maxHeight: "170px", overflowY: "scroll" }}

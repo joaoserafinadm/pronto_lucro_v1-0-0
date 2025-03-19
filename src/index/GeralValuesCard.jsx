@@ -49,6 +49,9 @@ export default function GeralValuesCard(props) {
     }
 
 
+    const months = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez']
+
+
 
     return (
         <>
@@ -99,7 +102,7 @@ export default function GeralValuesCard(props) {
 
                                         <FontAwesomeIcon icon={faArrowUp} className="text-c-success me-2" />
                                         <span className="small fw-bold text-secondary">Receitas</span>
-                                        <span className="bold text-secondary ms-1" style={{ fontSize: "8px" }}>(Março)</span>
+                                        <span className="bold text-secondary ms-1" style={{ fontSize: "8px" }}>({months[new Date().getMonth()]})</span>
                                     </div>
                                 </div>
                                 <div className="row">
@@ -128,7 +131,7 @@ export default function GeralValuesCard(props) {
 
                                         <FontAwesomeIcon icon={faArrowDown} className="text-c-danger me-2" />
                                         <span className="small fw-bold text-secondary">Despesas</span>
-                                        <span className="bold text-secondary ms-1" style={{ fontSize: "8px" }}>(Março)</span>
+                                        <span className="bold text-secondary ms-1" style={{ fontSize: "8px" }}>({months[new Date().getMonth()]})</span>
                                     </div>
                                 </div>
                                 <div className="row">
