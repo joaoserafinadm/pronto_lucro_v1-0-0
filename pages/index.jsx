@@ -19,6 +19,7 @@ import { showModalBs } from '../utils/modalControl.js'
 import TutorialModal from '../src/indexPage/TutorialModal.jsx'
 import NotificationsCard from '../src/indexPage/notifications/notificationsCard.jsx'
 import GeralValuesCard from '../src/index/GeralValuesCard.jsx'
+import CategoriesChartCard from '../src/index/CategoriesChartCard.jsx'
 
 
 
@@ -75,6 +76,9 @@ export default function Home() {
                 </div>
 
                 <hr />
+                <div className="row d-flex" >
+                    <CategoriesChartCard />
+                </div>
                 
 
 

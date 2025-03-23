@@ -76,6 +76,7 @@
     "react-calendar": "^5.0.0",
     "react-chartjs-2": "^4.3.1",
     "react-circular-progressbar": "^2.1.0",
+    "react-countup": "^6.5.3",
     "react-custom-scrollbars-2": "^4.4.0",
     "react-datepicker": "^4.25.0",
     "react-dom": "^18.2.0",

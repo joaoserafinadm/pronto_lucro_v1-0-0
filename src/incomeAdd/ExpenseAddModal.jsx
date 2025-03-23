@@ -174,7 +174,7 @@ export default function ExpenseAddModal(props) {
                             dispatch(newData(true))
                             console.log('vai')
                             initialValues()
-                            router.push('/transactions')
+                            // router.push('/transactions')
                         }).catch(e => {
                             showModalBs("expenseAddModal")
                             scrollTo('expenseAddModal');

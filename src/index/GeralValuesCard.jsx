@@ -10,6 +10,8 @@ import axios from "axios";
 import { maskNumberMoney } from "../../utils/mask";
 import InputsHistoric from "./InputsHistoric";
 import InputsHistoricModal from "./InputsHistoricModal";
+import CountUp from "react-countup";
+import { useSelector } from "react-redux";
 
 
 export default function GeralValuesCard(props) {
@@ -26,9 +28,12 @@ export default function GeralValuesCard(props) {
 
     const [valueView, setValueView] = useState(true)
 
+        const newDataStore = useSelector(state => state.newData)
+    
+
     useEffect(() => {
         dataFunction()
-    }, [])
+    }, [newDataStore])
 
 
 
@@ -55,7 +60,7 @@ export default function GeralValuesCard(props) {
 
     return (
         <>
-            <InputsHistoricModal  lastDataInputs={lastDataInputs} categories={categories} />
+            <InputsHistoricModal lastDataInputs={lastDataInputs} categories={categories} />
             <div className="col">
 
                 <div className="row pt-4 pb-3">
@@ -68,7 +73,7 @@ export default function GeralValuesCard(props) {
                     <div className="col-12 d-flex justify-content-center align-items-center" style={{ height: "50px" }}>
                         {valueView ?
                             <span className="fs-2 bold">
-                                R$ {maskNumberMoney(saldoValue)}
+                                R$ <CountUp end={saldoValue} separator="." duration={2} decimal="," decimals={2} />
                             </span>
                             :
                             <span className="fs-2 bold d-flex justify-content-center align-items-center">
@@ -109,7 +114,10 @@ export default function GeralValuesCard(props) {
                                     <div className="col-12" style={{ height: "50px" }}>
                                         {valueView ?
                                             <span className="fs-5 bold text-c-success">
-                                                <span className="text-c-success" style={{ fontSize: "15px" }}>R$</span> {maskNumberMoney(incomeValue)}
+                                                <span className="text-c-success me-1" style={{ fontSize: "15px" }}>
+                                                    R$
+                                                </span>
+                                                <CountUp end={incomeValue} separator="." duration={2} decimal="," decimals={2} />
                                             </span>
                                             :
                                             <span className="fs-5 bold text-c-success">
@@ -138,7 +146,10 @@ export default function GeralValuesCard(props) {
                                     <div className="col-12" style={{ height: "50px" }}>
                                         {valueView ?
                                             <span className="fs-5 bold text-c-danger">
-                                                R$ {maskNumberMoney(expenseValue)}
+                                                <span className="text-c-danger me-1" style={{ fontSize: "15px" }}>
+                                                    R$
+                                                </span>
+                                                <CountUp end={expenseValue} separator="." duration={2} decimal="," decimals={2} />
                                             </span>
                                             :
                                             <span className="fs-5 bold text-c-danger">
