@@ -43,7 +43,13 @@ export default function creditNetworkConfig() {
                                     <TaxesConfigPage />
                                 </div>
                                 <div className="carousel-item ">
-                                    2
+                                   <div className="row">
+                                    <div className="col-12 my-5 text-center">
+                                        <span className="small text-secondary ">
+                                            Módulo disponível em breve
+                                        </span>
+                                    </div>
+                                   </div>
                                 </div>
                             </div>
                         </div>

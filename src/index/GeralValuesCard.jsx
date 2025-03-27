@@ -12,6 +12,8 @@ import InputsHistoric from "./InputsHistoric";
 import InputsHistoricModal from "./InputsHistoricModal";
 import CountUp from "react-countup";
 import { useSelector } from "react-redux";
+import useSWR from "swr";
+import api from "../../utils/api";
 
 
 export default function GeralValuesCard(props) {
@@ -28,12 +30,28 @@ export default function GeralValuesCard(props) {
 
     const [valueView, setValueView] = useState(true)
 
-        const newDataStore = useSelector(state => state.newData)
-    
+    const newDataStore = useSelector(state => state.newData)
+
+    const { data, error, isLoading } = useSWR(`/api/indexPage/geralValues?user_id=${token?.sub}`, api)
+
+
 
     useEffect(() => {
         dataFunction()
     }, [newDataStore])
+
+    useEffect(() => {
+        if (data) {
+            console.log("data", data)
+            setSaldoValue(data.data.saldoValue)
+            setIncomeValue(data.data.incomeValue)
+            setExpenseValue(data.data.expenseValue)
+            setLastDataInputs(data.data.lastDataInputs)
+            setCategories(data.data.categories)
+        }
+    }, [data])
+
+
 
 
 
