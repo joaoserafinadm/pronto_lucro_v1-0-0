@@ -30,6 +30,7 @@ import currencies from "../../utils/currencies.json"
 import DescriptionInput from "../incomeAdd/descriptionInput";
 import CategorySelectedComponent from "../incomeAdd/categorySelectedComponent";
 import CategorySelectModal from "../incomeAdd/categorySelectModal";
+import { useStateContext } from "./context/transactionsContext";
 
 
 
@@ -37,6 +38,8 @@ export default function EditExpenseModal(props) {
 
     const token = jwt.decode(Cookie.get('auth'));
     const dispatch = useDispatch()
+
+    const { setIncomeSelected, incomeSelected } = useStateContext()
 
     const router = useRouter()
 
@@ -55,28 +58,77 @@ export default function EditExpenseModal(props) {
     const [bankAccounts, setBankAccounts] = useState([])
     const [accountSelected, setAccountSelected] = useState(null)
 
+    const [editConfig, setEditConfig] = useState('1')
+
     const [active, setActive] = useState(true)
+
 
     const [categories, setCategories] = useState([])
     const [loadingSave, setLoadingSave] = useState(false)
 
     const [valueError, setValueError] = useState('')
 
+    const brlNumber = {
+        format: (value) => value.toLocaleString('pt-BR', { style: 'decimal', minimumFractionDigits: 2, maximumFractionDigits: 2 })
+    }
+
+
 
     useEffect(() => {
         dataFunction(token.sub)
     }, [])
 
+    useEffect(() => {
+        if (incomeSelected) {
+
+            setEditConfig('1')
+
+            const valueIn = brlNumber.format(incomeSelected.value)
+
+            const categorySelected = categories.find(elem => elem.subCategories.find(elem1 => elem1._id === incomeSelected.subCategory_id))
+            const subCategory = categorySelected?.subCategories.find(elem => elem._id === incomeSelected.subCategory_id)
+
+            const subCategoryData = {
+                name: subCategory?.name,
+                color: categorySelected?.color,
+                category_id: categorySelected?._id,
+                tag_id: subCategory?._id
+            }
+
+
+
+
+            if (subCategory) {
+                setSubCategorySelected(subCategoryData)
+            }
+
+            const account = bankAccounts.find(elem => elem._id === incomeSelected.account_id)
+            if (account) {
+                setAccountSelected(account)
+            }
+
+            setValue(maskInputMoney(valueIn))
+            setPaymentMethod(incomeSelected.paymentMethod)
+            setPaymentDate(incomeSelected.paymentDate)
+            setCompetenceMonth(incomeSelected.competenceMonth)
+            // setCreditConfig(incomeSelected.credit_config)
+            setDescription(incomeSelected.description)
+
+            setFiles(incomeSelected.files)
+            setActive(incomeSelected.active)
+        }
+
+    }, [incomeSelected])
+
     const dataFunction = async (user_id) => {
 
-        await axios.get(`${baseUrl()}/api/incomeAdd`, {
+        await axios.get(`/api/incomeAdd`, {
             params: {
                 user_id
             }
         }).then(res => {
-            setCategories(res.data.expenseCategories)
+            setCategories(res.data.incomeCategories)
             setBankAccounts(res.data.bankAccounts)
-
         }).catch(e => {
             console.log(e)
         })
@@ -88,7 +140,7 @@ export default function EditExpenseModal(props) {
 
         (paymentDate === dateObject(new Date()) || paymentDate === dateObject(new Date(), -1))
 
-    }, [paymentDate.day])
+    }, [paymentDate?.day])
 
 
 
@@ -111,15 +163,14 @@ export default function EditExpenseModal(props) {
         }
     };
 
-
     const isToday = (date) => {
 
         const today = dateObject(new Date());
         const aDaysAgo = dateObject(new Date(), -1);
 
-        if (date.day === today.day && date.month === today.month && date.year === today.year) {
+        if (date?.day === today.day && date?.month === today.month && date?.year === today.year) {
             return true
-        } else if (date.day === aDaysAgo.day && date.month === aDaysAgo.month && date.year === aDaysAgo.year) {
+        } else if (date?.day === aDaysAgo.day && date?.month === aDaysAgo.month && date?.year === aDaysAgo.year) {
             return true
         } else {
             return false
@@ -134,57 +185,45 @@ export default function EditExpenseModal(props) {
         const isValid = validate();
 
         if (isValid) {
-            try {
+            let attachment = ''
 
-                let attachment = ''
-
+            if (!files.length && files) {
                 if (files) attachment = await createImageUrl([files], 'ATTACHMENTS')
-
-                const data = {
-                    user_id: token.sub,
-                    section: 'expense',
-                    value,
-                    paymentDate,
-                    paymentMethod,
-                    competenceMonth,
-                    description,
-                    subCategory_id: subCategorySelected ? subCategorySelected.tag_id : '',
-                    account_id: accountSelected ? accountSelected._id : '',
-                    files: attachment,
-                    creditConfig,
-                    active
-                };
-
-                if (paymentMethod === 2) {
-                    const res = await axios.post(`${baseUrl()}/api/incomeAdd/creditPayment`, data)
-                        .then(res => {
-                            dispatch(newData(true))
-                            initialValues()
-                            router.push('/transactions')
-                        }).catch(e => {
-                            showModalBs("editExpenseModal")
-                            scrollTo('editExpenseModal');
-                            setLoadingSave(false);
-                        });
-                } else {
-                    const res = await axios.post(`${baseUrl()}/api/incomeAdd`, data)
-                        .then(res => {
-                            dispatch(newData(true))
-                            console.log('vai')
-                            initialValues()
-                            router.push('/transactions')
-                        }).catch(e => {
-                            showModalBs("editExpenseModal")
-                            scrollTo('editExpenseModal');
-                            setLoadingSave(false);
-                        });
-                }
-                setLoadingSave(false);
-
-            } catch (e) {
-                showModalBs("editExpenseModal")
-                setLoadingSave(false);
             }
+            console.log('subCategorySelected', subCategorySelected)
+
+
+            const data = {
+                user_id: token.sub,
+                income_id: incomeSelected._id,
+                ref_id: incomeSelected.ref_id,
+                editConfig,
+                section: 'expense',
+                value,
+                currencyId,
+                paymentDate,
+                paymentMethod,
+                competenceMonth,
+                description,
+                subCategory_id: subCategorySelected ? subCategorySelected.tag_id : '',
+                account_id: accountSelected ? accountSelected._id : '',
+                files: attachment ? attachment : files,
+                active
+            };
+
+
+            await axios.patch(`/api/transactions/incomeEdit`, data)
+                .then(res => {
+                    dispatch(newData(true))
+                    initialValues()
+                }).catch(e => {
+                    showModalBs("editExpenseModal")
+                    scrollTo('editExpenseModal');
+                    setLoadingSave(false);
+                });
+            setLoadingSave(false);
+
+
         } else {
 
             showModalBs("editExpenseModal")
@@ -214,7 +253,30 @@ export default function EditExpenseModal(props) {
         return
     }
 
+
     const currency = currencies.find(elem => elem.id === currencyId)
+
+    useEffect(() => {
+        handleEditOptions()
+
+    }, [editConfig])
+
+    const handleEditOptions = () => {
+
+
+        if (editConfig === '3') {
+            const valueIn = brlNumber.format(incomeSelected.value)
+            setValue(maskInputMoney(valueIn))
+            setActive(incomeSelected.active)
+            setPaymentDate(incomeSelected.paymentDate)
+            setCompetenceMonth(incomeSelected.competenceMonth)
+        } else if (editConfig === '2') {
+            setActive(incomeSelected.active)
+            setPaymentDate(incomeSelected.paymentDate)
+            setCompetenceMonth(incomeSelected.competenceMonth)
+        }
+    }
+
 
 
     return (
@@ -233,21 +295,19 @@ export default function EditExpenseModal(props) {
                                 <div className="d-flex w-100 fs-1 pe-2 align-items-center">
                                     {/* <span className="me-1">{currency.symbol}</span> */}
                                     <span className="me-1">R$</span>
-
                                     <input type="text" inputMode="numeric" placeholder="0,00"
-                                        className="form-control fs-2 " style={{ borderColor: '#f2545b' }}
+                                        className="form-control fs-2 " disabled={editConfig === "3"} style={{ borderColor: '#f2545b' }}
                                         value={value} id='valueInput'
                                         onChange={e => setValue(maskInputMoney(e.target.value))} />
                                 </div>
                                 {/* <CurrencySelect setCurrencyId={setCurrencyId} currencyId={currencyId} /> */}
-
                             </div>
                             <span className="text-danger small">{valueError}</span>
 
                             <div className="col-12 mt-3 d-flex">
                                 <div class="form-check form-switch">
-                                    <input class="form-check-input form-check-input-expense" type="checkbox" role="switch" id="activeExpenseInput" checked={active} onClick={() => setActive(!active)} />
-                                    <label type="button" class={`form-check-label ${active ? 'bold' : ''}`} for="activeExpenseInput" >Foi paga</label>
+                                    <input class="form-check-input form-check-input-expense" type="checkbox" disabled={editConfig === "2" || editConfig === "3"} role="switch" id="activeInput" checked={active} onClick={() => setActive(!active)} />
+                                    <label type="button" class={`form-check-label ${active ? 'bold' : ''}`} for="activeInput" >Foi paga</label>
                                 </div>
                             </div>
 
@@ -264,42 +324,56 @@ export default function EditExpenseModal(props) {
                                             <div className="col-12">
 
                                                 <FontAwesomeIcon icon={faMoneyBill} />
-                                                <span className="small fw-bold mb-2 ms-3">Forma de pagamento</span>
+                                                <span className="small fw-bold mb-2 ms-3">Configuração de pagamento</span>
                                             </div>
 
-                                            <div className="col-12 d-flex flex-wrap">
-                                                {!paymentMethod ?
-                                                    <>
-                                                        <span type="button" onClick={() => setPaymentMethod(1)}
-                                                            class={`cardAnimation px-2 py-1 m-2 text-white small mx-1 rounded-pill ${paymentMethod === 1 ? 'ctm-bg-danger' : 'ctm-bg-primary'}`}>
-                                                            Dinheiro
-                                                        </span>
-                                                        <span type="button" onClick={() => setPaymentMethod(2)}
-                                                            class={`cardAnimation px-2 py-1 m-2 text-white small mx-1 rounded-pill ${paymentMethod === 2 ? 'ctm-bg-danger' : 'ctm-bg-primary'}`}>
-                                                            Cartão de crédito
-                                                        </span>
-                                                    </>
-                                                    :
-                                                    <span type="button"
-                                                        class={`cardAnimation bold px-2 py-1 m-2 text-white small mx-1 rounded-pill ctm-bg-danger`}>
-                                                        {paymentMethodOptions.find(elem => elem.id === paymentMethod)?.description}
-                                                    </span>
+                                            <div className="col-12 d-flex flex-wrap"
+                                                style={{
+                                                    opacity: 0.5,
+                                                    pointerEvents: "none",
+                                                }}>
 
-                                                }
-                                                <span type="button" onClick={() => showModal('paymentMethodSelectModalExpense')}
-                                                    class={`cardAnimation px-2 py-1 m-2 text-white small mx-1 rounded-pill  ctm-bg-primary`}>
-                                                    Outros...
+                                                <span className={`cardAnimation px-2 py-1 m-2 text-white small mx-1 rounded-pill ctm-bg-danger`}>
+                                                    {paymentMethodOptions.find(elem => elem.id === paymentMethod)?.description}
                                                 </span>
 
 
-                                                <PaymentMethodSelectModal paymentMethod={paymentMethod}
-                                                    setPaymentMethod={setPaymentMethod}
-                                                    id="paymentMethodSelectModalExpense"
-                                                    section="expense" />
+
 
 
 
                                             </div>
+
+                                            {+paymentMethod === (2 || 6 || 7) && (
+                                                <div className="col-12 d-flex flex-wrap flex-column">
+
+                                                    <div class="form-check my-2">
+                                                        <input class="form-check-input form-check-input-income" type="radio" name="editConfigCheck" id="editConfig1" onClick={() => setEditConfig('1')} checked={editConfig === '1'} />
+                                                        <label class="form-check-label" for="editConfig1">
+                                                            Editar somente esta
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check my-2">
+                                                        <input class="form-check-input form-check-input-income" type="radio" name="editConfigCheck" id="editConfig2" onClick={() => setEditConfig('2')} checked={editConfig === '2'} />
+                                                        <label class="form-check-label" for="editConfig2">
+                                                            Editar essa e todas as pendentes
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check my-2">
+                                                        <input class="form-check-input form-check-input-income" type="radio" name="editConfigCheck" id="editConfig3" onClick={() => setEditConfig('3')} checked={editConfig === '3'} />
+                                                        <label class="form-check-label" for="editConfig3">
+                                                            Editar todas (incluindo efetivadas)
+                                                        </label>
+                                                    </div>
+
+                                                </div>
+                                            )}
+                                            <span className="small text-secondary">
+                                                {editConfig === '1' && 'Não é possível alterar o método de pagamento'}
+                                                {editConfig === '2' && 'Não é possível alterar o método de pagamento, a data ou confirmar transação'}
+                                                {editConfig === '3' && 'Não é possível alterar o método de pagamento, o valor, data, conta ou confirmar transação'}
+                                            </span>
+
                                         </div>
 
 
@@ -317,26 +391,56 @@ export default function EditExpenseModal(props) {
 
                                             </div>
 
-                                            <div className="col-12 mt-2 d-flex">
-                                                {isToday(paymentDate) ?
+                                            <div
+                                                className="col-12 mt-2 d-flex"
+                                                style={{
+                                                    opacity: editConfig === "2" || editConfig === "3" ? 0.5 : 1,
+                                                    pointerEvents: editConfig === "2" || editConfig === "3" ? "none" : "auto",
+                                                }}
+                                            >
+                                                {isToday(paymentDate) ? (
                                                     <>
-                                                        <span type="button" onClick={() => setPaymentDate(dateObject(new Date()))}
-                                                            class={`cardAnimation px-2 py-1 text-white small mx-1 rounded-pill ${JSON.stringify(paymentDate) == JSON.stringify(dateObject(new Date())) ? 'ctm-bg-danger' : 'ctm-bg-primary'}`}>
+                                                        <span
+                                                            type="button"
+                                                            onClick={() => setPaymentDate(dateObject(new Date()))}
+                                                            className={`${editConfig !== "2" && editConfig !== "3" ? "cardAnimation" : ""
+                                                                } px-2 py-1 text-white small mx-1 rounded-pill ${JSON.stringify(paymentDate) === JSON.stringify(dateObject(new Date()))
+                                                                    ? "ctm-bg-danger"
+                                                                    : "ctm-bg-primary"
+                                                                }`}
+                                                        >
                                                             Hoje
                                                         </span>
-                                                        <span type="button" onClick={() => setPaymentDate(dateObject(new Date(), -1))}
-                                                            class={`cardAnimation px-2 py-1 text-white small mx-1 rounded-pill ${JSON.stringify(paymentDate) == JSON.stringify(dateObject(new Date(), -1)) ? 'ctm-bg-danger' : 'ctm-bg-primary'}`}>
+                                                        <span
+                                                            type="button"
+                                                            onClick={() => setPaymentDate(dateObject(new Date(), -1))}
+                                                            className={`${editConfig !== "2" && editConfig !== "3" ? "cardAnimation" : ""
+                                                                } px-2 py-1 text-white small mx-1 rounded-pill ${JSON.stringify(paymentDate) === JSON.stringify(
+                                                                    dateObject(new Date(), -1)
+                                                                )
+                                                                    ? "ctm-bg-danger"
+                                                                    : "ctm-bg-primary"
+                                                                }`}
+                                                        >
                                                             Ontem
                                                         </span>
                                                     </>
-                                                    :
-                                                    <span type="button" onClick={() => showModal('datePickerModalExpense')}
-                                                        className={`cardAnimation px-2 py-1 text-white small mx-1 rounded-pill bold ctm-bg-danger`}>
+                                                ) : (
+                                                    <span
+                                                        type="button"
+                                                        onClick={() => showModal("datePickerModalIncome")}
+                                                        className={`${editConfig !== "2" && editConfig !== "3" ? "cardAnimation" : ""
+                                                            } px-2 py-1 text-white small mx-1 rounded-pill ctm-bg-danger`}
+                                                    >
                                                         {dateFormat(paymentDate)}
                                                     </span>
-                                                }
-                                                <span type="button" onClick={() => showModal('datePickerModalExpense')}
-                                                    className={`cardAnimation px-2 py-1 text-white small mx-1 rounded-pill ctm-bg-primary`}>
+                                                )}
+                                                <span
+                                                    type="button"
+                                                    onClick={() => showModal("datePickerModalIncomeEdit")}
+                                                    className={`${editConfig !== "2" && editConfig !== "3" ? "cardAnimation" : ""
+                                                        } px-2 py-1 text-white small mx-1 rounded-pill ctm-bg-primary`}
+                                                >
                                                     Outro
                                                 </span>
                                             </div>
@@ -346,23 +450,35 @@ export default function EditExpenseModal(props) {
                                                 title="Data da receita"
                                                 date={paymentDate}
                                                 setDate={setPaymentDate}
-                                                id="datePickerModalExpense"
+                                                id="datePickerModalExpenseEdit"
                                                 section="expense" />
 
                                         </div>
                                         <hr />
-                                        <div className="row d-flex justify-content-between">
+                                        <div className="row d-flex justify-content-between"  >
                                             <div className="col-12">
                                                 <FontAwesomeIcon icon={faCalendarWeek} />
                                                 <span className="small fw-bold mb-2 ms-3">Mês de competência</span>
                                             </div>
+                                            {incomeSelected?.creditConfig?.parcelaAtual && incomeSelected?.creditConfig?.parcelaAtual > 1 ?
+                                                <div className="col-12  mt-2">
+                                                    <span className="small text-secondary">
+                                                        Só é possível editar o mês de competência da primeira parcela
+                                                    </span>
+                                                </div>
+                                                :
+                                                <div className="col-12 d-flex justify-content-center mt-2"
+                                                    style={{
+                                                        opacity: editConfig === "2" || editConfig === "3" ? 0.5 : 1,
+                                                        pointerEvents: editConfig === "2" || editConfig === "3" ? "none" : "auto",
+                                                    }}>
 
-                                            <div className="col-12 d-flex justify-content-center mt-2">
-
-                                                <MonthSelect
-                                                    setMonth={value => { setCompetenceMonth(value) }}
-                                                />
-                                            </div>
+                                                    <MonthSelect
+                                                        setMonth={value => { setCompetenceMonth(value) }}
+                                                        competenceMonth={competenceMonth}
+                                                    />
+                                                </div>
+                                            }
 
 
                                         </div>

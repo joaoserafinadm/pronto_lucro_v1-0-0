@@ -74,11 +74,6 @@ export default function EditIncomeModal(props) {
         format: (value) => value.toLocaleString('pt-BR', { style: 'decimal', minimumFractionDigits: 2, maximumFractionDigits: 2 })
     }
 
-    useEffect(() => {
-        console.log("subCategorySelected", subCategorySelected)
-    }, [subCategorySelected])
-
-
 
     useEffect(() => {
         dataFunction(token.sub)
@@ -218,14 +213,11 @@ export default function EditIncomeModal(props) {
                 active
             };
 
-            console.log('data', data)
-
 
             await axios.patch(`/api/transactions/incomeEdit`, data)
                 .then(res => {
                     dispatch(newData(true))
                     initialValues()
-                    router.push('/transactions')
                 }).catch(e => {
                     showModalBs("editIncomeModal")
                     scrollTo('editIncomeModal');
@@ -272,8 +264,6 @@ export default function EditIncomeModal(props) {
     }, [editConfig])
 
     const handleEditOptions = () => {
-
-        console.log("subCategorySelected", subCategorySelected)
 
         if (editConfig === '3') {
             const valueIn = brlNumber.format(incomeSelected.value)
