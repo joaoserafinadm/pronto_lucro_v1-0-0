@@ -506,7 +506,7 @@ export default function EditExpenseModal(props) {
                                                 <span className="small fw-bold mb-2 ms-3">Categoria</span>
                                             </div>
 
-                                            <CategorySelectedComponent subCategorySelected={subCategorySelected} categories={categories} type="Expense" edit/>
+                                            <CategorySelectedComponent subCategorySelected={subCategorySelected} categories={categories} type="Expense" edit />
 
                                             <CategorySelectModal edit
                                                 categories={categories}
@@ -566,23 +566,22 @@ export default function EditExpenseModal(props) {
 
                                             <div className="col-12 mt-2 d-flex justify-content-between">
 
-                                                <StyledDropzone setFiles={array => { setFiles(array[0]); console.log(array) }} >
-                                                    <div className="px-2 text-center fadeItem bg-light  py-5 text-secondary rounded " style={{ border: '1px dashed #ccc', width: "100%" }}>
-                                                        <span>
-                                                            Clique aqui ou arraste o arquivo
-                                                        </span> <br />
-                                                        <span className="small">
-                                                            Permitido apenas um arquivo. Formato: .PNG, .JPG, .PDF.
-                                                        </span><br />
+                                                {!files && (
+                                                    <StyledDropzone setFiles={array => { setFiles(array[0]) }} >
+                                                        <div className="px-2 text-center fadeItem bg-light  py-5 text-secondary rounded " style={{ border: '1px dashed #ccc', width: "100%" }}>
+                                                            <span>
+                                                                Clique aqui ou arraste o arquivo
+                                                            </span> <br />
+                                                            <span className="small">
+                                                                Permitido apenas um arquivo. Formato: .PNG, .JPG, .PDF.
+                                                            </span><br />
 
-                                                    </div>
-                                                </StyledDropzone>
+                                                        </div>
+                                                    </StyledDropzone>
+                                                )}
 
 
-                                                {/* <div className="text-center text-secondary" style={{ width: "40px" }}>
-                                                    <FontAwesomeIcon icon={faChevronRight} />
 
-                                                </div> */}
                                             </div>
                                             {files && (
                                                 <div className="col-12 mt-2 fadeItem">
@@ -591,20 +590,44 @@ export default function EditExpenseModal(props) {
                                                             <div className="row">
                                                                 <div className="col-12 d-flex">
                                                                     <div className="d-flex align-items-center justify-content-center" style={{ width: "40px" }}>
-                                                                        {files?.type?.startsWith('image/') ?
-                                                                            <div>
-                                                                                <img src={URL.createObjectURL(files)} className="border border-rounded " height={40} alt="" />
-                                                                            </div>
-                                                                            :
-
+                                                                        {files?.type?.startsWith('image/') ? (
+                                                                            <img
+                                                                                src={URL.createObjectURL(files)}
+                                                                                className="border border-rounded"
+                                                                                height={40}
+                                                                                alt="Preview"
+                                                                            />
+                                                                        ) : files[0]?.path &&
+                                                                            /\.(png|jpg|jpeg|webp)$/i.test(files[0]?.path) ? (
+                                                                            <img
+                                                                                src={files[0]?.url}
+                                                                                className="border border-rounded"
+                                                                                height={40}
+                                                                                alt="Preview"
+                                                                            />
+                                                                        ) : (
                                                                             <FontAwesomeIcon icon={faFilePdf} className="fs-3 text-secondary" />
-                                                                        }
-
+                                                                        )}
                                                                     </div>
                                                                     <div className="col">
                                                                         <div className="row">
-                                                                            <span className="small ms-3 bold">{files.name}</span>
-                                                                            <span className="small ms-3 text-secondary">{(files.size / 1000000).toFixed(2)}Mb</span>
+                                                                            <span className="small ms-3 bold">
+                                                                                {files?.name || files[0]?.path}
+                                                                            </span>
+                                                                            {files?.size ? (
+                                                                                <span className="small ms-3 text-secondary">
+                                                                                    {(files?.size / 1000000).toFixed(2)}Mb
+                                                                                </span>
+                                                                            ) : (
+                                                                                <a
+                                                                                    className="small ms-3"
+                                                                                    href={files[0]?.url}
+                                                                                    target="_blank"
+                                                                                    rel="noreferrer"
+                                                                                >
+                                                                                    Visualizar
+                                                                                </a>
+                                                                            )}
                                                                         </div>
                                                                     </div>
                                                                     <div className="d-flex align-items-center justify-content-center" style={{ width: "40px" }}>
@@ -621,6 +644,7 @@ export default function EditExpenseModal(props) {
                                                     </div>
                                                 </div>
                                             )}
+
 
                                         </div>
 
