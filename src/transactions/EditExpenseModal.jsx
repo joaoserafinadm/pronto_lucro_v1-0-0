@@ -95,6 +95,8 @@ export default function EditExpenseModal(props) {
                 tag_id: subCategory?._id
             }
 
+            console.log("subCategoryData", subCategoryData)
+
 
 
 
@@ -127,7 +129,7 @@ export default function EditExpenseModal(props) {
                 user_id
             }
         }).then(res => {
-            setCategories(res.data.incomeCategories)
+            setCategories(res.data.expenseCategories)
             setBankAccounts(res.data.bankAccounts)
         }).catch(e => {
             console.log(e)
@@ -348,20 +350,20 @@ export default function EditExpenseModal(props) {
                                                 <div className="col-12 d-flex flex-wrap flex-column">
 
                                                     <div class="form-check my-2">
-                                                        <input class="form-check-input form-check-input-income" type="radio" name="editConfigCheck" id="editConfig1" onClick={() => setEditConfig('1')} checked={editConfig === '1'} />
-                                                        <label class="form-check-label" for="editConfig1">
+                                                        <input class="form-check-input form-check-input-expense" type="radio" name="editConfigCheckExpense" id="editConfigExpense1" onClick={() => setEditConfig('1')} checked={editConfig === '1'} />
+                                                        <label class="form-check-label" for="editConfigExpense1">
                                                             Editar somente esta
                                                         </label>
                                                     </div>
                                                     <div class="form-check my-2">
-                                                        <input class="form-check-input form-check-input-income" type="radio" name="editConfigCheck" id="editConfig2" onClick={() => setEditConfig('2')} checked={editConfig === '2'} />
-                                                        <label class="form-check-label" for="editConfig2">
+                                                        <input class="form-check-input form-check-input-expense" type="radio" name="editConfigCheckExpense" id="editConfigExpense2" onClick={() => setEditConfig('2')} checked={editConfig === '2'} />
+                                                        <label class="form-check-label" for="editConfigExpense2">
                                                             Editar essa e todas as pendentes
                                                         </label>
                                                     </div>
                                                     <div class="form-check my-2">
-                                                        <input class="form-check-input form-check-input-income" type="radio" name="editConfigCheck" id="editConfig3" onClick={() => setEditConfig('3')} checked={editConfig === '3'} />
-                                                        <label class="form-check-label" for="editConfig3">
+                                                        <input class="form-check-input form-check-input-expense" type="radio" name="editConfigCheckExpense" id="editConfigExpense3" onClick={() => setEditConfig('3')} checked={editConfig === '3'} />
+                                                        <label class="form-check-label" for="editConfigExpense3">
                                                             Editar todas (incluindo efetivadas)
                                                         </label>
                                                     </div>
@@ -377,11 +379,6 @@ export default function EditExpenseModal(props) {
                                         </div>
 
 
-
-                                        <PaymentMethodConfig paymentMethod={paymentMethod}
-                                            setCreditConfig={setCreditConfig}
-                                            value={value}
-                                            section="expense" />
 
                                         <hr />
                                         <div className="row d-flex justify-content-between">
@@ -428,7 +425,7 @@ export default function EditExpenseModal(props) {
                                                 ) : (
                                                     <span
                                                         type="button"
-                                                        onClick={() => showModal("datePickerModalIncome")}
+                                                        onClick={() => showModal("datePickerModalExpenseEdit")}
                                                         className={`${editConfig !== "2" && editConfig !== "3" ? "cardAnimation" : ""
                                                             } px-2 py-1 text-white small mx-1 rounded-pill ctm-bg-danger`}
                                                     >
@@ -437,7 +434,7 @@ export default function EditExpenseModal(props) {
                                                 )}
                                                 <span
                                                     type="button"
-                                                    onClick={() => showModal("datePickerModalIncomeEdit")}
+                                                    onClick={() => showModal("datePickerModalExpenseEdit")}
                                                     className={`${editConfig !== "2" && editConfig !== "3" ? "cardAnimation" : ""
                                                         } px-2 py-1 text-white small mx-1 rounded-pill ctm-bg-primary`}
                                                 >
@@ -509,13 +506,13 @@ export default function EditExpenseModal(props) {
                                                 <span className="small fw-bold mb-2 ms-3">Categoria</span>
                                             </div>
 
-                                            <CategorySelectedComponent subCategorySelected={subCategorySelected} categories={categories} type="Expense" />
+                                            <CategorySelectedComponent subCategorySelected={subCategorySelected} categories={categories} type="Expense" edit/>
 
-                                            <CategorySelectModal
+                                            <CategorySelectModal edit
                                                 categories={categories}
                                                 setSubCategorySelected={setSubCategorySelected}
                                                 dataFunction={() => dataFunction(token.sub)}
-                                                id="tagSelectModalExpense"
+                                                id="tagSelectModalExpenseEdit"
                                                 section="expense" />
 
                                         </div>
@@ -528,7 +525,7 @@ export default function EditExpenseModal(props) {
                                                 <FontAwesomeIcon icon={faWallet} />
                                                 <span className="small fw-bold mb-2 ms-3">Conta</span>
                                             </div>
-                                            <div className="col-12 mt-2 d-flex justify-content-between" onClick={() => showModal('bankAccountsExpenseModal')}>
+                                            <div className="col-12 mt-2 d-flex justify-content-between" onClick={() => showModal('bankAccountsExpenseEditModal')}>
                                                 {!accountSelected ?
                                                     <span type="button"
                                                         class=" px-2 py-1  small mx-1 rounded-pill border pulse shadow">
@@ -538,7 +535,7 @@ export default function EditExpenseModal(props) {
                                                     <>
                                                         <div className="row">
                                                             <div>
-                                                                <span type="button" onClick={() => showModal('bankAccountsExpenseModal')}
+                                                                <span type="button" onClick={() => showModal('bankAccountsExpenseEditModal')}
                                                                     className={`cardAnimation px-2 py-1  text-white small mx-1 rounded-pill fw-bold `}
                                                                     style={{ backgroundColor: accountSelected.color }}>
                                                                     <img src={accountSelected?.bankSelected?.logoUrl} className="rounded-circle me-2" alt="" width={20} height={20} />
@@ -556,7 +553,7 @@ export default function EditExpenseModal(props) {
                                             <BankAccountsModal
                                                 bankAccounts={bankAccounts}
                                                 setAccountSelected={setAccountSelected}
-                                                id="bankAccountsExpenseModal" />
+                                                id="bankAccountsExpenseEditModal" />
                                         </div>
 
                                         <hr />
