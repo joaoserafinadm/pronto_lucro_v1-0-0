@@ -56,6 +56,7 @@ export default function ExpenseAddModal(props) {
     const [files, setFiles] = useState(null)
     const [bankAccounts, setBankAccounts] = useState([])
     const [accountSelected, setAccountSelected] = useState(null)
+    const [creditNetworkTaxes, setCreditNetworkTaxes] = useState([])
 
     const [active, setActive] = useState(true)
 
@@ -78,6 +79,7 @@ export default function ExpenseAddModal(props) {
         }).then(res => {
             setCategories(res.data.expenseCategories)
             setBankAccounts(res.data.bankAccounts)
+            setCreditNetworkTaxes(res.data.creditNetworkTaxes)
 
         }).catch(e => {
             console.log(e)
@@ -307,7 +309,7 @@ export default function ExpenseAddModal(props) {
 
                                         <PaymentMethodConfig paymentMethod={paymentMethod}
                                             setCreditConfig={setCreditConfig}
-                                            value={value}
+                                            value={value} creditNetworkTaxes={creditNetworkTaxes}
                                             section="expense" />
 
                                         <hr />

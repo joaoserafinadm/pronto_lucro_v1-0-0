@@ -62,6 +62,7 @@ export default function IncomeAddModal(props) {
     const [files, setFiles] = useState(null)
     const [bankAccounts, setBankAccounts] = useState([])
     const [accountSelected, setAccountSelected] = useState(null)
+    const [creditNetworkTaxes, setCreditNetworkTaxes] = useState([])
 
     const [active, setActive] = useState(true)
 
@@ -86,6 +87,7 @@ export default function IncomeAddModal(props) {
         }).then(res => {
             setCategories(res.data.incomeCategories)
             setBankAccounts(res.data.bankAccounts)
+            setCreditNetworkTaxes(res.data.creditNetworkTaxes)
         }).catch(e => {
             console.log(e)
         })
@@ -315,10 +317,9 @@ export default function IncomeAddModal(props) {
 
                                         <PaymentMethodConfig
                                             value={value}
-
                                             paymentMethod={paymentMethod}
                                             setCreditConfig={setCreditConfig}
-                                            section="income" />
+                                            section="income" creditNetworkTaxes={creditNetworkTaxes} />
 
                                         <hr />
                                         <div className="row d-flex justify-content-between">

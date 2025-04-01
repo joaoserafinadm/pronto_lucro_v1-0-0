@@ -61,7 +61,7 @@ export default function TaxesConfigPage() {
                 <>
                     <div className="row">
                         {creditNetworkTaxes?.map((elem, index) => (
-                            <div className='col-12 col-md-6' key={elem.id}>
+                            <div className='col-12 col-md-6' key={elem._id}>
                                 <div className="card my-2">
                                     <div className="card-body">
                                         <div className="row">
@@ -71,12 +71,12 @@ export default function TaxesConfigPage() {
                                             </div>
                                             <div className="col-6 d-flex justify-content-center align-items-center">
                                                 <div>
-                                                    <label htmlFor={`tax-${elem.id}`} className="">Taxa (%)</label>
+                                                    <label htmlFor={`tax-${elem._id}`} className="">Taxa (%)</label>
                                                     <div className='input-group'>
                                                         <input
                                                             className='form-control text-center'
                                                             type="number"
-                                                            id={`tax-${elem.id}`}
+                                                            id={`tax-${elem._id}`}
                                                             placeholder='0'
                                                             min="0"
                                                             max="100"

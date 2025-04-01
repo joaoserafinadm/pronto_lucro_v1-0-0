@@ -6,12 +6,14 @@ import { maskInputMoney, maskMoneyNumber, maskNumberMoney, maskNumero } from "..
 
 export default function PaymentMethodConfig(props) {
 
-    const { paymentMethod, value, section } = props
+    const { paymentMethod, value, section, creditNetworkTaxes } = props
 
     const [creditConfig, setCreditConfig] = useState({
         parcelas: 1,
         taxa: 0
     })
+
+    const [network, setNetwork] = useState(null)
     const [tax, setTax] = useState('')
 
     useEffect(() => {
@@ -21,10 +23,17 @@ export default function PaymentMethodConfig(props) {
 
     const numberFormat = (number, divisor) => {
 
-        const inputValue = maskMoneyNumber(number) * (1 + (+tax / 100))
+        const inputValue = maskMoneyNumber(number) * (1 + ((+network?.tax || 0) / 100))
 
         return maskNumberMoney(inputValue / +divisor)
 
+    }
+
+    const handleNetworkSelect = (id) => {
+
+        const network = creditNetworkTaxes?.find(elem => elem?._id?.toString() === id?.toString())
+
+        setNetwork(network)
     }
 
 
@@ -54,25 +63,26 @@ export default function PaymentMethodConfig(props) {
                         </div>
                     </div>
 
-                    {section === 'expense' && (
+                    {section === 'income' && (
                         <div className="col-12 col-md-6 my-2">
 
                             <div className="input-group input-group-sm ">
 
-                                <span htmlFor="" className="input-group-text">Juros</span>
-                                <input
-                                    type="text"
-                                    className="form-control text-end"
-                                    placeholder="0"
-                                    onChange={(e) => setTax(e.target.value)}
-                                    value={tax}
-                                    inputMode="numeric"
-                                />
-                                <span htmlFor="" className="input-group-text">%</span>
+                                <span htmlFor="" className="input-group-text">Bandeira</span>
+                                <select className="form-select" value={network?.id} onChange={(e) => handleNetworkSelect(e.target.value)} aria-label="Default select example">
+                                    {creditNetworkTaxes?.map((elem, index) => {
+                                        console.log("elem", elem)
+                                        return (
+                                            <option value={elem._id} key={index}>
+                                                {elem.descricao}
+                                            </option>
+                                        );
+                                    })}
+                                </select>
                             </div>
                         </div>
                     )}
-                    {section === 'income' && (
+                    {section === 'expense' && (
                         <div className="col-12 col-md-6 my-2">
 
                             <div className="input-group input-group-sm ">
@@ -91,8 +101,6 @@ export default function PaymentMethodConfig(props) {
                         </div>
 
                     )}
-
-
 
                     {/* {props.section === 'income' && (
 

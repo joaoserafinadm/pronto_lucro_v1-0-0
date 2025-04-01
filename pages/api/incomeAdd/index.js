@@ -40,7 +40,9 @@ export default authenticated(async (req, res) => {
                     }
                 })
 
-                res.status(200).json({ incomeCategories, expenseCategories, bankAccounts });
+                const creditNetworkTaxes = userExist.creditNetworkTaxes
+
+                res.status(200).json({ incomeCategories, expenseCategories, bankAccounts, creditNetworkTaxes });
             }
         }
 
