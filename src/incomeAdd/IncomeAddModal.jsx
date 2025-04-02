@@ -68,6 +68,7 @@ export default function IncomeAddModal(props) {
 
 
     const [categories, setCategories] = useState([])
+    const [expenseCategories, setExpenseCategories] = useState([])
     const [loadingSave, setLoadingSave] = useState(false)
 
     const [valueError, setValueError] = useState('')
@@ -86,6 +87,7 @@ export default function IncomeAddModal(props) {
             }
         }).then(res => {
             setCategories(res.data.incomeCategories)
+            setExpenseCategories(res.data.expenseCategories)
             setBankAccounts(res.data.bankAccounts)
             setCreditNetworkTaxes(res.data.creditNetworkTaxes)
         }).catch(e => {
@@ -319,6 +321,7 @@ export default function IncomeAddModal(props) {
                                             value={value}
                                             paymentMethod={paymentMethod}
                                             setCreditConfig={setCreditConfig}
+                                            categories={expenseCategories}
                                             section="income" creditNetworkTaxes={creditNetworkTaxes} />
 
                                         <hr />

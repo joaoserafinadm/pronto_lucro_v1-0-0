@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react"
 import { maskInputMoney, maskMoneyNumber, maskNumberMoney, maskNumero } from "../../utils/mask"
+import CategorySelectedComponent from "./categorySelectedComponent"
+import TagSelected from "../transactions/tagSelected"
 
 
 
 
 export default function PaymentMethodConfig(props) {
 
-    const { paymentMethod, value, section, creditNetworkTaxes } = props
+    const { paymentMethod, value, section, creditNetworkTaxes, categories } = props
 
     const [creditConfig, setCreditConfig] = useState({
         parcelas: 1,
@@ -15,6 +17,7 @@ export default function PaymentMethodConfig(props) {
 
     const [network, setNetwork] = useState(null)
     const [tax, setTax] = useState('')
+    const [automaticTax, setAutomaticTax] = useState(true)
 
     useEffect(() => {
         props.setCreditConfig(creditConfig)
@@ -23,9 +26,21 @@ export default function PaymentMethodConfig(props) {
 
     const numberFormat = (number, divisor) => {
 
-        const inputValue = maskMoneyNumber(number) * (1 + ((+network?.tax || 0) / 100))
+        const inputValue = maskMoneyNumber(number)
 
         return maskNumberMoney(inputValue / +divisor)
+
+    }
+    const taxValue = (number, divisor) => {
+
+        const inputValue = maskMoneyNumber(number) * (((+network?.tax || 0) / 100))
+
+        const data = {
+            totalValue: maskNumberMoney(inputValue),
+            value: maskNumberMoney(inputValue / +divisor)
+        }
+
+        return data
 
     }
 
@@ -64,23 +79,46 @@ export default function PaymentMethodConfig(props) {
                     </div>
 
                     {section === 'income' && (
-                        <div className="col-12 col-md-6 my-2">
+                        <>
+                            <div className="col-12 col-md-6 my-2">
 
-                            <div className="input-group input-group-sm ">
 
-                                <span htmlFor="" className="input-group-text">Bandeira</span>
-                                <select className="form-select" value={network?.id} onChange={(e) => handleNetworkSelect(e.target.value)} aria-label="Default select example">
-                                    {creditNetworkTaxes?.map((elem, index) => {
-                                        console.log("elem", elem)
-                                        return (
-                                            <option value={elem._id} key={index}>
-                                                {elem.descricao}
-                                            </option>
-                                        );
-                                    })}
-                                </select>
+                                <div class="form-check form-switch mt-0">
+                                    <input class="form-check-input form-check-input-income" type="checkbox" role="switch" id="automaticTaxSelect" checked={automaticTax} onChange={(e) => setAutomaticTax(e.target.checked)} aria-checked="true" />
+                                    <label class="form-check-label " for="automaticTaxSelect" checked={automaticTax} onChange={(e) => setAutomaticTax(e.target.checked)} aria-checked="true">Incluir taxa</label>
+                                </div>
                             </div>
-                        </div>
+                            {automaticTax && (
+                                <div className="col-12   my-2 small  card fadeItem">
+                                    <div className="card-body d-flex flex-column p-1">
+                                        <span className="fw-bold mb-2">Cálculo da taxa</span>
+                                        <div className="input-group input-group-sm mb-2">
+
+                                            <span htmlFor="" className="input-group-text">Bandeira</span>
+                                            <select className="form-select" value={network?.id} onChange={(e) => handleNetworkSelect(e.target.value)} aria-label="Default select example">
+                                                <option value="" disabled selected>Selecione</option>
+                                                {creditNetworkTaxes?.map((elem, index) => {
+                                                    console.log("elem", elem)
+                                                    return (
+                                                        <option value={elem._id} key={index}>
+                                                            {elem.descricao}
+                                                        </option>
+                                                    );
+                                                })}
+                                            </select>
+                                        </div>
+                                        <span htmlFor="" className="">• Taxa: <span className="text-c-danger bold">{network?.tax || 0}%</span></span>
+                                        <span htmlFor="" className="">• Valor da taxa (total): <span className="text-c-danger bold">R$ {taxValue(value, creditConfig.parcelas)?.totalValue || 0}</span></span>
+                                        <span htmlFor="" className="">• Valor da taxa (mensal): <span className="text-c-danger bold">R$ {taxValue(value, creditConfig.parcelas)?.value || 0}</span></span>
+                                        <span htmlFor="" className="">• Categoria vinculada: </span>
+                                        <TagSelected subCategory_id={"84"} categories={categories} />
+
+
+
+                                    </div>
+                                </div>
+                            )}
+                        </>
                     )}
                     {section === 'expense' && (
                         <div className="col-12 col-md-6 my-2">

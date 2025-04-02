@@ -30,7 +30,7 @@ export default function DesktopPage(props) {
                 <div className="d-lg-none">
                     <div className="row">
                         <span className="small text-secondary">
-                            Mantenha pressionado o item para ver as opções
+                            Selecione a transação para ver as opções
                         </span>
                     </div>
                     <DfcList />

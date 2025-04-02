@@ -11,7 +11,7 @@ export default function TagSelected(props) {
         categories } = props
 
 
-    const categorySelected = categories.find(elem => elem.subCategories.find(elem1 => elem1._id === subCategory_id))
+    const categorySelected = categories?.find(elem => elem.subCategories.find(elem1 => elem1._id === subCategory_id))
     const subCategorySelected = categorySelected?.subCategories.find(elem => elem._id === subCategory_id)
 
     const data = {
