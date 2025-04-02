@@ -108,8 +108,8 @@ export default function PaymentMethodConfig(props) {
                                             </select>
                                         </div>
                                         <span htmlFor="" className="">• Taxa: <span className="text-c-danger bold">{network?.tax || 0}%</span></span>
-                                        <span htmlFor="" className="">• Valor da taxa (total): <span className="text-c-danger bold">R$ {taxValue(value, creditConfig.parcelas)?.totalValue || 0}</span></span>
-                                        <span htmlFor="" className="">• Valor da taxa (mensal): <span className="text-c-danger bold">R$ {taxValue(value, creditConfig.parcelas)?.value || 0}</span></span>
+                                        <span htmlFor="" className="">• Valor da taxa (total): <span className="text-c-danger bold">-R$ {taxValue(value, creditConfig.parcelas)?.totalValue || 0}</span></span>
+                                        <span htmlFor="" className="">• Valor da taxa (mensal): <span className="text-c-danger bold">-R$ {taxValue(value, creditConfig.parcelas)?.value || 0}</span></span>
                                         <span htmlFor="" className="">• Categoria vinculada: </span>
                                         <TagSelected subCategory_id={"84"} categories={categories} />
 
