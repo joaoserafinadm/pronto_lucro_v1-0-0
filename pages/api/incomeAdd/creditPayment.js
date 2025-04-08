@@ -46,20 +46,41 @@ export default authenticated(async (req, res) => {
                 res.status(400).json({ error: "User doesn't exist." });
             } else {
                 const newId = new ObjectId();
+                const newTaxId = new ObjectId();
                 const dateAdded = new Date();
                 const dateAddedObj = dateObject(dateAdded);
 
+                const taxData = {
+                    ...data,
+                    subCategory_id: data.creditConfig.subCategory_id,
+                    value: data.creditConfig.taxTotal,
+                    _id: new ObjectId(),
+                    taxRef_id: newTaxId,
+                    ref_id: newId,
+                    dateAdded,
+                    type: 'expense'
+                }
+
                 const dfcDataArray = handleDfcData(newId, dateAdded, dateAddedObj, data, section);
+                const dfcTaxDataArray = handleDfcData(newId, dateAdded, dateAddedObj, taxData, 'expense');
 
                 const dreData = {
                     ...data,
-                    // tag: data.tagSelected._id,
                     value: maskMoneyNumber(data.value),
-                    taxedValue: +data.value - +data.value * +data.creditConfig.taxa / 100,
                     _id: new ObjectId(),
                     ref_id: newId,
                     dateAdded,
                     type: section,
+                    active: !data.active ? false : isDateBefore(data.competenceMonth, dateAddedObj)
+                };
+                const dreTaxData = {
+                    ...data,
+                    value: maskMoneyNumber(data.creditConfig?.taxTotal),
+                    _id: new ObjectId(),
+                    taxRef_id: newTaxId,
+                    ref_id: newId,
+                    dateAdded,
+                    type: 'expense',
                     active: !data.active ? false : isDateBefore(data.competenceMonth, dateAddedObj)
                 };
 
@@ -77,13 +98,22 @@ export default authenticated(async (req, res) => {
                         {
                             $push: {
                                 'dre.$.data': {
-                                    $each: [dreData],
+                                    $each: [dreTaxData],
                                     $position: 0,
+                                }
+                            },
+                            $push: {
+                                'dre.$.data': {
+                                    $each: [dreData],
+                                    $position: 1,
                                 }
                             },
                             $inc: {
                                 'dre.$.monthResult': section === 'income' ? dreData.value : -dreData.value,
-                            }
+                            },
+                            $inc: {
+                                'dre.$.monthResult': -dreTaxData.value ,
+                            },
                         }
                     );
 
@@ -92,7 +122,7 @@ export default authenticated(async (req, res) => {
                             year: data.competenceMonth.year,
                             month: data.competenceMonth.month,
                             monthResult: section === 'income' ? dreData.value : -dreData.value,
-                            data: [dreData],
+                            data: [dreData, dreTaxData],
                         };
 
                         const newDreResult = await db.collection('users').updateOne(
@@ -104,6 +134,50 @@ export default authenticated(async (req, res) => {
                             return res.status(500).json({ message: 'Failed to insert new DRE entry' });
                         }
                     }
+
+                    for (const dfcTaxData of dfcTaxDataArray) {
+                        const dfcUpdateResult = await db.collection('users').updateOne(
+                            {
+                                _id: new ObjectId(user_id),
+                                'dfc': {
+                                    $elemMatch: {
+                                        'year': dfcTaxData.paymentDate.year,
+                                        'month': dfcTaxData.paymentDate.month
+                                    }
+                                }
+                            },
+                            {
+                                $push: {
+                                    'dfc.$.data': {
+                                        $each: [dfcTaxData],
+                                        $position: 0,
+                                    }
+                                },
+                                $inc: {
+                                    'dfc.$.monthResult': section === 'income' ? dfcTaxData.value : -dfcTaxData.value,
+                                }
+                            }
+                        );
+
+                        if (dfcUpdateResult.modifiedCount === 0) {
+                            const newDfcItem = {
+                                year: dfcData.paymentDate.year,
+                                month: dfcData.paymentDate.month,
+                                monthResult: section === 'income' ? dfcData.value : -dfcData.value,
+                                data: [dfcData],
+                            };
+
+                            const newDfcResult = await db.collection('users').updateOne(
+                                { _id: new ObjectId(user_id) },
+                                { $push: { dfc: newDfcItem } }
+                            );
+
+                            if (newDfcResult.modifiedCount === 0) {
+                                return res.status(500).json({ message: 'Failed to insert new DFC entry' });
+                            }
+                        }
+                    }
+
 
                     for (const dfcData of dfcDataArray) {
                         const dfcUpdateResult = await db.collection('users').updateOne(
@@ -147,7 +221,7 @@ export default authenticated(async (req, res) => {
                             }
                         }
                     }
-
+                    
                     // Ordenar os dados da DRE e DFC após a atualização
                     await db.collection('users').updateOne(
                         { _id: new ObjectId(user_id) },
@@ -198,8 +272,10 @@ function isDateBefore(paymentDate, dateAddedObj) {
 
 function handleDfcData(newId, dateAdded, dateAddedObj, data, section) {
 
-    const valueFormat = +maskMoneyNumber(data.value);
-    const newValue = valueFormat - valueFormat * +data.creditConfig.taxa / 100;
+    console.log("data", data.value)
+
+    const valueFormat = maskMoneyNumber(data.value);
+    const newValue = valueFormat 
 
     const newData = [];
 

@@ -74,6 +74,8 @@ export function maskInputMoney(number) {
 
 export function maskMoneyNumber(value) {
 
+	// console.log("valueTes", value)
+
 	if (value) {
 
 

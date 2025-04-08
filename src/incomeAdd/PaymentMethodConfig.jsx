@@ -11,8 +11,7 @@ export default function PaymentMethodConfig(props) {
     const { paymentMethod, value, section, creditNetworkTaxes, categories } = props
 
     const [creditConfig, setCreditConfig] = useState({
-        parcelas: 1,
-        taxa: 0
+        parcelas: 1
     })
 
     const [network, setNetwork] = useState(null)
@@ -20,9 +19,20 @@ export default function PaymentMethodConfig(props) {
     const [automaticTax, setAutomaticTax] = useState(true)
 
     useEffect(() => {
-        props.setCreditConfig(creditConfig)
 
-    }, [creditConfig])
+        const data = {
+            ...creditConfig,
+            network: network?._id,
+            taxMonth:  taxValue(value, creditConfig.parcelas)?.value || 0,
+            taxTotal: taxValue(value, creditConfig.parcelas)?.totalValue || 0,
+            subCategory_id: "84",
+            automaticTax
+        }
+
+        console.log("data1", data)
+        props.setCreditConfig(data)
+
+    }, [creditConfig, network, automaticTax])
 
     const numberFormat = (number, divisor) => {
 
