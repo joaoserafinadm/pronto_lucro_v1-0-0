@@ -20,12 +20,17 @@ export default function PaymentMethodConfig(props) {
     const [debitOnPaymentDay, setDebitOnPaymentDay] = useState(true)
 
     useEffect(() => {
+        if (section === "income") setDebitOnPaymentDay(false)
+        else setDebitOnPaymentDay(true)
+    }, [section])
+
+    useEffect(() => {
 
         const data = {
             ...creditConfig,
             network: network?._id,
-            taxMonth: taxValue(value, creditConfig.parcelas)?.value || 0,
-            taxTotal: taxValue(value, creditConfig.parcelas)?.totalValue || 0,
+            taxMonth: taxValue(value, creditConfig.parcelas, network?.tax)?.value || 0,
+            taxTotal: taxValue(value, creditConfig.parcelas, network?.tax)?.totalValue || 0,
             subCategory_id: "84",
             automaticTax,
             debitOnPaymentDay
@@ -191,7 +196,7 @@ export default function PaymentMethodConfig(props) {
                                     </label>
                                 </div>
                             </div>
-                            
+
                         </>
                     )}
 

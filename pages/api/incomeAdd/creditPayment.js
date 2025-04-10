@@ -36,6 +36,8 @@ export default authenticated(async (req, res) => {
     } else if (req.method === "POST") {
         const { user_id, section, ...data } = req.body;
 
+        
+
         if (!user_id || !data?.value) {
             res.status(400).json({ error: "Missing parameters on request body" });
         } else {
@@ -44,16 +46,13 @@ export default authenticated(async (req, res) => {
 
             const backAccountSelected = userExist.bankAccounts.find(account => account._id.toString() === data?.account_id)
 
-            if(data.creditConfig?.debitOnPaymentDay && backAccountSelected) {
-
-                data.map(elem => ({
-                    ...elem,
-                    paymentDate: {
-                        ...elem.paymentDate,
-                        day: backAccountSelected.diaLancamento
-                    }
-                }))
+            if (data.creditConfig?.debitOnPaymentDay && backAccountSelected) {
+                data.paymentDate = data.paymentDate || {};
+                data.paymentDate.day = backAccountSelected.diaLancamento;
             }
+
+            console.log('data2', data)
+
 
             if (!userExist) {
                 res.status(400).json({ error: "User doesn't exist." });
@@ -76,6 +75,8 @@ export default authenticated(async (req, res) => {
 
                 const dfcDataArray = handleDfcData(newId, dateAdded, dateAddedObj, data, section);
                 const dfcTaxDataArray = handleDfcData(newId, dateAdded, dateAddedObj, taxData, 'expense');
+
+                // console.log('dfcDataArray', dfcDataArray)
 
                 const dreData = {
                     ...data,
@@ -174,10 +175,10 @@ export default authenticated(async (req, res) => {
 
                         if (dfcUpdateResult.modifiedCount === 0) {
                             const newDfcItem = {
-                                year: dfcData.paymentDate.year,
-                                month: dfcData.paymentDate.month,
-                                monthResult: section === 'income' ? dfcData.value : -dfcData.value,
-                                data: [dfcData],
+                                year: dfcTaxData.paymentDate.year,
+                                month: dfcTaxData.paymentDate.month,
+                                monthResult: section === 'income' ? dfcTaxData.value : -dfcTaxData.value,
+                                data: [dfcTaxData],
                             };
 
                             const newDfcResult = await db.collection('users').updateOne(
@@ -285,7 +286,8 @@ function isDateBefore(paymentDate, dateAddedObj) {
 
 function handleDfcData(newId, dateAdded, dateAddedObj, data, section) {
 
-    console.log("data", data.value)
+    console.log("data", section, data)
+
 
     const valueFormat = maskMoneyNumber(data.value);
     const newValue = valueFormat
