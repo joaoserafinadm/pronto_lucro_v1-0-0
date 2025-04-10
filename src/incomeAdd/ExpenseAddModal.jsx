@@ -23,7 +23,7 @@ import { showModal } from "../components/Modal";
 import { showModalBs } from "../../utils/modalControl";
 import StyledDropzone from "../components/styledDropzone/StyledDropzone";
 import { createImageUrl } from "../../utils/createImageUrl";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { newData } from "../../store/NewData/NewData.action";
 import BankAccountsModal from "./BankAccountsModal";
 import TagSelectedComponent from "./TagSelectedComponent";
@@ -39,6 +39,14 @@ export default function ExpenseAddModal(props) {
 
     const token = jwt.decode(Cookie.get('auth'));
     const dispatch = useDispatch()
+
+    const newDataStore = useSelector(state => state.newData)
+
+    useEffect(() => {
+        if (newDataStore) dataFunction(token.sub)
+        dispatch(newData(false))
+
+    }, [newDataStore])
 
     const router = useRouter()
 
@@ -307,9 +315,12 @@ export default function ExpenseAddModal(props) {
 
 
 
-                                        <PaymentMethodConfig paymentMethod={paymentMethod}
+                                        <PaymentMethodConfig
+                                            value={value}
+                                            paymentMethod={paymentMethod}
                                             setCreditConfig={setCreditConfig}
-                                            value={value} creditNetworkTaxes={creditNetworkTaxes}
+                                            categories={categories}
+                                            creditNetworkTaxes={creditNetworkTaxes}
                                             section="expense" />
 
                                         <hr />

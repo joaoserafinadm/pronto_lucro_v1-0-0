@@ -6,6 +6,8 @@ import { useEffect, useState } from "react"
 import axios from "axios"
 import scrollTo from "../../utils/scrollTo"
 import { showModalBs } from "../../utils/modalControl"
+import { newData } from "../../store/NewData/NewData.action"
+import { useDispatch } from "react-redux"
 
 
 
@@ -17,6 +19,8 @@ export default function CategoriesOrderModal(props) {
     const [categoriesEdit, setCategoriesEdit] = useState([])
 
     const [saveError, setSaveError] = useState('')
+
+    const dispatch = useDispatch()
 
 
     useEffect(() => {
@@ -53,6 +57,8 @@ export default function CategoriesOrderModal(props) {
         await axios.patch(`/api/categories/categoriesOrder`, data)
             .then(res => {
                 dataFunction()
+                                            dispatch(newData(true))
+                
             }).catch(e => {
                 showModalBs(id)
                 setSaveError("Houve um problema ao salvar. Por favor, tente novamente.")

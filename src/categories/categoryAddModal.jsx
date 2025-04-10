@@ -3,6 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import axios from "axios"
 import { useState } from "react"
 import { showModalBs } from "../../utils/modalControl"
+import { useDispatch } from "react-redux"
+import { newData } from "../../store/NewData/NewData.action"
 
 
 
@@ -10,6 +12,8 @@ import { showModalBs } from "../../utils/modalControl"
 export default function CategoryAddModal(props) {
 
     const { id, type, token, dataFunction } = props
+
+    const dispatch = useDispatch()
 
     const [categoryName, setCategoryName] = useState('')
     const [color, setColor] = useState('')
@@ -77,6 +81,8 @@ export default function CategoryAddModal(props) {
             .then(res => {
                 dataFunction()
                 initialValues()
+                dispatch(newData(true))
+
             }).catch(e => {
                 console.log(e)
                 showModalBs(id)

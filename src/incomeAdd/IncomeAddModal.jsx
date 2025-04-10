@@ -44,6 +44,8 @@ export default function IncomeAddModal(props) {
 
     useEffect(() => {
         if (newDataStore) dataFunction(token.sub)
+        dispatch(newData(false))
+
     }, [newDataStore])
 
     const router = useRouter()

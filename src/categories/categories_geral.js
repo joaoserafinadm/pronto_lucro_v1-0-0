@@ -59,7 +59,7 @@ export function categories_geral() {
             {
                 _id: "3",
                 categoryName: "Impostos e Fretes",
-                color: "#E57373", // Verde
+                color: "#A1887F", // Verde  
                 subCategories: [
                     {
                         _id: "31",
@@ -431,7 +431,7 @@ export function categories_geral() {
             {
                 _id: "8",
                 categoryName: "Despesas Financeiras",
-                color: "#A1887F",
+                color: "#E57373",
                 subCategories: [
                     {
                         _id: "81",
@@ -443,23 +443,28 @@ export function categories_geral() {
                     },
                     {
                         _id: "83",
-                        name: 'Tarifas Boletos'
+                        name: 'Tarifas Boletos',
+                        fixed:true
                     },
                     {
                         _id: "84",
-                        name: 'Tarifa sobre venda de cartões'
+                        name: 'Tarifa sobre venda de cartões',
+                        fixed:true
                     },
                     {
                         _id: "85",
-                        name: 'Tarifas sobre antecipação de cartões'
+                        name: 'Tarifas sobre antecipação de cartões',
+                        fixed:true
                     },
                     {
                         _id: "86",
-                        name: 'Juros bancários'
+                        name: 'Juros bancários',
+                        fixed:true
                     },
                     {
                         _id: "87",
-                        name: 'Juros desconto de cheques'
+                        name: 'Juros desconto de cheques',
+                        fixed:true
                     }
 
                 ]

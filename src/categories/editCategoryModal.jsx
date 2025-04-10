@@ -8,8 +8,12 @@ import { showModalBs } from "../../utils/modalControl";
 import scrollTo from "../../utils/scrollTo";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import CategoryIcon, { SubCategoryIcon } from "./categoryIcon";
+import { useDispatch } from "react-redux";
+import { newData } from "../../store/NewData/NewData.action";
 
 export default function EditCategoryModal(props) {
+
+    const dispatch = useDispatch();
 
     const token = jwt.decode(Cookie.get('auth'));
     const { categorySelected, categories, type, dataFunction, id } = props;
@@ -71,6 +75,8 @@ export default function EditCategoryModal(props) {
         await axios.patch(`/api/categories/categoryEdit`, data)
             .then(res => {
                 dataFunction();
+                                            dispatch(newData(true))
+                
             }).catch(e => {
                 showModalBs(id);
                 setSaveError("Houve um problema ao editar a categoria. Por favor, tente novamente.");

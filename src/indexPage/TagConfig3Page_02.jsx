@@ -54,12 +54,15 @@ export default function TagConfig3Page_02(props) {
 
     const handleTagsSave = async () => {
 
+        const fixedCategories = expenseCategories.filter(elem => elem?._id === '8')
+
+
         const body = {
             user_id: token.sub,
             setorSelected: setorSelected,
             newSetorName: newSetorName,
             incomeCategories: newCategories ? [] : incomeCategories,
-            expenseCategories: newCategories ? [] : expenseCategories,
+            expenseCategories: newCategories ? fixedCategories : expenseCategories,
             companyCategory: companyCategory,
             regimeTributario: regimeTributario
         }
@@ -191,8 +194,30 @@ export default function TagConfig3Page_02(props) {
                 {newCategories && (
                     <div className="alert alert-danger fadeItem">
                         <span>
-                            <span className="small  "> <FontAwesomeIcon icon={faWarning} className="me-2" /><b>Atenção!</b> Ao marcar esta opção, sua página de categorias ficará em branco e você deverá adicionar categorias manualmente.</span>
+                            <span className="small  "> <FontAwesomeIcon icon={faWarning} className="me-2" /><b>Atenção!</b> Ao marcar esta opção, serão adicionadas somente as categorias abaixo (obrigatórias).</span>
                         </span>
+                        <div className="card">
+                            <div className="card-body">
+                                {expenseCategories.filter(elem => elem?._id === '8').map((elem, index) => (
+                                    <div key={index} className="row my-2">
+                                        <div className="col-12 d-flex my-1 align-items-center">
+                                            <CategoryIcon color={elem.color} />
+                                            {/* <div style={{ backgroundColor: elem.color, height: "15px", width: "15px" }} className="rounded-circle me-2"></div> */}
+                                            <span className="bold">{elem.categoryName}</span>
+                                        </div>
+                                        {elem.subCategories?.map((elem1, index) => {
+                                            if (elem1.fixed) return (
+                                                <div className="col-12 d-flex my-1 align-items-center">
+                                                    <SubCategoryIcon color={elem.color} />
+                                                    {/* <div style={{ height: "10px", width: "10px", border: `2px solid ${elem.color}` }} className="rounded-circle ms-2 me-2"></div> */}
+                                                    <span className="">{elem1.name}</span>
+                                                </div>
+                                            )
+                                        })}
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
                     </div>
                 )}
 

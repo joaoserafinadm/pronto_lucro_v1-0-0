@@ -4,7 +4,7 @@ import CardTemplate from "./CardTemplate"
 import BankColorSelect from "./BankColorSelect"
 import { maskInputMoney } from "../../utils/mask"
 import scrollTo from "../../utils/scrollTo"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { SpinnerSM } from "../components/loading/Spinners"
 
 
@@ -37,6 +37,18 @@ export default function BankSetup(props) {
         diaFechamento,
         setDiaFechamento,
     } = props
+
+    useEffect(() => {
+        resetCreditValues()
+    }, [bankSelected])
+
+    const resetCreditValues = () => {
+        setCreditCard(false)
+        setCreditLimit('')
+        setCreditNetwork('')
+        setDiaLancamento(1)
+        setDiaFechamento(5)
+    }
 
 
 

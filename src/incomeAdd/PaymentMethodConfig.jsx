@@ -17,22 +17,24 @@ export default function PaymentMethodConfig(props) {
     const [network, setNetwork] = useState(null)
     const [tax, setTax] = useState('')
     const [automaticTax, setAutomaticTax] = useState(true)
+    const [debitOnPaymentDay, setDebitOnPaymentDay] = useState(true)
 
     useEffect(() => {
 
         const data = {
             ...creditConfig,
             network: network?._id,
-            taxMonth:  taxValue(value, creditConfig.parcelas)?.value || 0,
+            taxMonth: taxValue(value, creditConfig.parcelas)?.value || 0,
             taxTotal: taxValue(value, creditConfig.parcelas)?.totalValue || 0,
             subCategory_id: "84",
-            automaticTax
+            automaticTax,
+            debitOnPaymentDay
         }
 
         console.log("data1", data)
         props.setCreditConfig(data)
 
-    }, [creditConfig, network, automaticTax])
+    }, [creditConfig, network, automaticTax, debitOnPaymentDay])
 
     const numberFormat = (number, divisor) => {
 
@@ -41,9 +43,9 @@ export default function PaymentMethodConfig(props) {
         return maskNumberMoney(inputValue / +divisor)
 
     }
-    const taxValue = (number, divisor) => {
+    const taxValue = (number, divisor, tax) => {
 
-        const inputValue = maskMoneyNumber(number) * (((+network?.tax || 0) / 100))
+        const inputValue = maskMoneyNumber(number) * (((+tax || 0) / 100))
 
         const data = {
             totalValue: maskNumberMoney(inputValue),
@@ -117,37 +119,80 @@ export default function PaymentMethodConfig(props) {
                                                 })}
                                             </select>
                                         </div>
-                                        <span htmlFor="" className="">• Taxa: <span className="text-c-danger bold">{network?.tax || 0}%</span></span>
-                                        <span htmlFor="" className="">• Valor da taxa (total): <span className="text-c-danger bold">-R$ {taxValue(value, creditConfig.parcelas)?.totalValue || 0}</span></span>
-                                        <span htmlFor="" className="">• Valor da taxa (mensal): <span className="text-c-danger bold">-R$ {taxValue(value, creditConfig.parcelas)?.value || 0}</span></span>
+
+                                        <span htmlFor="" className="d-flex align-items-center">• Taxa:
+                                            {network?.descricao === "Outra Bandeira" ?
+                                                <div className="ms-2 col-2">
+
+                                                    <div className="input-group input-group-sm">
+                                                        <input type="text" className="form-control form-control-sm text-end" placeholder="0" value={network?.tax || 0} onChange={(e) => setNetwork({ ...network, tax: e.target.value })} />
+                                                        <span className="input-group-text">
+                                                            %
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                :
+                                                <span className="text-c-danger bold ms-2">{network?.tax || 0}%</span>
+                                            }
+                                        </span>
+                                        <span htmlFor="" className="">• Valor da taxa (total): <span className="text-c-danger bold">-R$ {taxValue(value, creditConfig.parcelas, network?.tax)?.totalValue || 0}</span></span>
+                                        <span htmlFor="" className="">• Valor da taxa (mensal): <span className="text-c-danger bold">-R$ {taxValue(value, creditConfig.parcelas, network?.tax)?.value || 0}</span></span>
                                         <span htmlFor="" className="">• Categoria vinculada: </span>
                                         <TagSelected subCategory_id={"84"} categories={categories} />
 
 
 
                                     </div>
+
+
                                 </div>
                             )}
+
+
                         </>
                     )}
                     {section === 'expense' && (
-                        <div className="col-12 col-md-6 my-2">
+                        <>
+                            <div className="col-12 col-md-6 my-2">
 
-                            <div className="input-group input-group-sm ">
+                                <div className="input-group input-group-sm ">
 
-                                <span htmlFor="" className="input-group-text">Taxa</span>
-                                <input
-                                    type="text"
-                                    className="form-control text-end"
-                                    placeholder="0"
-                                    onChange={(e) => setTax(e.target.value)}
-                                    value={tax}
-                                    inputMode="numeric"
-                                />
-                                <span htmlFor="" className="input-group-text">%</span>
+                                    <span htmlFor="" className="input-group-text">Taxa</span>
+                                    <input
+                                        type="text"
+                                        className="form-control text-end"
+                                        placeholder="0"
+                                        onChange={(e) => setTax(e.target.value)}
+                                        value={tax}
+                                        inputMode="numeric"
+                                    />
+                                    <span htmlFor="" className="input-group-text">%</span>
+                                </div>
+
                             </div>
-                        </div>
-
+                            <div className="col-12 d-flex flex-column mb-3">
+                                <span htmlFor="" className="">• Valor da taxa (total): <span className="text-c-danger bold">-R$ {taxValue(value, creditConfig.parcelas, tax)?.totalValue || 0}</span></span>
+                                <span htmlFor="" className="">• Valor da taxa (mensal): <span className="text-c-danger bold">-R$ {taxValue(value, creditConfig.parcelas, tax)?.value || 0}</span></span>
+                                <span htmlFor="" className="">• Categoria vinculada: </span>
+                                <TagSelected subCategory_id={"86"} categories={categories} />
+                            </div>
+                            <hr />
+                            <div className="col-12">
+                                <div class="form-check">
+                                    <input class="form-check-input form-check-input-expense" type="radio" name="debitDay" id="debitDay1" checked={debitOnPaymentDay} onChange={(e) => setDebitOnPaymentDay(e.target.checked)} />
+                                    <label class={`form-check-label small ${debitOnPaymentDay ? 'fw-bold' : ''}`} for="debitDay1">
+                                        Debitar valor no dia de pagamento do cartão de crédito
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input form-check-input-expense" type="radio" name="debitDay" id="debitDay2" checked={!debitOnPaymentDay} onChange={(e) => setDebitOnPaymentDay(!e.target.checked)} />
+                                    <label class={`form-check-label small ${!debitOnPaymentDay ? 'fw-bold' : ''}`} for="debitDay2">
+                                        Debitar valor no dia atual
+                                    </label>
+                                </div>
+                            </div>
+                            
+                        </>
                     )}
 
                     {/* {props.section === 'income' && (

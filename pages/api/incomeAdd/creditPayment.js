@@ -42,6 +42,19 @@ export default authenticated(async (req, res) => {
             const { db } = await connect();
             const userExist = await db.collection('users').findOne({ _id: new ObjectId(user_id) });
 
+            const backAccountSelected = userExist.bankAccounts.find(account => account._id.toString() === data?.account_id)
+
+            if(data.creditConfig?.debitOnPaymentDay && backAccountSelected) {
+
+                data.map(elem => ({
+                    ...elem,
+                    paymentDate: {
+                        ...elem.paymentDate,
+                        day: backAccountSelected.diaLancamento
+                    }
+                }))
+            }
+
             if (!userExist) {
                 res.status(400).json({ error: "User doesn't exist." });
             } else {
@@ -112,7 +125,7 @@ export default authenticated(async (req, res) => {
                                 'dre.$.monthResult': section === 'income' ? dreData.value : -dreData.value,
                             },
                             $inc: {
-                                'dre.$.monthResult': -dreTaxData.value ,
+                                'dre.$.monthResult': -dreTaxData.value,
                             },
                         }
                     );
@@ -221,7 +234,7 @@ export default authenticated(async (req, res) => {
                             }
                         }
                     }
-                    
+
                     // Ordenar os dados da DRE e DFC após a atualização
                     await db.collection('users').updateOne(
                         { _id: new ObjectId(user_id) },
@@ -275,7 +288,7 @@ function handleDfcData(newId, dateAdded, dateAddedObj, data, section) {
     console.log("data", data.value)
 
     const valueFormat = maskMoneyNumber(data.value);
-    const newValue = valueFormat 
+    const newValue = valueFormat
 
     const newData = [];
 

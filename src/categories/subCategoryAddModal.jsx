@@ -4,10 +4,14 @@ import { useState } from "react";
 import { showModalBs } from "../../utils/modalControl";
 import axios from "axios";
 import { ObjectId } from "bson";
+import { useDispatch } from "react-redux";
+import { newData } from "../../store/NewData/NewData.action";
 
 
 
 export default function SubCategoryAddModal(props) {
+
+    const dispatch = useDispatch();
 
     const { categorySelected, type, dataFunction, id, token } = props;
 
@@ -28,6 +32,8 @@ export default function SubCategoryAddModal(props) {
             .then(res => {
                 dataFunction();
                 setSubCategoryName('');
+                dispatch(newData(true))
+
             }).catch(e => {
                 console.log(e)
                 showModalBs(id)
