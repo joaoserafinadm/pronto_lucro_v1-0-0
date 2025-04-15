@@ -322,7 +322,7 @@ export default function GeralValuesCard(props) {
                                 <div className="card border-0 bg-light rounded-4 h-100 shadow-sm">
                                     <div className="card-body p-3">
                                         <div className="d-flex align-items-center mb-2">
-                                            <div className="bg-success bg-opacity-25 p-2 rounded-circle me-2">
+                                            <div className="d-flex justify-content-center align-items-center bg-success bg-opacity-25 p-2 rounded-circle me-2" style={{ width: "30px", height: "30px" }}>
                                                 <FontAwesomeIcon icon={faArrowUp} className="text-success" />
                                             </div>
                                             <div>
@@ -354,7 +354,8 @@ export default function GeralValuesCard(props) {
                                 <div className="card border-0 bg-light rounded-4 h-100 shadow-sm">
                                     <div className="card-body p-3">
                                         <div className="d-flex align-items-center mb-2">
-                                            <div className="bg-danger bg-opacity-25 p-2 rounded-circle me-2">
+                                        <div className="d-flex justify-content-center align-items-center bg-danger bg-opacity-25 p-2 rounded-circle me-2" style={{ width: "30px", height: "30px" }}>
+
                                                 <FontAwesomeIcon icon={faArrowDown} className="text-danger" />
                                             </div>
                                             <div>
@@ -387,7 +388,7 @@ export default function GeralValuesCard(props) {
                         <div className="row d-lg-none d-block mt-4">
                             <div className="col-12 d-flex justify-content-center">
                                 <button
-                                    className="btn btn-primary rounded-pill shadow-sm px-4 py-2"
+                                    className="btn  rounded-pill shadow-sm px-4 py-2 small btn-c-outline-tertiary" style={{fontSize: "12px"}}
                                     type="button"
                                     data-bs-toggle="modal"
                                     data-bs-target="#inputsHistoricModal"
@@ -405,7 +406,7 @@ export default function GeralValuesCard(props) {
             <div className="col-5 d-lg-block d-none">
                 <div className="card shadow-sm border-0 rounded-4 h-100">
                     <div className="card-body">
-                        <h5 className="card-title mb-3 fw-bold text-secondary">Histórico</h5>
+                        {/* <h5 className="card-title mb-3 fw-bold text-secondary">Histórico</h5> */}
                         <InputsHistoric lastDataInputs={lastDataInputs} categories={categories} />
                     </div>
                 </div>

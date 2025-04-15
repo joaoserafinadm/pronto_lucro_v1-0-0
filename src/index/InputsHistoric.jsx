@@ -30,7 +30,7 @@ export default function InputsHistoric(props) {
                     <hr />
                     <div
                         className="col-12"
-                        style={{ maxHeight: "170px", overflowY: "scroll" }}
+                        style={{ maxHeight: "270px", overflowY: "scroll" }}
                     >
 
                         {lastDataInputs.map((elem, index) => {

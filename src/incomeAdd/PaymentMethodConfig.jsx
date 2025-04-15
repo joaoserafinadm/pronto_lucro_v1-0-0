@@ -26,20 +26,43 @@ export default function PaymentMethodConfig(props) {
 
     useEffect(() => {
 
-        const data = {
-            ...creditConfig,
-            network: network?._id,
-            taxMonth: taxValue(value, creditConfig.parcelas, network?.tax)?.value || 0,
-            taxTotal: taxValue(value, creditConfig.parcelas, network?.tax)?.totalValue || 0,
-            subCategory_id: "84",
-            automaticTax,
-            debitOnPaymentDay
+        let data
+
+        if (section === 'income') {
+            data = {
+                ...creditConfig,
+                network: network?._id,
+                taxMonth: taxValue(value, creditConfig.parcelas, network?.tax)?.value || 0,
+                taxTotal: taxValue(value, creditConfig.parcelas, network?.tax)?.totalValue || 0,
+                subCategory_id: "84",
+                automaticTax,
+                debitOnPaymentDay
+            }
+
+            console.log("data1", data)
+            props.setCreditConfig(data)
         }
 
-        console.log("data1", data)
-        props.setCreditConfig(data)
+        if (section === 'expense') {
 
-    }, [creditConfig, network, automaticTax, debitOnPaymentDay])
+            data = {
+                ...creditConfig,
+                network: network?._id,
+                taxMonth: taxValue(value, creditConfig.parcelas, tax)?.value || 0,
+                taxTotal: taxValue(value, creditConfig.parcelas, tax)?.totalValue || 0,
+                subCategory_id: "84",
+                automaticTax,
+                debitOnPaymentDay
+            }
+
+            console.log("data1", data)
+            props.setCreditConfig(data)
+
+        }
+
+
+
+    }, [creditConfig, network, automaticTax, debitOnPaymentDay, tax])
 
     const numberFormat = (number, divisor) => {
 
@@ -162,7 +185,7 @@ export default function PaymentMethodConfig(props) {
 
                                 <div className="input-group input-group-sm ">
 
-                                    <span htmlFor="" className="input-group-text">Taxa</span>
+                                    <span htmlFor="" className="input-group-text">Juro</span>
                                     <input
                                         type="text"
                                         className="form-control text-end"
