@@ -61,36 +61,49 @@ export default function TaxesConfigPage() {
                 <>
                     <div className="row">
                         {creditNetworkTaxes?.map((elem, index) => (
-                            <div className='col-12 col-md-6' key={elem._id}>
-                                <div className="card my-2">
-                                    <div className="card-body">
-                                        <div className="row">
-                                            <div className="col-6 d-flex justify-content-center align-items-center flex-column">
-                                                <img src={elem.logoUrl} alt={elem.descricao} style={{ maxWidth: '130px', position: 'absolute', marginBottom: '20px' }} />
-                                                <span style={{ position: 'absolute', marginTop: '60px' }} className='small fw-bold'>{elem.descricao}</span>
-                                            </div>
-                                            <div className="col-6 d-flex justify-content-center align-items-center">
-                                                <div>
-                                                    <label htmlFor={`tax-${elem._id}`} className="">Taxa (%)</label>
-                                                    <div className='input-group'>
-                                                        <input
-                                                            className='form-control text-center'
-                                                            type="number"
-                                                            id={`tax-${elem._id}`}
-                                                            placeholder='0'
-                                                            min="0"
-                                                            max="100"
-                                                            value={elem.tax || ''}
-                                                            onChange={(e) => handleTaxChange(index, e.target.value)}
-                                                        />
-                                                        <span className='input-group-text'>%</span>
-                                                    </div>
-                                                </div>
-                                            </div>
+                            <div className="col-12 col-md-6 col-lg-4 my-2" key={elem._id}>
+                            <div className="card h-100 shadow-sm">
+                                <div className="card-body">
+                                    <div className="d-flex flex-column align-items-center mb-3">
+                                        <div className="network-logo mb-2" style={{ height: "80px", display: "flex", alignItems: "center" }}>
+                                            <img 
+                                                src={elem.logoUrl} 
+                                                alt={elem.descricao} 
+                                                style={{ 
+                                                    maxWidth: '130px', 
+                                                    maxHeight: '70px',
+                                                    objectFit: 'contain'
+                                                }} 
+                                            />
+                                        </div>
+                                        <h5 className="text-center fw-bold mb-0">{elem.descricao}</h5>
+                                    </div>
+                                    <div className="mt-3">
+                                        <label htmlFor={`tax-${elem._id}`} className="form-label fw-semibold">
+                                            Taxa de Processamento
+                                        </label>
+                                        <div className="input-group has-validation">
+                                            <input
+                                                className="form-control  text-center"
+                                                type="number"
+                                                id={`tax-${elem._id}`}
+                                                placeholder="0"
+                                                min="0"
+                                                step="0.01"
+                                                max="100"
+                                                value={elem.tax || ''}
+                                                onChange={(e) => handleTaxChange(index, e.target.value)}
+                                            />
+                                            <span className="input-group-text">%</span>
+                                        </div>
+                                        <div className="form-text mt-2">
+                                            <i className="bi bi-info-circle me-1"></i>
+                                            Taxa cobrada pela operadora para cada transação
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                        </div>
                         ))}
                     </div>
                     <hr />
