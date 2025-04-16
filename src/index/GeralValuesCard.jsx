@@ -223,6 +223,7 @@ import CountUp from "react-countup";
 import { useSelector } from "react-redux";
 import useSWR from "swr";
 import api from "../../utils/api";
+import SaldoBalancoToggle from "./SaldoBalancoToggle";
 
 export default function GeralValuesCard(props) {
     const token = jwt.decode(Cookie.get('auth'));
@@ -234,6 +235,9 @@ export default function GeralValuesCard(props) {
     const [categories, setCategories] = useState([]);
     const [valueView, setValueView] = useState(true);
     const [isHovering, setIsHovering] = useState(false);
+
+    const [valueStatus, setValueStatus] = useState('saldo')
+
 
     const newDataStore = useSelector(state => state.newData);
 
@@ -278,22 +282,41 @@ export default function GeralValuesCard(props) {
                         {/* Saldo em conta */}
                         <div className="row pt-3 pb-3">
                             <div className="col-12 d-flex justify-content-center">
-                                <div className="badge bg-light text-secondary px-3 py-2 rounded-pill mb-2">
+                                <SaldoBalancoToggle valueStatus={valueStatus} setValueStatus={setValueStatus} />
+                                {/* <div className="badge bg-light text-secondary px-3 py-2 rounded-pill mb-2">
                                     <span className="small fw-bold">
                                         Saldo em conta
                                     </span>
-                                </div>
+                                </div> */}
                             </div>
                             <div className="col-12 d-flex justify-content-center align-items-center" style={{ height: "60px" }}>
                                 {valueView ? (
-                                    <span className="fs-1 fw-bold" style={{ 
-                                        background: "linear-gradient(90deg, #3a7bd5, #00d2ff)", 
-                                        WebkitBackgroundClip: "text",
-                                        WebkitTextFillColor: "transparent",
-                                        transition: "all 0.3s ease"
-                                    }}>
-                                        R$ <CountUp end={saldoValue} separator="." duration={2} decimal="," decimals={2} />
-                                    </span>
+                                   <>
+                                   {valueStatus === 'saldo' && (
+                                       <span className="fs-1 fw-bold" style={{
+                                           background: saldoValue < 0 
+                                               ? "linear-gradient(90deg, #d53a3a, #ff0000)" 
+                                               : "linear-gradient(90deg, #3a7bd5, #00d2ff)",
+                                           WebkitBackgroundClip: "text",
+                                           WebkitTextFillColor: "transparent",
+                                           transition: "all 0.3s ease"
+                                       }}>
+                                           R$ <CountUp end={saldoValue} separator="." duration={2} decimal="," decimals={2} />
+                                       </span>
+                                   )}
+                                   {valueStatus === 'balanco' && (
+                                       <span className="fs-1 fw-bold" style={{
+                                           background: (+incomeValue - +expenseValue) < 0 
+                                               ? "linear-gradient(90deg, #d53a3a, #F57C00)" 
+                                               : "linear-gradient(90deg, #3a7bd5, #00d2ff)",
+                                           WebkitBackgroundClip: "text",
+                                           WebkitTextFillColor: "transparent",
+                                           transition: "all 0.3s ease"
+                                       }}>
+                                           R$ <CountUp end={+incomeValue - +expenseValue} separator="." duration={2} decimal="," decimals={2} />
+                                       </span>
+                                   )}
+                               </>
                                 ) : (
                                     <span className="fs-2 fw-bold d-flex justify-content-center align-items-center">
                                         <HideValue />
@@ -301,12 +324,12 @@ export default function GeralValuesCard(props) {
                                 )}
                             </div>
                             <div className="col-12 d-flex justify-content-center my-2">
-                                <button 
-                                    className="btn btn-sm btn-light rounded-circle shadow-sm" 
+                                <button
+                                    className="btn btn-sm btn-light rounded-circle shadow-sm"
                                     onClick={() => setValueView(!valueView)}
                                     onMouseEnter={() => setIsHovering(true)}
                                     onMouseLeave={() => setIsHovering(false)}
-                                    style={{ 
+                                    style={{
                                         transition: 'all 0.3s ease',
                                         transform: isHovering ? 'scale(1.1)' : 'scale(1)'
                                     }}
@@ -354,7 +377,7 @@ export default function GeralValuesCard(props) {
                                 <div className="card border-0 bg-light rounded-4 h-100 shadow-sm">
                                     <div className="card-body p-3">
                                         <div className="d-flex align-items-center mb-2">
-                                        <div className="d-flex justify-content-center align-items-center bg-danger bg-opacity-25 p-2 rounded-circle me-2" style={{ width: "30px", height: "30px" }}>
+                                            <div className="d-flex justify-content-center align-items-center bg-danger bg-opacity-25 p-2 rounded-circle me-2" style={{ width: "30px", height: "30px" }}>
 
                                                 <FontAwesomeIcon icon={faArrowDown} className="text-danger" />
                                             </div>
@@ -388,7 +411,7 @@ export default function GeralValuesCard(props) {
                         <div className="row d-lg-none d-block mt-4">
                             <div className="col-12 d-flex justify-content-center">
                                 <button
-                                    className="btn  rounded-pill shadow-sm px-4 py-2 small btn-c-outline-tertiary" style={{fontSize: "12px"}}
+                                    className="btn  rounded-pill shadow-sm px-4 py-2 small btn-c-outline-tertiary" style={{ fontSize: "12px" }}
                                     type="button"
                                     data-bs-toggle="modal"
                                     data-bs-target="#inputsHistoricModal"
@@ -401,7 +424,7 @@ export default function GeralValuesCard(props) {
                     </div>
                 </div>
             </div>
-            
+
             {/* Histórico para desktop */}
             <div className="col-5 d-lg-block d-none">
                 <div className="card shadow-sm border-0 rounded-4 h-100">

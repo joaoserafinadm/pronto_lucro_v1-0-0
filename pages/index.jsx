@@ -24,6 +24,7 @@ import CategoriesChartCard from '../src/index/CategoriesChartCard.jsx'
 
 
 export default function Home() {
+    
 
     const token = jwt.decode(Cookie.get('auth'))
 
