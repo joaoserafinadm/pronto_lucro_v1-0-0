@@ -51,6 +51,7 @@ import ConsultantRedirect from "../src/pages/consultantRedirect/index.jsx";
 import { closeModal } from "../utils/modalControl.js";
 import IncomeAddModal from "../src/incomeAdd/IncomeAddModal.jsx";
 import ExpenseAddModal from "../src/incomeAdd/ExpenseAddModal.jsx";
+import { ValuesProvider } from "../src/index/context/valuesContext.js";
 
 
 export default function MyApp({ Component, pageProps }) {
@@ -155,25 +156,27 @@ export default function MyApp({ Component, pageProps }) {
             return (
                 <Provider store={store}>
                     <PersistGate persistor={persistedStore}>
-                        <Head>
-                            <title>Pronto Lucro</title>
-                            <meta
-                                name="viewport"
-                                content="width=device-width, initial-scale=1, shrink-to-fit=no"
-                            />
-                            <link rel="icon" href="favicon.ico" />
+                        <ValuesProvider>
+                            <Head>
+                                <title>Pronto Lucro</title>
+                                <meta
+                                    name="viewport"
+                                    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+                                />
+                                <link rel="icon" href="favicon.ico" />
 
-                            <link rel="manifest" href="/manifest.json" />
-                            <link rel="apple-touch-icon" href="/icon.png" />
-                            <meta name="theme-color" content="#333333" />
-                        </Head>
+                                <link rel="manifest" href="/manifest.json" />
+                                <link rel="apple-touch-icon" href="/icon.png" />
+                                <meta name="theme-color" content="#333333" />
+                            </Head>
 
-                        <MainLayout>
-                            <IncomeAddModal />
-                            <ExpenseAddModal />
+                            <MainLayout>
+                                <IncomeAddModal />
+                                <ExpenseAddModal />
 
-                            <Component  {...pageProps} />
-                        </MainLayout>
+                                <Component  {...pageProps} />
+                            </MainLayout>
+                        </ValuesProvider>
                     </PersistGate>
                 </Provider>
             );

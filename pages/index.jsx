@@ -62,7 +62,7 @@ export default function Home() {
             <TutorialModal bankAccounts={bankAccounts} dataFunction={() => dataFunction(token.sub)} />
 
             <EntriesHistoricModal />
-            {/* <Title title={`Olá, ${token.firstName}!`} subtitle={'Qual a sua meta de lucro para hoje?'} /> */}
+            <Title title={`Olá, ${token.firstName}!`} subtitle={'Qual a sua meta de lucro para hoje?'} />
 
             <div className=" pagesContent-lg shadow">
 

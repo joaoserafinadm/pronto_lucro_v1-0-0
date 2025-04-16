@@ -224,9 +224,15 @@ import { useSelector } from "react-redux";
 import useSWR from "swr";
 import api from "../../utils/api";
 import SaldoBalancoToggle from "./SaldoBalancoToggle";
+import { useValues } from "./context/valuesContext";
 
 export default function GeralValuesCard(props) {
     const token = jwt.decode(Cookie.get('auth'));
+
+    const {isHovering,
+        setIsHovering,
+        valueStatus,
+        setValueStatus} =  useValues();
 
     const [saldoValue, setSaldoValue] = useState('');
     const [incomeValue, setIncomeValue] = useState('');
@@ -234,9 +240,6 @@ export default function GeralValuesCard(props) {
     const [lastDataInputs, setLastDataInputs] = useState([]);
     const [categories, setCategories] = useState([]);
     const [valueView, setValueView] = useState(true);
-    const [isHovering, setIsHovering] = useState(false);
-
-    const [valueStatus, setValueStatus] = useState('saldo')
 
 
     const newDataStore = useSelector(state => state.newData);
