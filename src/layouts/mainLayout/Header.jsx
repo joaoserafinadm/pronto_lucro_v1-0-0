@@ -144,50 +144,85 @@ export default function Header(props) {
 
 
 
-                <div className={` dropdown `}>
-                    <span type="button" className="me-3" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src={token.profileImageUrl} alt="" className={`${styles.profilePicture}`} />
-                    </span>
+                <div className="dropdown">
+                    {/* Avatar com efeito de hover */}
+                    <span
+                        type="button"
+                        className="position-relative d-inline-block"
+                        role="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                    >
+                        <img
+                            src={token.profileImageUrl}
+                            alt="Foto de perfil"
+                            className={`${styles.profilePicture} rounded-circle border border-2 border-light shadow-sm me-2`}
+                            style={{ transition: "transform 0.2s, box-shadow 0.2s" }}
+                            onMouseOver={(e) => {
+                                e.currentTarget.style.transform = "scale(1.05)";
+                                e.currentTarget.style.boxShadow = "0 0.25rem 0.5rem rgba(0, 0, 0, 0.15)";
+                            }}
+                            onMouseOut={(e) => {
+                                e.currentTarget.style.transform = "scale(1)";
+                                e.currentTarget.style.boxShadow = "";
+                            }}
+                        />
+                        </span>
 
-                    <ul className="dropdown-menu dropdown-menu-end mt-4 me-2" aria-labelledby="dropdownMenuButton1" >
-                        <small >
+                    {/* Menu redesenhado */}
+                    <ul className="dropdown-menu dropdown-menu-end mt-2 me-0 shadow-lg border-0 rounded-3 overflow-hidden" style={{ minWidth: "250px" }}>
+                        {/* <div className="px-4 py-3 bg-light border-bottom">
+                            <h6 className="mb-0 fw-bold">Menu de Usuário</h6>
+                        </div> */}
+                        <div className="p-2">
+                            <small>
+                                <li className="my-1">
+                                    <Link href="/editProfile">
+                                        <span className="dropdown-item rounded-2 text-gray-dark d-flex align-items-center py-2">
+                                            <FontAwesomeIcon icon={faUser} className="me-2 text-primary" />
+                                            <span>Meu perfil</span>
+                                        </span>
+                                    </Link>
+                                </li>
+                                <li className="my-1">
+                                    <Link href="/editProfile?section=Minha empresa">
+                                        <span className="dropdown-item rounded-2 text-gray-dark d-flex align-items-center py-2">
+                                            <FontAwesomeIcon icon={faBuilding} className="me-2 text-primary" />
+                                            <span>Minha empresa</span>
+                                        </span>
+                                    </Link>
+                                </li>
+                                <li className="my-1">
+                                    <Link href="/passwordChange">
+                                        <span className="dropdown-item rounded-2 text-gray-dark d-flex align-items-center py-2">
+                                            <FontAwesomeIcon icon={faKey} className="me-2 text-primary" />
+                                            <span>Alterar senha</span>
+                                        </span>
+                                    </Link>
+                                </li>
+                                <li className="my-1">
+                                    <Link href="/accountSetup">
+                                        <span className="dropdown-item rounded-2 text-gray-dark d-flex align-items-center py-2">
+                                            <FontAwesomeIcon icon={faGear} className="me-2 text-primary" />
+                                            <span>Configurações</span>
+                                        </span>
+                                    </Link>
+                                </li>
 
-                            <li className='my-1'>
-                                <Link href="/editProfile">
-                                    <span className="dropdown-item text-gray-dark" >
-                                        <FontAwesomeIcon icon={faUser} className="me-1 icon" /> Meu perfil
-                                    </span>
-                                </Link>
-                            </li>
-                            <li className='my-1'>
-                                <Link href="/editProfile?section=Minha empresa">
-                                    <span className="dropdown-item text-gray-dark" >
-                                        <FontAwesomeIcon icon={faBuilding} className="me-1 icon" /> Minha empresa
-                                    </span>
-                                </Link>
-                            </li>
-                            <li className='my-1'>
-                                <Link href="/passwordChange">
-                                    <span className="dropdown-item text-gray-dark" >
-                                        <FontAwesomeIcon icon={faKey} className="me-1 icon" /> Alterar senha
-                                    </span>
-                                </Link>
-                            </li>
-                            <li className='my-1'>
-                                <Link href="/accountSetup">
-                                    <span className="dropdown-item text-gray-dark" >
-                                        <FontAwesomeIcon icon={faGear} className="me-1 icon" /> Configurações
-                                    </span>
-                                </Link>
-                            </li>
+                                <li className="my-2"><hr className="dropdown-divider" /></li>
 
-                            <li className='my-1'><hr className='dropdown-divider' /></li>
-                            <li className='mt-1'>
-                                <a className="dropdown-item text-gray-dark" type='button' onClick={() => hendleSession()}>
-                                    <FontAwesomeIcon icon={faCircleRight} className="me-1 icon" /> Sair
-                                </a>
-                            </li>
-                        </small>
+                                <li className="mt-1">
+                                    <button
+                                        className="dropdown-item rounded-2 text-danger d-flex align-items-center py-2"
+                                        type="button"
+                                        onClick={() => hendleSession()}
+                                    >
+                                        <FontAwesomeIcon icon={faCircleRight} className="me-2" />
+                                        <span>Sair</span>
+                                    </button>
+                                </li>
+                            </small>
+                        </div>
                     </ul>
                 </div>
 

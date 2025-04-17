@@ -3276,3 +3276,21 @@ span {
 	width: 0;
 	background: transparent;
   }
+
+
+  .profilePicture {
+	width: 40px;
+	height: 40px;
+	object-fit: cover;
+	cursor: pointer;
+  }
+  
+  /* Animações para os itens do menu */
+  .dropdown-item {
+	transition: background-color 0.2s, transform 0.1s;
+  }
+  
+  .dropdown-item:hover {
+	background-color: rgba(13, 110, 253, 0.1);
+	transform: translateX(3px);
+  }
