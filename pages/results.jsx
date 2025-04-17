@@ -71,8 +71,8 @@ function Results() {
     }, [dateSelected]);
 
     useEffect(() => {
-        const incomeResults = handleResults(
-            "income",
+        const incomeResults = handleResults({
+            type:"income",
             status,
             view,
             dfcData,
@@ -82,9 +82,9 @@ function Results() {
             bankAccounts,
             incomeCategories,
             expenseCategories
-        );
-        const expenseResults = handleResults(
-            "expense",
+        });
+        const expenseResults = handleResults({
+            type:"expense",
             status,
             view,
             dfcData,
@@ -94,7 +94,7 @@ function Results() {
             bankAccounts,
             incomeCategories,
             expenseCategories
-        );
+        });
 
         setIncomeDonutChartData(incomeResults);
         setExpenseDonutChartData(expenseResults);

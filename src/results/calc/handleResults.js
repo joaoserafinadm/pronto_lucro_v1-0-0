@@ -1,7 +1,7 @@
-export default function handleResults(
+export default function handleResults({
     type,
-    status,
-    view,
+    status = "Efetuadas",
+    view = "Categorias",
     dfcData,
     incomeCategoriesFilter = [],
     expenseCategoriesFilter = [],
@@ -9,7 +9,19 @@ export default function handleResults(
     bankAccounts = [],
     incomeCategories = [],
     expenseCategories = []
-) {
+}) {
+
+    console.log('handleResults',type,
+        status,
+        view,
+        dfcData,
+        incomeCategoriesFilter,
+        expenseCategoriesFilter,
+        accountsFilter,
+        bankAccounts,
+        incomeCategories,
+        expenseCategories)
+
     const statusFilter = status === "Efetuadas" ? true : status === "Pendentes" ? false : null;
     const categories = type === "income" ? incomeCategories : expenseCategories;
     const categoryFilters = type === "income" ? incomeCategoriesFilter : expenseCategoriesFilter;

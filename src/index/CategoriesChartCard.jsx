@@ -3,16 +3,66 @@
 // import { useStateContext } from "./context/resultsContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChartPie, faTag } from "@fortawesome/free-solid-svg-icons";
+import { useEffect, useState } from "react";
 // const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
+import jwt from "jsonwebtoken";
+import Cookie from "js-cookie";
+import axios from "axios";
+import DonutChart from "../results/DonutChart";
+import handleResults from "../results/calc/handleResults";
 
 
 export default function CategoriesChartCard(props) {
 
-    // const {
-    //     incomeDonutChartData,
-    //     expenseDonutChartData,
-    //     view,
-    // } = useStateContext();
+    const token = jwt.decode(Cookie.get('auth'))
+
+    // const [dfcData, setDfcData] = useState([])
+
+    const [incomeDonutChartData, setIncomeDonutChartData] = useState([])
+    const [expenseDonutChartData, setExpenseDonutChartData] = useState([])
+
+
+
+    useEffect(() => {
+        dataFunction()
+    }, [])
+
+    const dataFunction = async () => {
+
+        await axios.get(`/api/indexPage/categoriesChart`, {
+            params: { user_id: token.sub, month: new Date().getMonth(), year: new Date().getFullYear() }
+        })
+            .then(res => {
+
+                const dfcData = res.data.dfcData
+                const incomeCategories = res.data.incomeCategories
+                const expenseCategories = res.data.expenseCategories
+
+          
+
+
+                const incomeResults = handleResults({
+                   type: "income",
+                    dfcData,
+                    incomeCategories,
+                    expenseCategories
+                });
+                const expenseResults = handleResults({
+                    type: "expense",
+                    dfcData,
+                    incomeCategories,
+                    expenseCategories
+                });
+
+                console.log("incomeResults", incomeResults)
+
+                setIncomeDonutChartData(incomeResults);
+                setExpenseDonutChartData(expenseResults);
+            }).catch(e => {
+                console.log(e)
+            })
+
+    }
 
 
 
@@ -28,28 +78,8 @@ export default function CategoriesChartCard(props) {
                                 <span className="small fw-bold mb-2 ms-3">Receitas por Categoria</span>
                             </div>
                         </div>
-                        <div className="row d-flex justify-content-center">
-                            {/* {!data.length ?
+                        <DonutChart data={incomeDonutChartData} />
 
-                                <div className="col-12 d-flex justify-content-center my-5">
-                                    <span className="text-center text-secondary">
-                                        Nenhuma transação encontrada
-                                    </span>
-
-                                </div>
-
-
-                                :
-                                <div className="col-12 col-md-6 ">
-                                    <Chart
-                                        options={chartOptions}
-                                        series={series}
-                                        type="donut"
-                                    // height="400"
-                                    />
-                                </div>
-                            } */}
-                        </div>
                     </div>
                 </div>
             </div>
@@ -63,7 +93,7 @@ export default function CategoriesChartCard(props) {
                                 <span className="small fw-bold mb-2 ms-3">Despesas por Categoria</span>
                             </div>
                         </div>
-                        {/* <DonutChart data={expenseDonutChartData} /> */}
+                        <DonutChart data={expenseDonutChartData} />
                     </div>
                 </div>
 
