@@ -79,7 +79,7 @@ export default function DonutChart(props) {
                         />
                     </div>
                     <div className="col-12 col-lg-6">
-                        <div className="pe-2 fw-responsive"  style={{ fontSize: "12px", height: "300px", overflowY: "scroll" }}>
+                        <div className="pe-2 fw-responsive"  style={{ fontSize: "12px", maxHeight: "300px", overflowY: "scroll" }}>
                             {data.map((elem, index) => (
                                 <>
 
