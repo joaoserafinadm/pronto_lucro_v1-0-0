@@ -70,7 +70,7 @@ export default function CategoriesChartCard(props) {
     return (
         <>
             <div className="col-12 col-lg-6 my-2">
-                <div className="card">
+                <div className="card card shadow-sm border-0 rounded-4">
                     <div className="card-body">
                         <div className="row text-c-success">
                             <div className="col-12">
@@ -85,7 +85,7 @@ export default function CategoriesChartCard(props) {
             </div>
             <div className="col-12 col-lg-6 my-2">
 
-                <div className="card ">
+                <div className="card card shadow-sm border-0 rounded-4">
                     <div className="card-body">
                         <div className="row text-c-danger">
                             <div className="col-12">
