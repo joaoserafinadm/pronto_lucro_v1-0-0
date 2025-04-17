@@ -3257,3 +3257,22 @@ span {
 span {
 	color: #505050;
 }
+
+
+.hide-scrollbar {
+	/* Mantém a funcionalidade de rolagem */
+	overflow-y: scroll;
+	
+	/* Para Firefox */
+	scrollbar-width: none;
+	
+	/* Para Internet Explorer e Edge */
+	-ms-overflow-style: none;
+  }
+  
+  /* Para navegadores baseados em WebKit (Chrome, Safari, Opera) */
+  .hide-scrollbar::-webkit-scrollbar {
+	display: none;
+	width: 0;
+	background: transparent;
+  }
