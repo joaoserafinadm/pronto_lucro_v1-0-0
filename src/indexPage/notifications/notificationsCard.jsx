@@ -31,27 +31,31 @@ export default function NotificationsCard(props) {
 
 
     return (
-        <div className={`row my-3 ${notifications?.filter(elem => !elem.checked).length === 0 ? 'd-none' : ''}`}>
-            <div className="col-12">
+        <>
+            <div className={`row my-3 ${notifications?.filter(elem => !elem.checked).length === 0 ? 'd-none' : ''}`}>
+                <div className="col-12">
 
-                <div className="row mb-2">
-                    <div className="col-12">
+                    <div className="row mb-2">
+                        <div className="col-12">
 
-                        <FontAwesomeIcon icon={faBell} />
-                        <span className="small fw-bold mb-2 ms-3">Notificações</span>
+                            <FontAwesomeIcon icon={faBell} />
+                            <span className="small fw-bold mb-2 ms-3">Notificações</span>
+                        </div>
+                    </div>
+                    <div className="row">
+                        {notifications?.map((elem, index) => (
+
+                            <div className="col-12">
+                                <NotificationAlert elem={elem} token={token} />
+                            </div>
+                        )
+                        )}
                     </div>
                 </div>
-                <div className="row">
-                    {notifications?.map((elem, index) => (
-
-                        <div className="col-12">
-                            <NotificationAlert elem={elem} token={token} />
-                        </div>
-                    )
-                    )}
-                </div>
             </div>
-        </div>
+            <hr className={`${notifications?.filter(elem => !elem.checked).length === 0 ? 'd-none' : ''}`}/>
+
+        </>
     )
 
 

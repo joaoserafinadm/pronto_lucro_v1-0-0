@@ -70,7 +70,6 @@ export default function Home() {
 
                 <NotificationsCard token={token} />
 
-                <hr />
 
                 <div className="row d-flex" >
                     <GeralValuesCard />
