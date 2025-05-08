@@ -52,7 +52,7 @@ export default function ExpenseAddModal(props) {
 
     const [value, setValue] = useState('');
     const [currencyId, setCurrencyId] = useState(1);
-    const [paymentMethod, setPaymentMethod] = useState(null);
+    const [paymentMethod, setPaymentMethod] = useState(1);
     const [paymentDate, setPaymentDate] = useState(dateObject(new Date()));
     const [competenceMonth, setCompetenceMonth] = useState({
         month: new Date().getMonth(),
@@ -210,7 +210,7 @@ export default function ExpenseAddModal(props) {
 
         setValue('')
         setActive(true)
-        setPaymentMethod(null)
+        setPaymentMethod(1)
         setPaymentDate(dateObject(new Date()))
         setCompetenceMonth({
             month: new Date().getMonth(),

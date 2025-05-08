@@ -15,6 +15,8 @@ export default function CategorySelect(props) {
 
     const [newCategorySelected, setNewCategorySelected] = useState(null)
 
+    const [searchValue, setSearchValue] = useState('')
+
     return (
         <>
 
@@ -22,6 +24,13 @@ export default function CategorySelect(props) {
                 <div className=" carousel slide " data-bs-touch="false" data-bs-interval='false' id={`${'categorySelectPages' + section}`}>
                     <div className="carousel-inner ">
                         <div className="carousel-item active">
+                            <div className="row mb-3">
+                                <div className="col-12">
+                                    <input type="text"  className="form-control" placeholder="Pesquisar"
+                                    onChange={(e) => setSearchValue(e.target.value)}
+                                    value={searchValue}/>
+                                </div>
+                            </div>
 
                             {categories?.map((elem, index) => (
                                 <>
@@ -33,7 +42,7 @@ export default function CategorySelect(props) {
                                             </div>
 
                                         </div>
-                                        {elem?.subCategories?.map((elem1, index) => (
+                                        {elem?.subCategories?.filter(elem => elem.name.toLowerCase().includes(searchValue.toLowerCase())).map((elem1, index) => (
                                             <>
                                                 <div className="col-12 d-flex">
                                                     <span type="button"

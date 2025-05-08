@@ -126,7 +126,8 @@ export default function NewAccountModal(props) {
                                 </div>
                                 <div class="carousel-item">
 
-                                    <BankSetup bankSelected={bankSelected} creditCardList={creditCardList}
+                                    <BankSetup newBank={bankSelected.newBank}
+                                     bankSelected={bankSelected} setBankSelected={setBankSelected} creditCardList={creditCardList}
                                         color={color} setColor={value => setColor(value)}
                                         setInitialValue={value => setInitialValue(value)} initialValue={initialValue}
                                         setDescription={value => setDescription(value)} description={description}

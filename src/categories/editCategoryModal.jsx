@@ -26,10 +26,14 @@ export default function EditCategoryModal(props) {
 
     const [editTagName, setEditTagName] = useState('');
     const [editCategoryName, setEditCategoryName] = useState(''); // Estado para o nome da categoria
+    const [editColor, setEditColor] = useState('')
     const [saveError, setSaveError] = useState('');
+
+    const [editColorSelect, setEditColorSelect] = useState(false)
 
     useEffect(() => {
         setCategoryEdit(categorySelected);
+        setEditColor(categorySelected?.color)
     }, [categorySelected]);
 
     const initialValues = () => {
@@ -37,6 +41,8 @@ export default function EditCategoryModal(props) {
         setEditTagName('');
         setEditCategoryName('');
         setEditCategorySelect(false)
+        setEditColor('');
+        setEditColorSelect(false)
 
         setDeleteTagIndex('');
         setDeleteCategoryButton(false);
@@ -59,6 +65,15 @@ export default function EditCategoryModal(props) {
         setEditCategorySelect(false)
     };
 
+
+    const handleColorChange = () => {
+        let updatedCategory = { ...categoryEdit };
+        updatedCategory.color = editColor;
+        setCategoryEdit(updatedCategory);
+        setEditColorSelect(false)
+    };
+
+
     const handleDisableSave = () => {
         if (categorySelected === categoryEdit) return true
         else if (editCategorySelect || editTagIndex) return true
@@ -75,8 +90,8 @@ export default function EditCategoryModal(props) {
         await axios.patch(`/api/categories/categoryEdit`, data)
             .then(res => {
                 dataFunction();
-                                            dispatch(newData(true))
-                
+                dispatch(newData(true))
+
             }).catch(e => {
                 showModalBs(id);
                 setSaveError("Houve um problema ao editar a categoria. Por favor, tente novamente.");
@@ -143,49 +158,110 @@ export default function EditCategoryModal(props) {
                             <div className="col-12">
                                 <div className="row">
                                     {editCategorySelect ? (
-                                        <div className="col-12 d-flex my-1 align-items-center">
-                                            <div style={{ backgroundColor: categoryEdit?.color, height: "17px", width: "17px" }} className="rounded-circle me-2"></div>
+                                        <>
+                                            <div className="col-12 d-flex my-1 align-items-center">
+                                                <div style={{ backgroundColor: categoryEdit?.color, height: "17px", width: "17px" }} className="rounded-circle me-2"></div>
 
-                                            <div className="input-group">
-                                                <input
-                                                    type="text"
-                                                    className="form-control"
-                                                    value={editCategoryName}
-                                                    onChange={(e) => setEditCategoryName(e.target.value)}
-                                                />
-                                                <button
-                                                    disabled={!editCategoryName}
-                                                    className="btn btn-outline-secondary"
-                                                    onClick={() => handleCategoryNameChange()}
-                                                >
-                                                    <FontAwesomeIcon icon={faCheck} className="pulse text-c-success" />
-                                                </button>
-                                                <button
-                                                    className="btn btn-outline-secondary"
-                                                    onClick={() => { setEditCategoryName(''); setEditCategorySelect(false) }}
-                                                >
-                                                    <FontAwesomeIcon icon={faXmark} className="pulse text-c-danger" />
-                                                </button>
-                                            </div>
-                                        </div>
-                                    ) : (
-                                        <div className="col-12 d-flex my-1 align-items-center justify-content-between">
-                                            <div className="d-flex my-1 align-items-center">
-
-                                                <CategoryIcon color={categoryEdit?.color} />
-
-                                                <div className="d-flex align-items-center justify-content-between ms-2">
-                                                    <span className="bold">{categoryEdit?.categoryName}</span>
+                                                <div className="input-group">
+                                                    <input
+                                                        type="text"
+                                                        className="form-control"
+                                                        value={editCategoryName}
+                                                        onChange={(e) => setEditCategoryName(e.target.value)}
+                                                    />
+                                                    <button
+                                                        disabled={!editCategoryName}
+                                                        className="btn btn-outline-secondary"
+                                                        onClick={() => handleCategoryNameChange()}
+                                                    >
+                                                        <FontAwesomeIcon icon={faCheck} className="pulse text-c-success" />
+                                                    </button>
+                                                    <button
+                                                        className="btn btn-outline-secondary"
+                                                        onClick={() => { setEditCategoryName(''); setEditCategorySelect(false) }}
+                                                    >
+                                                        <FontAwesomeIcon icon={faXmark} className="pulse text-c-danger" />
+                                                    </button>
                                                 </div>
+
                                             </div>
-                                            <span
-                                                className="ms-2 text-c-secondary"
-                                                type="button"
-                                                onClick={() => { setEditCategoryName(categoryEdit?.categoryName); setEditCategorySelect(true) }}
-                                            >
-                                                <FontAwesomeIcon icon={faEdit} />
-                                            </span>
-                                        </div>
+
+                                        </>
+                                    ) : (
+                                        <>
+                                            <div className="col-12 d-flex my-1 align-items-center justify-content-between">
+                                                <div className="d-flex my-1 align-items-center">
+
+                                                    <CategoryIcon color={categoryEdit?.color} />
+
+                                                    <div className="d-flex align-items-center justify-content-between ms-2">
+                                                        <span className="bold">{categoryEdit?.categoryName}</span>
+                                                    </div>
+                                                </div>
+                                                <span
+                                                    className="ms-2 text-c-secondary"
+                                                    type="button"
+                                                    onClick={() => { setEditCategoryName(categoryEdit?.categoryName); setEditCategorySelect(true) }}
+                                                >
+                                                    <FontAwesomeIcon icon={faEdit} />
+                                                </span>
+                                            </div>
+                                            {!editColorSelect ?
+
+                                                <div className="col-12 fadeItem">
+                                                    <span className="badge border border-secondary rounded-pill px-2 py-1 text-secondary cardAnimation"
+                                                        onClick={() => setEditColorSelect(true)}>
+                                                        Editar cor
+                                                    </span>
+                                                </div>
+                                                :
+                                                <div className="card">
+                                                    <div className="card-body">
+                                                        <span className="small fw-bold text-secondary">
+                                                            Editar cor
+                                                        </span>
+                                                        <div className="col-12  d-flex flex-wrap fadeItem">
+
+                                                            {type === 'incomeCategories' && incomeColors.map((elem, index) => {
+                                                                return (
+                                                                    <span type="button" onClick={() => setEditColor(elem)}
+                                                                        className={`cardAnimation d-flex justify-content-center align-items-center   m-1  small rounded-pill ${editColor === elem ? '  shadow' : ''} `}
+                                                                        style={{
+                                                                            backgroundColor: elem,
+                                                                            color: 'white',
+                                                                            height: '40px',
+                                                                            width: '40px',
+                                                                            scale: editColor === elem ? '1.3' : '1',
+                                                                        }}>
+                                                                        {editColor === elem && <FontAwesomeIcon icon={faCheck} className="text-white" />}
+                                                                    </span>
+                                                                )
+                                                            })}
+                                                            {type === 'expenseCategories' && expenseColors.map((elem, index) => {
+                                                                return (
+                                                                    <span type="button" onClick={() => setEditColor(elem)}
+                                                                        className={`cardAnimation d-flex justify-content-center align-items-center   m-1  small rounded-pill ${editColor === elem ? '  shadow' : ''} `}
+                                                                        style={{
+                                                                            backgroundColor: elem,
+                                                                            color: 'white',
+                                                                            height: '40px',
+                                                                            width: '40px',
+                                                                            scale: editColor === elem ? '1.3' : '1',
+                                                                        }}>
+                                                                        {editColor === elem && <FontAwesomeIcon icon={faCheck} className="text-white" />}
+                                                                    </span>
+                                                                )
+                                                            })}
+                                                        </div>
+                                                        <div className="col-12 d-flex justify-content-end">
+                                                            <button className="btn btn-sm btn-c-outline-secondary me-2" onClick={() => setEditColorSelect(false)}>Fechar</button>
+                                                            <button className="btn btn-sm btn-c-outline-success" onClick={() => handleColorChange()}>Confirmar</button>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
+                                        </>
 
                                     )}
                                 </div>
@@ -333,3 +409,53 @@ export default function EditCategoryModal(props) {
         </div >
     );
 }
+
+
+
+
+const incomeColors = [
+    "#2B8EAD", // Blueish Teal
+    "#76B041", // Green Apple
+    "#FFD700", // Golden Yellow
+    "#FFB300", // Dark Yellow
+    "#009688", // Teal
+    "#3F51B5", // Indigo
+    "#1E88E5", // Light Blue
+    "#8BC34A", // Light Green
+    "#FFC107", // Sunflower Yellow
+    "#0288D1", // Strong Blue
+    "#CDDC39", // Lime Green
+    "#00BCD4", // Cyan
+    "#4CAF50", // Leaf Green
+    "#8E44AD", // Amethyst Purple
+    "#FFEB3B", // Bright Yellow
+    "#0097A7", // Turquoise
+    "#FF9800", // Amber
+    "#607D8B", // Blue Grey
+    "#6A1B9A", // Dark Purple
+    "#8E24AA", // Vivid Purple
+];
+
+
+const expenseColors = [
+    "#D32F2F", // Brick Red
+    "#C62828", // Crimson Red
+    "#E64A19", // Rust Orange
+    "#F44336", // Fire Red
+    "#9C27B0", // Dark Purple
+    "#7B1FA2", // Purple
+    "#512DA8", // Grape
+    "#455A64", // Charcoal
+    "#616161", // Slate Grey
+    "#795548", // Brown
+    "#BF360C", // Dark Burnt Orange
+    "#5D4037", // Chocolate
+    "#6D4C41", // Chestnut Brown
+    "#8D6E63", // Cocoa
+    "#BDBDBD", // Light Grey
+    "#3E2723", // Espresso
+    "#1B5E20", // Dark Forest Green
+    "#37474F", // Deep Blue Grey
+    "#FF5722", // Burnt Orange
+    "#607D8B", // Dark Blue Grey
+];
