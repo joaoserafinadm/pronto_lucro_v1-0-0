@@ -19,10 +19,7 @@
         "id": 5,
         "description": "Boleto Bancário"
     },
-    {
-        "id": 6,
-        "description": "Parcelamento no Boleto"
-    },
+
     {
         "id": 7,
         "description": "Assinatura"

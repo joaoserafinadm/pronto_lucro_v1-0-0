@@ -32,6 +32,7 @@ import currencies from "../../utils/currencies.json"
 import DescriptionInput from "./descriptionInput";
 import CategorySelectModal from "./categorySelectModal";
 import CategorySelectedComponent from "./categorySelectedComponent";
+import Periodicity from "./Periodicity";
 
 
 
@@ -65,6 +66,9 @@ export default function IncomeAddModal(props) {
     const [bankAccounts, setBankAccounts] = useState([])
     const [accountSelected, setAccountSelected] = useState(null)
     const [creditNetworkTaxes, setCreditNetworkTaxes] = useState([])
+
+    const [periodicity, setPeriodicity] = useState('Único');
+    const [periodicityConfig, setPeriodicityConfig] = useState(null);
 
     const [active, setActive] = useState(true)
 
@@ -165,7 +169,9 @@ export default function IncomeAddModal(props) {
                     subCategory_id: subCategorySelected ? subCategorySelected.tag_id : '',
                     account_id: accountSelected ? accountSelected._id : '',
                     files: attachment,
-                    creditConfig,
+                    periodicity,
+                    periodicityConfig,
+                    // creditConfig,
                     active
                 };
 
@@ -319,12 +325,24 @@ export default function IncomeAddModal(props) {
 
 
 
-                                        <PaymentMethodConfig
+                                        {/* <PaymentMethodConfig
                                             value={value}
                                             paymentMethod={paymentMethod}
                                             setCreditConfig={setCreditConfig}
                                             categories={expenseCategories}
-                                            section="income" creditNetworkTaxes={creditNetworkTaxes} />
+                                            section="income" creditNetworkTaxes={creditNetworkTaxes} /> */}
+
+                                        <hr />
+
+                                        <Periodicity
+                                            value={value}
+                                            type="income"
+                                            periodicity={periodicity}
+                                            setPeriodicity={setPeriodicity}
+                                            periodicityConfig={periodicityConfig}
+                                            setPeriodicityConfig={setPeriodicityConfig}
+                                        />
+
 
                                         <hr />
                                         <div className="row d-flex justify-content-between">

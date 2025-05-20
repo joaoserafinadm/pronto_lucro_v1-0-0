@@ -43,7 +43,9 @@ export default function MyCompanyPage(props) {
         companyCategory,
         setCompanyCategory,
         regimeTributario,
-        setRegimeTributario
+        setRegimeTributario,
+        newSetorName,
+        setNewSetorName
     } = props
 
     const [regimeTributarioSelected, setRegimeTributarioSelected] = useState(null);
@@ -115,7 +117,7 @@ export default function MyCompanyPage(props) {
     const handleCategorySelect = (id) => {
         const categoryExist = companyCategories.find(elem => elem.shortName === id);
 
-        
+
         if (categoryExist) {
             const categoryData = companyCategories.find((elem) => elem.shortName === id);
             console.log("categoryData", categoryData)
@@ -219,6 +221,8 @@ export default function MyCompanyPage(props) {
                         setSetorPrimario={value => setSetorPrimario(value)}
                         setSetorSecundario={value => setSetorSecundario(value)}
                         setOutroSetorSec={value => setOutroSetorSec(value)}
+                        newSetorName={newSetorName}
+                        setNewSetorName={(value) => setNewSetorName(value)}
                         className="mb-0" />
                     {/* <small className='text-danger error_font_size'>{setorError}</small> */}
                 </div>
@@ -328,5 +332,9 @@ const regimeTributarioOptions = [
             "Pode ter alíquotas menores do que o Lucro Real dependendo da margem de lucro da empresa."
         ]
     },
-    
+    {
+        name: "Outro",
+        description: []
+    },
+
 ];

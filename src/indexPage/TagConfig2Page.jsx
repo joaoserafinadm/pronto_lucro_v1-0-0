@@ -138,7 +138,7 @@ export default function TagConfig2Page(props) {
             )}
 
 
-            <hr className="mt-3" />
+            {/* <hr className="mt-3" />
 
             <div className="col-12 my-3 fadeItem1s d-flex flex-column">
                 <span className=" fs-5 my-1">Escolha o <b>categoria</b> da sua empresa:</span>
@@ -180,7 +180,7 @@ export default function TagConfig2Page(props) {
                         <span className=" small my-1 ">&#x2022; {elem}</span>
                     ))}
                 </div>
-            )}
+            )} */}
 
             <hr className="mt-3" />
 

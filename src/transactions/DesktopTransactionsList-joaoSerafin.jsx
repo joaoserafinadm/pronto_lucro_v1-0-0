@@ -79,9 +79,9 @@ export default function DesktopTransactionsList(props) {
                                         <div className="d-flex">
 
                                             {elem?.description ? elem?.description : 'Sem descricão'}
-                                            {elem?.periodicityConfig?.parcelaAtual && (
+                                            {elem?.creditConfig?.parcelaAtual && (
                                                 <div className="ms-2">
-                                                    ({elem?.periodicityConfig?.parcelaAtual} / {elem?.periodicityConfig?.qtd})
+                                                    ({elem?.creditConfig?.parcelaAtual} / {elem?.creditConfig?.parcelas})
                                                 </div>
                                             )}
                                         </div>

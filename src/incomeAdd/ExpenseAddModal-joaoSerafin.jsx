@@ -32,7 +32,6 @@ import currencies from "../../utils/currencies.json"
 import DescriptionInput from "./descriptionInput";
 import CategorySelectedComponent from "./categorySelectedComponent";
 import CategorySelectModal from "./categorySelectModal";
-import Periodicity from "./Periodicity";
 
 
 
@@ -53,7 +52,7 @@ export default function ExpenseAddModal(props) {
 
     const [value, setValue] = useState('');
     const [currencyId, setCurrencyId] = useState(1);
-    const [paymentMethod, setPaymentMethod] = useState(1);
+    const [paymentMethod, setPaymentMethod] = useState(null);
     const [paymentDate, setPaymentDate] = useState(dateObject(new Date()));
     const [competenceMonth, setCompetenceMonth] = useState({
         month: new Date().getMonth(),
@@ -66,9 +65,6 @@ export default function ExpenseAddModal(props) {
     const [bankAccounts, setBankAccounts] = useState([])
     const [accountSelected, setAccountSelected] = useState(null)
     const [creditNetworkTaxes, setCreditNetworkTaxes] = useState([])
-
-    const [periodicity, setPeriodicity] = useState('Único');
-    const [periodicityConfig, setPeriodicityConfig] = useState(null);
 
     const [active, setActive] = useState(true)
 
@@ -167,9 +163,7 @@ export default function ExpenseAddModal(props) {
                     subCategory_id: subCategorySelected ? subCategorySelected.tag_id : '',
                     account_id: accountSelected ? accountSelected._id : '',
                     files: attachment,
-                    periodicity,
-                    periodicityConfig,
-                    // creditConfig,
+                    creditConfig,
                     active
                 };
 
@@ -216,7 +210,7 @@ export default function ExpenseAddModal(props) {
 
         setValue('')
         setActive(true)
-        setPaymentMethod(1)
+        setPaymentMethod(null)
         setPaymentDate(dateObject(new Date()))
         setCompetenceMonth({
             month: new Date().getMonth(),
@@ -321,26 +315,13 @@ export default function ExpenseAddModal(props) {
 
 
 
-                                        {/* <PaymentMethodConfig
+                                        <PaymentMethodConfig
                                             value={value}
                                             paymentMethod={paymentMethod}
                                             setCreditConfig={setCreditConfig}
                                             categories={categories}
                                             creditNetworkTaxes={creditNetworkTaxes}
-                                            section="expense" /> */}
-
-                                        <hr />
-
-
-                                        <Periodicity
-                                            value={value}
-                                            type="expense"
-                                            periodicity={periodicity}
-                                            setPeriodicity={setPeriodicity}
-                                            periodicityConfig={periodicityConfig}
-                                            setPeriodicityConfig={setPeriodicityConfig}
-                                        />
-
+                                            section="expense" />
 
                                         <hr />
                                         <div className="row d-flex justify-content-between">

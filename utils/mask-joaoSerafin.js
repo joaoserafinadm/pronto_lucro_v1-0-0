@@ -116,9 +116,4 @@ export function maskNumberMoney(value) {
 
 }
 
-export function maskInteiro(value) {
-    if (value) return value?.replace(/[^0-9]/g, '');
-    else return '';
-}
-
 

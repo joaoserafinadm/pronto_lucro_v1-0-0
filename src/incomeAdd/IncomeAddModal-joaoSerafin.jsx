@@ -30,13 +30,12 @@ import TagSelectedComponent from "./TagSelectedComponent";
 import CurrencySelect from "./currencySelect";
 import currencies from "../../utils/currencies.json"
 import DescriptionInput from "./descriptionInput";
-import CategorySelectedComponent from "./categorySelectedComponent";
 import CategorySelectModal from "./categorySelectModal";
-import Periodicity from "./Periodicity";
+import CategorySelectedComponent from "./categorySelectedComponent";
 
 
 
-export default function ExpenseAddModal(props) {
+export default function IncomeAddModal(props) {
 
     const token = jwt.decode(Cookie.get('auth'));
     const dispatch = useDispatch()
@@ -53,7 +52,7 @@ export default function ExpenseAddModal(props) {
 
     const [value, setValue] = useState('');
     const [currencyId, setCurrencyId] = useState(1);
-    const [paymentMethod, setPaymentMethod] = useState(1);
+    const [paymentMethod, setPaymentMethod] = useState(null);
     const [paymentDate, setPaymentDate] = useState(dateObject(new Date()));
     const [competenceMonth, setCompetenceMonth] = useState({
         month: new Date().getMonth(),
@@ -67,16 +66,14 @@ export default function ExpenseAddModal(props) {
     const [accountSelected, setAccountSelected] = useState(null)
     const [creditNetworkTaxes, setCreditNetworkTaxes] = useState([])
 
-    const [periodicity, setPeriodicity] = useState('Único');
-    const [periodicityConfig, setPeriodicityConfig] = useState(null);
-
     const [active, setActive] = useState(true)
 
+
     const [categories, setCategories] = useState([])
+    const [expenseCategories, setExpenseCategories] = useState([])
     const [loadingSave, setLoadingSave] = useState(false)
 
     const [valueError, setValueError] = useState('')
-
 
     useEffect(() => {
         dataFunction(token.sub)
@@ -84,15 +81,17 @@ export default function ExpenseAddModal(props) {
 
     const dataFunction = async (user_id) => {
 
-        await axios.get(`${baseUrl()}/api/incomeAdd`, {
+        console.log("user_id", user_id)
+
+        await axios.get(`/api/incomeAdd`, {
             params: {
                 user_id
             }
         }).then(res => {
-            setCategories(res.data.expenseCategories)
+            setCategories(res.data.incomeCategories)
+            setExpenseCategories(res.data.expenseCategories)
             setBankAccounts(res.data.bankAccounts)
             setCreditNetworkTaxes(res.data.creditNetworkTaxes)
-
         }).catch(e => {
             console.log(e)
         })
@@ -127,7 +126,6 @@ export default function ExpenseAddModal(props) {
         }
     };
 
-
     const isToday = (date) => {
 
         const today = dateObject(new Date());
@@ -158,7 +156,7 @@ export default function ExpenseAddModal(props) {
 
                 const data = {
                     user_id: token.sub,
-                    section: 'expense',
+                    section: 'income',
                     value,
                     paymentDate,
                     paymentMethod,
@@ -167,46 +165,44 @@ export default function ExpenseAddModal(props) {
                     subCategory_id: subCategorySelected ? subCategorySelected.tag_id : '',
                     account_id: accountSelected ? accountSelected._id : '',
                     files: attachment,
-                    periodicity,
-                    periodicityConfig,
-                    // creditConfig,
+                    creditConfig,
                     active
                 };
 
+
                 if (paymentMethod === 2) {
-                    const res = await axios.post(`${baseUrl()}/api/incomeAdd/creditPayment`, data)
+                    const res = await axios.post(`/api/incomeAdd/creditPayment`, data)
                         .then(res => {
                             dispatch(newData(true))
                             initialValues()
                             // router.push('/transactions')
                         }).catch(e => {
-                            showModalBs("expenseAddModal")
-                            scrollTo('expenseAddModal');
+                            showModalBs("addIncomeModal")
+                            scrollTo('addIncomeModal');
                             setLoadingSave(false);
                         });
                 } else {
-                    const res = await axios.post(`${baseUrl()}/api/incomeAdd`, data)
+                    const res = await axios.post(`/api/incomeAdd`, data)
                         .then(res => {
                             dispatch(newData(true))
-                            console.log('vai')
                             initialValues()
                             // router.push('/transactions')
                         }).catch(e => {
-                            showModalBs("expenseAddModal")
-                            scrollTo('expenseAddModal');
+                            showModalBs("addIncomeModal")
+                            scrollTo('addIncomeModal');
                             setLoadingSave(false);
                         });
                 }
                 setLoadingSave(false);
 
             } catch (e) {
-                showModalBs("expenseAddModal")
+                showModalBs("addIncomeModal")
                 setLoadingSave(false);
             }
         } else {
 
-            showModalBs("expenseAddModal")
-            scrollTo('expenseAddModal');
+            showModalBs("addIncomeModal")
+            scrollTo('addIncomeModal');
             setLoadingSave(false);
         }
     }
@@ -216,7 +212,7 @@ export default function ExpenseAddModal(props) {
 
         setValue('')
         setActive(true)
-        setPaymentMethod(1)
+        setPaymentMethod(null)
         setPaymentDate(dateObject(new Date()))
         setCompetenceMonth({
             month: new Date().getMonth(),
@@ -232,11 +228,14 @@ export default function ExpenseAddModal(props) {
         return
     }
 
+
     const currency = currencies.find(elem => elem.id === currencyId)
 
 
+
+
     return (
-        <div class="modal fade" id="expenseAddModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="addIncomeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
                 <div class="modal-content">
                     <div className="modal-body px-0" style={{ overflowX: 'hidden' }}>
@@ -245,26 +244,24 @@ export default function ExpenseAddModal(props) {
 
                         <div className="row px-3 my-2">
                             <div className="col-12 ">
-                                <span className=" text-white bold rounded-pill px-2 py-1 ctm-bg-danger">Valor da despesa</span>
+                                <span className=" text-white bold rounded-pill px-2 py-1 ctm-bg-success">Valor da receita</span>
                             </div>
                             <div className="col-12 mt-2 d-flex justify-content-between">
                                 <div className="d-flex w-100 fs-1 pe-2 align-items-center">
                                     <span className="me-1">{currency.symbol}</span>
-
                                     <input type="text" inputMode="numeric" placeholder="0,00"
-                                        className="form-control fs-2 " style={{ borderColor: '#f2545b' }}
+                                        className="form-control fs-2 " style={{ borderColor: '#00cc99' }}
                                         value={value} id='valueInput'
                                         onChange={e => setValue(maskInputMoney(e.target.value))} />
                                 </div>
                                 {/* <CurrencySelect setCurrencyId={setCurrencyId} currencyId={currencyId} /> */}
-
                             </div>
                             <span className="text-danger small">{valueError}</span>
 
                             <div className="col-12 mt-3 d-flex">
                                 <div class="form-check form-switch">
-                                    <input class="form-check-input form-check-input-expense" type="checkbox" role="switch" id="activeExpenseInput" checked={active} onClick={() => setActive(!active)} />
-                                    <label type="button" class={`form-check-label ${active ? 'bold' : ''}`} for="activeExpenseInput" >Foi paga</label>
+                                    <input class="form-check-input form-check-input-income" type="checkbox" role="switch" id="activeInput" checked={active} onClick={() => setActive(!active)} />
+                                    <label type="button" class={`form-check-label ${active ? 'bold' : ''}`} for="activeInput" >Foi paga</label>
                                 </div>
                             </div>
 
@@ -274,7 +271,7 @@ export default function ExpenseAddModal(props) {
                         <div className="row">
                             <div className="col-12">
 
-                                <div className="card shadow">
+                                <div className="card ">
                                     <div className="card-body">
 
                                         <div className="row d-flex justify-content-between">
@@ -288,31 +285,32 @@ export default function ExpenseAddModal(props) {
                                                 {!paymentMethod ?
                                                     <>
                                                         <span type="button" onClick={() => setPaymentMethod(1)}
-                                                            class={`cardAnimation px-2 py-1 m-2 text-white small mx-1 rounded-pill ${paymentMethod === 1 ? 'ctm-bg-danger' : 'ctm-bg-primary'}`}>
+                                                            class={`cardAnimation px-2 py-1 m-2 text-white small mx-1 rounded-pill ${paymentMethod === 1 ? 'ctm-bg-success' : 'ctm-bg-primary'}`}>
                                                             Dinheiro
                                                         </span>
                                                         <span type="button" onClick={() => setPaymentMethod(2)}
-                                                            class={`cardAnimation px-2 py-1 m-2 text-white small mx-1 rounded-pill ${paymentMethod === 2 ? 'ctm-bg-danger' : 'ctm-bg-primary'}`}>
+                                                            class={`cardAnimation px-2 py-1 m-2 text-white small mx-1 rounded-pill ${paymentMethod === 2 ? 'ctm-bg-success' : 'ctm-bg-primary'}`}>
                                                             Cartão de crédito
                                                         </span>
                                                     </>
                                                     :
                                                     <span type="button"
-                                                        class={`cardAnimation bold px-2 py-1 m-2 text-white small mx-1 rounded-pill ctm-bg-danger`}>
+                                                        class={`cardAnimation px-2 py-1 m-2 text-white small mx-1 rounded-pill ctm-bg-success`}>
                                                         {paymentMethodOptions.find(elem => elem.id === paymentMethod)?.description}
                                                     </span>
 
                                                 }
-                                                <span type="button" onClick={() => showModal('paymentMethodSelectModalExpense')}
+                                                <span type="button" onClick={() => showModal('paymentMethodSelectModalIncome')}
                                                     class={`cardAnimation px-2 py-1 m-2 text-white small mx-1 rounded-pill  ctm-bg-primary`}>
                                                     Outros...
                                                 </span>
 
 
-                                                <PaymentMethodSelectModal paymentMethod={paymentMethod}
+                                                <PaymentMethodSelectModal
+                                                    paymentMethod={paymentMethod}
                                                     setPaymentMethod={setPaymentMethod}
-                                                    id="paymentMethodSelectModalExpense"
-                                                    section="expense" />
+                                                    id="paymentMethodSelectModalIncome"
+                                                    section="income" />
 
 
 
@@ -321,26 +319,12 @@ export default function ExpenseAddModal(props) {
 
 
 
-                                        {/* <PaymentMethodConfig
+                                        <PaymentMethodConfig
                                             value={value}
                                             paymentMethod={paymentMethod}
                                             setCreditConfig={setCreditConfig}
-                                            categories={categories}
-                                            creditNetworkTaxes={creditNetworkTaxes}
-                                            section="expense" /> */}
-
-                                        <hr />
-
-
-                                        <Periodicity
-                                            value={value}
-                                            type="expense"
-                                            periodicity={periodicity}
-                                            setPeriodicity={setPeriodicity}
-                                            periodicityConfig={periodicityConfig}
-                                            setPeriodicityConfig={setPeriodicityConfig}
-                                        />
-
+                                            categories={expenseCategories}
+                                            section="income" creditNetworkTaxes={creditNetworkTaxes} />
 
                                         <hr />
                                         <div className="row d-flex justify-content-between">
@@ -354,21 +338,21 @@ export default function ExpenseAddModal(props) {
                                                 {isToday(paymentDate) ?
                                                     <>
                                                         <span type="button" onClick={() => setPaymentDate(dateObject(new Date()))}
-                                                            class={`cardAnimation px-2 py-1 text-white small mx-1 rounded-pill ${JSON.stringify(paymentDate) == JSON.stringify(dateObject(new Date())) ? 'ctm-bg-danger' : 'ctm-bg-primary'}`}>
+                                                            class={`cardAnimation px-2 py-1 text-white small mx-1 rounded-pill ${JSON.stringify(paymentDate) == JSON.stringify(dateObject(new Date())) ? 'ctm-bg-success' : 'ctm-bg-primary'}`}>
                                                             Hoje
                                                         </span>
                                                         <span type="button" onClick={() => setPaymentDate(dateObject(new Date(), -1))}
-                                                            class={`cardAnimation px-2 py-1 text-white small mx-1 rounded-pill ${JSON.stringify(paymentDate) == JSON.stringify(dateObject(new Date(), -1)) ? 'ctm-bg-danger' : 'ctm-bg-primary'}`}>
+                                                            class={`cardAnimation px-2 py-1 text-white small mx-1 rounded-pill ${JSON.stringify(paymentDate) == JSON.stringify(dateObject(new Date(), -1)) ? 'ctm-bg-success' : 'ctm-bg-primary'}`}>
                                                             Ontem
                                                         </span>
                                                     </>
                                                     :
-                                                    <span type="button" onClick={() => showModal('datePickerModalExpense')}
-                                                        className={`cardAnimation px-2 py-1 text-white small mx-1 rounded-pill bold ctm-bg-danger`}>
+                                                    <span type="button" onClick={() => showModal('datePickerModalIncome')}
+                                                        className={`cardAnimation px-2 py-1 text-white small mx-1 rounded-pill ctm-bg-success`}>
                                                         {dateFormat(paymentDate)}
                                                     </span>
                                                 }
-                                                <span type="button" onClick={() => showModal('datePickerModalExpense')}
+                                                <span type="button" onClick={() => showModal('datePickerModalIncome')}
                                                     className={`cardAnimation px-2 py-1 text-white small mx-1 rounded-pill ctm-bg-primary`}>
                                                     Outro
                                                 </span>
@@ -379,8 +363,8 @@ export default function ExpenseAddModal(props) {
                                                 title="Data da receita"
                                                 date={paymentDate}
                                                 setDate={setPaymentDate}
-                                                id="datePickerModalExpense"
-                                                section="expense" />
+                                                id="datePickerModalIncome"
+                                                section="income" />
 
                                         </div>
                                         <hr />
@@ -414,7 +398,6 @@ export default function ExpenseAddModal(props) {
                                             <div className="col-12 mt-2 d-flex">
                                                 <DescriptionInput setDescription={setDescription} description={description} />
 
-
                                             </div>
                                         </div>
 
@@ -425,16 +408,14 @@ export default function ExpenseAddModal(props) {
                                                 <FontAwesomeIcon icon={faTag} />
                                                 <span className="small fw-bold mb-2 ms-3">Categoria</span>
                                             </div>
-
-                                            <CategorySelectedComponent subCategorySelected={subCategorySelected} categories={categories} type="Expense" />
+                                            <CategorySelectedComponent subCategorySelected={subCategorySelected} categories={categories} type="Income" />
 
                                             <CategorySelectModal
                                                 categories={categories}
                                                 setSubCategorySelected={setSubCategorySelected}
                                                 dataFunction={() => dataFunction(token.sub)}
-                                                id="tagSelectModalExpense"
-                                                section="expense" />
-
+                                                id="tagSelectModalIncome"
+                                                section="income" />
                                         </div>
 
                                         <hr />
@@ -445,7 +426,7 @@ export default function ExpenseAddModal(props) {
                                                 <FontAwesomeIcon icon={faWallet} />
                                                 <span className="small fw-bold mb-2 ms-3">Conta</span>
                                             </div>
-                                            <div className="col-12 mt-2 d-flex justify-content-between" onClick={() => showModal('bankAccountsExpenseModal')}>
+                                            <div className="col-12 mt-2 d-flex justify-content-between" onClick={() => showModal('bankAccountsModal')}>
                                                 {!accountSelected ?
                                                     <span type="button"
                                                         class=" px-2 py-1  small mx-1 rounded-pill border pulse shadow">
@@ -453,9 +434,9 @@ export default function ExpenseAddModal(props) {
                                                     </span>
                                                     :
                                                     <>
-                                                        <div className="row">
+                                                        <div className="row fadeItem">
                                                             <div>
-                                                                <span type="button" onClick={() => showModal('bankAccountsExpenseModal')}
+                                                                <span type="button" onClick={() => showModal('bankAccountsModal')}
                                                                     className={`cardAnimation px-2 py-1  text-white small mx-1 rounded-pill fw-bold `}
                                                                     style={{ backgroundColor: accountSelected.color }}>
                                                                     <img src={accountSelected?.bankSelected?.logoUrl} className="rounded-circle me-2" alt="" width={20} height={20} />
@@ -473,10 +454,11 @@ export default function ExpenseAddModal(props) {
                                             <BankAccountsModal
                                                 bankAccounts={bankAccounts}
                                                 setAccountSelected={setAccountSelected}
-                                                id="bankAccountsExpenseModal" />
+                                                id="bankAccountsModal" />
                                         </div>
 
                                         <hr />
+
                                         <div className="row d-flex justify-content-between">
                                             <div className="col-12">
 
@@ -544,7 +526,7 @@ export default function ExpenseAddModal(props) {
 
                                         </div>
 
-                                        <hr />
+                                        {/* <hr /> */}
 
                                     </div>
                                 </div>
@@ -566,7 +548,7 @@ export default function ExpenseAddModal(props) {
                             onClick={() => initialValues()}>
                             Cancelar
                         </button>
-                        <button className="btn btn-c-danger"
+                        <button className="btn btn-c-success"
                             data-bs-dismiss="modal"
                             onClick={() => handleSave()}>
                             Salvar

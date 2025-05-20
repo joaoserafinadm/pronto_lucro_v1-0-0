@@ -64,6 +64,7 @@ export default function Setores(props) {
                     <option value="Eletricidade e Gás">Eletricidade e Gás</option>
                     <option value="Comércio">Comércio</option>
                     <option value="Agropecuária">Agropecuária</option>
+                    <option value="Outro">Outro</option>
                     {/* <option value="Produção florestal">Produção florestal</option> */}
                 </select>
                 {props.setorPrimario &&
@@ -179,6 +180,15 @@ export default function Setores(props) {
                         placeholder="informe o setor"
                         value={props.outroSetorSec}
                         onChange={(e) => props.setOutroSetorSec(e.target.value)} />
+                </div>
+            )}
+            {props.setorPrimario === "Outro" && (
+                <div className="form-group col-12 d-inline-flex align-items-center mt-2 fadeItem">
+                    <input type="text"
+                        className="form-control "
+                        placeholder="informe o setor"
+                        value={props.newSetorName}
+                        onChange={(e) => props.setNewSetorName(e.target.value)} />
                 </div>
             )}
         </div >
