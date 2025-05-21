@@ -70,7 +70,7 @@ export default authenticated(async (req, res) => {
                 const dateAdded = new Date();
                 const dateAddedObj = dateObject(dateAdded);
 
-                const dfcDataArray = data.periodicity === "Único" ? [{
+                const dfcDataArray = data.periodicity === "Único" || data.periodicity === "Repetido" ? [{
                     ...data,
                     value: maskMoneyNumber(data.value),
                     _id: newId,

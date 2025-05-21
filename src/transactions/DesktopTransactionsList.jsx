@@ -75,16 +75,26 @@ export default function DesktopTransactionsList(props) {
                                     <td className="text-start " style={{ fontSize: '12px' }}>
                                         {formatDate(elem?.paymentDate)}
                                     </td>
-                                    <td className={`text-start small  ${elem?.description ? 'bold' : 'text-muted'}`}>
+                                    <td className={`text-start d-flex flex-column small  ${elem?.description ? 'bold' : 'text-muted'}`}>
                                         <div className="d-flex">
-
                                             {elem?.description ? elem?.description : 'Sem descricão'}
-                                            {elem?.periodicityConfig?.parcelaAtual && (
+                                            {elem?.periodicity === 'Parcelado' && (
                                                 <div className="ms-2">
                                                     ({elem?.periodicityConfig?.parcelaAtual} / {elem?.periodicityConfig?.qtd})
+
+                                                </div>
+                                            )}
+                                            {elem?.periodicity === 'Repetido' && (
+                                                <div className="ms-2 ">
+                                                    ({elem?.periodicityConfig?.parcelaAtual}ª)
                                                 </div>
                                             )}
                                         </div>
+                                        {(elem?.periodicity === 'Parcelado' || elem?.periodicity === 'Repetido') && (
+                                            <div className="small">
+                                                {elem?.periodicity}
+                                            </div>
+                                        )}
                                     </td>
                                     <td className="text-start">
                                         <TagSelected subCategory_id={elem.subCategory_id} categories={categories} />

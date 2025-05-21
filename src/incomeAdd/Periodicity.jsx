@@ -20,6 +20,11 @@ export default function Periodicity(props) {
         setPeriodicityConfig(null)
     }, [periodicity])
 
+    useEffect(() => {
+        console.log("periodicityConfig", periodicityConfig)
+
+    }, [periodicityConfig])
+
 
 
 
@@ -37,7 +42,7 @@ export default function Periodicity(props) {
                     Único
                 </span>
                 <span type="button" onClick={() => setPeriodicity('Repetido')} 
-                    class={`disabled cardAnimation px-2 py-1 m-2 text-white small mx-1 rounded-pill ${periodicity === "Repetido" ? type === "income" ? 'ctm-bg-success': 'ctm-bg-danger' : 'ctm-bg-primary'}`}>
+                    class={`cardAnimation px-2 py-1 m-2 text-white small mx-1 rounded-pill ${periodicity === "Repetido" ? type === "income" ? 'ctm-bg-success': 'ctm-bg-danger' : 'ctm-bg-primary'}`}>
                     Repetido
                 </span>
                 <span type="button" onClick={() => setPeriodicity('Parcelado')}
@@ -53,8 +58,8 @@ export default function Periodicity(props) {
                     <div className="col-12 ">
                         <div className="row">
                             <div className="col-lg-4 col-md-6 col-8">
-                                <select className="form-select" aria-label="selectPeriodicity" onChange={e => setPeriodicityConfig({ ...periodicityConfig, periodicity: e.target.value })} value={periodicityConfig?.periodicity}>
-                                    <option selected disabled>Escolha</option>
+                                <select className="form-select" aria-label="selectPeriodicity" onChange={e => setPeriodicityConfig({ ...periodicityConfig, periodicity: e.target.value, parcelaAtual: 1 })} value={periodicityConfig?.periodicity}>
+                                    <option selected disabled value={''}>Escolha</option>
                                     <option value={'Diariamente'}>Diariamente</option>
                                     <option value={'Semanalmente'}>Semanalmente</option>
                                     <option value={'Mensalmente'}>Mensalmente</option>
