@@ -114,12 +114,27 @@ export default function DfcList(props) {
                                                             </div>
                                                             <div className="row mt-1">
                                                                 <div className="col-12">
-                                                                    <div className="d-flex">
+                                                                    <div className={`text-start d-flex flex-column   ${elem?.description ? 'bold' : 'text-muted'}`}>
 
-                                                                        {elem?.description ? elem?.description : 'Sem descricão'}
-                                                                        {elem?.periodicityConfig?.parcelaAtual && (
-                                                                            <div className="ms-2">
-                                                                                ({elem?.periodicityConfig?.parcelaAtual} / {elem?.periodicityConfig?.qtd})
+                                                                        <div className="d-flex align-items-center">
+                                                                            <TypeIcon elem={elem} />
+                                                                            {elem?.description ? elem?.description : 'Sem descricão'}
+
+                                                                        </div>
+                                                                        {(elem?.periodicity === 'Parcelado' || elem?.periodicity === 'Repetido') && (
+                                                                            <div className="small d-flex">
+                                                                                {elem?.periodicity}
+                                                                                {elem?.periodicity === 'Parcelado' && (
+                                                                                    <div className="ms-1">
+                                                                                        ({elem?.periodicityConfig?.parcelaAtual} / {elem?.periodicityConfig?.qtd})
+
+                                                                                    </div>
+                                                                                )}
+                                                                                {elem?.periodicity === 'Repetido' && (
+                                                                                    <div className="ms-1 ">
+                                                                                        ({elem?.periodicityConfig?.parcelaAtual}ª)
+                                                                                    </div>
+                                                                                )}
                                                                             </div>
                                                                         )}
                                                                     </div>

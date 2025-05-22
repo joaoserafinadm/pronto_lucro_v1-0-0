@@ -5,6 +5,7 @@ import { faCheck, faCheckCircle, faClipboard, faDotCircle, faEdit, faEllipsis, f
 import TagSelected from "./tagSelected"
 import ActiveButton from "./activeButton"
 import { useStateContext } from "./context/transactionsContext"
+import BankAccountSelected from "./bankAccountSelected"
 
 
 
@@ -34,9 +35,6 @@ export default function DesktopTransactionsList(props) {
                 <table className="table   " style={{ borderRadius: '20px !important' }}>
                     <thead className="table-secondary text-secondary">
                         <tr className="">
-                            <th >
-
-                            </th>
                             <th className="text-start small">
                                 Data
                             </th>
@@ -69,30 +67,30 @@ export default function DesktopTransactionsList(props) {
 
                                 <tr key={index} className="">
 
-                                    <td className="text-center ">
-                                        <TypeIcon elem={elem} />
-                                    </td>
                                     <td className="text-start " style={{ fontSize: '12px' }}>
                                         {formatDate(elem?.paymentDate)}
                                     </td>
                                     <td className={`text-start d-flex flex-column small  ${elem?.description ? 'bold' : 'text-muted'}`}>
-                                        <div className="d-flex">
-                                            {elem?.description ? elem?.description : 'Sem descricão'}
-                                            {elem?.periodicity === 'Parcelado' && (
-                                                <div className="ms-2">
-                                                    ({elem?.periodicityConfig?.parcelaAtual} / {elem?.periodicityConfig?.qtd})
 
-                                                </div>
-                                            )}
-                                            {elem?.periodicity === 'Repetido' && (
-                                                <div className="ms-2 ">
-                                                    ({elem?.periodicityConfig?.parcelaAtual}ª)
-                                                </div>
-                                            )}
+                                        <div className="d-flex align-items-center">
+                                            <TypeIcon elem={elem} />
+                                            {elem?.description ? elem?.description : 'Sem descricão'}
+
                                         </div>
                                         {(elem?.periodicity === 'Parcelado' || elem?.periodicity === 'Repetido') && (
-                                            <div className="small">
+                                            <div className="small d-flex">
                                                 {elem?.periodicity}
+                                                {elem?.periodicity === 'Parcelado' && (
+                                                    <div className="ms-1">
+                                                        ({elem?.periodicityConfig?.parcelaAtual} / {elem?.periodicityConfig?.qtd})
+
+                                                    </div>
+                                                )}
+                                                {elem?.periodicity === 'Repetido' && (
+                                                    <div className="ms-1 ">
+                                                        ({elem?.periodicityConfig?.parcelaAtual}ª)
+                                                    </div>
+                                                )}
                                             </div>
                                         )}
                                     </td>
@@ -100,21 +98,11 @@ export default function DesktopTransactionsList(props) {
                                         <TagSelected subCategory_id={elem.subCategory_id} categories={categories} />
                                     </td>
                                     <td className="text-start">
-                                        {!accountSelected ?
-                                            <span class=" px-2 py-1  small rounded-pill border">
-                                                Sem conta
-                                            </span>
-                                            :
-                                            <>
-                                                <span
-                                                    className={`cardAnimation px-2 py-1 small rounded-pill text-white fw-bold`}
+                                        <div className="d-flex">
 
-                                                    style={{ backgroundColor: accountSelected.color }}>
-                                                    <img src={accountSelected?.bankSelected?.logoUrl} className="rounded-circle me-2" alt="" width={16} height={16} />
-                                                    {accountSelected.description}
-                                                </span>
-                                            </>
-                                        }
+                                            <BankAccountSelected accountSelected={accountSelected} />
+                                        </div>
+
                                     </td>
                                     <td className={`text-end bold text-${elem?.active === false ? 'secondary' : elem?.type === 'income' ? 'c-success' : 'c-danger'}`}>
                                         {elem?.type === 'expense' && '-'}{elem?.type === 'income' && '+'}{brlMoney.format(elem?.value)} <br />

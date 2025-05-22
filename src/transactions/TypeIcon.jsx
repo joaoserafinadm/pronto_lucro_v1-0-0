@@ -1,4 +1,4 @@
-import { faArrowDown, faArrowUp } from "@fortawesome/free-solid-svg-icons"
+import { faArrowDown, faArrowUp, faChevronCircleDown, faChevronCircleUp } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 
@@ -12,7 +12,7 @@ export default function TypeIcon(props) {
 
 
     return (
-        <FontAwesomeIcon icon={elem.type === 'income' ? faArrowUp : elem.type === 'expense' ? faArrowDown : '-'}
+        <FontAwesomeIcon icon={elem.type === 'income' ? faChevronCircleUp : elem.type === 'expense' ? faChevronCircleDown : '-'}
             className={` me-2  text-${elem.active === false ? 'muted' : elem.type === 'income' ? 'c-success' : elem.type === 'expense' ? 'c-danger' : 'secondary'}`} />
 
     )

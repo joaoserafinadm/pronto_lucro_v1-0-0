@@ -33,76 +33,76 @@ export default function Periodicity(props) {
     }
 
     const handleNextTransaction = (periodicityValue) => {
-    const localdate = new Date();
+        const localdate = new Date();
 
-    // Obter o offset de Brasília em relação ao UTC
-    const brasiliaOffset = -3; // Brasília é UTC-3 (ou UTC-2 no horário de verão)
-    const utcTime = localdate.getTime() + (localdate.getTimezoneOffset() * 60000);
-    const date = new Date(utcTime + (brasiliaOffset * 3600000));
-    const day = date.getDate();
-    const month = date.getMonth();
-    const year = date.getFullYear();
-    
-    let nextDate = new Date(date);
-    console.log('date', date, day, month, year, nextDate)
+        // Obter o offset de Brasília em relação ao UTC
+        const brasiliaOffset = -3; // Brasília é UTC-3 (ou UTC-2 no horário de verão)
+        const utcTime = localdate.getTime() + (localdate.getTimezoneOffset() * 60000);
+        const date = new Date(utcTime + (brasiliaOffset * 3600000));
+        const day = date.getDate();
+        const month = date.getMonth();
+        const year = date.getFullYear();
 
-    switch (periodicityValue) {
-        case 'Diariamente':
-            nextDate.setDate(day + 1);
-            console.log('nextDate', nextDate)
-            break;
+        let nextDate = new Date(date);
+        console.log('date', date, day, month, year, nextDate)
 
-        case 'Semanalmente':
-            nextDate.setDate(day + 7);
-            break;
+        switch (periodicityValue) {
+            case 'Diariamente':
+                nextDate.setDate(day + 1);
+                console.log('nextDate', nextDate)
+                break;
 
-        case 'Mensalmente':
-            // Avança para o próximo mês
-            nextDate.setMonth(month + 1);
+            case 'Semanalmente':
+                nextDate.setDate(day + 7);
+                break;
 
-            // Verifica quantos dias tem o próximo mês
-            const daysInNextMonth = new Date(nextDate.getFullYear(), nextDate.getMonth() + 1, 0).getDate();
+            case 'Mensalmente':
+                // Avança para o próximo mês
+                nextDate.setMonth(month + 1);
 
-            // Se o dia atual for maior que os dias do próximo mês, 
-            // define para o último dia do próximo mês
-            if (day > daysInNextMonth) {
-                nextDate.setDate(daysInNextMonth);
-            } else {
-                nextDate.setDate(day);
-            }
-            break;
+                // Verifica quantos dias tem o próximo mês
+                const daysInNextMonth = new Date(nextDate.getFullYear(), nextDate.getMonth() + 1, 0).getDate();
 
-        case 'Anualmente':
-            nextDate.setFullYear(year + 1);
-
-            // Tratamento especial para ano bissexto (29 de fevereiro)
-            if (month === 1 && day === 29) { // Fevereiro, dia 29
-                const nextYear = year + 1;
-                const isNextYearLeap = (nextYear % 4 === 0 && nextYear % 100 !== 0) || (nextYear % 400 === 0);
-
-                if (!isNextYearLeap) {
-                    // Se o próximo ano não for bissexto, define para 28 de fevereiro
-                    nextDate.setDate(28);
+                // Se o dia atual for maior que os dias do próximo mês, 
+                // define para o último dia do próximo mês
+                if (day > daysInNextMonth) {
+                    nextDate.setDate(daysInNextMonth);
+                } else {
+                    nextDate.setDate(day);
                 }
-            }
-            break;
+                break;
 
-        default:
-            // Se não for nenhuma das opções, retorna a data atual
-            return {
-                day: date.getDate(),
-                month: date.getMonth() + 1, // +1 porque getMonth() retorna 0-11
-                year: date.getFullYear()
-            };
-    }
+            case 'Anualmente':
+                nextDate.setFullYear(year + 1);
 
-    // Retorna a data no formato {day: number, month: number, year: number}
-    return {
-        day: nextDate.getDate(),
-        month: nextDate.getMonth() + 1, // +1 porque getMonth() retorna 0-11
-        year: nextDate.getFullYear()
+                // Tratamento especial para ano bissexto (29 de fevereiro)
+                if (month === 1 && day === 29) { // Fevereiro, dia 29
+                    const nextYear = year + 1;
+                    const isNextYearLeap = (nextYear % 4 === 0 && nextYear % 100 !== 0) || (nextYear % 400 === 0);
+
+                    if (!isNextYearLeap) {
+                        // Se o próximo ano não for bissexto, define para 28 de fevereiro
+                        nextDate.setDate(28);
+                    }
+                }
+                break;
+
+            default:
+                // Se não for nenhuma das opções, retorna a data atual
+                return {
+                    day: date.getDate(),
+                    month: date.getMonth() + 1, // +1 porque getMonth() retorna 0-11
+                    year: date.getFullYear()
+                };
+        }
+
+        // Retorna a data no formato {day: number, month: number, year: number}
+        return {
+            day: nextDate.getDate(),
+            month: nextDate.getMonth() + 1, // +1 porque getMonth() retorna 0-11
+            year: nextDate.getFullYear()
+        };
     };
-};
 
 
     return (
@@ -152,6 +152,20 @@ export default function Periodicity(props) {
                     <div className="col-12">
                         <span className="small mb-2 text-danger">&#x2022; As {type === "income" ? "receitas" : "despesas"} repetidas serão contabilizadas nas transações conforme a periodicidade escolhida.</span>
                     </div>
+                    {periodicityConfig?.periodicity && (
+
+                        <div className="col-12 d-flex  align-items-center fadeItem">
+                            <span className="small fw-bold">
+                                Próxima transação:
+                            </span>
+                            <div className="ms-2">
+
+                                <span className={`badge ${type === "income" ? 'ctm-bg-success' : 'ctm-bg-danger'}`} >
+                                    {periodicityConfig?.nextTransaction?.day?.toString().padStart(2, '0')}/{periodicityConfig?.nextTransaction?.month?.toString().padStart(2, '0')}/{periodicityConfig?.nextTransaction?.year}
+                                </span>
+                            </div>
+                        </div>
+                    )}
                 </div>
             )}
             {periodicity === 'Parcelado' && (
