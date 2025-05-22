@@ -55,6 +55,13 @@ export default function Home() {
         })
     }
 
+
+
+    const testeCron = async () => {
+
+        await axios.get(`/api/cron/transacoesRepetidas`)
+    }
+
     return (
 
         <div className='fadeItem1s'>
@@ -66,6 +73,7 @@ export default function Home() {
 
             <div className=" pagesContent-lg shadow">
 
+            <button className='btn btn-primary' onClick={() => testeCron()}>TESTE CRON</button>
 
 
                 <NotificationsCard token={token} />
