@@ -88,7 +88,7 @@ export default function DesktopTransactionsList(props) {
                                                 )}
                                                 {elem?.periodicity === 'Repetido' && (
                                                     <div className="ms-1 ">
-                                                        ({elem?.periodicityConfig?.parcelaAtual}ª)
+                                                        ({elem?.periodicityConfig?.qtd}ª)
                                                     </div>
                                                 )}
                                             </div>
