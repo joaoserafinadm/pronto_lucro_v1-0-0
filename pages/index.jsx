@@ -73,7 +73,7 @@ export default function Home() {
 
             <div className=" pagesContent-lg shadow">
 
-            {/* <button className='btn btn-primary' onClick={() => testeCron()}>TESTE CRON</button> */}
+            <button className='btn btn-primary' onClick={() => testeCron()}>TESTE CRON</button>
 
 
                 <NotificationsCard token={token} />

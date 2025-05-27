@@ -80,6 +80,8 @@ export default authenticated(async (req, res) => {
                     active: !data.active ? false : isDateBefore(data.paymentDate, dateAddedObj)
                 }] : handleDfcData(newId, dateAdded, dateAddedObj, data, section);
 
+                console.log("dfcDataArray", dfcDataArray)
+
                 const dreData = {
                     ...data,
                     value: maskMoneyNumber(data.value),

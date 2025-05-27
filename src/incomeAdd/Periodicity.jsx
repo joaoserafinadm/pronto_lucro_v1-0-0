@@ -91,7 +91,7 @@ export default function Periodicity(props) {
                 // Se não for nenhuma das opções, retorna a data atual
                 return {
                     day: date.getDate(),
-                    month: date.getMonth() + 1, // +1 porque getMonth() retorna 0-11
+                    month: date.getMonth(), // +1 porque getMonth() retorna 0-11
                     year: date.getFullYear()
                 };
         }
@@ -99,7 +99,7 @@ export default function Periodicity(props) {
         // Retorna a data no formato {day: number, month: number, year: number}
         return {
             day: nextDate.getDate(),
-            month: nextDate.getMonth() + 1, // +1 porque getMonth() retorna 0-11
+            month: nextDate.getMonth(), // +1 porque getMonth() retorna 0-11
             year: nextDate.getFullYear()
         };
     };
@@ -161,7 +161,7 @@ export default function Periodicity(props) {
                             <div className="ms-2">
 
                                 <span className={`badge ${type === "income" ? 'ctm-bg-success' : 'ctm-bg-danger'}`} >
-                                    {periodicityConfig?.nextTransaction?.day?.toString().padStart(2, '0')}/{periodicityConfig?.nextTransaction?.month?.toString().padStart(2, '0')}/{periodicityConfig?.nextTransaction?.year}
+                                    {periodicityConfig?.nextTransaction?.day?.toString().padStart(2, '0')}/{(+periodicityConfig?.nextTransaction?.month + 1)?.toString().padStart(2, '0')}/{periodicityConfig?.nextTransaction?.year}
                                 </span>
                             </div>
                         </div>
