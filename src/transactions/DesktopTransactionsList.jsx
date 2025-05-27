@@ -70,7 +70,9 @@ export default function DesktopTransactionsList(props) {
                                     <td className="text-start " style={{ fontSize: '12px' }}>
                                         {formatDate(elem?.paymentDate)}
                                     </td>
-                                    <td className={`text-start d-flex flex-column small  ${elem?.description ? 'bold' : 'text-muted'}`}>
+                                    <td className={`text-start  small  ${elem?.description ? 'bold' : 'text-muted'}`}>
+                                        <div className=" d-flex flex-column">
+
 
                                         <div className="d-flex align-items-center">
                                             <TypeIcon elem={elem} />
@@ -93,6 +95,8 @@ export default function DesktopTransactionsList(props) {
                                                 )}
                                             </div>
                                         )}
+                                        </div>
+
                                     </td>
                                     <td className="text-start">
                                         <TagSelected subCategory_id={elem.subCategory_id} categories={categories} />
