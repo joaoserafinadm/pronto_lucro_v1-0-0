@@ -1,4 +1,4 @@
-import { faAngleLeft, faArrowsUpToLine, faBank, faCalendarCheck, faCalendarDay, faComment, faCommentAlt, faMoneyBill, faSwatchbook } from "@fortawesome/free-solid-svg-icons"
+import { faAngleLeft, faArrowsUpToLine, faBank, faCalendarCheck, faCalendarDay, faComment, faCommentAlt, faMoneyBill, faSwatchbook, faShoppingCart } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import CardTemplate from "./CardTemplate"
 import BankColorSelect from "./BankColorSelect"
@@ -50,6 +50,41 @@ export default function BankSetup(props) {
         setDiaFechamento(5)
     }
 
+    // Função para calcular o melhor dia de compra
+    const calcularMelhorDiaCompra = () => {
+        const pagamento = parseInt(diaFechamento);
+        const lancamento = parseInt(diaLancamento);
+        
+        // Se o lançamento é depois do pagamento no mesmo mês
+        if (lancamento > pagamento) {
+            // O melhor dia é logo após o lançamento do mês anterior
+            return lancamento + 1 <= 31 ? lancamento + 1 : 1;
+        } else {
+            // Se o lançamento é antes ou igual ao pagamento
+            // O melhor dia é logo após o lançamento do mesmo mês
+            return lancamento + 1 <= 31 ? lancamento + 1 : 1;
+        }
+    };
+
+    // Função para calcular quantos dias sem juros
+    const calcularDiasSemJuros = () => {
+        const pagamento = parseInt(diaFechamento);
+        const lancamento = parseInt(diaLancamento);
+        const melhorDia = calcularMelhorDiaCompra();
+        
+        let dias = 0;
+        
+        if (lancamento > pagamento) {
+            // Compra após lançamento, paga no próximo mês
+            dias = (31 - melhorDia) + pagamento + 30; // aproximadamente
+        } else {
+            // Compra após lançamento, paga no mesmo mês
+            dias = pagamento - melhorDia;
+            if (dias < 0) dias += 30; // Se negativo, adiciona um mês
+        }
+        
+        return dias;
+    };
 
 
     const handleCreditNetwork = (id) => {
@@ -288,6 +323,35 @@ export default function BankSetup(props) {
                             </select>
                         </div>
 
+                    </div>
+
+                    {/* Nova seção: Melhor dia de compra */}
+                    <hr />
+                    <div className="col-12 mt-2 mb-4">
+                        <div className="alert alert-info">
+                            <FontAwesomeIcon icon={faShoppingCart} className="me-2" />
+                            <span className="fw-bold">Melhor dia para compras</span>
+                            <div className="mt-2">
+                                <p className="mb-1">
+                                    <strong>Dia {calcularMelhorDiaCompra()}</strong> de cada mês
+                                </p>
+                                <p className="small mb-0 text-muted">
+                                    Comprando neste dia, você terá aproximadamente <strong>{calcularDiasSemJuros()} dias</strong> sem juros até o pagamento da fatura.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div className="small text-muted mt-2">
+                            <p className="mb-1">
+                                <FontAwesomeIcon icon={faCalendarCheck} className="me-1" />
+                                <strong>Como funciona:</strong>
+                            </p>
+                            <ul className="small">
+                                <li>Compras realizadas após o dia {diaLancamento} entram na fatura do próximo mês</li>
+                                <li>A fatura fecha no dia {diaFechamento} de cada mês</li>
+                                <li>Comprando no dia {calcularMelhorDiaCompra()}, você maximiza o prazo sem juros</li>
+                            </ul>
+                        </div>
                     </div>
 
                 </>

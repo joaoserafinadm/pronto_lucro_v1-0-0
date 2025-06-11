@@ -125,13 +125,14 @@ export default function ExpenseCategoriesPage(props) {
                                         <hr />
                                         <div className="row">
 
-                                            {elem.subCategories.map((elem1, index) => (
+                                            {elem.subCategories.map((elem1, index) => {
+                                               if(!elem1?.archived) return(
                                                 <div className="col-12 d-flex  align-items-center my-2">
                                                     <SubCategoryIcon color={elem.color} />
                                                     <span className="fw-bold" style={{ color: elem.color }}>{elem1.name}</span>
                                                 </div>
 
-                                            ))}
+                                            )})}
                                         </div>
                                         <hr />
                                         <div className="col-12 d-flex my-1 align-items-center mt-2">

@@ -1,4 +1,4 @@
-import { faArrowTurnUp, faCheck, faEdit, faGripLines, faPlus, faTag, faTrashAlt, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faArrowTurnUp, faBackward, faBoxArchive, faCheck, faEdit, faGripLines, faPlus, faRotateLeft, faTag, faTrashAlt, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 import jwt from 'jsonwebtoken';
@@ -21,6 +21,7 @@ export default function EditCategoryModal(props) {
     const [categoryEdit, setCategoryEdit] = useState(categorySelected);
     const [editCategorySelect, setEditCategorySelect] = useState(false)
     const [editTagIndex, setEditTagIndex] = useState('');
+    const [archiveTagIndex, setArchiveTagIndex] = useState('');
     const [deleteTagIndex, setDeleteTagIndex] = useState('');
     const [deleteCategoryButton, setDeleteCategoryButton] = useState(false);
 
@@ -44,7 +45,7 @@ export default function EditCategoryModal(props) {
         setEditColor('');
         setEditColorSelect(false)
 
-        setDeleteTagIndex('');
+        setArchiveTagIndex('');
         setDeleteCategoryButton(false);
     };
 
@@ -111,6 +112,14 @@ export default function EditCategoryModal(props) {
     };
 
 
+    const handleArchiveTag = (index) => {
+        const updatedTags = [...categoryEdit.subCategories];
+        updatedTags[index] = { ...updatedTags[index], archived: true };
+
+        setCategoryEdit({ ...categoryEdit, subCategories: updatedTags });
+        setArchiveTagIndex('');
+    }
+
     const handleDeleteTag = (index) => {
         let updatedTags = Array.from(categoryEdit.subCategories);
         updatedTags.splice(index, 1);
@@ -138,6 +147,14 @@ export default function EditCategoryModal(props) {
                 scrollTo(id);
                 setDeleteCategoryButton(false);
             });
+    }
+
+    const handleUndoDeleteTag = (index) => {
+        const updatedTags = [...categoryEdit.subCategories];
+        updatedTags[index] = { ...updatedTags[index], archived: false };
+
+        setCategoryEdit({ ...categoryEdit, subCategories: updatedTags });
+        setArchiveTagIndex('');
     }
 
     return (
@@ -279,8 +296,8 @@ export default function EditCategoryModal(props) {
                                                     width: '100%',
                                                 }}
                                             >
-                                                {categoryEdit?.subCategories?.map((elem1, index1) => (
-                                                    <div className="col-12 border-bottom">
+                                                {categoryEdit?.subCategories?.length > 0 ? categoryEdit?.subCategories?.map((elem1, index1) => (
+                                                    <div className={`col-12 `}>
 
                                                         <Draggable key={index1} draggableId={`tag-${index1}`} index={index1}>
                                                             {(provided, snapshot) => (
@@ -323,38 +340,69 @@ export default function EditCategoryModal(props) {
                                                                             </div>
                                                                             :
                                                                             <>
-                                                                                <div className="col-12 d-flex justify-content-between align-items-center">
-                                                                                    <div className="d-flex align-items-center">
-                                                                                        <FontAwesomeIcon icon={faGripLines} className="small text-secondary" />
+                                                                                <div className={`col-12 d-flex justify-content-between align-items-center `}>
+                                                                                    <div className={`d-flex align-items-center ${elem1?.archived ? 'disabled' : ''}`}>
+                                                                                        <FontAwesomeIcon icon={faGripLines} className="small text-secondary me-1" />
                                                                                         <SubCategoryIcon color={categoryEdit?.color} />
                                                                                         <span className="fw-bold fadeItem" style={{ color: categoryEdit?.color }}>{elem1.name}</span>
                                                                                     </div>
-                                                                                    <div className="d-flex">
+                                                                                    {elem1?.archived ?
+                                                                                        <div className="d-flex">
+                                                                                            <span className="ms-2 text-c-secondary cardAnimation"
+                                                                                                type="button"
+                                                                                                onClick={() => { handleUndoDeleteTag( index1) }}>
 
-                                                                                        <span
-                                                                                            className="ms-2 text-c-secondary"
-                                                                                            type="button"
-                                                                                            onClick={() => { setEditTagIndex(index1); setEditTagName(elem1.name) }}
-                                                                                        >
-                                                                                            <FontAwesomeIcon icon={faEdit} />
-                                                                                        </span>
-                                                                                        <span
-                                                                                            className="ms-3 text-c-danger"
-                                                                                            type="button"
-                                                                                            onClick={() => { setDeleteTagIndex(index1) }}
-                                                                                        >
+                                                                                            <FontAwesomeIcon icon={faRotateLeft} />
+                                                                                            </span>
+                                                                                            <span className="ms-3 text-c-danger cardAnimation"
+                                                                                                type="button"
+                                                                                                onClick={() => { setDeleteTagIndex(index1) }}>
+
                                                                                             <FontAwesomeIcon icon={faTrashAlt} />
-                                                                                        </span>
-                                                                                    </div>
+                                                                                            </span>
+                                                                                        </div>
+
+                                                                                        :
+
+                                                                                        <div className="d-flex">
+
+                                                                                            <span
+                                                                                                className="ms-2 text-c-secondary cardAnimation"
+                                                                                                type="button"
+                                                                                                onClick={() => { setEditTagIndex(index1); setEditTagName(elem1.name) }}
+                                                                                            >
+                                                                                                <FontAwesomeIcon icon={faEdit} />
+                                                                                            </span>
+                                                                                            <span
+                                                                                                className="ms-3 text-c-danger cardAnimation"
+                                                                                                type="button"
+                                                                                                onClick={() => { setArchiveTagIndex(index1) }}
+                                                                                            >
+                                                                                                <FontAwesomeIcon icon={faBoxArchive} />
+                                                                                            </span>
+                                                                                        </div>
+                                                                                    }
                                                                                 </div>
+                                                                                {archiveTagIndex === index1 && (
+                                                                                    <div className="col-12 fadeItem">
+                                                                                        <div className="alert alert-danger">
+                                                                                            <span className="bold ">Tem certeza que deseja <b>arquivar</b> essa subcategoria?</span><br />
+                                                                                            <span className="bold text-secondary small">Não será possível selecionar essa subcategoria em uma nova receita, porém ela ainda aparecerá nas transações e resultados.</span>
+                                                                                            <div className="d-flex justify-content-start mt-2">
+                                                                                                <button className="btn btn-c-tertiary me-2" onClick={() => setArchiveTagIndex('')}>Cancelar</button>
+                                                                                                <button className="btn btn-c-danger" onClick={() => handleArchiveTag(archiveTagIndex)}>Arquivar</button>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                )}
                                                                                 {deleteTagIndex === index1 && (
                                                                                     <div className="col-12 fadeItem">
                                                                                         <div className="alert alert-danger">
-                                                                                            <span className="bold ">Tem certeza que deseja excluir essa subcategoria?</span><br />
-                                                                                            <span className="bold text-secondary small">Todas as transações relacionadas à essa subcategoria ficarão "sem categoria" após salvar a edição.</span>
+                                                                                            <span className="bold ">Tem certeza que deseja <b>deletar</b> essa subcategoria?</span><br />
+                                                                                            <span className="bold text-secondary small">Todas as transações relacionadas à essa subcategoria ficarão "sem categoria" após salvar a edição, e a subcategoria não aparecerá nos resultados.</span>
                                                                                             <div className="d-flex justify-content-start mt-2">
                                                                                                 <button className="btn btn-c-tertiary me-2" onClick={() => setDeleteTagIndex('')}>Cancelar</button>
-                                                                                                <button className="btn btn-c-danger" onClick={() => handleDeleteTag(deleteTagIndex)}>Deletar</button>
+                                                                                                <button className="btn btn-c-danger" onClick={() => handleDeleteTag(archiveTagIndex)}>Deletar</button>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
@@ -371,7 +419,11 @@ export default function EditCategoryModal(props) {
                                                         {/* <hr /> */}
                                                     </div>
 
-                                                ))}
+                                                )) :
+                                                    <div className="col-12 d-flex justify-content-center align-items-center fadeItem">
+                                                        <span className="small">Nenhuma subcategoria cadastrada</span>
+                                                    </div>
+                                                }
                                                 {provided.placeholder}
                                             </div>
                                         )}
@@ -380,6 +432,7 @@ export default function EditCategoryModal(props) {
 
                             </div>
                         </div>
+                        <hr />
                         <div className="row mt-3">
                             <div className="col-12 d-flex justify-content-end">
                                 <button className="btn btn-c-outline-danger btn-sm" onClick={() => setDeleteCategoryButton(true)}>Deletar categoria</button>

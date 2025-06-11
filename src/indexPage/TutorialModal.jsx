@@ -184,7 +184,7 @@ export default function TutorialModal(props) {
                                         <button className="btn btn-sm btn-outline-secondary mx-1" data-bs-target="#tutorialPages" data-bs-slide-to={4}>
                                             Cancelar
                                         </button>
-                                        <button className="btn btn-sm btn-outline-success mx-1" onClick={() => handleAccountSave(token.sub)}>
+                                        <button className="btn btn-sm btn-outline-success mx-1" onClick={() => handleAccountSave(token.sub)} disabled={loadingAccountSave}>
                                             {loadingAccountSave ? <SpinnerSM className="mx-3" /> : 'Salvar'}
                                         </button>
 

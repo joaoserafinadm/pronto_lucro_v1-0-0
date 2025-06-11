@@ -10,6 +10,7 @@ export function categories_geral() {
                 _id: "1",
                 categoryName: "Receita Operacional Bruta",
                 color: "#4CAF50", // Verde
+                fixed: true,
                 subCategories: [
                     {
                         _id: "11",

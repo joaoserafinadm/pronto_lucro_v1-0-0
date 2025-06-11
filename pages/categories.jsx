@@ -42,7 +42,7 @@ export default function Categories() {
 
                             <Sections section={section} idTarget="accoutSetupPages"
                                 setSection={value => setSection(value)}
-                                sections={["Categorias de receita", "Categorias de despesa", "Marcadores"]} />
+                                sections={["Categorias de receita", "Categorias de despesa"]} />
 
                             <div className="carousel-inner ">
                                 <div className="carousel-item active">
@@ -51,9 +51,9 @@ export default function Categories() {
                                 <div className="carousel-item ">
                                     <ExpenseCategoriesPage token={token} />
                                 </div>
-                                <div className="carousel-item ">
+                                {/* <div className="carousel-item ">
                                     <TagsPage />
-                                </div>
+                                </div> */}
                             </div>
 
                         </div>
